@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tcm.hotel;
+package tcm.hotel; //Please make a change!
 
 /**
  * This is a description of the Admin Class.
