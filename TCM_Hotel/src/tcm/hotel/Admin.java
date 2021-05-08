@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Admin implements AdminInterface
+public class Admin implements AdminInterface //Admin class implements the AdminInterface
 {   
     /**
      * The getStaffDetails method will be invoked if the user chooses to access
