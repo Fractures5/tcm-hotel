@@ -15,7 +15,7 @@ public class WelcomeAppGui extends JFrame //Making a change for testing purposes
 {
     JPanel topPanel;
     JPanel middlePanel;
-    JPanel bottomPanel;
+    JPanel bottomPanel; //Here is the code for the bottomPanel
     
     
     public static void main(String[] args) 
