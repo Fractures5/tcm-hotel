@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  *
  * @author faari
  */
-public class WelcomeAppGui extends JFrame
+public class WelcomeAppGui extends JFrame //Making a change for testing purposes
 {
     JPanel topPanel;
     JPanel middlePanel;
