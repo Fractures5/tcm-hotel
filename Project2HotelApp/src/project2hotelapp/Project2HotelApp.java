@@ -19,7 +19,7 @@ public class Project2HotelApp extends JFrame{
     private static GuestBookDates bookDate;
     private static GuestChooseHotel bookLocation;
     
-    //private static GuestChooseRoom bookRooms;
+    private static GuestChooseRoom bookRooms;
     
     /**
      * @param args the command line arguments
@@ -32,5 +32,4 @@ public class Project2HotelApp extends JFrame{
         //bookRooms = new GuestChooseRoom();
         
     }
-     //test hello
 }

@@ -54,12 +54,12 @@ public class RoomMenu extends Products{
      */
     public static ArrayList<RoomMenu> showMenu()
     {
-        RoomMenu standardRoom = new RoomMenu("Standard Room (1 Double size bed)                   ", RoomType.STANDARD, 200.00, RoomAvailableType.STANDARD_QUANTITY);
-        RoomMenu deluxeRoom = new RoomMenu("Deluxe Room (1 King Size bed)                       ", RoomType.DELUXE, 375.00, RoomAvailableType.DELUXE_QUANTITY);
-        RoomMenu twinRoom = new RoomMenu("Twin Size Room (2 single bed)                       ", RoomType.TWIN, 250.00, RoomAvailableType.TWIN_QUANTITY);
-        RoomMenu queenRoom = new RoomMenu("Queen Size (1 queen sized bed)                      ", RoomType.QUEEN, 225.00, RoomAvailableType.QUEEN_QUANTITY);
-        RoomMenu familyRoom = new RoomMenu("Family Room (Large room)                            ", RoomType.FAMILY, 300.00, RoomAvailableType.FAMILY_QUANTITY);
-        RoomMenu couplesRoom = new RoomMenu("Couples Room (Custom heart-shaped king size bed)    ", RoomType.COUPLE, 315.00, RoomAvailableType.COUPLES_QUANTITY);
+        RoomMenu standardRoom = new RoomMenu("Standard Room (1 Double size bed)", RoomType.STANDARD, 200.00, RoomAvailableType.STANDARD_QUANTITY);
+        RoomMenu deluxeRoom = new RoomMenu("Deluxe Room (1 King Size bed)", RoomType.DELUXE, 375.00, RoomAvailableType.DELUXE_QUANTITY);
+        RoomMenu twinRoom = new RoomMenu("Twin Size Room (2 single bed)", RoomType.TWIN, 250.00, RoomAvailableType.TWIN_QUANTITY);
+        RoomMenu queenRoom = new RoomMenu("Queen Size (1 queen sized bed)", RoomType.QUEEN, 225.00, RoomAvailableType.QUEEN_QUANTITY);
+        RoomMenu familyRoom = new RoomMenu("Family Room (Large room)", RoomType.FAMILY, 300.00, RoomAvailableType.FAMILY_QUANTITY);
+        RoomMenu couplesRoom = new RoomMenu("Couples Room (Custom heart-shaped king size bed)", RoomType.COUPLE, 315.00, RoomAvailableType.COUPLES_QUANTITY);
         
         ArrayList<RoomMenu> rooms = new ArrayList<RoomMenu>(); // Creating the array list object.
         rooms.add(standardRoom); // Stores details into the array list object.
