@@ -5,10 +5,69 @@
  */
 package hotelControllers;
 
+import hotelModel.HotelLocations;
+import hotelView.HotelLocationMenu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import project2hotelapp.GuestChooseRoom;
+
 /**
  *
  * @author Siddarath
  */
 public class LocationInteraction {
+    
+    HotelLocations locationsModel;
+    HotelLocationMenu locationsView;
+    
+    public LocationInteraction(HotelLocations locationsModel, HotelLocationMenu locationsView)
+    {
+        this.locationsModel = locationsModel;
+        this.locationsView = locationsView;
+        
+        locationsView.getNextButton().addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                handleNextButtonPress();
+            }
+        });
+    }
+    
+    private void handleNextButtonPress()
+    {
+        
+        locationsView.confirmSelection();
+
+        if (locationsView.getRepeat() == true && locationsView.getShowErrorMesssage() == true) 
+        {
+            locationsView.displayErrorMessage();
+        }
+        else if(locationsView.getRepeat() == true && locationsView.getShowErrorMesssage() == false)
+        {
+            
+        }
+        else if (locationsView.getRepeat() == false) 
+        {
+            locationsView.setVisible(false);
+            locationsModel.setBookingLocation(locationsView.getBookingLocation());
+            locationsModel.currentLocationBookings(locationsView.getBookingLocation());
+        }
+        
+        
+        
+        /*if (locationsView.confirmSelection() == false)
+        {
+            locationsView.displayErrorMessage();
+        }
+        else
+        {
+            locationsView.setVisible(false);
+            locationsModel.setBookingLocation(locationsView.getBookingLocation());
+            // add code here to add studet to the model data array or something
+        }*/
+    }
     
 }

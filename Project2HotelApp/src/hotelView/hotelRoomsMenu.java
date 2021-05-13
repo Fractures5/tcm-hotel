@@ -9,6 +9,6 @@ package hotelView;
  *
  * @author Siddarath
  */
-public class hotelRoomsMenu {
+public class HotelRoomsMenu {
     
 }

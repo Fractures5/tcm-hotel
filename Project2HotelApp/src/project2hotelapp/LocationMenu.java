@@ -73,14 +73,14 @@ public class LocationMenu extends Products{
         locations.add(dudHotel);
         locations.add(queensHotel);
         
-        LocationMenu menuTitle = new LocationMenu();
+        /*LocationMenu menuTitle = new LocationMenu();
         menuTitle.menuBanner(); // Calls the abstract method to display this menus specific banner.
         
         
         for (LocationMenu locationType: locations)
         {
             System.out.println("(" +locations.indexOf(locationType) +") - " +locationType); // Prints out the hotel location menu formatted with its index number in the front.
-        }
+        }*/
         
         return locations;
     }

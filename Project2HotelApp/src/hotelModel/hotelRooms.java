@@ -9,6 +9,6 @@ package hotelModel;
  *
  * @author Siddarath
  */
-public class hotelRooms {
+public class HotelRooms {
     
 }
