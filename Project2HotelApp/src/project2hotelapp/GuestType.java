@@ -13,5 +13,5 @@ package project2hotelapp;
  */
 public enum GuestType {
     
-    ADULT, CHILD, INFANT, ELDERY, VIP;
+    ADULT, CHILD, INFANT, ELDERLY, VIP;
 }

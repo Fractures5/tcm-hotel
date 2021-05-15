@@ -163,7 +163,7 @@ public class HotelRoomsMenu extends JFrame
     public void confirmSelection()
     {
         if (standardRoomBox.getSelectedItem().equals(0) && deluxeRoomBox.getSelectedItem().equals(0) && twinRoomBox.getSelectedItem().equals(0)
-                && queenRoomBox.getSelectedItem().equals(0) && couplesRoomBox.getSelectedItem().equals(0)) 
+                && familyRoomBox.getSelectedItem().equals(0) && queenRoomBox.getSelectedItem().equals(0) && couplesRoomBox.getSelectedItem().equals(0)) 
         {
             showErrorMessage = true;
             repeat = true;

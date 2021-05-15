@@ -34,12 +34,12 @@ public class LocationMenuInteraction {
         {
             public void actionPerformed(ActionEvent e) 
             {
-                locationNextButtonPress();
+                handleNextButtonPress();
             }
         });
     }
  
-    public void locationNextButtonPress()
+    public void handleNextButtonPress()
     {
         
         locationsView.confirmSelection();

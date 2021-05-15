@@ -5,7 +5,9 @@
  */
 package hotelControllers;
 
+import hotelModel.HotelGuests;
 import hotelModel.HotelRooms;
+import hotelView.HotelGuestTypesMenu;
 import hotelView.HotelRoomsMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,12 +30,12 @@ public class RoomMenuInteraction
         {
             public void actionPerformed(ActionEvent e) 
             {
-                roomsNextButtonPress();
+                handleNextButtonPress();
             }
         });
     }
     
-    public void roomsNextButtonPress()
+    public void handleNextButtonPress()
     {
         roomsView.confirmSelection();
 
@@ -50,6 +52,11 @@ public class RoomMenuInteraction
             roomsView.setVisible(false);
             //roomsModel.setRoomsBooked(roomsView.getRoomsSelected());
             //roomsModel.currentRoomsBookings(roomsView.getRoomsSelected());
+            
+            
+            HotelGuests guestsModel = new HotelGuests();
+            HotelGuestTypesMenu guestsView = new HotelGuestTypesMenu();
+            GuestsTypeInteraction selectGuests = new GuestsTypeInteraction(guestsModel, guestsView);
         }
     }
 }

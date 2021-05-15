@@ -56,14 +56,14 @@ public class GuestsTypeMenu extends Products {
         GuestsTypeMenu adult = new GuestsTypeMenu("Adult (18-64 yrs)" , GuestType.ADULT , 30.00);
         GuestsTypeMenu child = new GuestsTypeMenu("Child (4-17 yrs)" , GuestType.CHILD , 10.00);
         GuestsTypeMenu infant = new GuestsTypeMenu("Infant (0-3 yrs)" , GuestType.INFANT , 0.00);
-        GuestsTypeMenu eldery = new GuestsTypeMenu("Eldery (65+ yrs)" , GuestType.ELDERY , 15.00);
+        GuestsTypeMenu elderly = new GuestsTypeMenu("Elderly (65+ yrs)" , GuestType.ELDERLY , 15.00);
         GuestsTypeMenu vip = new GuestsTypeMenu("VIP (Famous)" , GuestType.VIP , 100.00);    
         
         ArrayList<GuestsTypeMenu> guests = new ArrayList<GuestsTypeMenu>(); // Creating the array list object.
         guests.add(adult); // Stores details into the array list object.
         guests.add(child);
         guests.add(infant);
-        guests.add(eldery);
+        guests.add(elderly);
         guests.add(vip);
         
         GuestsTypeMenu guestTypeTitle = new GuestsTypeMenu();
