@@ -30,7 +30,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import static tcm.hotel.GuestForm.readGuestRecords;
+//import static tcm.hotel.GuestForm.readGuestRecords;
 
 /**
  *
@@ -43,21 +43,21 @@ public class GuestGUI extends JFrame implements ActionListener{
     JPanel headerPanel;
     JLabel welcomeLabel;
     
-    JPanel formPanel;
+    //JPanel formPanel;
     
-    JPanel fNamePanel;
+    //JPanel fNamePanel;
     JLabel fName;
     JTextField fNameField;
     
-    JPanel lNamePanel;
+    //JPanel lNamePanel;
     JLabel lName;
     JTextField lNameField;
     
-    JPanel agePanel;
+    //JPanel agePanel;
     JLabel age;
     JTextField ageField;
     
-    JPanel phoneNumPanel;
+    //JPanel phoneNumPanel;
     JLabel phoneNumber;
     JTextField phoneNumField;
     
@@ -65,7 +65,7 @@ public class GuestGUI extends JFrame implements ActionListener{
     JLabel emailAddress;
     JTextField emailField;
     
-    JPanel paymentHeader;
+    JPanel paymentHeaderPanel;
     JLabel paymentLabel;
     
     JPanel accNumPanel;
@@ -131,14 +131,14 @@ public class GuestGUI extends JFrame implements ActionListener{
         emailField = new JTextField("", 30);
         emailField.setBounds(300, 265, 200, 30);
         
-        paymentHeader = new JPanel();
-        paymentHeader.add(Box.createVerticalStrut(100));
-        paymentHeader.setBackground(Color.blue);
+        paymentHeaderPanel = new JPanel();
+        paymentHeaderPanel.add(Box.createVerticalStrut(100));
+        paymentHeaderPanel.setBackground(Color.blue);
         paymentLabel = new JLabel("Payment Details");
         paymentLabel.setForeground(Color.white);
         paymentLabel.setFont(new Font("Arial", Font.BOLD, 30));
-        paymentHeader.add(paymentLabel);
-        paymentHeader.setBounds(0, 355, 600, 100);
+        paymentHeaderPanel.add(paymentLabel);
+        paymentHeaderPanel.setBounds(0, 355, 600, 100);
         
         accountNumber = new JLabel("Bank Account Number: ");
         accountNumber.setBounds(100, 475, 200, 100);
@@ -162,7 +162,7 @@ public class GuestGUI extends JFrame implements ActionListener{
         centrePanel.add(phoneNumField);
         centrePanel.add(emailAddress);
         centrePanel.add(emailField);
-        centrePanel.add(paymentHeader);
+        centrePanel.add(paymentHeaderPanel);
         centrePanel.add(accountNumber);
         centrePanel.add(accNumField);
         centrePanel.add(accountPin);
@@ -383,6 +383,7 @@ public class GuestGUI extends JFrame implements ActionListener{
         
         inputFirstName = fNameField.getText();
         inputLastName = lNameField.getText();
+        //guestAge = Integer.parseInt(ageField.getText());
         inputPhoneNumber = phoneNumField.getText();
         inputEmail = emailField.getText();
         inputAccountNumber = accNumField.getText();
@@ -406,7 +407,7 @@ public class GuestGUI extends JFrame implements ActionListener{
                 validEmail = true;
             }
             
-            HashMap<String, String> guestRecords = readGuestRecords();
+            HashMap<String, String> guestRecords = GuestForm.readGuestRecords();
             
             if(guestRecords.containsKey(inputAccountNumber)){
                 JOptionPane.showMessageDialog(null, "You must enter your own Bank Account Number!", "Invalid Account Number Error!", JOptionPane.ERROR_MESSAGE);
@@ -462,7 +463,7 @@ public class GuestGUI extends JFrame implements ActionListener{
                 String empty = "";
                 fNameField.setText(empty);
                 lNameField.setText(empty);
-                ageField.setText(empty);
+                //ageField.setText(empty);
                 phoneNumField.setText(empty);
                 emailField.setText(empty);
                 accNumField.setText(empty);
@@ -471,7 +472,7 @@ public class GuestGUI extends JFrame implements ActionListener{
             else if(reply == JOptionPane.NO_OPTION){
                 fNameField.setText(inputFirstName);
                 lNameField.setText(inputLastName);
-                //ageField.setText(empty);
+                //ageField.setText(Integer.toString(guestAge));
                 phoneNumField.setText(inputPhoneNumber);
                 emailField.setText(inputEmail);
                 accNumField.setText(inputAccountNumber);
