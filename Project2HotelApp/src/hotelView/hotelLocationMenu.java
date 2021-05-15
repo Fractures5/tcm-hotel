@@ -5,7 +5,7 @@
  */
 package hotelView;
 
-import hotelControllers.LocationInteraction;
+import hotelControllers.LocationMenuInteraction;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -131,7 +131,6 @@ public class HotelLocationMenu extends JFrame{
     {
         ArrayList<LocationMenu> locationsMenu = new ArrayList<LocationMenu>();
         locationsMenu = LocationMenu.showMenu();
-        Boolean repest = false;
         
         if(locationButtons[0].isSelected() || locationButtons[1].isSelected() || locationButtons[3].isSelected() || 
                 locationButtons[5].isSelected() || locationButtons[7].isSelected())

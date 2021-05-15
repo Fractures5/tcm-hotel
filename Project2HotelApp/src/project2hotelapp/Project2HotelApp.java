@@ -5,9 +5,11 @@
  */
 package project2hotelapp;
 
-import hotelControllers.LocationInteraction;
+import hotelControllers.LocationMenuInteraction;
 import hotelModel.HotelLocations;
+import hotelModel.HotelRooms;
 import hotelView.HotelLocationMenu;
+import hotelView.HotelRoomsMenu;
 import javafx.scene.control.DatePicker;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -36,13 +38,9 @@ public class Project2HotelApp extends JFrame{
         
         HotelLocations locationModel = new HotelLocations();
         HotelLocationMenu locationView = new HotelLocationMenu();
-        
-        LocationInteraction locationAction = new LocationInteraction(locationModel, locationView);
-        
-        //System.out.println(locationModel.getBookingLocation().get(0).getLocationType());
-        //locationModel.currentLocationBookings(locationView.getBookingLocation());
+        LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);
 
         
-        
     }
+
 }

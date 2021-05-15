@@ -162,9 +162,12 @@ public class GuestChooseRoom extends JFrame implements ActionListener{
                    
                    if(userConfirmation == JOptionPane.YES_OPTION)
                    {
-                       dispose();
-                       
+                      // add code here to add the selected array list perhaps 
                        //add code here to add to cart or table etc
+                   }
+                   else if (userConfirmation == JOptionPane.NO_OPTION || userConfirmation == JOptionPane.CANCEL_OPTION || userConfirmation == JOptionPane.CLOSED_OPTION) 
+                   {
+                      
                    }
  
                }

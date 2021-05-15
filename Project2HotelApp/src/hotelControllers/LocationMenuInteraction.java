@@ -6,7 +6,9 @@
 package hotelControllers;
 
 import hotelModel.HotelLocations;
+import hotelModel.HotelRooms;
 import hotelView.HotelLocationMenu;
+import hotelView.HotelRoomsMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -17,12 +19,13 @@ import project2hotelapp.GuestChooseRoom;
  *
  * @author Siddarath
  */
-public class LocationInteraction {
+public class LocationMenuInteraction {
     
     HotelLocations locationsModel;
     HotelLocationMenu locationsView;
+   
     
-    public LocationInteraction(HotelLocations locationsModel, HotelLocationMenu locationsView)
+    public LocationMenuInteraction(HotelLocations locationsModel, HotelLocationMenu locationsView)
     {
         this.locationsModel = locationsModel;
         this.locationsView = locationsView;
@@ -31,12 +34,12 @@ public class LocationInteraction {
         {
             public void actionPerformed(ActionEvent e) 
             {
-                handleNextButtonPress();
+                locationNextButtonPress();
             }
         });
     }
-    
-    private void handleNextButtonPress()
+ 
+    public void locationNextButtonPress()
     {
         
         locationsView.confirmSelection();
@@ -54,6 +57,10 @@ public class LocationInteraction {
             locationsView.setVisible(false);
             locationsModel.setBookingLocation(locationsView.getBookingLocation());
             locationsModel.currentLocationBookings(locationsView.getBookingLocation());
+            
+            HotelRooms roomsModel = new HotelRooms();
+            HotelRoomsMenu roomsView = new HotelRoomsMenu();
+            RoomMenuInteraction roomsAction = new RoomMenuInteraction(roomsModel, roomsView);
         }
         
         
@@ -69,5 +76,7 @@ public class LocationInteraction {
             // add code here to add studet to the model data array or something
         }*/
     }
+    
+    
     
 }
