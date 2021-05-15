@@ -24,10 +24,24 @@ public class GuestController implements ActionListener{
     public GuestController(GuestView viewGuest, GuestModel modelGuest){
         this.viewGuest = viewGuest;
         this.modelGuest = modelGuest;
+        //initGuestView();
         
-        this.viewGuest.addGuestModel(new GuestView());
 
     }
+    
+    /*public void initGuestView(){
+        viewGuest.get
+    }*/
+    
+    public void initController(){
+        viewGuest.getConfirmDetails().addActionListener(e-> confirmDetails());
+        viewGuest.getResetDetails().addActionListener(this);
+    }
+    
+    private void confirmDetails() {
+        
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

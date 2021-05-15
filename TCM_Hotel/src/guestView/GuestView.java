@@ -5,6 +5,7 @@
  */
 package guestView;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -230,9 +231,23 @@ public class GuestView extends JFrame{
         confirmDetails.setFont(new Font("Arial", Font.BOLD, 17));
         confirmDetails.setBorder(new LineBorder(Color.black, 4));
         confirmDetails.setForeground(Color.black);
-        confirmDetails.addActionListener(GuestController controller);
+        //confirmDetails.addActionListener(GuestController controller);
+        
+        resetDetails = new JButton("Reset " + "\u2190");
+        resetDetails.setPreferredSize(new Dimension(170, 70));
+        resetDetails.setFont(new Font("Arial", Font.BOLD, 17));
+        resetDetails.setBorder(new LineBorder(Color.black, 4));
+        resetDetails.setForeground(Color.black);
+        //resetDetails.addActionListener(this);
         
         Color DefaultColour = confirmDetails.getBackground();
+        
+        buttonPanel.add(confirmDetails);
+        buttonPanel.add(resetDetails);
+        
+        this.add(headerPanel, BorderLayout.NORTH);
+        this.add(centrePanel, BorderLayout.CENTER);
+        this.add(buttonPanel, BorderLayout.SOUTH);
     }
     
 }
