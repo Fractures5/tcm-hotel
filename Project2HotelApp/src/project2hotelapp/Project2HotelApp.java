@@ -13,6 +13,7 @@ import hotelModel.HotelRooms;
 import hotelView.HotelFeaturesMenu;
 import hotelView.HotelLocationMenu;
 import hotelView.HotelRoomsMenu;
+import java.sql.SQLException;
 import javafx.scene.control.DatePicker;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -32,17 +33,29 @@ public class Project2HotelApp extends JFrame{
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here
         //bookDate = new GuestBookDates();
         //bookLocation = new GuestChooseHotel();
         
         //bookRooms = new GuestChooseRoom();
         
+        
+        
+        
+        HotelProductDB hotelMenu = new HotelProductDB();
+        hotelMenu.createHLocationTable();
+        hotelMenu.closeConnection();
+        
+       
+        
+        
         HotelLocations locationModel = new HotelLocations();
         HotelLocationMenu locationView = new HotelLocationMenu();
         LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);
 
+        
+        
        
     }
 
