@@ -60,19 +60,20 @@ public class HotelFeaturesMenu extends JFrame
         menuPanel.setPreferredSize(new Dimension(600, 450));
         menuPanel.add(instruction);
         
-        spaCB = new JCheckBox("Title: " +featuresMenu.get(0).getTitle() + "            Guest Type: " +featuresMenu.get(0).getFeatureType()+ "           Price: $" +featuresMenu.get(0).getPrice()+ "                                             ");
+        spaCB = new JCheckBox("Title: " +featuresMenu.get(0).getTitle() + "                                 Guest Type: " +featuresMenu.get(0).getFeatureType()+ "                       Price: $" +featuresMenu.get(0).getPrice());
         spaCB.setFont(new Font("Arial", Font.BOLD, 20));
+        //spaCB.setPreferredSize(new Dimension(700, 50));
         spaCB.setBorder(blackline);
         
-        jacuzziCB = new JCheckBox("Title: " +featuresMenu.get(1).getTitle() + "            Guest Type: " +featuresMenu.get(1).getFeatureType()+ "           Price: $" +featuresMenu.get(1).getPrice()+ "                                             ");
+        jacuzziCB = new JCheckBox("Title: " +featuresMenu.get(1).getTitle() + "                            Guest Type: " +featuresMenu.get(1).getFeatureType()+ "                       Price: $" +featuresMenu.get(1).getPrice());
         jacuzziCB.setFont(new Font("Arial", Font.BOLD, 20));
         jacuzziCB.setBorder(blackline);
         
-        saunaCB = new JCheckBox("Title: " +featuresMenu.get(2).getTitle() + "            Guest Type: " +featuresMenu.get(2).getFeatureType()+ "           Price: $" +featuresMenu.get(2).getPrice()+ "                                             ");
-        saunaCB.setFont(new Font("Arial", Font.BOLD, 20));
+        saunaCB = new JCheckBox("Title: " +featuresMenu.get(2).getTitle() + "                               Guest Type: " +featuresMenu.get(2).getFeatureType()+ "                        Price: $" +featuresMenu.get(2).getPrice());
+        saunaCB.setFont(new Font("Arial", Font.BOLD, 20)); 
         saunaCB.setBorder(blackline);
         
-        gymCB = new JCheckBox("Title: " +featuresMenu.get(3).getTitle() + "            Guest Type: " +featuresMenu.get(3).getFeatureType()+ "           Price: $" +featuresMenu.get(3).getPrice()+ "                                             ");
+        gymCB = new JCheckBox("Title: " +featuresMenu.get(3).getTitle() + "                               Guest Type: " +featuresMenu.get(3).getFeatureType()+ "                         Price: $" +featuresMenu.get(3).getPrice());
         gymCB.setFont(new Font("Arial", Font.BOLD, 20));
         gymCB.setBorder(blackline);
         
@@ -80,15 +81,15 @@ public class HotelFeaturesMenu extends JFrame
         noneCB.setFont(new Font("Arial", Font.BOLD, 20));
         noneCB.setBorder(blackline);
         
-        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(Box.createVerticalStrut(50));
         menuPanel.add(spaCB);
-        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(Box.createVerticalStrut(75));
         menuPanel.add(jacuzziCB);
-        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(Box.createVerticalStrut(75));
         menuPanel.add(saunaCB);
-        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(Box.createVerticalStrut(75));
         menuPanel.add(gymCB);
-        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(Box.createVerticalStrut(75));
         menuPanel.add(noneCB);
 
         this.add(menuPanel, BorderLayout.CENTER);

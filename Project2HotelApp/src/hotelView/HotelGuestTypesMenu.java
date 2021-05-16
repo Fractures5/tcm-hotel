@@ -97,19 +97,19 @@ public class HotelGuestTypesMenu extends JFrame
         vipTitle.setFont(new Font("Arial", Font.BOLD, 20));
         vipTitle.setBorder(blackline);
         
-        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(Box.createVerticalStrut(50));
         menuPanel.add(adultTitle);
         menuPanel.add(adultTypeBox);
-        menuPanel.add(Box.createVerticalStrut(75));
+        menuPanel.add(Box.createVerticalStrut(85));
         menuPanel.add(childTitle);
         menuPanel.add(childTypeBox);
-        menuPanel.add(Box.createVerticalStrut(75));
+        menuPanel.add(Box.createVerticalStrut(85));
         menuPanel.add(infantTitle);
         menuPanel.add(infantTypeBox);
-        menuPanel.add(Box.createVerticalStrut(75));
+        menuPanel.add(Box.createVerticalStrut(85));
         menuPanel.add(elderlyTitle);
         menuPanel.add(elderlyTypeBox);
-        menuPanel.add(Box.createVerticalStrut(75));
+        menuPanel.add(Box.createVerticalStrut(85));
         menuPanel.add(vipTitle);
         menuPanel.add(vipTypeBox);
         

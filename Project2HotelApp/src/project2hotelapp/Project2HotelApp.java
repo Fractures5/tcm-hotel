@@ -5,9 +5,12 @@
  */
 package project2hotelapp;
 
+import hotelControllers.FeaturesMenuInteraction;
 import hotelControllers.LocationMenuInteraction;
+import hotelModel.HotelFeatures;
 import hotelModel.HotelLocations;
 import hotelModel.HotelRooms;
+import hotelView.HotelFeaturesMenu;
 import hotelView.HotelLocationMenu;
 import hotelView.HotelRoomsMenu;
 import javafx.scene.control.DatePicker;
@@ -40,7 +43,7 @@ public class Project2HotelApp extends JFrame{
         HotelLocationMenu locationView = new HotelLocationMenu();
         LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);
 
-        
+       
     }
 
 }
