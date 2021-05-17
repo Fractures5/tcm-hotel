@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -482,9 +483,8 @@ public class GuestGUI extends JFrame implements ActionListener{
         }
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException{
         
         new GuestGUI();
-        
     }
 }

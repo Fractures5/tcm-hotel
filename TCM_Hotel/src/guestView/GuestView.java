@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 /**
@@ -28,6 +31,9 @@ public class GuestView extends JFrame{
     private JPanel centrePanel;
     private JPanel paymentHeaderPanel;
     private JPanel buttonPanel;
+    
+    private JButton confirmDetails;
+    private JButton resetDetails;
     
     private JLabel welcomeLabel;
     private JLabel fName;
@@ -99,32 +105,41 @@ public class GuestView extends JFrame{
         return accountPin;
     }
 
-    public JTextField getfNameField() {
-        return fNameField;
+    public String getfNameField() {
+        return fNameField.getText();
     }
 
-    public JTextField getlNameField() {
-        return lNameField;
+    public String getlNameField() {
+        return lNameField.getText();
     }
 
-    public JTextField getAgeField() {
-        return ageField;
+    public int getAgeField() {
+        return Integer.parseInt(ageField.getText());
+        //return ageField;
+        //TESTING might have to change get method data type back to JTextField??
     }
 
-    public JTextField getPhoneNumField() {
-        return phoneNumField;
+    public String getPhoneNumField() {
+        return phoneNumField.getText();
+        //return phoneNumField;
     }
 
-    public JTextField getEmailField() {
-        return emailField;
+    public String getEmailField() {
+        return emailField.getText();
+        //return emailField;
     }
 
-    public JTextField getAccNumField() {
-        return accNumField;
+    public String getAccNumField() {
+        return accNumField.getText();
+        //return accNumField;
     }
 
-    public JPasswordField getAccPinField() {
-        return accPinField;
+    public String getAccPinField() {
+        String inputAccountPin;
+        inputAccountPin = (new String(this.accPinField.getPassword()));
+        return inputAccountPin;
+        //return accPinField.getPassword();
+        //return accPinField;
     }
 
     public JButton getConfirmDetails() {
@@ -134,10 +149,6 @@ public class GuestView extends JFrame{
     public JButton getResetDetails() {
         return resetDetails;
     }
-    
-    
-    private JButton confirmDetails;
-    private JButton resetDetails;
     
     public GuestView(){
         
@@ -231,6 +242,8 @@ public class GuestView extends JFrame{
         confirmDetails.setFont(new Font("Arial", Font.BOLD, 17));
         confirmDetails.setBorder(new LineBorder(Color.black, 4));
         confirmDetails.setForeground(Color.black);
+        
+        
         //confirmDetails.addActionListener(GuestController controller);
         
         resetDetails = new JButton("Reset " + "\u2190");
@@ -250,4 +263,40 @@ public class GuestView extends JFrame{
         this.add(buttonPanel, BorderLayout.SOUTH);
     }
     
+    /*void addConfirmListener(ActionListener listenForDetailsConfirm){
+        
+        confirmDetails.addActionListener(listenForDetailsConfirm);
+    }
+    
+    void addResetListener(ActionListener listenForResetDetails){
+        resetDetails.addActionListener(listenForResetDetails);
+    }
+    
+    void displayErrorMessage(String errorMessage){
+        
+        JOptionPane.showMessageDialog(this, errorMessage);
+        
+    }*/
+    
+    public void DetailsConfirmation(){
+
+    }
+    
+    public void mouseEnterConfirmDetails(){
+        getConfirmDetails().setBackground(Color.LIGHT_GRAY);
+        
+    }
+    
+    public void mouseExitConfirmDetails(){
+        getConfirmDetails().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void mouseEnterResetDetails() {
+        getResetDetails().setBackground(Color.LIGHT_GRAY);
+
+    }
+
+    public void mouseExitResetDetails() {
+        getResetDetails().setBackground(UIManager.getColor("control"));
+    }
 }
