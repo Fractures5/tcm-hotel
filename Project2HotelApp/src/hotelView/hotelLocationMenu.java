@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.UIManager;
 import project2hotelapp.GuestChooseRoom;
 import project2hotelapp.GuestsBookingCart;
 import project2hotelapp.LocationMenu;
@@ -187,4 +188,13 @@ public class HotelLocationMenu extends JFrame{
              JOptionPane.ERROR_MESSAGE);
     }
     
+    public void mouseEnterHover()
+    {
+        getNextButton().setBackground(Color.GREEN);
+    }
+    
+    public void mouseExitHover()
+    {
+        getNextButton().setBackground(UIManager.getColor("control"));
+    }
 }

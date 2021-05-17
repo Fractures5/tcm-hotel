@@ -20,6 +20,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 
 /**
@@ -169,5 +170,15 @@ public class HotelFeaturesMenu extends JFrame
     {
        JOptionPane.showMessageDialog(new JFrame(), "Please tick upto many features passes or just 'none' by it self before moving to the stage!", "Invalid Selection",
                     JOptionPane.ERROR_MESSAGE); 
+    }
+    
+    public void mouseEnterHover()
+    {
+        getNextButton().setBackground(Color.GREEN);
+    }
+    
+    public void mouseExitHover()
+    {
+        getNextButton().setBackground(UIManager.getColor("control"));
     }
 }

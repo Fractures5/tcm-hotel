@@ -31,6 +31,19 @@ public class FeaturesMenuInteraction
                 handleNextButtonPress();
             }
         });
+        
+        featuresView.getNextButton().addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt) 
+            {
+                mouseEnteredHover();
+            }
+            
+            public void mouseExited(java.awt.event.MouseEvent evt) 
+            {
+                mouseExitedHover();
+            }
+        });
     }
     
     public void handleNextButtonPress()
@@ -52,5 +65,15 @@ public class FeaturesMenuInteraction
             //featuresModel.currentRoomsBookings(roomsView.getRoomsSelected());
            
         }
+    }
+    
+    public void mouseEnteredHover()
+    {
+        featuresView.mouseEnterHover();
+    }
+    
+    public void mouseExitedHover()
+    {
+        featuresView.mouseExitHover();
     }
 }

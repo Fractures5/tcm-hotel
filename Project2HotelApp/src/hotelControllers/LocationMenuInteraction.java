@@ -9,10 +9,13 @@ import hotelModel.HotelLocations;
 import hotelModel.HotelRooms;
 import hotelView.HotelLocationMenu;
 import hotelView.HotelRoomsMenu;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import project2hotelapp.GuestChooseRoom;
 
 /**
@@ -35,6 +38,19 @@ public class LocationMenuInteraction {
             public void actionPerformed(ActionEvent e) 
             {
                 handleNextButtonPress();
+            }
+        });
+        
+        locationsView.getNextButton().addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt) 
+            {
+                mouseEnteredHover();
+            }
+            
+            public void mouseExited(java.awt.event.MouseEvent evt) 
+            {
+                mouseExitedHover();
             }
         });
     }
@@ -77,6 +93,14 @@ public class LocationMenuInteraction {
         }*/
     }
     
+    public void mouseEnteredHover()
+    {
+        locationsView.mouseEnterHover();
+    }
     
+    public void mouseExitedHover()
+    {
+        locationsView.mouseExitHover();
+    }
     
 }

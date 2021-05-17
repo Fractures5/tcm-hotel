@@ -33,6 +33,18 @@ public class GuestsTypeInteraction
                 handleNextButtonPress();
             }
         });
+        guestsView.getNextButton().addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt) 
+            {
+                mouseEnteredHover();
+            }
+            
+            public void mouseExited(java.awt.event.MouseEvent evt) 
+            {
+                mouseExitedHover();
+            }
+        });
     }
     
     public void handleNextButtonPress()
@@ -59,4 +71,13 @@ public class GuestsTypeInteraction
         
     }
     
+    public void mouseEnteredHover()
+    {
+        guestsView.mouseEnterHover();
+    }
+    
+    public void mouseExitedHover()
+    {
+        guestsView.mouseExitHover();
+    }
 }

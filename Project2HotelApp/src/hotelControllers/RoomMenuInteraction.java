@@ -33,6 +33,19 @@ public class RoomMenuInteraction
                 handleNextButtonPress();
             }
         });
+        
+        roomsView.getNextButton().addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt) 
+            {
+                mouseEnteredHover();
+            }
+            
+            public void mouseExited(java.awt.event.MouseEvent evt) 
+            {
+                mouseExitedHover();
+            }
+        });
     }
     
     public void handleNextButtonPress()
@@ -58,5 +71,15 @@ public class RoomMenuInteraction
             HotelGuestTypesMenu guestsView = new HotelGuestTypesMenu();
             GuestsTypeInteraction selectGuests = new GuestsTypeInteraction(guestsModel, guestsView);
         }
+    }
+    
+    public void mouseEnteredHover()
+    {
+        roomsView.mouseEnterHover();
+    }
+    
+    public void mouseExitedHover()
+    {
+        roomsView.mouseExitHover();
     }
 }

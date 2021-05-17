@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import project2hotelapp.GuestsTypeMenu;
 
@@ -182,5 +183,15 @@ public class HotelGuestTypesMenu extends JFrame
     {
        JOptionPane.showMessageDialog(new JFrame(), "Please select the number of guests and what type of guests will be staying before moving to the next stage", "Invalid Selection",
                     JOptionPane.ERROR_MESSAGE); 
+    }
+    
+    public void mouseEnterHover()
+    {
+        getNextButton().setBackground(Color.GREEN);
+    }
+    
+    public void mouseExitHover()
+    {
+        getNextButton().setBackground(UIManager.getColor("control"));
     }
 }

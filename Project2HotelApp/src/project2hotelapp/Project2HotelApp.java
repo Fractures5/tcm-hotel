@@ -43,9 +43,9 @@ public class Project2HotelApp extends JFrame{
         
         
         
-        HotelProductDB hotelMenu = new HotelProductDB();
+        /*HotelProductDB hotelMenu = new HotelProductDB();
         hotelMenu.createHLocationTable();
-        hotelMenu.closeConnection();
+        hotelMenu.closeConnection();*/
         
        
         
