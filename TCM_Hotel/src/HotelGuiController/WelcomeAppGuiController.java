@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tcm.hotel;
+package HotelGuiController;
 
 /**
  *
@@ -11,7 +11,5 @@ package tcm.hotel;
  */
 public class WelcomeAppGuiController 
 {
-    private WelcomeAppGui theView;
-    private WelcomeAppGuiModel theModel;
-  
+    //Calls the methods, stuff like action listeners, etc...
 }

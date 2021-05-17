@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tcm.hotel;
+package HotelGuiView;
+import HotelGuiModel.WelcomeAppGuiModel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,7 +30,7 @@ public class WelcomeAppGui extends JFrame
     
     private JPanel topPanel;
     private JPanel middlePanel;
-    private JPanel bottomPanel;
+    private JPanel imagePanel;
     
     private JLabel welcomeLabel;
     private JLabel subWelcomeLabel;
@@ -39,10 +40,20 @@ public class WelcomeAppGui extends JFrame
     private JButton buttonThree;
     private JButton buttonFour;
     
+    private WelcomeAppGuiModel icon1;
+    private WelcomeAppGuiModel icon2;
+    private WelcomeAppGuiModel icon3;
+    private WelcomeAppGuiModel icon4;
+    
     public WelcomeAppGui()
     {
+        icon1 = new WelcomeAppGuiModel();
+        icon2= new WelcomeAppGuiModel();
+        icon3 = new WelcomeAppGuiModel();
+        icon4 = new WelcomeAppGuiModel(); 
+       
         welcomeFrame = new JFrame("TCM Hotel Online Booking System");
-        welcomeFrame.setBounds(800, 200, 900, 900);
+        welcomeFrame.setBounds(500, 200, 900, 700);
         welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         topPanel = new JPanel();
@@ -84,6 +95,68 @@ public class WelcomeAppGui extends JFrame
         buttonFour.setBorder(new LineBorder(Color.BLACK, 5));
         buttonFour.setBounds(75, 370, 250, 70);
         
+        
+        //Move these to the controller class
+        Color normalColour = buttonOne.getBackground();
+        
+        
+        buttonOne.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent arg0) {
+                buttonOne.setBackground(Color.LIGHT_GRAY);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent arg0) {
+                buttonOne.setBackground(normalColour);
+            }
+        });
+        
+        buttonTwo.addMouseListener(new MouseAdapter()
+        {
+        @Override
+        public void mouseEntered(MouseEvent arg0)
+        {
+            buttonTwo.setBackground(Color.LIGHT_GRAY);
+        }
+        
+        @Override
+        public void mouseExited(MouseEvent arg0)
+        {
+            buttonTwo.setBackground(normalColour);
+        }
+        });
+        
+        buttonThree.addMouseListener(new MouseAdapter()
+        {
+        @Override
+        public void mouseEntered(MouseEvent arg0)
+        {
+            buttonThree.setBackground(Color.LIGHT_GRAY);
+        }
+        
+        @Override
+        public void mouseExited(MouseEvent arg0)
+        {
+            buttonThree.setBackground(normalColour);
+        }
+        });
+
+        buttonFour.addMouseListener(new MouseAdapter()
+        {
+        @Override
+        public void mouseEntered(MouseEvent arg0)
+        {
+            buttonFour.setBackground(Color.LIGHT_GRAY);
+        }
+        
+        @Override
+        public void mouseExited(MouseEvent arg0)
+        {
+            buttonFour.setBackground(normalColour);
+        }
+        });
+        
         topPanel.add(welcomeLabel);
         
         middlePanel.add(subWelcomeLabel);
@@ -94,7 +167,13 @@ public class WelcomeAppGui extends JFrame
         
         welcomeFrame.add(topPanel, BorderLayout.NORTH);
         welcomeFrame.add(middlePanel, BorderLayout.CENTER);
-        welcomeFrame.setVisible(true);      
+        welcomeFrame.setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent e)
+    {
+        //When a button is pushed, open up a new frame it e.g about us...
+        //Gonna have to make a call to a new class? Which creates a new frame
     }
     
     public static void main(String[] args) 
