@@ -5,6 +5,7 @@
  */
 package project2hotelapp;
 
+import hotelDB.HotelProductDB;
 import hotelControllers.FeaturesMenuInteraction;
 import hotelControllers.LocationMenuInteraction;
 import hotelModel.HotelFeatures;
@@ -37,26 +38,19 @@ public class Project2HotelApp extends JFrame{
         // TODO code application logic here
         //bookDate = new GuestBookDates();
         //bookLocation = new GuestChooseHotel();
-        
         //bookRooms = new GuestChooseRoom();
+      
+        HotelProductDB hotelMenuDB = new HotelProductDB();
+        hotelMenuDB.createHLocationTable();
+        hotelMenuDB.createHRoomsTable();
+        hotelMenuDB.createHGuestTypeTable();
+        hotelMenuDB.createHFeaturesTable();
+        hotelMenuDB.closeConnection();
         
-        
-        
-        
-        /*HotelProductDB hotelMenu = new HotelProductDB();
-        hotelMenu.createHLocationTable();
-        hotelMenu.closeConnection();*/
-        
-       
-        
-        
-        HotelLocations locationModel = new HotelLocations();
+        /*HotelLocations locationModel = new HotelLocations();
         HotelLocationMenu locationView = new HotelLocationMenu();
-        LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);
+        LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);*/
 
-        
-        
-       
     }
 
 }
