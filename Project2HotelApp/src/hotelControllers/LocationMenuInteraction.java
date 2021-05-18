@@ -64,15 +64,17 @@ public class LocationMenuInteraction {
         {
             locationsView.displayErrorMessage();
         }
-        else if(locationsView.getRepeat() == true && locationsView.getShowErrorMesssage() == false)
+        else if(locationsView.getRepeat() == true && locationsView.getShowErrorMesssage() == false) // take this out maybe not needed
         {
-            
+            // no error is shown
         }
         else if (locationsView.getRepeat() == false) 
         {
             locationsView.setVisible(false);
             locationsModel.setBookingLocation(locationsView.getBookingLocation());
-            locationsModel.currentLocationBookings(locationsView.getBookingLocation());
+            //locationsModel.currentLocationBookings(locationsView.getBookingLocation());
+            
+            System.out.println(locationsModel.getBookingLocation().get(0).getTitle());
             
             HotelRooms roomsModel = new HotelRooms();
             HotelRoomsMenu roomsView = new HotelRoomsMenu();

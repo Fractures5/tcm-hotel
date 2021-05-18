@@ -14,11 +14,10 @@ import project2hotelapp.GuestsBookingCart;
  */
 public class HotelRooms 
 {
-    private ArrayList<GuestsBookingCart> roomsSelected = new ArrayList<>();
+    private ArrayList<GuestsBookingCart> roomsSelected = null;
     
     public HotelRooms()
     {
-        this.roomsSelected = roomsSelected;
     }
     
     public void setRoomsBooked(ArrayList<GuestsBookingCart> roomsSelected)
@@ -35,7 +34,7 @@ public class HotelRooms
     {
         for (GuestsBookingCart bookingDetails : products) 
         {
-            System.out.println(String.format("%-30s", "Title: " + bookingDetails.getTitle()) + String.format("%-30s", "Room Type: " + bookingDetails.getRoomType()) + String.format("%-25s", "Price: $" + bookingDetails.getPrice()));
+            System.out.println(String.format("%-60s", "Title: " + bookingDetails.getTitle()) + String.format("%-50s", "Room Type: " + bookingDetails.getRoomType()) + String.format("%-25s", "Price: $" + bookingDetails.getPrice()));
 
         }
     }

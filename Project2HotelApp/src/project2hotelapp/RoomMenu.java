@@ -38,9 +38,9 @@ public class RoomMenu extends Products{
      * @param availabilityType the parameter represents the enumerated type AvailabilityType which holds the number of rooms available to the specific room type.
      * @author Siddarath
      */
-    public RoomMenu(String title, RoomType roomType, Double price, RoomAvailableType availabilityType)
+    public RoomMenu(String title, RoomType roomType, Double price)
     {
-        super(title, roomType, price, availabilityType); // Calls the super class "Products" and inherits the specified characteristics.
+        super(title, roomType, price); // Calls the super class "Products" and inherits the specified characteristics.
     }
 
     /**
@@ -54,12 +54,12 @@ public class RoomMenu extends Products{
      */
     public static ArrayList<RoomMenu> showMenu()
     {
-        RoomMenu standardRoom = new RoomMenu("Standard Room (1 Double size bed)", RoomType.STANDARD, 200.00, RoomAvailableType.STANDARD_QUANTITY);
-        RoomMenu deluxeRoom = new RoomMenu("Deluxe Room (1 King Size bed)", RoomType.DELUXE, 375.00, RoomAvailableType.DELUXE_QUANTITY);
-        RoomMenu twinRoom = new RoomMenu("Twin Size Room (2 single bed)", RoomType.TWIN, 250.00, RoomAvailableType.TWIN_QUANTITY);
-        RoomMenu queenRoom = new RoomMenu("Queen Size (1 queen sized bed)", RoomType.QUEEN, 225.00, RoomAvailableType.QUEEN_QUANTITY);
-        RoomMenu familyRoom = new RoomMenu("Family Room (Large room)", RoomType.FAMILY, 300.00, RoomAvailableType.FAMILY_QUANTITY);
-        RoomMenu couplesRoom = new RoomMenu("Couples Room (Custom heart-shaped king size bed)", RoomType.COUPLE, 315.00, RoomAvailableType.COUPLES_QUANTITY);
+        RoomMenu standardRoom = new RoomMenu("Standard Room (1 Double size bed)", RoomType.STANDARD, 200.00);
+        RoomMenu deluxeRoom = new RoomMenu("Deluxe Room (1 King Size bed)", RoomType.DELUXE, 375.00);
+        RoomMenu twinRoom = new RoomMenu("Twin Size Room (2 single bed)", RoomType.TWIN, 250.00);
+        RoomMenu queenRoom = new RoomMenu("Queen Size (1 queen sized bed)", RoomType.QUEEN, 225.00);
+        RoomMenu familyRoom = new RoomMenu("Family Room (Large room)", RoomType.FAMILY, 300.00);
+        RoomMenu couplesRoom = new RoomMenu("Couples Room (Custom heart-shaped king size bed)", RoomType.COUPLE, 315.00);
         
         ArrayList<RoomMenu> rooms = new ArrayList<RoomMenu>(); // Creating the array list object.
         rooms.add(standardRoom); // Stores details into the array list object.
@@ -69,13 +69,13 @@ public class RoomMenu extends Products{
         rooms.add(familyRoom);
         rooms.add(couplesRoom);
         
-        RoomMenu roomTitle = new RoomMenu();
+        /*RoomMenu roomTitle = new RoomMenu();
         roomTitle.menuBanner(); // Calls the abstract method to display this menus specific banner.
         
         for (RoomMenu roomTypes: rooms)
         {
             System.out.println("(" +rooms.indexOf(roomTypes)+ ") - " +roomTypes); // Prints out the room menu formatted with its index number in the front.
-        }
+        }*/
         
         return rooms;
     }
@@ -92,7 +92,6 @@ public class RoomMenu extends Products{
         String output = String.format("%-30s", "Title: " + this.getTitle()); // String.format is used to format the room menu in columns.
         output += String.format("%-30s", "Room Type: " + this.getRoomType());
         output += String.format("%-25s", "Price: $" + this.getPrice());
-        output += String.format("%-20s", "Room available: " +this.getAvailabilityType()+  " ("+this.getAvailabilityType().getCount()+ ")");
         
         return output;
     }

@@ -65,12 +65,11 @@ public abstract class Products {
      * @param availabilityType the parameter represents the enumerated type AvailabilityType which holds the number of rooms available to the specific room type.
      * @author Siddarath
      */
-    public Products(String title, RoomType roomType, Double price, RoomAvailableType availabilityType)
+    public Products(String title, RoomType roomType, Double price)
     {
         this.title = title;
         this.roomType = roomType;
         this.price = price;
-        this.availabilityType = availabilityType;
     }
     
     /**

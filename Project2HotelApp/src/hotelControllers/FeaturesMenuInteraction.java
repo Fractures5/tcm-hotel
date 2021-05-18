@@ -54,7 +54,7 @@ public class FeaturesMenuInteraction
         {
             featuresView.displayErrorMessage();
         }
-        else if(featuresView.getRepeat() == true && featuresView.getShowErrorMesssage() == false)
+        else if(featuresView.getRepeat() == true && featuresView.getShowErrorMesssage() == false) // take this out maybe not needed
         {
             
         }

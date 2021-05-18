@@ -15,11 +15,10 @@ import project2hotelapp.LocationMenu;
  */
 public class HotelLocations {
     
-    private ArrayList<GuestsBookingCart> locationInfo = new ArrayList<>();
+    private ArrayList<GuestsBookingCart> locationInfo = null;
 
     public HotelLocations() 
     {
-        this.locationInfo = locationInfo;
     }
     
     
@@ -40,5 +39,7 @@ public class HotelLocations {
         {
             System.out.println("Title: " + bookingDetails.getTitle() + "  Location: " +bookingDetails.getRatingType() + "                Rating: " +bookingDetails.getRatingType() + "             Vacancy: " +bookingDetails.getVacancyType());
         }
+        
+        this.locationInfo = products;
     }
 }

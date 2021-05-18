@@ -39,7 +39,7 @@ public class HotelLocationMenu extends JFrame{
     private Boolean showErrorMessage = false;
     private Boolean repeat = false;
 
-    ArrayList<GuestsBookingCart> bookingLocation = new ArrayList<>();
+    ArrayList<GuestsBookingCart> locationBooked = new ArrayList<>();
     
     public Boolean getShowErrorMesssage()
     {
@@ -58,7 +58,7 @@ public class HotelLocationMenu extends JFrame{
     
     public ArrayList<GuestsBookingCart> getBookingLocation()
     {
-        return bookingLocation;
+        return locationBooked;
     }
     
     public HotelLocationMenu()
@@ -143,27 +143,27 @@ public class HotelLocationMenu extends JFrame{
                 if (locationButtons[0].isSelected()) 
                 {
                     GuestsBookingCart bookingDetails = new GuestsBookingCart(locationsMenu.get(0).getTitle(), locationsMenu.get(0).getLocationType(), locationsMenu.get(0).getRatingType(), locationsMenu.get(0).getVacancyType());
-                    bookingLocation.add(bookingDetails);
+                    locationBooked.add(bookingDetails);
                 } 
                 else if (locationButtons[1].isSelected()) 
                 {
                     GuestsBookingCart bookingDetails = new GuestsBookingCart(locationsMenu.get(1).getTitle(), locationsMenu.get(1).getLocationType(), locationsMenu.get(1).getRatingType(), locationsMenu.get(1).getVacancyType());
-                    bookingLocation.add(bookingDetails);
+                    locationBooked.add(bookingDetails);
                 } 
                 else if (locationButtons[3].isSelected()) 
                 {
                     GuestsBookingCart bookingDetails = new GuestsBookingCart(locationsMenu.get(3).getTitle(), locationsMenu.get(3).getLocationType(), locationsMenu.get(3).getRatingType(), locationsMenu.get(3).getVacancyType());
-                    bookingLocation.add(bookingDetails);
+                    locationBooked.add(bookingDetails);
                 } 
                 else if (locationButtons[5].isSelected()) 
                 {
                     GuestsBookingCart bookingDetails = new GuestsBookingCart(locationsMenu.get(5).getTitle(), locationsMenu.get(5).getLocationType(), locationsMenu.get(5).getRatingType(), locationsMenu.get(5).getVacancyType());
-                    bookingLocation.add(bookingDetails);
+                    locationBooked.add(bookingDetails);
                 } 
                 else if (locationButtons[7].isSelected()) 
                 {
                     GuestsBookingCart bookingDetails = new GuestsBookingCart(locationsMenu.get(7).getTitle(), locationsMenu.get(7).getLocationType(), locationsMenu.get(7).getRatingType(), locationsMenu.get(7).getVacancyType());
-                    bookingLocation.add(bookingDetails);
+                    locationBooked.add(bookingDetails);
                 }
                 repeat = false;
                 showErrorMessage = false;

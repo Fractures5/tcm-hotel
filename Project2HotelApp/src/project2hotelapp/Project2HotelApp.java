@@ -40,17 +40,19 @@ public class Project2HotelApp extends JFrame{
         //bookLocation = new GuestChooseHotel();
         //bookRooms = new GuestChooseRoom();
       
-        HotelProductDB hotelMenuDB = new HotelProductDB();
+        /*HotelProductDB hotelMenuDB = new HotelProductDB();
         hotelMenuDB.createHLocationTable();
         hotelMenuDB.createHRoomsTable();
         hotelMenuDB.createHGuestTypeTable();
         hotelMenuDB.createHFeaturesTable();
-        hotelMenuDB.closeConnection();
+        hotelMenuDB.closeConnection();*/
         
-        /*HotelLocations locationModel = new HotelLocations();
+        HotelLocations locationModel = new HotelLocations();
         HotelLocationMenu locationView = new HotelLocationMenu();
-        LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);*/
-
+        LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);
+        
+        
+        //locationModel.currentLocationBookings(locationView.getBookingLocation());
     }
 
 }

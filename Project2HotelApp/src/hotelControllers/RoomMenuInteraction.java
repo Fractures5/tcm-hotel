@@ -56,15 +56,17 @@ public class RoomMenuInteraction
         {
             roomsView.displayErrorMessage();
         }
-        else if(roomsView.getRepeat() == true && roomsView.getShowErrorMesssage() == false)
+        else if(roomsView.getRepeat() == true && roomsView.getShowErrorMesssage() == false) // take this out maybe not needed
         {
             
         }
         else if (roomsView.getRepeat() == false) 
         {
+            roomsView.addUserRoomsSelection();
             roomsView.setVisible(false);
-            //roomsModel.setRoomsBooked(roomsView.getRoomsSelected());
-            //roomsModel.currentRoomsBookings(roomsView.getRoomsSelected());
+            roomsModel.setRoomsBooked(roomsView.getRoomsBooked());
+            //System.out.println(roomsModel.getRoomsBooked().get(0).getTitle() + " " + roomsModel.getRoomsBooked().get(0).getPrice());
+            roomsModel.currentRoomBookings(roomsView.getRoomsBooked());
             
             
             HotelGuests guestsModel = new HotelGuests();

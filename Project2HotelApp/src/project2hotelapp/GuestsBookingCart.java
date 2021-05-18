@@ -57,9 +57,9 @@ public class GuestsBookingCart extends Products{
      * @param availabilityType the parameter represents the enumerated type AvailabilityType which holds the number of rooms available to the specific room type.
      * @author Siddarath 
      */
-    public GuestsBookingCart(String title, RoomType roomType, Double price, RoomAvailableType availabilityType)
+    public GuestsBookingCart(String title, RoomType roomType, Double price)
     {
-        super(title, roomType, price, availabilityType);
+        super(title, roomType, price);
     }
     
     /**
@@ -135,7 +135,7 @@ public class GuestsBookingCart extends Products{
     {
         for (GuestsBookingCart bookingDetails : products)
         {
-            System.out.println("Title: " + bookingDetails.getTitle() + "  Location: " +bookingDetails.getRatingType() + "                Rating: " +bookingDetails.getRatingType() + "             Vacancy: " +bookingDetails.getVacancyType());
+            System.out.println("Title: " + bookingDetails.getTitle() + "  Location: " +bookingDetails.getLocationType()+ "                Rating: " +bookingDetails.getRatingType() + "             Vacancy: " +bookingDetails.getVacancyType());
         }
     }
     

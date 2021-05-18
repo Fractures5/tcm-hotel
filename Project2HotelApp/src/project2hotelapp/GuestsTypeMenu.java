@@ -66,13 +66,13 @@ public class GuestsTypeMenu extends Products {
         guests.add(elderly);
         guests.add(vip);
         
-        GuestsTypeMenu guestTypeTitle = new GuestsTypeMenu();
+        /*GuestsTypeMenu guestTypeTitle = new GuestsTypeMenu();
         guestTypeTitle.menuBanner(); // Calls the abstract method to display this menus specific banner.
         
         for (GuestsTypeMenu guestTypes: guests)
         {
             System.out.println("(" +guests.indexOf(guestTypes)+ ") - " +guestTypes); // Prints out the guest type menu formatted with its index number in the front.
-        }
+        }*/
         
         return guests; 
     }

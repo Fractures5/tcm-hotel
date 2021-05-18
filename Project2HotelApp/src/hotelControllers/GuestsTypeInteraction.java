@@ -55,7 +55,7 @@ public class GuestsTypeInteraction
         {
             guestsView.displayErrorMessage();
         }
-        else if(guestsView.getRepeat() == true && guestsView.getShowErrorMesssage() == false)
+        else if(guestsView.getRepeat() == true && guestsView.getShowErrorMesssage() == false)// take this out maybe not needed
         {
             
         }

@@ -64,14 +64,14 @@ public class FeaturesMenu extends Products {
         features.add(sauna);
         features.add(gym);
         
-        FeaturesMenu featuresTitle = new FeaturesMenu();
+        /*FeaturesMenu featuresTitle = new FeaturesMenu();
         featuresTitle.menuBanner(); // Calls the abstract method to display this menus specific banner.
         
         
         for (FeaturesMenu featureTypes: features)
         {
             System.out.println("(" +features.indexOf(featureTypes)+ ") - " +featureTypes); // Prints out the features menu formatted with its index number in the front.
-        }
+        }*/
         
         return features;
     }

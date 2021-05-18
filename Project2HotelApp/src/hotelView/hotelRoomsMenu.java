@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
+import project2hotelapp.GuestsBookingCart;
 import project2hotelapp.RoomMenu;
 
 /**
@@ -34,8 +35,9 @@ public class HotelRoomsMenu extends JFrame
     private JButton backButton, nextButton;
     private Boolean showErrorMessage = false;
     private Boolean repeat = false;
-    
     Integer[] roomQuantity = {0,1,2,3,4,5};
+    
+    ArrayList<GuestsBookingCart> roomsBooked = new ArrayList<>();
     
     public HotelRoomsMenu()
     {
@@ -161,6 +163,10 @@ public class HotelRoomsMenu extends JFrame
         return repeat;
     }
     
+    public ArrayList<GuestsBookingCart> getRoomsBooked()
+    {
+        return roomsBooked;
+    }
     public void confirmSelection()
     {
         if (standardRoomBox.getSelectedItem().equals(0) && deluxeRoomBox.getSelectedItem().equals(0) && twinRoomBox.getSelectedItem().equals(0)
@@ -177,8 +183,7 @@ public class HotelRoomsMenu extends JFrame
             {
                 showErrorMessage = false;
                 repeat = false;
-                // add code here to add the selected array list perhaps
-                
+
             }
             else if (userConfirmation == JOptionPane.NO_OPTION || userConfirmation == JOptionPane.CANCEL_OPTION || userConfirmation == JOptionPane.CLOSED_OPTION) 
             {
@@ -203,5 +208,84 @@ public class HotelRoomsMenu extends JFrame
     public void mouseExitHover()
     {
         getNextButton().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void addUserRoomsSelection()
+    {
+        int count  = 0;
+        
+        ArrayList<RoomMenu> roomMenu = new ArrayList<RoomMenu>();
+        roomMenu = RoomMenu.showMenu();
+        
+        int standardNo = standardRoomBox.getSelectedIndex();
+        if (standardNo > 0)
+        {
+            while (count < standardNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(roomMenu.get(0).getTitle(), roomMenu.get(0).getRoomType(), roomMenu.get(0).getPrice());
+                roomsBooked.add(bookingDetails);
+                count++;
+            }
+        }
+        
+        int deluxeNo = deluxeRoomBox.getSelectedIndex();
+        if (deluxeNo > 0)
+        {
+            count = 0;
+            while (count < deluxeNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(roomMenu.get(1).getTitle(), roomMenu.get(1).getRoomType(), roomMenu.get(1).getPrice());
+                roomsBooked.add(bookingDetails);
+                count++;
+            }
+        }
+        
+        int twinNo = twinRoomBox.getSelectedIndex();
+        if (twinNo > 0)
+        {
+            count = 0;
+            while (count < twinNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(roomMenu.get(2).getTitle(), roomMenu.get(2).getRoomType(), roomMenu.get(2).getPrice());
+                roomsBooked.add(bookingDetails);
+                count++;
+            }
+        }
+        
+        int queenNo = queenRoomBox.getSelectedIndex();
+        if (queenNo > 0)
+        {
+            count = 0;
+            while (count < queenNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(roomMenu.get(3).getTitle(), roomMenu.get(3).getRoomType(), roomMenu.get(3).getPrice());
+                roomsBooked.add(bookingDetails);
+                count++;
+            }
+        }
+        
+        int familyRNo = familyRoomBox.getSelectedIndex();
+        if (familyRNo > 0)
+        {
+            count = 0;
+            while (count < familyRNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(roomMenu.get(4).getTitle(), roomMenu.get(4).getRoomType(), roomMenu.get(4).getPrice());
+                roomsBooked.add(bookingDetails);
+                count++;
+            }
+        }
+        
+        int couplesNo = couplesRoomBox.getSelectedIndex();
+        if (couplesNo > 0)
+        {
+            count = 0;
+            while (count < couplesNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(roomMenu.get(5).getTitle(), roomMenu.get(5).getRoomType(), roomMenu.get(5).getPrice());
+                roomsBooked.add(bookingDetails);
+                count++;
+            }
+        }
     }
 }
