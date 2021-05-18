@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
+import project2hotelapp.GuestsBookingCart;
 
 /**
  *
@@ -35,6 +36,7 @@ public class HotelFeaturesMenu extends JFrame
     private JButton backButton, nextButton;
     private Boolean showErrorMessage = false;
     private Boolean repeat = false;
+    private ArrayList<GuestsBookingCart> guestFeaturesBooked = new ArrayList<>();
     
     public HotelFeaturesMenu()
     {
@@ -130,6 +132,11 @@ public class HotelFeaturesMenu extends JFrame
         return repeat;
     }
     
+    public ArrayList<GuestsBookingCart> getFeaturesBooked()
+    {
+        return guestFeaturesBooked;
+    }
+    
     public void confirmSelection()
     {
         if (!spaCB.isSelected() && !jacuzziCB.isSelected() && !saunaCB.isSelected() && !gymCB.isSelected() && !noneCB.isSelected()) 
@@ -154,9 +161,7 @@ public class HotelFeaturesMenu extends JFrame
             if (userConfirmation == JOptionPane.YES_OPTION) 
             {
                 showErrorMessage = false;
-                repeat = false;
-                // add code here to add the selected array list perhaps
-                
+                repeat = false;        
             }
             else if (userConfirmation == JOptionPane.NO_OPTION || userConfirmation == JOptionPane.CANCEL_OPTION || userConfirmation == JOptionPane.CLOSED_OPTION) 
             {
@@ -180,5 +185,35 @@ public class HotelFeaturesMenu extends JFrame
     public void mouseExitHover()
     {
         getNextButton().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void addUserFeatureSelection()
+    {
+        ArrayList<FeaturesMenu> featuresMenu = new ArrayList<FeaturesMenu>();
+        featuresMenu = FeaturesMenu.showMenu();
+        
+        if (spaCB.isSelected())
+        {
+            GuestsBookingCart bookingDetails = new GuestsBookingCart(featuresMenu.get(0).getTitle(), featuresMenu.get(0).getFeatureType(), featuresMenu.get(0).getPrice());
+            guestFeaturesBooked.add(bookingDetails);
+        }
+        
+        if(jacuzziCB.isSelected())
+        {
+            GuestsBookingCart bookingDetails = new GuestsBookingCart(featuresMenu.get(1).getTitle(), featuresMenu.get(1).getFeatureType(), featuresMenu.get(1).getPrice());
+            guestFeaturesBooked.add(bookingDetails);
+        }
+        
+        if(saunaCB.isSelected())
+        {
+            GuestsBookingCart bookingDetails = new GuestsBookingCart(featuresMenu.get(2).getTitle(), featuresMenu.get(2).getFeatureType(), featuresMenu.get(2).getPrice());
+            guestFeaturesBooked.add(bookingDetails);
+        }
+        
+        if(gymCB.isSelected())
+        {
+            GuestsBookingCart bookingDetails = new GuestsBookingCart(featuresMenu.get(3).getTitle(), featuresMenu.get(3).getFeatureType(), featuresMenu.get(3).getPrice());
+            guestFeaturesBooked.add(bookingDetails);
+        }
     }
 }

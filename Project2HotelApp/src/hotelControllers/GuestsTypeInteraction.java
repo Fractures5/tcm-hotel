@@ -61,9 +61,13 @@ public class GuestsTypeInteraction
         }
         else if (guestsView.getRepeat() == false) 
         {
+            guestsView.addGuestTypesSelection();
             guestsView.setVisible(false);
-            //roomsModel.setRoomsBooked(roomsView.getRoomsSelected());
-            //roomsModel.currentRoomsBookings(roomsView.getRoomsSelected());
+            guestsModel.setGuestsBooked(guestsView.getGuestTypesBooked());
+            //System.out.println(guestsModel.getGuestsBooked().get(0).getTitle() + " " +guestsModel.getGuestsBooked().get(0).getGuestType()+ "" +guestsModel.getGuestsBooked().get(0).getPrice());
+            //System.out.println(guestsModel.getGuestsBooked().get(1).getTitle() + " " +guestsModel.getGuestsBooked().get(1).getGuestType()+ "" +guestsModel.getGuestsBooked().get(1).getPrice());
+            guestsModel.currentGuestBookings();
+            
             HotelFeatures featuresModel = new HotelFeatures();
             HotelFeaturesMenu featuresView = new HotelFeaturesMenu();
             FeaturesMenuInteraction selectFeatures = new FeaturesMenuInteraction(featuresModel, featuresView);

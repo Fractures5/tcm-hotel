@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
+import project2hotelapp.GuestsBookingCart;
 import project2hotelapp.GuestsTypeMenu;
 
 /**
@@ -34,8 +35,8 @@ public class HotelGuestTypesMenu extends JFrame
     private JButton backButton, nextButton;
     private Boolean showErrorMessage = false;
     private Boolean repeat = false;
-    
     Integer[] guestCount = {0,1,2,3,4,5};
+    ArrayList<GuestsBookingCart> guestTypesBooked = new ArrayList<>();
     
     public HotelGuestTypesMenu()
     {
@@ -151,6 +152,11 @@ public class HotelGuestTypesMenu extends JFrame
         return repeat;
     }
     
+    public ArrayList<GuestsBookingCart> getGuestTypesBooked()
+    {
+        return guestTypesBooked;
+    }
+    
     public void confirmSelection()
     {
         if (adultTypeBox.getSelectedItem().equals(0) && childTypeBox.getSelectedItem().equals(0) && infantTypeBox.getSelectedItem().equals(0)
@@ -166,9 +172,7 @@ public class HotelGuestTypesMenu extends JFrame
             if (userConfirmation == JOptionPane.YES_OPTION) 
             {
                 showErrorMessage = false;
-                repeat = false;
-                // add code here to add the selected array list perhaps
-                
+                repeat = false;           
             }
             else if (userConfirmation == JOptionPane.NO_OPTION || userConfirmation == JOptionPane.CANCEL_OPTION || userConfirmation == JOptionPane.CLOSED_OPTION) 
             {
@@ -193,5 +197,72 @@ public class HotelGuestTypesMenu extends JFrame
     public void mouseExitHover()
     {
         getNextButton().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void addGuestTypesSelection()
+    {
+        int count  = 0;
+        
+        ArrayList<GuestsTypeMenu> guestTypeMenu = new ArrayList<GuestsTypeMenu>();
+        guestTypeMenu = GuestsTypeMenu.showMenu();
+        
+        int adultsNo = adultTypeBox.getSelectedIndex();
+        if (adultsNo > 0)
+        {
+            while (count < adultsNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(guestTypeMenu.get(0).getTitle(), guestTypeMenu.get(0).getGuestType(), guestTypeMenu.get(0).getPrice());
+                guestTypesBooked.add(bookingDetails);
+                count++;
+            }
+        }
+        
+        int childNo = childTypeBox.getSelectedIndex();
+        if (childNo > 0)
+        {
+            count = 0;
+            while (count < childNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(guestTypeMenu.get(1).getTitle(), guestTypeMenu.get(1).getGuestType(), guestTypeMenu.get(1).getPrice());
+                guestTypesBooked.add(bookingDetails);
+                count++;
+            }
+        }
+        
+        int infantNo = infantTypeBox.getSelectedIndex();
+        if (infantNo > 0)
+        {
+            count = 0;
+            while (count < infantNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(guestTypeMenu.get(2).getTitle(), guestTypeMenu.get(2).getGuestType(), guestTypeMenu.get(2).getPrice());
+                guestTypesBooked.add(bookingDetails);
+                count++;
+            }
+        }
+        
+        int elderyNo = elderlyTypeBox.getSelectedIndex();
+        if (elderyNo > 0)
+        {
+            count = 0;
+            while (count < elderyNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(guestTypeMenu.get(3).getTitle(), guestTypeMenu.get(3).getGuestType(), guestTypeMenu.get(3).getPrice());
+                guestTypesBooked.add(bookingDetails);
+                count++;
+            }
+        }
+        
+        int vipNo = vipTypeBox.getSelectedIndex();
+        if (vipNo > 0)
+        {
+            count = 0;
+            while (count < vipNo) 
+            {
+                GuestsBookingCart bookingDetails = new GuestsBookingCart(guestTypeMenu.get(4).getTitle(), guestTypeMenu.get(4).getGuestType(), guestTypeMenu.get(4).getPrice());
+                guestTypesBooked.add(bookingDetails);
+                count++;
+            }
+        }
     }
 }

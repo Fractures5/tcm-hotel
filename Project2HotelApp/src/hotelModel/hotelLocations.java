@@ -33,13 +33,12 @@ public class HotelLocations {
     }
     
     // modify this method and add it directly from here!
-    public void currentLocationBookings(ArrayList<GuestsBookingCart> products)
+    public void currentLocationBookings()
     {
-        for (GuestsBookingCart bookingDetails : products)
+        for (GuestsBookingCart bookingDetails : locationInfo)
         {
             System.out.println("Title: " + bookingDetails.getTitle() + "  Location: " +bookingDetails.getRatingType() + "                Rating: " +bookingDetails.getRatingType() + "             Vacancy: " +bookingDetails.getVacancyType());
         }
-        
-        this.locationInfo = products;
+ 
     }
 }

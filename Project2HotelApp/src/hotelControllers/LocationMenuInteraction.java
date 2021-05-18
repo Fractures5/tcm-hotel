@@ -72,9 +72,9 @@ public class LocationMenuInteraction {
         {
             locationsView.setVisible(false);
             locationsModel.setBookingLocation(locationsView.getBookingLocation());
-            //locationsModel.currentLocationBookings(locationsView.getBookingLocation());
+            locationsModel.currentLocationBookings();
             
-            System.out.println(locationsModel.getBookingLocation().get(0).getTitle());
+            //System.out.println(locationsModel.getBookingLocation().get(0).getTitle());
             
             HotelRooms roomsModel = new HotelRooms();
             HotelRoomsMenu roomsView = new HotelRoomsMenu();

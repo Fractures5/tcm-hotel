@@ -60,9 +60,11 @@ public class FeaturesMenuInteraction
         }
         else if (featuresView.getRepeat() == false) 
         {
+            featuresView.addUserFeatureSelection();
             featuresView.setVisible(false);
-            //featuresModel.setRoomsBooked(roomsView.getRoomsSelected());
-            //featuresModel.currentRoomsBookings(roomsView.getRoomsSelected());
+            featuresModel.setFeaturesBooked(featuresView.getFeaturesBooked());
+            //System.out.println(featuresModel.getFeaturesBooked().get(0).getTitle() + " " + featuresModel.getFeaturesBooked().get(0).getPrice());
+            featuresModel.currentFeatureBookings();
            
         }
     }

@@ -66,7 +66,7 @@ public class RoomMenuInteraction
             roomsView.setVisible(false);
             roomsModel.setRoomsBooked(roomsView.getRoomsBooked());
             //System.out.println(roomsModel.getRoomsBooked().get(0).getTitle() + " " + roomsModel.getRoomsBooked().get(0).getPrice());
-            roomsModel.currentRoomBookings(roomsView.getRoomsBooked());
+            roomsModel.currentRoomBookings();
             
             
             HotelGuests guestsModel = new HotelGuests();

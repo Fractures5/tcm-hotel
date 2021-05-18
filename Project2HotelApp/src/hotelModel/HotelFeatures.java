@@ -14,14 +14,13 @@ import project2hotelapp.GuestsBookingCart;
  */
 public class HotelFeatures 
 {
-    private ArrayList<GuestsBookingCart> featuresSelected = new ArrayList<>();
+    private ArrayList<GuestsBookingCart> featuresSelected = null;
     
     public HotelFeatures()
     {
-        this.featuresSelected = featuresSelected;
     }
     
-    public void setFeaturesBook(ArrayList<GuestsBookingCart> featuresSelected)
+    public void setFeaturesBooked(ArrayList<GuestsBookingCart> featuresSelected)
     {
         this.featuresSelected = featuresSelected;
     }
@@ -31,9 +30,9 @@ public class HotelFeatures
         return featuresSelected;
     }
     
-    public void currentFeatureBookings(ArrayList<GuestsBookingCart> products)
+    public void currentFeatureBookings()
     {
-        for (GuestsBookingCart bookingDetails : products)
+        for (GuestsBookingCart bookingDetails : featuresSelected)
         {
             System.out.println(String.format("%-59s", "Title: " + bookingDetails.getTitle())+ String.format("%-30s", "Feature Type: " + bookingDetails.getFeatureType())+ String.format("%-25s", "Price: $" + bookingDetails.getPrice()));
         }

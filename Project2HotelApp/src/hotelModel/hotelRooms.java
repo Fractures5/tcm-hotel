@@ -30,11 +30,11 @@ public class HotelRooms
         return roomsSelected;
     }
     
-    public void currentRoomBookings(ArrayList<GuestsBookingCart> products) 
+    public void currentRoomBookings() 
     {
-        for (GuestsBookingCart bookingDetails : products) 
+        for (GuestsBookingCart bookingDetails : roomsSelected) 
         {
-            System.out.println(String.format("%-60s", "Title: " + bookingDetails.getTitle()) + String.format("%-50s", "Room Type: " + bookingDetails.getRoomType()) + String.format("%-25s", "Price: $" + bookingDetails.getPrice()));
+            System.out.println(String.format("%-59s", "Title: " + bookingDetails.getTitle()) + String.format("%-30s", "Room Type: " + bookingDetails.getRoomType()) + String.format("%-25s", "Price: $" + bookingDetails.getPrice()));
 
         }
     }
