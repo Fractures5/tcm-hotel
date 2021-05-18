@@ -36,7 +36,7 @@ public class StaffMember extends Person
      * @param personEmail the personEmail represents the contact email address of the staff member
      */
     
-    public StaffMember(String firstName, String lastName, String jobTitle, int personNumber, String personEmail) 
+    public StaffMember(String firstName, String lastName, String jobTitle, long personNumber, String personEmail) 
     {
         super(firstName, lastName, personEmail, personNumber);
         this.jobTitle = jobTitle;

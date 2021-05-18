@@ -72,12 +72,15 @@ public class GuestView extends JFrame{
     private String inputEmail;
     private String inputAccountNumber;
     private String inputAccountPin;
+    
     private boolean validAge = false;
     private boolean validPhoneNumber = false;
     private boolean validEmail = false;
     private boolean validAccountNumber = false;
+    
     private boolean showAgeError = false;
     private boolean showPhoneNumberError = false;
+    private boolean showEmailAddressError = false;
     private boolean showAccNumberError = false;
 
     public boolean getShowAgeError() {
@@ -87,11 +90,14 @@ public class GuestView extends JFrame{
     public boolean getShowPhoneNumberError() {
         return showPhoneNumberError;
     }
+    
+    public boolean getShowEmailAddressError() {
+        return showEmailAddressError;
+    }
 
     public boolean getShowAccNumberError() {
         return showAccNumberError;
     }
-    
     
     public String getInputFirstName() {
         return inputFirstName;
@@ -134,7 +140,6 @@ public class GuestView extends JFrame{
     }
 
     public int getPhoneNumField() {
-        //return phoneNumField.getText();
         return Integer.parseInt(phoneNumField.getText());
     }
 
@@ -278,24 +283,23 @@ public class GuestView extends JFrame{
         
         try {
             inputGuestAge = getAgeField();
-            //inputGuestAge = Integer.parseInt(ageField.getText());
             validAge = true;
 
         } catch (NumberFormatException o) {
-            JOptionPane.showMessageDialog(null, "Your Age must only contain Numbers", "Invalid Age Error!", JOptionPane.ERROR_MESSAGE);
             validAge = false;
+            showAgeError = true;
         }
         try {
             inputPhoneNumber = getPhoneNumField();
             validPhoneNumber = true;
 
         } catch (NumberFormatException o) {
-            JOptionPane.showMessageDialog(null, "Your Phone Number must only contain Numbers", "Invalid Phone Number Error!", JOptionPane.ERROR_MESSAGE);
             validPhoneNumber = false;
+            showPhoneNumberError = true;
         }
         if (!inputEmail.contains("@") || (((!inputEmail.contains(".com")) && (!inputEmail.contains(".co.nz")) && (!inputEmail.contains(".net")) && (!inputEmail.contains(".org.nz"))))) {
             validEmail = false;
-            JOptionPane.showMessageDialog(null, "You must have a valid email address!", "Invalid Email Error!", JOptionPane.ERROR_MESSAGE);
+            showEmailAddressError = true;
         } else if (inputEmail.contains("@") || (((inputEmail.contains(".com")) && (inputEmail.contains(".co.nz")) && (inputEmail.contains(".net")) && (inputEmail.contains(".org.nz"))))) {
             validEmail = true;
         }
@@ -303,28 +307,20 @@ public class GuestView extends JFrame{
         HashMap<String, String> guestRecords = GuestForm.readGuestRecords();
 
         if (guestRecords.containsKey(inputAccountNumber)) {
-            JOptionPane.showMessageDialog(null, "You must enter your own Bank Account Number!", "Invalid Account Number Error!", JOptionPane.ERROR_MESSAGE);
             validAccountNumber = false;
+            showAccNumberError = true;
         } else if (!guestRecords.containsKey(inputAccountNumber)) {
             validAccountNumber = true;
         }
 
         System.out.println(inputFirstName + " " + inputLastName + " " + inputGuestAge + " " + inputPhoneNumber + " " + inputEmail + " " + inputAccountNumber + " " + inputAccountPin + " ");
-        if (validAge == true && validEmail == true && validAccountNumber == true) {
+        if (validAge == true && validPhoneNumber == true && validEmail == true && validAccountNumber == true) {
             System.out.println("guest object will be created");
             Guest guest = new Guest(inputFirstName, inputLastName, inputGuestAge, inputEmail, inputPhoneNumber, inputAccountNumber, inputAccountPin);
             ArrayList<Guest> list = form.getArrayList();
             list.add(guest);
             guestRecords.put(inputAccountNumber, inputFirstName);
-            /*try {
-                FileInputOutput.writeGuestToGuestsFile(guestRecords);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(GuestGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            FileInputOutput.printGuestDetails(list);*/
         }
-        
-
     }
     
     public void DetailsReset(){
@@ -347,5 +343,21 @@ public class GuestView extends JFrame{
 
     public void mouseExitResetDetails() {
         getResetDetails().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void displayAgeError(){
+        JOptionPane.showMessageDialog(null, "Your Age must only contain Numbers", "Invalid Age Error!", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void displayPhoneNumberError(){
+        JOptionPane.showMessageDialog(null, "Your Phone Number must only contain Numbers", "Invalid Phone Number Error!", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void displayEmailAddressError(){
+        JOptionPane.showMessageDialog(null, "You must have a valid email address!", "Invalid Email Error!", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void displayAccNumError(){
+        JOptionPane.showMessageDialog(null, "You must enter your own Bank Account Number!", "Invalid Account Number Error!", JOptionPane.ERROR_MESSAGE);
     }
 }

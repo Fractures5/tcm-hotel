@@ -50,7 +50,7 @@ public class Admin implements AdminInterface //Admin class implements the AdminI
         String staffLastName = "";
         String staffTitle = "";
         String staffEmail = "";
-        int staffPhone = 0;
+        long staffPhone = 0;
         String inputPass = "";
         
         System.out.println("Welcome to TCM Hotel Booking Backend System");

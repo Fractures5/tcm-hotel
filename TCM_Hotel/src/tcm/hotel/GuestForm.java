@@ -63,7 +63,7 @@ public class GuestForm
         String lName;
         int age;
         String email = "";
-        int phoneNum;
+        long phoneNum;
         String accNo = "";
         String accPin;
         

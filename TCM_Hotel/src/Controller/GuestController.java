@@ -75,6 +75,18 @@ public class GuestController{
         
         viewGuest.DetailsConfirmation();
         
+        if (viewGuest.getShowAgeError() == true){
+            viewGuest.displayAgeError();
+        }
+        if (viewGuest.getShowPhoneNumberError()== true){
+            viewGuest.displayPhoneNumberError();
+        }
+        if (viewGuest.getShowEmailAddressError() == true){
+            viewGuest.displayEmailAddressError();
+        }
+        if (viewGuest.getShowAccNumberError()== true){
+            viewGuest.displayAccNumError();
+        }
     }
 
     public void handleResetDetailsClick(){
