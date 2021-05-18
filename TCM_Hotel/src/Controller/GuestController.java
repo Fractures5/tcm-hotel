@@ -75,6 +75,14 @@ public class GuestController{
         
         viewGuest.DetailsConfirmation();
         
+        if (viewGuest.getShowFNameError() == true){
+            viewGuest.displayFNameError();
+        }
+        
+        if (viewGuest.getShowLNameError() == true){
+            viewGuest.displayLNameError();
+        }
+        
         if (viewGuest.getShowAgeError() == true){
             viewGuest.displayAgeError();
         }
@@ -91,7 +99,7 @@ public class GuestController{
 
     public void handleResetDetailsClick(){
         
-        //viewGuest.DetailsReset();
+        viewGuest.DetailsReset();
 
     }
     

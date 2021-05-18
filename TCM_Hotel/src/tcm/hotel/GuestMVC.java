@@ -21,7 +21,6 @@ public class GuestMVC {
         GuestController controller = new GuestController(view, model);
 
         view.setVisible(true);
-        
     }
     
     

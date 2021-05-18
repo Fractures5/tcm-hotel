@@ -68,20 +68,39 @@ public class GuestView extends JFrame{
     private String inputFirstName;
     private String inputLastName;
     private int inputGuestAge;
-    private int inputPhoneNumber;
+    private long inputPhoneNumber;
     private String inputEmail;
     private String inputAccountNumber;
     private String inputAccountPin;
     
+    private boolean validFName = false;
+    private boolean validLName = false;
     private boolean validAge = false;
     private boolean validPhoneNumber = false;
     private boolean validEmail = false;
     private boolean validAccountNumber = false;
+    private boolean validGuest = false;
+
+    public boolean isValidGuest() {
+        return validGuest;
+    }
     
+    private boolean showFNameError = false;
+    private boolean showLNameError = false;
     private boolean showAgeError = false;
     private boolean showPhoneNumberError = false;
     private boolean showEmailAddressError = false;
     private boolean showAccNumberError = false;
+    
+    private int resetReply;
+
+    public boolean getShowFNameError() {
+        return showFNameError;
+    }
+
+    public boolean getShowLNameError() {
+        return showLNameError;
+    }
 
     public boolean getShowAgeError() {
         return showAgeError;
@@ -111,7 +130,7 @@ public class GuestView extends JFrame{
         return inputGuestAge;
     }
 
-    public int getInputPhoneNumber() {
+    public long getInputPhoneNumber() {
         return inputPhoneNumber;
     }
 
@@ -139,8 +158,8 @@ public class GuestView extends JFrame{
         return Integer.parseInt(ageField.getText());
     }
 
-    public int getPhoneNumField() {
-        return Integer.parseInt(phoneNumField.getText());
+    public long getPhoneNumField() {
+        return Long.parseLong(phoneNumField.getText());
     }
 
     public String getEmailField() {
@@ -203,8 +222,8 @@ public class GuestView extends JFrame{
         phoneNumber = new JLabel("Contact Phone: ");
         phoneNumber.setBounds(160, 205, 300, 30);
         phoneNumber.setFont(new Font("Arial", Font.BOLD, 17));
-        phoneNumField = new JTextField("", 30);
-        phoneNumField.setBounds(300, 205, 100, 30);
+        phoneNumField = new JTextField("", 50);
+        phoneNumField.setBounds(300, 205, 150, 30);
         
         emailAddress = new JLabel("Contact Email: ");
         emailAddress.setBounds(170, 265, 300, 30);
@@ -281,21 +300,45 @@ public class GuestView extends JFrame{
         inputAccountNumber = accNumField.getText();
         inputAccountPin = (new String(this.accPinField.getPassword()));
         
+        if(inputFirstName.matches("[A-Za-z]+")){
+            validFName = true;
+            showFNameError = false;
+        }
+        else if(!inputFirstName.matches("[A-Za-z]+")){
+            validFName = false;
+            showFNameError = true;
+            fNameField.setText("");
+        }
+        
+        if(inputLastName.matches("[A-Za-z]+")){
+            validLName = true;
+            showLNameError = false;
+        }
+        else if(!inputLastName.matches("[A-Za-z]+")){
+            validLName = false;
+            showLNameError = true;
+            lNameField.setText("");
+        }
+        
         try {
             inputGuestAge = getAgeField();
             validAge = true;
+            showAgeError = false;
 
         } catch (NumberFormatException o) {
             validAge = false;
             showAgeError = true;
+            ageField.setText("");
         }
         try {
             inputPhoneNumber = getPhoneNumField();
             validPhoneNumber = true;
+            showPhoneNumberError = false;
 
         } catch (NumberFormatException o) {
             validPhoneNumber = false;
             showPhoneNumberError = true;
+            phoneNumField.setText("");
         }
         if (!inputEmail.contains("@") || (((!inputEmail.contains(".com")) && (!inputEmail.contains(".co.nz")) && (!inputEmail.contains(".net")) && (!inputEmail.contains(".org.nz"))))) {
             validEmail = false;
@@ -309,12 +352,14 @@ public class GuestView extends JFrame{
         if (guestRecords.containsKey(inputAccountNumber)) {
             validAccountNumber = false;
             showAccNumberError = true;
+            accNumField.setText("");
         } else if (!guestRecords.containsKey(inputAccountNumber)) {
             validAccountNumber = true;
+            showAccNumberError = false;
         }
 
         System.out.println(inputFirstName + " " + inputLastName + " " + inputGuestAge + " " + inputPhoneNumber + " " + inputEmail + " " + inputAccountNumber + " " + inputAccountPin + " ");
-        if (validAge == true && validPhoneNumber == true && validEmail == true && validAccountNumber == true) {
+        if (validFName == true && validLName == true && validAge == true && validPhoneNumber == true && validEmail == true && validAccountNumber == true) {
             System.out.println("guest object will be created");
             Guest guest = new Guest(inputFirstName, inputLastName, inputGuestAge, inputEmail, inputPhoneNumber, inputAccountNumber, inputAccountPin);
             ArrayList<Guest> list = form.getArrayList();
@@ -325,11 +370,29 @@ public class GuestView extends JFrame{
     
     public void DetailsReset(){
         
+        int resetReply = JOptionPane.showConfirmDialog(null, "Resetting will clear information you have entered!", "Reset Details!", JOptionPane.ERROR_MESSAGE);
+        if (resetReply == JOptionPane.YES_OPTION) {
+            String empty = "";
+            fNameField.setText(empty);
+            lNameField.setText(empty);
+            ageField.setText(empty);
+            phoneNumField.setText(empty);
+            emailField.setText(empty);
+            accNumField.setText(empty);
+            accPinField.setText(empty);
+        } else if (resetReply == JOptionPane.NO_OPTION) {
+            fNameField.setText(inputFirstName);
+            lNameField.setText(inputLastName);
+            //ageField.setText(Integer.toString());
+            //phoneNumField.setText(inputPhoneNumber);
+            emailField.setText(inputEmail);
+            accNumField.setText(inputAccountNumber);
+            accPinField.setText(inputAccountPin);
+        }
     }
     
     public void mouseEnterConfirmDetails(){
         getConfirmDetails().setBackground(Color.LIGHT_GRAY);
-        
     }
     
     public void mouseExitConfirmDetails(){
@@ -338,11 +401,18 @@ public class GuestView extends JFrame{
     
     public void mouseEnterResetDetails() {
         getResetDetails().setBackground(Color.LIGHT_GRAY);
-
     }
 
     public void mouseExitResetDetails() {
         getResetDetails().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void displayFNameError(){
+        JOptionPane.showMessageDialog(null, "Your First Name must only contain letters of the Alphabet!", "Invalid First Name Error!", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void displayLNameError(){
+        JOptionPane.showMessageDialog(null, "Your Last Name must only contain letters of the Alphabet!", "Invalid Last Name Error!", JOptionPane.ERROR_MESSAGE);
     }
     
     public void displayAgeError(){
