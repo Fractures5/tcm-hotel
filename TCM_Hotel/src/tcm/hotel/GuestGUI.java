@@ -418,12 +418,12 @@ public class GuestGUI extends JFrame implements ActionListener{
                 validAccountNumber = true;
             }
             
-            System.out.println(inputFirstName + " " + inputLastName + " "+ guestAge + " " + inputPhoneNumber + " " + inputEmail + " " + inputAccountNumber + " " + inputAccountPin + " ");
+            System.out.println(inputFirstName + " " + inputLastName + " "+ guestAge + " " /*inputPhoneNumber*/ + " " + inputEmail + " " + inputAccountNumber + " " + inputAccountPin + " ");
             if(validAge == true && validEmail == true && validAccountNumber == true){
                 System.out.println("guest object will be created");
-                Guest guest = new Guest(inputFirstName, inputLastName, guestAge, inputEmail, inputPhoneNumber, inputAccountNumber, inputAccountPin);
+                //Guest guest = new Guest(inputFirstName, inputLastName, guestAge, inputEmail, /*inputPhoneNumber*/ inputAccountNumber, inputAccountPin);
                 ArrayList<Guest> list = guestForm.getArrayList();
-                list.add(guest);
+                //list.add(guest);
                 guestRecords.put(inputAccountNumber, inputFirstName);
                 try {
                     FileInputOutput.writeGuestToGuestsFile(guestRecords);
@@ -434,30 +434,8 @@ public class GuestGUI extends JFrame implements ActionListener{
             }
             
             //JOptionPane.showConfirmDialog(null, "You must enter your own Bank Account Number!", "Invalid Account Number Error!", JOptionPane.ERROR_MESSAGE);
-
-            
         }
-        /*if (e.getSource() == confirmDetails){
-            String get = emailField.getText().toString();
-            char atSymbol = '@';
-            String domain1 = ".com";
-            String name = "";
-            int count = 0;
-            for(int i =0; i <get.length(); i++){
-                if((get.charAt(i)==atSymbol) || (get.contains(domain1))){
-                    count++;
-                    name = "this is a valid email";
-                    if(count>=2){
-                        emailField.setText("");
-                        name = "This isnt an email";
-                    }
-                }
-                else{
-                    name = "not valid";
-                }
-            }
-            System.out.println(name);
-        }*/
+        
         if (e.getSource() == resetDetails){         
             int reply = JOptionPane.showConfirmDialog(null, "Resetting will clear information you have entered!", "Reset Details!", JOptionPane.ERROR_MESSAGE);
             if (reply == JOptionPane.YES_OPTION){
@@ -474,7 +452,7 @@ public class GuestGUI extends JFrame implements ActionListener{
                 fNameField.setText(inputFirstName);
                 lNameField.setText(inputLastName);
                 //ageField.setText(Integer.toString(guestAge));
-                phoneNumField.setText(inputPhoneNumber);
+                //phoneNumField.setText(inputPhoneNumber);
                 emailField.setText(inputEmail);
                 accNumField.setText(inputAccountNumber);
                 accPinField.setText(inputAccountPin);

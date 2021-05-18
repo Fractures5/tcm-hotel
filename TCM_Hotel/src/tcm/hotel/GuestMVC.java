@@ -5,9 +5,9 @@
  */
 package tcm.hotel;
 
-import guestControllers.GuestController;
-import guestModel.GuestModel;
-import guestView.GuestView;
+import Controller.GuestController;
+import Model.GuestModel;
+import View.GuestView;
 
 /**
  *

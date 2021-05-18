@@ -38,7 +38,7 @@ public class Guest extends Person implements Serializable
      * @param bankAccountPin the bankAccountPin represents the guest's bank account pin number for their bank account.
      */
     
-    public Guest(String firstName, String lastName, int personAge, String personEmail, String personNumber, String bankAccountNo, String bankAccountPin) 
+    public Guest(String firstName, String lastName, int personAge, String personEmail, int personNumber, String bankAccountNo, String bankAccountPin) 
     {
         super(firstName, lastName, personAge, personEmail, personNumber);
         this.bankAccountNo = bankAccountNo;

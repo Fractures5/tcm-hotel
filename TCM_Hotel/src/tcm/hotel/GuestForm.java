@@ -63,7 +63,7 @@ public class GuestForm
         String lName;
         int age;
         String email = "";
-        String phoneNum;
+        int phoneNum;
         String accNo = "";
         String accPin;
         
@@ -100,7 +100,7 @@ public class GuestForm
                 System.out.println("-----------------------------");
 
                 System.out.print("Phone Number: ");
-                phoneNum = scanner.nextLine();
+                phoneNum = scanner.nextInt();
                 System.out.println("-----------------------------");
                 
                 System.out.println("An Email Address will be used to send you a copy of your receipt");

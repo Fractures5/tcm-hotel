@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package guestView;
+package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -11,21 +11,33 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
+import tcm.hotel.FileInputOutput;
+import tcm.hotel.Guest;
+import tcm.hotel.GuestForm;
+import tcm.hotel.GuestGUI;
 
 /**
  *
  * @author Anuk
  */
 public class GuestView extends JFrame{
+    
+    private GuestForm form;
     
     private JPanel headerPanel;
     private JPanel centrePanel;
@@ -52,57 +64,61 @@ public class GuestView extends JFrame{
     private JTextField emailField;
     private JTextField accNumField;
     private JPasswordField accPinField;
+    
+    private String inputFirstName;
+    private String inputLastName;
+    private int inputGuestAge;
+    private int inputPhoneNumber;
+    private String inputEmail;
+    private String inputAccountNumber;
+    private String inputAccountPin;
+    private boolean validAge = false;
+    private boolean validPhoneNumber = false;
+    private boolean validEmail = false;
+    private boolean validAccountNumber = false;
+    private boolean showAgeError = false;
+    private boolean showPhoneNumberError = false;
+    private boolean showAccNumberError = false;
 
-    public JPanel getHeaderPanel() {
-        return headerPanel;
+    public boolean getShowAgeError() {
+        return showAgeError;
     }
 
-    public JPanel getCentrePanel() {
-        return centrePanel;
+    public boolean getShowPhoneNumberError() {
+        return showPhoneNumberError;
     }
 
-    public JPanel getPaymentHeaderPanel() {
-        return paymentHeaderPanel;
+    public boolean getShowAccNumberError() {
+        return showAccNumberError;
+    }
+    
+    
+    public String getInputFirstName() {
+        return inputFirstName;
     }
 
-    public JPanel getButtonPanel() {
-        return buttonPanel;
+    public String getInputLastName() {
+        return inputLastName;
     }
 
-    public JLabel getWelcomeLabel() {
-        return welcomeLabel;
+    public int getInputGuestAge() {
+        return inputGuestAge;
     }
 
-    public JLabel getfName() {
-        return fName;
+    public int getInputPhoneNumber() {
+        return inputPhoneNumber;
     }
 
-    public JLabel getlName() {
-        return lName;
+    public String getInputEmail() {
+        return inputEmail;
     }
 
-    public JLabel getAge() {
-        return age;
+    public String getInputAccountNum() {
+        return inputAccountNumber;
     }
 
-    public JLabel getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public JLabel getEmailAddress() {
-        return emailAddress;
-    }
-
-    public JLabel getPaymentLabel() {
-        return paymentLabel;
-    }
-
-    public JLabel getAccountNumber() {
-        return accountNumber;
-    }
-
-    public JLabel getAccountPin() {
-        return accountPin;
+    public String getInputAccountPin() {
+        return inputAccountPin;
     }
 
     public String getfNameField() {
@@ -115,31 +131,26 @@ public class GuestView extends JFrame{
 
     public int getAgeField() {
         return Integer.parseInt(ageField.getText());
-        //return ageField;
-        //TESTING might have to change get method data type back to JTextField??
     }
 
-    public String getPhoneNumField() {
-        return phoneNumField.getText();
-        //return phoneNumField;
+    public int getPhoneNumField() {
+        //return phoneNumField.getText();
+        return Integer.parseInt(phoneNumField.getText());
     }
 
     public String getEmailField() {
         return emailField.getText();
-        //return emailField;
     }
 
     public String getAccNumField() {
         return accNumField.getText();
-        //return accNumField;
     }
 
     public String getAccPinField() {
-        String inputAccountPin;
-        inputAccountPin = (new String(this.accPinField.getPassword()));
-        return inputAccountPin;
-        //return accPinField.getPassword();
-        //return accPinField;
+        //String accountPin;
+        //accountPin = (new String(this.accPinField.getPassword()));
+        //return accountPin;
+        return new String(this.accPinField.getPassword());
     }
 
     public JButton getConfirmDetails() {
@@ -152,7 +163,7 @@ public class GuestView extends JFrame{
     
     public GuestView(){
         
-        this.setBounds(800, 200, 600, 900);
+        this.setBounds(700, 100, 600, 900);
         this.setTitle("Guest Form");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -243,18 +254,12 @@ public class GuestView extends JFrame{
         confirmDetails.setBorder(new LineBorder(Color.black, 4));
         confirmDetails.setForeground(Color.black);
         
-        
-        //confirmDetails.addActionListener(GuestController controller);
-        
         resetDetails = new JButton("Reset " + "\u2190");
         resetDetails.setPreferredSize(new Dimension(170, 70));
         resetDetails.setFont(new Font("Arial", Font.BOLD, 17));
         resetDetails.setBorder(new LineBorder(Color.black, 4));
         resetDetails.setForeground(Color.black);
-        //resetDetails.addActionListener(this);
-        
-        Color DefaultColour = confirmDetails.getBackground();
-        
+
         buttonPanel.add(confirmDetails);
         buttonPanel.add(resetDetails);
         
@@ -263,23 +268,67 @@ public class GuestView extends JFrame{
         this.add(buttonPanel, BorderLayout.SOUTH);
     }
     
-    /*void addConfirmListener(ActionListener listenForDetailsConfirm){
-        
-        confirmDetails.addActionListener(listenForDetailsConfirm);
-    }
-    
-    void addResetListener(ActionListener listenForResetDetails){
-        resetDetails.addActionListener(listenForResetDetails);
-    }
-    
-    void displayErrorMessage(String errorMessage){
-        
-        JOptionPane.showMessageDialog(this, errorMessage);
-        
-    }*/
-    
     public void DetailsConfirmation(){
+        
+        inputFirstName = fNameField.getText();
+        inputLastName = lNameField.getText();
+        inputEmail = emailField.getText();
+        inputAccountNumber = accNumField.getText();
+        inputAccountPin = (new String(this.accPinField.getPassword()));
+        
+        try {
+            inputGuestAge = getAgeField();
+            //inputGuestAge = Integer.parseInt(ageField.getText());
+            validAge = true;
 
+        } catch (NumberFormatException o) {
+            JOptionPane.showMessageDialog(null, "Your Age must only contain Numbers", "Invalid Age Error!", JOptionPane.ERROR_MESSAGE);
+            validAge = false;
+        }
+        try {
+            inputPhoneNumber = getPhoneNumField();
+            validPhoneNumber = true;
+
+        } catch (NumberFormatException o) {
+            JOptionPane.showMessageDialog(null, "Your Phone Number must only contain Numbers", "Invalid Phone Number Error!", JOptionPane.ERROR_MESSAGE);
+            validPhoneNumber = false;
+        }
+        if (!inputEmail.contains("@") || (((!inputEmail.contains(".com")) && (!inputEmail.contains(".co.nz")) && (!inputEmail.contains(".net")) && (!inputEmail.contains(".org.nz"))))) {
+            validEmail = false;
+            JOptionPane.showMessageDialog(null, "You must have a valid email address!", "Invalid Email Error!", JOptionPane.ERROR_MESSAGE);
+        } else if (inputEmail.contains("@") || (((inputEmail.contains(".com")) && (inputEmail.contains(".co.nz")) && (inputEmail.contains(".net")) && (inputEmail.contains(".org.nz"))))) {
+            validEmail = true;
+        }
+
+        HashMap<String, String> guestRecords = GuestForm.readGuestRecords();
+
+        if (guestRecords.containsKey(inputAccountNumber)) {
+            JOptionPane.showMessageDialog(null, "You must enter your own Bank Account Number!", "Invalid Account Number Error!", JOptionPane.ERROR_MESSAGE);
+            validAccountNumber = false;
+        } else if (!guestRecords.containsKey(inputAccountNumber)) {
+            validAccountNumber = true;
+        }
+
+        System.out.println(inputFirstName + " " + inputLastName + " " + inputGuestAge + " " + inputPhoneNumber + " " + inputEmail + " " + inputAccountNumber + " " + inputAccountPin + " ");
+        if (validAge == true && validEmail == true && validAccountNumber == true) {
+            System.out.println("guest object will be created");
+            Guest guest = new Guest(inputFirstName, inputLastName, inputGuestAge, inputEmail, inputPhoneNumber, inputAccountNumber, inputAccountPin);
+            ArrayList<Guest> list = form.getArrayList();
+            list.add(guest);
+            guestRecords.put(inputAccountNumber, inputFirstName);
+            /*try {
+                FileInputOutput.writeGuestToGuestsFile(guestRecords);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(GuestGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            FileInputOutput.printGuestDetails(list);*/
+        }
+        
+
+    }
+    
+    public void DetailsReset(){
+        
     }
     
     public void mouseEnterConfirmDetails(){

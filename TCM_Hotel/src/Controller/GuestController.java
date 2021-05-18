@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package guestControllers;
+package Controller;
 
-import guestModel.GuestModel;
-import guestView.GuestView;
+import Model.GuestModel;
+import View.GuestView;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
@@ -78,6 +78,8 @@ public class GuestController{
     }
 
     public void handleResetDetailsClick(){
+        
+        //viewGuest.DetailsReset();
 
     }
     

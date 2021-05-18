@@ -20,7 +20,7 @@ public abstract class Person implements java.io.Serializable{ //make abstract cl
     private String lastName;
     private int personAge;
     private String personEmail;
-    private String personNumber;
+    private int personNumber;
     
     public Person() 
     {
@@ -37,7 +37,7 @@ public abstract class Person implements java.io.Serializable{ //make abstract cl
      * @param personNumber the personNumber variable stores the contact number of the person.
      */
     
-    Person(String firstName, String lastName,int personAge, String personEmail, String personNumber)
+    Person(String firstName, String lastName,int personAge, String personEmail, int personNumber)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -56,7 +56,7 @@ public abstract class Person implements java.io.Serializable{ //make abstract cl
      * @param personNumber the personNumber variable stores the contact number of the person.
      */
     
-    Person(String firstName, String lastName, String personEmail, String personNumber)
+    Person(String firstName, String lastName, String personEmail, int personNumber)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -86,12 +86,12 @@ public abstract class Person implements java.io.Serializable{ //make abstract cl
         this.personEmail = personEmail;
     }
 
-    public String getPersonNumber() 
+    public int getPersonNumber() 
     {
         return personNumber;
     }
 
-    public void setPersonNumber(String personNumber) 
+    public void setPersonNumber(int personNumber) 
     {
         this.personNumber = personNumber;
     }
