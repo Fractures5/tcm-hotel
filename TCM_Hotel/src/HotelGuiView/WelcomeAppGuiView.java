@@ -10,13 +10,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 /**
@@ -24,7 +23,7 @@ import javax.swing.border.LineBorder;
  * @author faaris
  */
 
-public class WelcomeAppGui extends JFrame
+public class WelcomeAppGuiView extends JFrame
 {
     private JFrame welcomeFrame;
     
@@ -45,7 +44,7 @@ public class WelcomeAppGui extends JFrame
     private WelcomeAppGuiModel icon3;
     private WelcomeAppGuiModel icon4;
     
-    public WelcomeAppGui()
+    public WelcomeAppGuiView()
     {
         icon1 = new WelcomeAppGuiModel();
         icon2= new WelcomeAppGuiModel();
@@ -94,69 +93,7 @@ public class WelcomeAppGui extends JFrame
         buttonFour.setFont(new Font("Arial", Font.BOLD, 20));
         buttonFour.setBorder(new LineBorder(Color.BLACK, 5));
         buttonFour.setBounds(75, 370, 250, 70);
-        
-        
-        //Move these to the controller class
-        Color normalColour = buttonOne.getBackground();
-        
-        
-        buttonOne.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent arg0) {
-                buttonOne.setBackground(Color.LIGHT_GRAY);
-            }
 
-            @Override
-            public void mouseExited(MouseEvent arg0) {
-                buttonOne.setBackground(normalColour);
-            }
-        });
-        
-        buttonTwo.addMouseListener(new MouseAdapter()
-        {
-        @Override
-        public void mouseEntered(MouseEvent arg0)
-        {
-            buttonTwo.setBackground(Color.LIGHT_GRAY);
-        }
-        
-        @Override
-        public void mouseExited(MouseEvent arg0)
-        {
-            buttonTwo.setBackground(normalColour);
-        }
-        });
-        
-        buttonThree.addMouseListener(new MouseAdapter()
-        {
-        @Override
-        public void mouseEntered(MouseEvent arg0)
-        {
-            buttonThree.setBackground(Color.LIGHT_GRAY);
-        }
-        
-        @Override
-        public void mouseExited(MouseEvent arg0)
-        {
-            buttonThree.setBackground(normalColour);
-        }
-        });
-
-        buttonFour.addMouseListener(new MouseAdapter()
-        {
-        @Override
-        public void mouseEntered(MouseEvent arg0)
-        {
-            buttonFour.setBackground(Color.LIGHT_GRAY);
-        }
-        
-        @Override
-        public void mouseExited(MouseEvent arg0)
-        {
-            buttonFour.setBackground(normalColour);
-        }
-        });
-        
         topPanel.add(welcomeLabel);
         
         middlePanel.add(subWelcomeLabel);
@@ -170,14 +107,60 @@ public class WelcomeAppGui extends JFrame
         welcomeFrame.setVisible(true);
     }
     
+    public JButton getButtonOne()
+    {
+        return buttonOne;
+    }
+    
+    public void mouseEnterHoverButtonOne()
+    {
+        getButtonOne().setBackground(Color.LIGHT_GRAY);
+    }
+    
+    public void mouseExitHoverButtonOne()
+    {
+        getButtonOne().setBackground(UIManager.getColor("control"));
+    }
+    
+    public JButton getButtonTwo() {
+        return buttonTwo;
+    }
+
+    public void mouseEnterHoverButtonTwo() {
+        getButtonTwo().setBackground(Color.LIGHT_GRAY);
+    }
+
+    public void mouseExitHoverButtonTwo() {
+        getButtonTwo().setBackground(UIManager.getColor("control"));
+    }
+    
+    public JButton getButtonThree() {
+        return buttonThree;
+    }
+
+    public void mouseEnterHoverButtonThree() {
+        getButtonThree().setBackground(Color.LIGHT_GRAY);
+    }
+
+    public void mouseExitHoverButtonThree() {
+        getButtonThree().setBackground(UIManager.getColor("control"));
+    }
+    
+    public JButton getButtonFour() {
+        return buttonFour;
+    }
+
+    public void mouseEnterHoverButtonFour() {
+        getButtonFour().setBackground(Color.LIGHT_GRAY);
+    }
+
+    public void mouseExitHoverButtonFour() {
+        getButtonFour().setBackground(UIManager.getColor("control"));
+    }    
+  
     public void actionPerformed(ActionEvent e)
     {
         //When a button is pushed, open up a new frame it e.g about us...
         //Gonna have to make a call to a new class? Which creates a new frame
-    }
-    
-    public static void main(String[] args) 
-    {
-       new WelcomeAppGui();
     }
 }
