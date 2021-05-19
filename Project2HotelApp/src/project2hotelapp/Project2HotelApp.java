@@ -11,6 +11,7 @@ import hotelControllers.LocationMenuInteraction;
 import hotelModel.HotelFeatures;
 import hotelModel.HotelLocations;
 import hotelModel.HotelRooms;
+import hotelView.HotelChooseDates;
 import hotelView.HotelFeaturesMenu;
 import hotelView.HotelLocationMenu;
 import hotelView.HotelRoomsMenu;
@@ -26,9 +27,8 @@ import javax.swing.JPanel;
 public class Project2HotelApp extends JFrame{
     
     
-    private static GuestBookDates bookDate;
+    private static HotelChooseDates bookDate;
     private static GuestChooseHotel bookLocation;
-    
     private static GuestChooseRoom bookRooms;
     
     /**
@@ -36,7 +36,7 @@ public class Project2HotelApp extends JFrame{
      */
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
-        //bookDate = new GuestBookDates();
+        bookDate = new HotelChooseDates();
         //bookLocation = new GuestChooseHotel();
         //bookRooms = new GuestChooseRoom();
       
@@ -47,9 +47,9 @@ public class Project2HotelApp extends JFrame{
         hotelMenuDB.createHFeaturesTable();
         hotelMenuDB.closeConnection();*/
         
-        HotelLocations locationModel = new HotelLocations();
+        /*HotelLocations locationModel = new HotelLocations();
         HotelLocationMenu locationView = new HotelLocationMenu();
-        LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);
+        LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);*/
         
         
         //locationModel.currentLocationBookings(locationView.getBookingLocation());

@@ -30,7 +30,6 @@ import project2hotelapp.LocationMenu;
  */
 public class HotelLocationMenu extends JFrame{
     
-    private static GuestChooseRoom bookRooms;
     private JLabel title, instruction;
     private JPanel headerPanel, menuPanel, bottomPanel;
     private ButtonGroup group; 
@@ -121,7 +120,7 @@ public class HotelLocationMenu extends JFrame{
         bottomPanel.add(nextButton);
         this.add(bottomPanel, BorderLayout.SOUTH);
         
-        this.setTitle("Guests booking dates");
+        this.setTitle("Guests booking hotel location");
         this.setSize(1200,700);
         this.setLocation(500,150);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
