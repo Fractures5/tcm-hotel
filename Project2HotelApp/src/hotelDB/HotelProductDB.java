@@ -136,19 +136,26 @@ public class HotelProductDB
             DatabaseMetaData dbmd = this.conn.getMetaData();
             String[] types  = {"TABLE"};
             statement = this.conn.createStatement();
-            ResultSet rs = dbmd.getTables(null, null, null, types);
+            ResultSet rs = dbmd.getTables(null, null, name, types);
             
-            while(rs.next())
+            if(rs.next())
             {
-                String table_name = rs.getString("TABLE NAME");
-                System.out.println(table_name);
-                if(table_name.equalsIgnoreCase(name))
-                {
-                    statement.executeUpdate("Drop table " +name);
-                    System.out.println("Table " +name+ " has been deleted");
-                    break;
-                }
+                statement.executeUpdate("Drop table " +name);
+                System.out.println("Table " +name+ " has been deleted"); 
             }
+//            ResultSet rs = dbmd.getTables(null, null, null, types);
+//            
+//            while(rs.next())
+//            {
+//                String table_name = rs.getString("TABLE NAME");
+//                System.out.println(table_name);
+//                if(table_name.equalsIgnoreCase(name))
+//                {
+//                    statement.executeUpdate("Drop table " +name);
+//                    System.out.println("Table " +name+ " has been deleted");
+//                    break;
+//                }
+//            }
             rs.close();
         }
         catch(SQLException ex)

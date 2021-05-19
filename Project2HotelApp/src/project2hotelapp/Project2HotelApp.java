@@ -36,20 +36,20 @@ public class Project2HotelApp extends JFrame{
      */
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
-        bookDate = new HotelChooseDates();
+        //bookDate = new HotelChooseDates();
         //bookLocation = new GuestChooseHotel();
         //bookRooms = new GuestChooseRoom();
       
-        /*HotelProductDB hotelMenuDB = new HotelProductDB();
+        HotelProductDB hotelMenuDB = new HotelProductDB();
         hotelMenuDB.createHLocationTable();
         hotelMenuDB.createHRoomsTable();
         hotelMenuDB.createHGuestTypeTable();
         hotelMenuDB.createHFeaturesTable();
-        hotelMenuDB.closeConnection();*/
+        hotelMenuDB.closeConnection();
         
-        /*HotelLocations locationModel = new HotelLocations();
+        HotelLocations locationModel = new HotelLocations();
         HotelLocationMenu locationView = new HotelLocationMenu();
-        LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);*/
+        LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);
         
         
         //locationModel.currentLocationBookings(locationView.getBookingLocation());
