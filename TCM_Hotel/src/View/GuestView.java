@@ -81,10 +81,6 @@ public class GuestView extends JFrame{
     private boolean validAccountNumber = false;
     private boolean validGuest = false;
 
-    public boolean isValidGuest() {
-        return validGuest;
-    }
-    
     private boolean showFNameError = false;
     private boolean showLNameError = false;
     private boolean showAgeError = false;
@@ -93,6 +89,10 @@ public class GuestView extends JFrame{
     private boolean showAccNumberError = false;
     
     private int resetReply;
+    
+    public boolean getValidGuest() {
+        return validGuest;
+    }
 
     public boolean getShowFNameError() {
         return showFNameError;
@@ -345,6 +345,7 @@ public class GuestView extends JFrame{
             showEmailAddressError = true;
         } else if (inputEmail.contains("@") || (((inputEmail.contains(".com")) && (inputEmail.contains(".co.nz")) && (inputEmail.contains(".net")) && (inputEmail.contains(".org.nz"))))) {
             validEmail = true;
+            showEmailAddressError = false;
         }
 
         HashMap<String, String> guestRecords = GuestForm.readGuestRecords();
@@ -359,13 +360,34 @@ public class GuestView extends JFrame{
         }
 
         System.out.println(inputFirstName + " " + inputLastName + " " + inputGuestAge + " " + inputPhoneNumber + " " + inputEmail + " " + inputAccountNumber + " " + inputAccountPin + " ");
+        
         if (validFName == true && validLName == true && validAge == true && validPhoneNumber == true && validEmail == true && validAccountNumber == true) {
-            System.out.println("guest object will be created");
-            Guest guest = new Guest(inputFirstName, inputLastName, inputGuestAge, inputEmail, inputPhoneNumber, inputAccountNumber, inputAccountPin);
-            ArrayList<Guest> list = form.getArrayList();
-            list.add(guest);
+            validGuest = true;
+            System.out.println("Guest object will be created");
+            
+            //Guest guest = new Guest(inputFirstName, inputLastName, inputGuestAge, inputEmail, inputPhoneNumber, inputAccountNumber, inputAccountPin);
+            //ArrayList<Guest> list = form.getArrayList();
+            //list.add(guest);
             guestRecords.put(inputAccountNumber, inputFirstName);
+            try {
+                FileInputOutput.writeGuestToGuestsFile(guestRecords);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(GuestView.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        else if(validFName == false || validLName == false || validAge == false || validPhoneNumber == false || validEmail == false || validAccountNumber == false ){
+            validGuest = false;
+            System.out.println("***Guest Object will NOT be created***");
+        }
+        
+        
+    }      
+    
+    public void insertGuest(){
+        
+        String insertQuery = "INSERT INTO 'GUEST_LIST'('GUEST_FNAME', 'GUEST_LNAME', 'GUEST_AGE', 'GUEST_PHONE', 'GUEST_EMAIL', 'GUEST_ACCNUM', 'GUEST_ACCPIN')"+" VALUES(?,?,?,?,?,?,?)";
+        
+        //Class.forName(JDBC_DRIVER);
     }
     
     public void DetailsReset(){

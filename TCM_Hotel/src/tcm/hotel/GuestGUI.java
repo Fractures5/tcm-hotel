@@ -422,7 +422,7 @@ public class GuestGUI extends JFrame implements ActionListener{
             if(validAge == true && validEmail == true && validAccountNumber == true){
                 System.out.println("guest object will be created");
                 //Guest guest = new Guest(inputFirstName, inputLastName, guestAge, inputEmail, /*inputPhoneNumber*/ inputAccountNumber, inputAccountPin);
-                ArrayList<Guest> list = guestForm.getArrayList();
+                //ArrayList<Guest> list = guestForm.getArrayList();
                 //list.add(guest);
                 guestRecords.put(inputAccountNumber, inputFirstName);
                 try {
@@ -430,7 +430,7 @@ public class GuestGUI extends JFrame implements ActionListener{
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(GuestGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                FileInputOutput.printGuestDetails(list);   
+                //FileInputOutput.printGuestDetails(list);   
             }
             
             //JOptionPane.showConfirmDialog(null, "You must enter your own Bank Account Number!", "Invalid Account Number Error!", JOptionPane.ERROR_MESSAGE);

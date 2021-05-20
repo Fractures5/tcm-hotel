@@ -5,37 +5,58 @@
  */
 package Model;
 
+import java.util.ArrayList;
+import tcm.hotel.Guest;
+
 /**
  *
  * @author Anuk
  */
 public class GuestModel {
     
-    private String inputFirstName;
-    private String inputLastName;
-    private int guestAge = 0;
-    private String inputPhoneNumber;
-    private String inputEmail;
-    private String inputAccountNumber;
-    private String inputAccountPin;
-    private boolean validAge = false;
-    private boolean validEmail = false;
-    private boolean validAccountNumber = false;
+    private String guestFirstName;
+    private String guestLastName;
+    private int guestAge;
+    private long guestPhoneNumber;
+    private String guestEmail;
+    private String guestAccountNumber;
+    private String guestAccountPin;
+    
+    private ArrayList<Guest> hotelGuest = new ArrayList<>();
 
-    public String getInputFirstName() {
-        return inputFirstName;
+    public ArrayList<Guest> getHotelGuest() {
+        return hotelGuest;
     }
 
-    public void setInputFirstName(String inputFirstName) {
-        this.inputFirstName = inputFirstName;
+    public void setHotelGuest(ArrayList<Guest> hotelGuest) {
+        this.hotelGuest = hotelGuest;
+    }
+    
+    public GuestModel(){
+        this.guestFirstName = guestFirstName;
+        this.guestLastName = guestLastName;
+        this.guestAge = guestAge;
+        this.guestPhoneNumber = guestPhoneNumber;
+        this.guestEmail = guestEmail;
+        this.guestAccountNumber = guestAccountNumber;
+        this.guestAccountPin = guestAccountPin;
+        this.hotelGuest = hotelGuest;
     }
 
-    public String getInputLastName() {
-        return inputLastName;
+    public String getGuestFirstName() {
+        return guestFirstName;
     }
 
-    public void setInputLastName(String inputLastName) {
-        this.inputLastName = inputLastName;
+    public void setGuestFirstName(String guestFirstName) {
+        this.guestFirstName = guestFirstName;
+    }
+
+    public String getGuestLastName() {
+        return guestLastName;
+    }
+
+    public void setGuestLastName(String guestLastName) {
+        this.guestLastName = guestLastName;
     }
 
     public int getGuestAge() {
@@ -46,60 +67,35 @@ public class GuestModel {
         this.guestAge = guestAge;
     }
 
-    public String getInputPhoneNumber() {
-        return inputPhoneNumber;
+    public long getGuestPhoneNumber() {
+        return guestPhoneNumber;
     }
 
-    public void setInputPhoneNumber(String inputPhoneNumber) {
-        this.inputPhoneNumber = inputPhoneNumber;
+    public void setGuestPhoneNumber(long guestPhoneNumber) {
+        this.guestPhoneNumber = guestPhoneNumber;
     }
 
-    public String getInputEmail() {
-        return inputEmail;
+    public String getGuestEmail() {
+        return guestEmail;
     }
 
-    public void setInputEmail(String inputEmail) {
-        this.inputEmail = inputEmail;
+    public void setGuestEmail(String guestEmail) {
+        this.guestEmail = guestEmail;
     }
 
-    public String getInputAccountNumber() {
-        return inputAccountNumber;
+    public String getGuestAccountNumber() {
+        return guestAccountNumber;
     }
 
-    public void setInputAccountNumber(String inputAccountNumber) {
-        this.inputAccountNumber = inputAccountNumber;
+    public void setGuestAccountNumber(String guestAccountNumber) {
+        this.guestAccountNumber = guestAccountNumber;
     }
 
-    public String getInputAccountPin() {
-        return inputAccountPin;
+    public String getGuestAccountPin() {
+        return guestAccountPin;
     }
 
-    public void setInputAccountPin(String inputAccountPin) {
-        this.inputAccountPin = inputAccountPin;
+    public void setGuestAccountPin(String guestAccountPin) {
+        this.guestAccountPin = guestAccountPin;
     }
-
-    public boolean isValidAge() {
-        return validAge;
-    }
-
-    public void setValidAge(boolean validAge) {
-        this.validAge = validAge;
-    }
-
-    public boolean isValidEmail() {
-        return validEmail;
-    }
-
-    public void setValidEmail(boolean validEmail) {
-        this.validEmail = validEmail;
-    }
-
-    public boolean isValidAccountNumber() {
-        return validAccountNumber;
-    }
-
-    public void setValidAccountNumber(boolean validAccountNumber) {
-        this.validAccountNumber = validAccountNumber;
-    }
-
 }
