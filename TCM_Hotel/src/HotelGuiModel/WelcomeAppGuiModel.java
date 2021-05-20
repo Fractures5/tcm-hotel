@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author faari
+ * @author faaris
  */
 public class WelcomeAppGuiModel extends JPanel
 {

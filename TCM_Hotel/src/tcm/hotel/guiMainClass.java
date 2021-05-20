@@ -11,15 +11,14 @@ import HotelGuiView.WelcomeAppGuiView;
 
 /**
  *
- * @author faari
+ * @author faaris
  */
-public class guiMainClass 
+public class GuiMainClass 
 {
     public static void main(String[] args) 
     {
         WelcomeAppGuiModel modelClass = new WelcomeAppGuiModel();
         WelcomeAppGuiView viewClass = new WelcomeAppGuiView();
-        WelcomeAppGuiController controllerClass = new WelcomeAppGuiController(viewClass);    
-        //Remember to add modelClass as a parameter in the controller Class above
+        WelcomeAppGuiController controllerClass = new WelcomeAppGuiController(viewClass);
     }
 }

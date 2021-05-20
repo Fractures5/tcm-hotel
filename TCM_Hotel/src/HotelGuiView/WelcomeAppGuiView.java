@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package HotelGuiView;
-import HotelGuiModel.WelcomeAppGuiModel;
+//import HotelGuiModel.WelcomeAppGuiModel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+//import java.awt.event.ActionEvent;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -39,18 +40,31 @@ public class WelcomeAppGuiView extends JFrame
     private JButton buttonThree;
     private JButton buttonFour;
     
-    private WelcomeAppGuiModel icon1;
+    private FAQGuiView accessFAQ;
+    
+    /*private WelcomeAppGuiModel icon1;
     private WelcomeAppGuiModel icon2;
     private WelcomeAppGuiModel icon3;
-    private WelcomeAppGuiModel icon4;
+    private WelcomeAppGuiModel icon4;*/
     
     public WelcomeAppGuiView()
     {
-        icon1 = new WelcomeAppGuiModel();
+        /*icon1 = new WelcomeAppGuiModel();
         icon2= new WelcomeAppGuiModel();
         icon3 = new WelcomeAppGuiModel();
-        icon4 = new WelcomeAppGuiModel(); 
-       
+        icon4 = new WelcomeAppGuiModel();*/ 
+        //accessFAQ = new FAQGuiView();
+        
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        
+        int screenWidth = screenSize.width;
+        int screenHeight = screenSize.height;
+        int frameWidth = screenWidth/2;
+        int frameHeight = screenHeight/2;
+        
+        this.setSize(frameWidth, frameHeight);
+        
         welcomeFrame = new JFrame("TCM Hotel Online Booking System");
         welcomeFrame.setBounds(500, 200, 900, 700);
         welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -157,10 +171,32 @@ public class WelcomeAppGuiView extends JFrame
     public void mouseExitHoverButtonFour() {
         getButtonFour().setBackground(UIManager.getColor("control"));
     }    
-  
-    public void actionPerformed(ActionEvent e)
+    
+    //Create 4 new methods which call the view class depeding on its
+    //corresponding button, will have to create an object of that class
+    //and use the dot operator to access the method so that when tne button
+    //is clicked, it will open up the new frame for the button press
+    
+    public void enterBookingView()
     {
-        //When a button is pushed, open up a new frame it e.g about us...
-        //Gonna have to make a call to a new class? Which creates a new frame
+        //Make call to Booking view class here
+    }
+    
+    public void enterFAQView()
+    {
+        //Make call to FAQ view class here
+        welcomeFrame.setVisible(false);
+        welcomeFrame.dispose();
+        accessFAQ = new FAQGuiView();
+    }
+    
+    public void enterAboutUsView()
+    {
+        //Make call to the About Us view class here
+    }
+    
+    public void enterAdminView()
+    {
+        //Make call to Admin view class here
     }
 }

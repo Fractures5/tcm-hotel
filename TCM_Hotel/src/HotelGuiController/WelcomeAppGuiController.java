@@ -6,102 +6,177 @@
 package HotelGuiController;
 
 import HotelGuiView.WelcomeAppGuiView;
-import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
 
 /**
  *
- * @author faari
+ * @author faaris
  */
 public class WelcomeAppGuiController 
 {
-    //Calls the methods, stuff like action listeners, etc...
-    
     WelcomeAppGuiView viewClass;
+    //Will have a back button on both the FAQ and 
+    //About Us page, so will need to make an object of both those
+    //View classes and do the same thing of "hovering" and "clicking" 
+    //For that back button
     
     public WelcomeAppGuiController(WelcomeAppGuiView viewClass)
     {
         this.viewClass = viewClass;
         
-        viewClass.getButtonOne().addMouseListener(new java.awt.event.MouseAdapter() {
+        viewClass.getButtonOne().addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                ClickButtonOne();
+            }
+        });
+        
+        viewClass.getButtonTwo().addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                ClickButtonTwo();
+            }
+        });
+        
+        viewClass.getButtonThree().addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                ClickButtonThree();
+            }
+        });
+
+        viewClass.getButtonFour().addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                ClickButtonFour();
+            }
+        });        
+        
+        viewClass.getButtonOne().addMouseListener(new MouseAdapter() 
+        {
             @Override
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+            public void mouseEntered(MouseEvent evt)
+            {
                 EnterMouseHoverButtonOne();
             }
 
             @Override
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(MouseEvent evt) 
+            {
                 ExitMouseHoverButtonOne();
             }
         });
         
-        viewClass.getButtonTwo().addMouseListener(new java.awt.event.MouseAdapter() {
+        viewClass.getButtonTwo().addMouseListener(new MouseAdapter() 
+        {
             @Override
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+            public void mouseEntered(MouseEvent evt) 
+            {
                 EnterMouseHoverButtonTwo();
             }
 
             @Override
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(MouseEvent evt) 
+            {
                 ExitMouseHoverButtonTwo();
             }
         });
         
-        viewClass.getButtonThree().addMouseListener(new java.awt.event.MouseAdapter() {
+        viewClass.getButtonThree().addMouseListener(new MouseAdapter()
+        {
             @Override
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+            public void mouseEntered(MouseEvent evt) 
+            {
                 EnterMouseHoverButtonThree();
             }
 
             @Override
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(MouseEvent evt) 
+            {
                 ExitMouseHoverButtonThree();
             }
         });
         
-        viewClass.getButtonFour().addMouseListener(new java.awt.event.MouseAdapter() {
+        viewClass.getButtonFour().addMouseListener(new MouseAdapter() 
+        {
             @Override
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+            public void mouseEntered(MouseEvent evt) 
+            {
                 EnterMouseHoverButtonFour();
             }
 
             @Override
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(MouseEvent evt) 
+            {
                 ExitMouseHoverButtonFour();
             }
         });
     }
     
-    public void EnterMouseHoverButtonOne() {
+    public void EnterMouseHoverButtonOne() 
+    {
         viewClass.mouseEnterHoverButtonOne();
     }
 
-    public void ExitMouseHoverButtonOne() {
+    public void ExitMouseHoverButtonOne() 
+    {
         viewClass.mouseExitHoverButtonOne();
     }
     
-    public void EnterMouseHoverButtonTwo() {
+    public void EnterMouseHoverButtonTwo() 
+    {
         viewClass.mouseEnterHoverButtonTwo();
     }
 
-    public void ExitMouseHoverButtonTwo() {
+    public void ExitMouseHoverButtonTwo() 
+    {
         viewClass.mouseExitHoverButtonTwo();
     }
     
-    public void EnterMouseHoverButtonThree() {
+    public void EnterMouseHoverButtonThree() 
+    {
         viewClass.mouseEnterHoverButtonThree();
     }
 
-    public void ExitMouseHoverButtonThree() {
+    public void ExitMouseHoverButtonThree() 
+    {
         viewClass.mouseExitHoverButtonThree();
     }
     
-    public void EnterMouseHoverButtonFour() {
+    public void EnterMouseHoverButtonFour()
+    {
         viewClass.mouseEnterHoverButtonFour();
     }
 
-    public void ExitMouseHoverButtonFour() {
+    public void ExitMouseHoverButtonFour() 
+    {
         viewClass.mouseExitHoverButtonFour();
+    }
+    
+    public void ClickButtonOne()
+    {
+        viewClass.enterBookingView();
+    }
+    
+    public void ClickButtonTwo()
+    {
+        viewClass.enterFAQView();
+    }
+    
+    public void ClickButtonThree() 
+    {
+        viewClass.enterAboutUsView();
+    }
+    
+    public void ClickButtonFour() 
+    {
+        viewClass.enterAdminView();
     }
 }
