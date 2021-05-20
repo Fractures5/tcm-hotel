@@ -28,16 +28,14 @@ public class DriverMVC {
         hotelMenuDB.createHFeaturesTable();
         hotelMenuDB.closeConnection();
         
-        
         GuestView view = new GuestView();
         GuestModel model = new GuestModel();
         model.setGuestFirstName(model.getGuestFirstName());
         
         GuestController controller = new GuestController(view, model);
-        
-        hotelMenuDB.registerGuest(model);
-        view.setVisible(true);
 
+        view.setVisible(true);
+        
     }
 
 }

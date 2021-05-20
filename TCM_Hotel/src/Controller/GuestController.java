@@ -7,6 +7,8 @@ package Controller;
 
 import Model.GuestModel;
 import View.GuestView;
+import hotelDB.DBManager;
+import hotelDB.HotelProductDB;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
@@ -30,6 +32,7 @@ public class GuestController{
     
     GuestView viewGuest;
     GuestModel modelGuest;
+    //HotelProductDB db;
     private GuestForm guestForm = new GuestForm();
     
     public GuestController(GuestView viewGuest, GuestModel modelGuest){
@@ -97,7 +100,7 @@ public class GuestController{
         }
         
         if (viewGuest.getValidGuest() == true){
-            viewGuest.insertGuest();
+            viewGuest.setVisible(false);
             modelGuest.setGuestFirstName(viewGuest.getfNameField());
             modelGuest.setGuestLastName(viewGuest.getlNameField());
             modelGuest.setGuestAge(viewGuest.getAgeField());
@@ -105,7 +108,9 @@ public class GuestController{
             modelGuest.setGuestEmail(viewGuest.getEmailField());
             modelGuest.setGuestAccountNumber(viewGuest.getAccNumField());
             modelGuest.setGuestAccountPin(viewGuest.getAccPinField());
-            System.out.println(modelGuest.getGuestFirstName());
+            HotelProductDB test = new HotelProductDB();
+            DBManager db = new DBManager();
+            test.registerGuest(modelGuest);
             
         }
     }
