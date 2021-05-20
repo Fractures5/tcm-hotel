@@ -48,23 +48,7 @@ public class HotelProductDB {
             return false;
         }
     }
-    
-    /*public void insertGuest(String fname, String lname, int age, long phonenum, String email, int accnum, int accpin){
-    }*/
-    
-    /*public void insertGuest(GuestModel model){
-        
-        String sql = "INSERT INTO GUEST_LIST(GUEST_FNAME, GUEST_LNAME, GUEST_AGE, GUEST_PHONE, GUEST_EMAIL, GUEST_ACCNUM, GUEST_ACCPIN) VALUES(test)";
-        
-        //try()
-        /*try({
-            PreparedStatement pstmt = conn.prepareStatement(sql){
-            }
-            
-        }
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }*/
+
     public void createGuestListTable(){
         try{
             this.statement = conn.createStatement();
@@ -109,7 +93,6 @@ public class HotelProductDB {
 
     public void createHRoomsTable() {
         try {
-            //Class.forName("jdbc:derby://localhost:1527/TCMHotelDB"); 
             this.statement = conn.createStatement();
             this.checkTableExistence("HOTEL_ROOMS");
             this.statement.addBatch("CREATE  TABLE HOTEL_ROOMS  (ROOM_TYPE_ID INT,   TITLE   VARCHAR(50),   ROOM_TYPE VARCHAR(20), PRICE   FLOAT, ROOM_AVAILABLE VARCHAR(1))");
@@ -173,15 +156,6 @@ public class HotelProductDB {
                 statement.executeUpdate("Drop table " +name);
                 System.out.println("Table " +name+ " has been deleted");
             }
-            /*while (rs.next()) {
-                String table_name = rs.getString("TABLE NAME");
-                System.out.println(table_name);
-                if (table_name.equalsIgnoreCase(name)) {
-                    statement.executeUpdate("Drop table " + name);
-                    System.out.println("Table " + name + " has been deleted");
-                    break;
-                }
-            }*/
             rs.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

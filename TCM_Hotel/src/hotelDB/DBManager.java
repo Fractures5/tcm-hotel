@@ -81,37 +81,4 @@ public class DBManager {
             }
         }
     }
-    
-    /*public Connection connect() throws SQLException {
-        return DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-    }
-    
-    public long insertGuest(GuestModel model){
-        
-        String SQL = "INSERT INTO GUEST_LIST(GUEST_FNAME, GUEST_LNAME, GUEST_AGE, GUEST_PHONE, GUEST_EMAIL, GUEST_ACCNUM, GUEST_ACCPIN) VALUES(test)";
-        long id = 0;
-        try (Connection conn = connect();
-                PreparedStatement pstmt = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS)){
-            pstmt.setString(1, model.getGuestFirstName());
-            
-            int rows = pstmt.executeUpdate();
-            
-            if (rows > 0){
-                try (ResultSet rs = pstmt.getGeneratedKeys()){
-                    if (rs.next()){
-                        id = rs.getLong(1);
-                    }
-                }
-                catch (SQLException ex){
-                    System.out.println(ex.getMessage());
-                }
-            }
-            
-        }
-        catch (SQLException ex){
-            System.out.println(ex.getMessage());
-        }
-        
-        return id;
-    }*/
 }

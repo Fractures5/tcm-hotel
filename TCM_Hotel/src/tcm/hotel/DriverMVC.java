@@ -19,9 +19,6 @@ public class DriverMVC {
     
     public static void main(String[] args){
         
-        //bookDate = new GuestBookDates();
-        //bookLocation = new GuestChooseHotel();
-        //bookRooms = new GuestChooseRoom();
         HotelProductDB hotelMenuDB = new HotelProductDB();
         DBManager manager = new DBManager();
         hotelMenuDB.createGuestListTable();
@@ -40,12 +37,7 @@ public class DriverMVC {
         
         hotelMenuDB.registerGuest(model);
         view.setVisible(true);
-        
-        //hotelMenuDB.insertGuest(model);
-        //manager.insertGuest(model);
-        
-        
-        
+
     }
 
 }
