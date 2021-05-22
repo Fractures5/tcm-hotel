@@ -47,36 +47,19 @@ public class HotelProductDB {
     }*/
     
     public void registerGuest(GuestModel guest){
-        String fname = guest.getGuestFirstName();
-        String lname = guest.getGuestLastName();
-        int age = guest.getGuestAge();
-        long phone = guest.getGuestPhoneNumber();
-        String email = guest.getGuestEmail();
-        String acc = guest.getGuestAccountNumber();
-        String pin = guest.getGuestAccountPin();
         try{
             this.statement = conn.createStatement();
             this.statement.addBatch("INSERT INTO GUEST_LIST (GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER, GUEST_ACCOUNTPIN) VALUES('"+ guest.getGuestFirstName()+"', '"+ guest.getGuestLastName()+"', '"+ guest.getGuestAge()+"', '"+ guest.getGuestPhoneNumber()+"', '"+ guest.getGuestEmail()+"', '"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestAccountPin()+"')");
-//, guest.getGuestAge(), guest.getGuestPhoneNumber(),
-                    //guest.getGuestEmail(), guest.getGuestAccountNumber(), guest.getGuestAccountPin());
-            /*this.statement.addBatch("INSERT INTO GUEST_LIST VALUES('" + guest.getGuestFirstName().toString()
-                    + "', '" + guest.getGuestLastName().toString() + "', '" + guest.getGuestAge()
-                    + "', '" + guest.getGuestPhoneNumber() + "', '" + guest.getGuestEmail().toString()
-                    + "', '" + guest.getGuestAccountNumber() + "', '" + guest.getGuestAccountPin() +  "");*/
-            //this.statement.addBatch("INSERT INTO GUEST_LIST VALUES('"fname, 'doe', 30, 1231312, 'john@gmail.com', 420, 12345)");
             this.statement.executeBatch();
-            
         }
         catch(SQLException ex){
             ex.printStackTrace();
         }
     }
 
-    
     public void createGuestListTable(){
         try{
             this.statement = conn.createStatement();
-            //this.checkTableExistence("GUEST_LIST");
             this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_ACCOUNTPIN VARCHAR(50))");
             this.statement.executeBatch();
             System.out.println("Table Guest_List has been created");
@@ -86,22 +69,6 @@ public class HotelProductDB {
             System.out.println(ex.getNextException());
         }
     }
-    
-    /*public void createGuestListTable() {
-        try {
-            this.statement = conn.createStatement();
-            this.checkTableExistence("GUEST_LIST");
-            this.statement.addBatch("CREATE  TABLE GUEST_LIST (GUEST_FNAME VARCHAR(50), GUEST_LNAME VARCHAR(50), GUEST_AGE VARCHAR(50), GUEST_PHONE VARCHAR(50), GUEST_EMAIL VARCHAR(50), GUEST_ACCNUM VARCHAR(50), GUEST_ACCPIN VARCHAR(50))");
-            //this.statement.addBatch("INSERT INTO GUEST_LIST VALUES (");
-            this.statement.executeBatch();
-            System.out.println("Table Guest_List has been created");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(ex.getNextException());
-        }
-    }*/
-    
-    
 
     public void createHLocationTable() {
         try {

@@ -5,8 +5,11 @@
  */
 package tcm.hotel;
 
+import Controller.AdminController;
 import Controller.GuestController;
+import Model.AdminModel;
 import Model.GuestModel;
+import View.AdminView;
 import View.GuestView;
 import hotelDB.DBManager;
 import hotelDB.HotelProductDB;
@@ -28,13 +31,18 @@ public class DriverMVC {
         hotelMenuDB.createHFeaturesTable();
         hotelMenuDB.closeConnection();
         
-        GuestView view = new GuestView();
-        GuestModel model = new GuestModel();
-        model.setGuestFirstName(model.getGuestFirstName());
+        //AdminModel mAdmin = new AdminModel();
+        //AdminView vAdmin = new AdminView();
+        //AdminController cAdmin = new AdminController(mAdmin, vAdmin);
         
-        GuestController controller = new GuestController(view, model);
-
+        GuestModel model = new GuestModel();
+        GuestView view = new GuestView();
+        GuestController controller = new GuestController(model, view);
+        
+       //model.setGuestFirstName(model.getGuestFirstName());
+        
         view.setVisible(true);
+        //vAdmin.setVisible(true);
         
     }
 

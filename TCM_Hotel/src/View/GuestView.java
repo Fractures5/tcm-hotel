@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -187,7 +188,19 @@ public class GuestView extends JFrame{
     
     public GuestView(){
         
-        this.setBounds(700, 100, 600, 900);
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        
+        int screenWidth = screenSize.width;
+        int screenHeight = screenSize.height;
+        int frameWidth = screenWidth/2;
+        int frameHeight = screenHeight/2;
+        //Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        
+        this.setSize(frameWidth, frameHeight);
+        this.setResizable(false);
+        //this.setLocation(dim.width/2, dim.height);
+        //this.setBounds(700, 100, 600, 900);
         this.setTitle("Guest Form");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         

@@ -30,14 +30,15 @@ import tcm.hotel.GuestGUI;
  */
 public class GuestController{
     
-    GuestView viewGuest;
     GuestModel modelGuest;
+    GuestView viewGuest;
+    
     //HotelProductDB db;
     private GuestForm guestForm = new GuestForm();
     
-    public GuestController(GuestView viewGuest, GuestModel modelGuest){
-        this.viewGuest = viewGuest;
+    public GuestController(GuestModel modelGuest, GuestView viewGuest){
         this.modelGuest = modelGuest;
+        this.viewGuest = viewGuest;
         
         viewGuest.getConfirmDetails().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
