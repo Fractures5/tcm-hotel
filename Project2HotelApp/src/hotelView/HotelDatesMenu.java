@@ -25,17 +25,16 @@ import org.jdatepicker.impl.UtilDateModel;
  *
  * @author Siddarath
  */
-public class HotelChooseDates extends JFrame {
+public class HotelDatesMenu extends JFrame {
     
     private JLabel title, instruction;
     private JPanel headerPanel, menuPanel, bottomPanel;
     private JButton nextButton;
     
-    public HotelChooseDates()
+    public HotelDatesMenu()
     {
          
-         DatePicker d = new DatePicker();
-         
+        
          title = new JLabel("Hotel Date Booking Menu\n");
          title.setFont(new Font("Arial", Font.BOLD, 30));
          title.setForeground(Color.YELLOW);
@@ -54,7 +53,7 @@ public class HotelChooseDates extends JFrame {
          menuPanel.setBackground(Color.LIGHT_GRAY);
          menuPanel.setPreferredSize(new Dimension(600,450));
          menuPanel.add(instruction);
-         menuPanel.add(d);
+
          this.add(menuPanel, BorderLayout.CENTER);
 
          bottomPanel = new JPanel();

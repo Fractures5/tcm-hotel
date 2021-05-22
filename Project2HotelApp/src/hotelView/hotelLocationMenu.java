@@ -10,8 +10,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -39,6 +41,14 @@ public class HotelLocationMenu extends JFrame{
     private Boolean repeat = false;
 
     ArrayList<GuestsBookingCart> locationBooked = new ArrayList<>();
+    
+    Toolkit kit = Toolkit.getDefaultToolkit();
+    Dimension screenSize = kit.getScreenSize();
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    int screenWidth = screenSize.width;
+    int screenHeight = screenSize.height;
+    int frameWidth = screenWidth / 2;
+    int frameHeight = screenHeight / 2;
     
     public Boolean getShowErrorMesssage()
     {
@@ -69,6 +79,8 @@ public class HotelLocationMenu extends JFrame{
         instruction = new JLabel("Please tick the hotel location you would like to book at!");
         instruction.setFont(new Font("Arial", Font.BOLD, 20));
         instruction.setForeground(Color.BLACK);
+        //instruction.setHorizontalAlignment(JLabel.CENTER);
+        //instruction.setVerticalAlignment(JLabel.CENTER);
         
         headerPanel = new JPanel();
         headerPanel.setBackground(Color.BLUE);
@@ -80,6 +92,9 @@ public class HotelLocationMenu extends JFrame{
         menuPanel.setBackground(Color.LIGHT_GRAY);
         menuPanel.setPreferredSize(new Dimension(600,450));
         menuPanel.add(instruction);
+        menuPanel.add(Box.createVerticalStrut(75));
+        //menuPanel.add(Box.createHorizontalStrut(500));
+        
         group = new ButtonGroup();
         
         locationButtons [0] = new JRadioButton("Title: Auckland Hotel - 31 Starcent Ave                          Location: Auckland                       Rating: Five      Vacancy: Yes");
@@ -101,8 +116,10 @@ public class HotelLocationMenu extends JFrame{
             locationButtons[i].setFont(new Font("Arial", Font.BOLD, 18));
             group.add(locationButtons[i]);
             menuPanel.add(locationButtons[i]);
+            menuPanel.add(Box.createVerticalStrut(60));
         }
         this.add(menuPanel, BorderLayout.CENTER);
+        
         
         bottomPanel = new JPanel();
         bottomPanel.setBackground(Color.BLUE);
@@ -121,8 +138,9 @@ public class HotelLocationMenu extends JFrame{
         this.add(bottomPanel, BorderLayout.SOUTH);
         
         this.setTitle("Guests booking hotel location");
-        this.setSize(1200,700);
-        this.setLocation(500,150);
+        //this.setSize(1400,825);
+        this.setSize(frameWidth +350, frameHeight +300);
+        this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }

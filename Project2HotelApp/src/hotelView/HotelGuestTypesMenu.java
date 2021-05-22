@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -37,6 +38,14 @@ public class HotelGuestTypesMenu extends JFrame
     private Boolean repeat = false;
     Integer[] guestCount = {0,1,2,3,4,5};
     ArrayList<GuestsBookingCart> guestTypesBooked = new ArrayList<>();
+    
+    Toolkit kit = Toolkit.getDefaultToolkit();
+    Dimension screenSize = kit.getScreenSize();
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    int screenWidth = screenSize.width;
+    int screenHeight = screenSize.height;
+    int frameWidth = screenWidth / 2;
+    int frameHeight = screenHeight / 2;
     
     public HotelGuestTypesMenu()
     {
@@ -131,8 +140,10 @@ public class HotelGuestTypesMenu extends JFrame
         this.add(bottomPanel, BorderLayout.SOUTH);
         
         this.setTitle("Guests booking guests types");
-        this.setSize(1200,700);
-        this.setLocation(500,150);
+        //this.setSize(1200,700);
+        this.setSize(frameWidth +350, frameHeight +250);
+        this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
+        //this.setLocation(350,100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }

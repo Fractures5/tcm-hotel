@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import project2hotelapp.FeaturesMenu;
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JFrame;
@@ -37,6 +38,14 @@ public class HotelFeaturesMenu extends JFrame
     private Boolean showErrorMessage = false;
     private Boolean repeat = false;
     private ArrayList<GuestsBookingCart> guestFeaturesBooked = new ArrayList<>();
+    
+    Toolkit kit = Toolkit.getDefaultToolkit();
+    Dimension screenSize = kit.getScreenSize();
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    int screenWidth = screenSize.width;
+    int screenHeight = screenSize.height;
+    int frameWidth = screenWidth / 2;
+    int frameHeight = screenHeight / 2;
     
     public HotelFeaturesMenu()
     {
@@ -63,24 +72,24 @@ public class HotelFeaturesMenu extends JFrame
         menuPanel.setPreferredSize(new Dimension(600, 450));
         menuPanel.add(instruction);
         
-        spaCB = new JCheckBox("Title: " +featuresMenu.get(0).getTitle() + "                                 Guest Type: " +featuresMenu.get(0).getFeatureType()+ "                       Price: $" +featuresMenu.get(0).getPrice());
+        spaCB = new JCheckBox("Title: " +featuresMenu.get(0).getTitle() + "                                 Feature Type: " +featuresMenu.get(0).getFeatureType()+ "                       Price: $" +featuresMenu.get(0).getPrice());
         spaCB.setFont(new Font("Arial", Font.BOLD, 20));
         //spaCB.setPreferredSize(new Dimension(700, 50));
         spaCB.setBorder(blackline);
         
-        jacuzziCB = new JCheckBox("Title: " +featuresMenu.get(1).getTitle() + "                            Guest Type: " +featuresMenu.get(1).getFeatureType()+ "                       Price: $" +featuresMenu.get(1).getPrice());
+        jacuzziCB = new JCheckBox("Title: " +featuresMenu.get(1).getTitle() + "                            Feature Type: " +featuresMenu.get(1).getFeatureType()+ "                       Price: $" +featuresMenu.get(1).getPrice());
         jacuzziCB.setFont(new Font("Arial", Font.BOLD, 20));
         jacuzziCB.setBorder(blackline);
         
-        saunaCB = new JCheckBox("Title: " +featuresMenu.get(2).getTitle() + "                               Guest Type: " +featuresMenu.get(2).getFeatureType()+ "                        Price: $" +featuresMenu.get(2).getPrice());
+        saunaCB = new JCheckBox("Title: " +featuresMenu.get(2).getTitle() + "                             Feature Type: " +featuresMenu.get(2).getFeatureType()+ "                        Price: $" +featuresMenu.get(2).getPrice());
         saunaCB.setFont(new Font("Arial", Font.BOLD, 20)); 
         saunaCB.setBorder(blackline);
         
-        gymCB = new JCheckBox("Title: " +featuresMenu.get(3).getTitle() + "                               Guest Type: " +featuresMenu.get(3).getFeatureType()+ "                         Price: $" +featuresMenu.get(3).getPrice());
+        gymCB = new JCheckBox("Title: " +featuresMenu.get(3).getTitle() + "                               Feature Type: " +featuresMenu.get(3).getFeatureType()+ "                         Price: $" +featuresMenu.get(3).getPrice());
         gymCB.setFont(new Font("Arial", Font.BOLD, 20));
         gymCB.setBorder(blackline);
         
-        noneCB = new JCheckBox("No features                                                                                                                 ");
+        noneCB = new JCheckBox("Title: No features                                Feature Type: NONE                                  Price: $0");
         noneCB.setFont(new Font("Arial", Font.BOLD, 20));
         noneCB.setBorder(blackline);
         
@@ -111,8 +120,8 @@ public class HotelFeaturesMenu extends JFrame
         this.add(bottomPanel, BorderLayout.SOUTH);
         
         this.setTitle("Guests booking extra hotel features");
-        this.setSize(1200,700);
-        this.setLocation(500,150);
+        this.setSize(frameWidth +350, frameHeight +250);
+        this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
