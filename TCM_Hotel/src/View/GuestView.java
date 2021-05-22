@@ -190,17 +190,16 @@ public class GuestView extends JFrame{
         
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
         int frameWidth = screenWidth/2;
         int frameHeight = screenHeight/2;
-        //Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         
-        this.setSize(frameWidth, frameHeight);
+        this.setSize(frameWidth, frameHeight+350);
         this.setResizable(false);
-        //this.setLocation(dim.width/2, dim.height);
-        //this.setBounds(700, 100, 600, 900);
+        this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         this.setTitle("Guest Form");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -215,55 +214,57 @@ public class GuestView extends JFrame{
         centrePanel = new JPanel(null);
         
         fName = new JLabel("First Name: ");
-        fName.setBounds(200, 25, 150, 30);
+        fName.setBounds(325, 25, 150, 30);
         fName.setFont(new Font("Arial", Font.BOLD, 17));
         fNameField = new JTextField("", 30);
-        fNameField.setBounds(300, 25, 200, 30);
+        fNameField.setBounds(425, 25, 200, 30);
         
         lName = new JLabel("Last Name: ");
-        lName.setBounds(200, 85, 150, 30);
+        lName.setBounds(325, 85, 150, 30);
         lName.setFont(new Font("Arial", Font.BOLD, 17));
         lNameField = new JTextField("", 30);
-        lNameField.setBounds(300, 85, 200, 30);
+        lNameField.setBounds(425, 85, 200, 30);
         
         age = new JLabel("Age: ");
-        age.setBounds(250, 145, 300, 30);
+        age.setBounds(375, 145, 300, 30);
         age.setFont(new Font("Arial", Font.BOLD, 17));
         ageField = new JTextField("", 20);
-        ageField.setBounds(300, 145, 100, 30);
+        ageField.setBounds(425, 145, 100, 30);
         
         phoneNumber = new JLabel("Contact Phone: ");
-        phoneNumber.setBounds(160, 205, 300, 30);
+        phoneNumber.setBounds(285, 205, 300, 30);
         phoneNumber.setFont(new Font("Arial", Font.BOLD, 17));
         phoneNumField = new JTextField("", 50);
-        phoneNumField.setBounds(300, 205, 150, 30);
+        phoneNumField.setBounds(425, 205, 200, 30);
         
         emailAddress = new JLabel("Contact Email: ");
-        emailAddress.setBounds(170, 265, 300, 30);
+        emailAddress.setBounds(295, 265, 300, 30);
         emailAddress.setFont(new Font("Arial", Font.BOLD, 17));
         emailField = new JTextField("", 30);
-        emailField.setBounds(300, 265, 200, 30);
+        emailField.setBounds(425, 265, 200, 30);
         
         paymentHeaderPanel = new JPanel();
+        paymentHeaderPanel.setSize(frameWidth, 100);
+        paymentHeaderPanel.setLocation(0, 355);
         paymentHeaderPanel.add(Box.createVerticalStrut(100));
         paymentHeaderPanel.setBackground(Color.blue);
         paymentLabel = new JLabel("Payment Details");
         paymentLabel.setForeground(Color.white);
         paymentLabel.setFont(new Font("Arial", Font.BOLD, 30));
         paymentHeaderPanel.add(paymentLabel);
-        paymentHeaderPanel.setBounds(0, 355, 600, 100);
+        //paymentHeaderPanel.setBounds(0, 355, 800, 100);
         
         accountNumber = new JLabel("Bank Account Number: ");
-        accountNumber.setBounds(100, 475, 200, 100);
+        accountNumber.setBounds(275, 475, 200, 100);
         accountNumber.setFont(new Font("Arial", Font.BOLD, 17));
         accNumField = new JTextField("", 30);
-        accNumField.setBounds(300, 515, 200, 30);
+        accNumField.setBounds(475, 515, 200, 30);
 
         accountPin = new JLabel("Bank Account Pin: ");
-        accountPin.setBounds(100, 535, 200, 100);
+        accountPin.setBounds(310, 535, 200, 100);
         accountPin.setFont(new Font("Arial", Font.BOLD, 17));
         accPinField = new JPasswordField("", 30);
-        accPinField.setBounds(300, 565, 200, 30);
+        accPinField.setBounds(475, 565, 200, 30);
         
         centrePanel.add(fName);
         centrePanel.add(fNameField);
@@ -297,8 +298,9 @@ public class GuestView extends JFrame{
         resetDetails.setBorder(new LineBorder(Color.black, 4));
         resetDetails.setForeground(Color.black);
 
-        buttonPanel.add(confirmDetails);
         buttonPanel.add(resetDetails);
+        buttonPanel.add(confirmDetails);
+        
         
         this.add(headerPanel, BorderLayout.NORTH);
         this.add(centrePanel, BorderLayout.CENTER);
@@ -353,10 +355,10 @@ public class GuestView extends JFrame{
             showPhoneNumberError = true;
             phoneNumField.setText("");
         }
-        if (!inputEmail.contains("@") || (((!inputEmail.contains(".com")) && (!inputEmail.contains(".co.nz")) && (!inputEmail.contains(".net")) && (!inputEmail.contains(".org.nz"))))) {
+        if (!inputEmail.contains("@") || (((!inputEmail.contains(".com")) && (!inputEmail.contains(".co.nz")) && (!inputEmail.contains(".net")) && (!inputEmail.contains(".org.nz")) && (!inputEmail.contains(".ac.nz"))))) {
             validEmail = false;
             showEmailAddressError = true;
-        } else if (inputEmail.contains("@") || (((inputEmail.contains(".com")) && (inputEmail.contains(".co.nz")) && (inputEmail.contains(".net")) && (inputEmail.contains(".org.nz"))))) {
+        } else if (inputEmail.contains("@") || (((inputEmail.contains(".com")) && (inputEmail.contains(".co.nz")) && (inputEmail.contains(".net")) && (inputEmail.contains(".org.nz")) && (!inputEmail.contains(".ac.nz"))))) {
             validEmail = true;
             showEmailAddressError = false;
         }
@@ -395,13 +397,6 @@ public class GuestView extends JFrame{
         
         
     }      
-    
-    public void insertGuest(){
-        
-        String insertQuery = "INSERT INTO 'GUEST_LIST'('GUEST_FNAME', 'GUEST_LNAME', 'GUEST_AGE', 'GUEST_PHONE', 'GUEST_EMAIL', 'GUEST_ACCNUM', 'GUEST_ACCPIN')"+" VALUES(?,?,?,?,?,?,?)";
-        
-        //Class.forName(JDBC_DRIVER);
-    }
     
     public void DetailsReset(){
         

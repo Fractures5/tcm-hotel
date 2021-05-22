@@ -25,11 +25,11 @@ public class AdminController {
         this.modelAdmin = modelAdmin;
         this.viewAdmin = viewAdmin;
 
-        /*viewAdmin.getProceedToLogin().addActionListener(new ActionListener(){
+        viewAdmin.getProceedToLogin().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 handleProceedToLoginClick();
             }
-        });*/
+        });
 
  /*viewAdmin.getProceedToLogin().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -54,10 +54,12 @@ public class AdminController {
     }
 
     public void handleProceedToLoginClick() {
-        System.out.println("ok");
+        viewAdmin.adminDetailsConfirmation();
     }
 
     public void handleResetAdminDetailsClick() {
+        
+        viewAdmin.adminDetailsReset();
 
     }
 
