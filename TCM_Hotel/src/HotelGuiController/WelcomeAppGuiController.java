@@ -10,11 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
-
 /**
  *
  * @author faaris
  */
+
 public class WelcomeAppGuiController 
 {
     WelcomeAppGuiView viewClass;
@@ -26,6 +26,28 @@ public class WelcomeAppGuiController
     public WelcomeAppGuiController(WelcomeAppGuiView viewClass)
     {
         this.viewClass = viewClass;
+        
+        viewClass.getPrevButton().addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                if (e.getSource() == viewClass.getPrevButton()) 
+                {
+                    ClickPrevButton();
+                }
+            }
+        });
+        
+        viewClass.getNextButton().addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                if (e.getSource() == viewClass.getNextButton()) 
+                {
+                    ClickNextButton();
+                }
+            }
+        });
         
         viewClass.getButtonOne().addActionListener(new ActionListener()
         {
@@ -118,6 +140,8 @@ public class WelcomeAppGuiController
                 ExitMouseHoverButtonFour();
             }
         });
+        
+        
     }
     
     public void EnterMouseHoverButtonOne() 
@@ -178,5 +202,15 @@ public class WelcomeAppGuiController
     public void ClickButtonFour() 
     {
         viewClass.enterAdminView();
+    }
+    
+    public void ClickPrevButton()
+    {
+        viewClass.PrevButtonAction();
+    }
+    
+    public void ClickNextButton()
+    {
+        viewClass.NextButtonAction();
     }
 }

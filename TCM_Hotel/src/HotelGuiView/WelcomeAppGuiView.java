@@ -4,14 +4,17 @@
  * and open the template in the editor.
  */
 package HotelGuiView;
-//import HotelGuiModel.WelcomeAppGuiModel;
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
-//import java.awt.event.ActionEvent;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -42,28 +45,26 @@ public class WelcomeAppGuiView extends JFrame
     
     private FAQGuiView accessFAQ;
     
-    /*private WelcomeAppGuiModel icon1;
-    private WelcomeAppGuiModel icon2;
-    private WelcomeAppGuiModel icon3;
-    private WelcomeAppGuiModel icon4;*/
+    private ImageIcon slideshow[];
+    private JLabel images;
+    private JButton prev, next;
+    private int i, l1;
+    
     
     public WelcomeAppGuiView()
-    {
-        /*icon1 = new WelcomeAppGuiModel();
-        icon2= new WelcomeAppGuiModel();
-        icon3 = new WelcomeAppGuiModel();
-        icon4 = new WelcomeAppGuiModel();*/ 
-        //accessFAQ = new FAQGuiView();
-        
+    {   
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
         int frameWidth = screenWidth/2;
         int frameHeight = screenHeight/2;
         
-        this.setSize(frameWidth, frameHeight);
+        this.setSize(frameWidth, frameHeight+350);
+        this.setResizable(false);
+        this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         
         welcomeFrame = new JFrame("TCM Hotel Online Booking System");
         welcomeFrame.setBounds(500, 200, 900, 700);
@@ -107,8 +108,32 @@ public class WelcomeAppGuiView extends JFrame
         buttonFour.setFont(new Font("Arial", Font.BOLD, 20));
         buttonFour.setBorder(new LineBorder(Color.BLACK, 5));
         buttonFour.setBounds(75, 370, 250, 70);
+        
+        //JPanel imagePanel = new JPanel(new FlowLayout());
+        prev = new JButton("<<");
+        next = new JButton(">>");
+        /*imagePanel.add(prev);
+        imagePanel.add(next);
+        add(imagePanel, BorderLayout.SOUTH);*/
+        slideshow = new ImageIcon[2];
+        slideshow[0] = new ImageIcon("test/image1.jpg");
+        slideshow[1] = new ImageIcon("test/image2.jpg");
+        images = new JLabel("", JLabel.CENTER);
+        add(images, BorderLayout.CENTER);
+        images.setIcon(slideshow[0]);
+        images.setBounds(500, 20, 300, 500);
+        prev.setBounds(525, 400, 50, 20);
+        next.setBounds(625, 400, 50, 20);
+
+        middlePanel.add(images);
+        middlePanel.add(prev);
+        middlePanel.add(next);
+        
+        //middlePanel.add(imagePanel);
 
         topPanel.add(welcomeLabel);
+        
+        //middlePanel.add(imagePanel);
         
         middlePanel.add(subWelcomeLabel);
         middlePanel.add(buttonOne);
@@ -120,6 +145,43 @@ public class WelcomeAppGuiView extends JFrame
         welcomeFrame.add(middlePanel, BorderLayout.CENTER);
         welcomeFrame.setVisible(true);
     }
+    
+    public JButton getPrevButton()
+    {
+        return prev;
+    }
+    
+    public JButton getNextButton()
+    {
+        return next;
+    }
+    
+    public void PrevButtonAction()
+    {
+        if (i == 0) 
+        {
+            JOptionPane.showMessageDialog(null, "This is First Image");
+        } 
+        else 
+        {
+            i = i - 1;
+            images.setIcon(slideshow[i]);
+        }
+    }
+    
+    public void NextButtonAction()
+    {
+        if (i == slideshow.length - 1) 
+        {
+            JOptionPane.showMessageDialog(null, "This is LastImage");
+        } 
+        else 
+        {
+            i = i + 1;
+            images.setIcon(slideshow[i]);
+        }
+    }
+    
     
     public JButton getButtonOne()
     {

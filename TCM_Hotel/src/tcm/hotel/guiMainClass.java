@@ -13,7 +13,7 @@ import HotelGuiView.WelcomeAppGuiView;
  *
  * @author faaris
  */
-public class GuiMainClass 
+public class GuiMainClass
 {
     public static void main(String[] args) 
     {
