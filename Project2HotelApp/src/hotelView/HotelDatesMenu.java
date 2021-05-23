@@ -10,7 +10,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import javafx.scene.control.DatePicker;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -20,8 +23,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
@@ -34,9 +39,13 @@ import org.jdatepicker.impl.UtilDateModel;
 public class HotelDatesMenu extends JFrame {
     
     private JLabel title, instruction;
-    private JLabel checkInDay, checkOutDay, checkInMonth, checkOutMonth, checkInYear, checkOutYear;
+    private JLabel checkInDayJL, checkOutDayJL, checkInMonthJL, checkOutMonthJL, checkInYearJL, checkOutYearJL;
     private JPanel headerPanel, menuPanel, bottomPanel;
     private JButton nextButton;
+    private int checkInDay, checkInYear, checkOutDay, checkOutYear;
+    private String checkInMonth, checkOutMonth;
+    private Boolean repeat = false;
+    private Boolean validDate = false;
     
     JComboBox <String> monthInBox, monthOutBox;
     String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August",
@@ -56,7 +65,7 @@ public class HotelDatesMenu extends JFrame {
     int screenHeight = screenSize.height;
     int frameWidth = screenWidth / 2;
     int frameHeight = screenHeight / 2;
-    
+
     public HotelDatesMenu()
     {
         title = new JLabel("Hotel Date Booking Menu\n");
@@ -105,47 +114,47 @@ public class HotelDatesMenu extends JFrame {
         
         Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.LIGHT_GRAY, 10));
 
-        checkInDay = new JLabel("Check in day: ");
-        checkInDay.setFont(new Font("Arial", Font.BOLD, 20));
-        checkInDay.setBounds(210, 100, 175, 50);
-        checkInDay.setBorder(blackline);
+        checkInDayJL = new JLabel("Check in day: ");
+        checkInDayJL.setFont(new Font("Arial", Font.BOLD, 20));
+        checkInDayJL.setBounds(210, 100, 175, 50);
+        checkInDayJL.setBorder(blackline);
         
-        checkInMonth = new JLabel("Check in month: ");
-        checkInMonth.setFont(new Font("Arial", Font.BOLD, 20));
-        checkInMonth.setBounds(210, 240, 175, 50);
-        checkInMonth.setBorder(blackline);
+        checkInMonthJL = new JLabel("Check in month: ");
+        checkInMonthJL.setFont(new Font("Arial", Font.BOLD, 20));
+        checkInMonthJL.setBounds(210, 240, 175, 50);
+        checkInMonthJL.setBorder(blackline);
         
-        checkInYear = new JLabel("Check in year: ");
-        checkInYear.setFont(new Font("Arial", Font.BOLD, 20));
-        checkInYear.setBounds(210, 380, 175, 50);
-        checkInYear.setBorder(blackline);
+        checkInYearJL = new JLabel("Check in year: ");
+        checkInYearJL.setFont(new Font("Arial", Font.BOLD, 20));
+        checkInYearJL.setBounds(210, 380, 175, 50);
+        checkInYearJL.setBorder(blackline);
         
-        checkOutDay = new JLabel("Check out day: ");
-        checkOutDay.setFont(new Font("Arial", Font.BOLD, 20));
-        checkOutDay.setBounds(640, 100, 200, 50);
-        checkOutDay.setBorder(blackline);
+        checkOutDayJL = new JLabel("Check out day: ");
+        checkOutDayJL.setFont(new Font("Arial", Font.BOLD, 20));
+        checkOutDayJL.setBounds(640, 100, 200, 50);
+        checkOutDayJL.setBorder(blackline);
         
-        checkOutMonth = new JLabel("Check out month: ");
-        checkOutMonth.setFont(new Font("Arial", Font.BOLD, 20));
-        checkOutMonth.setBounds(640, 240, 200, 50);
-        checkOutMonth.setBorder(blackline);
+        checkOutMonthJL = new JLabel("Check out month: ");
+        checkOutMonthJL.setFont(new Font("Arial", Font.BOLD, 20));
+        checkOutMonthJL.setBounds(640, 240, 200, 50);
+        checkOutMonthJL.setBorder(blackline);
         
-        checkOutYear = new JLabel("Check out year: ");
-        checkOutYear.setFont(new Font("Arial", Font.BOLD, 20));
-        checkOutYear.setBounds(640, 380, 200, 50);
-        checkOutYear.setBorder(blackline);
+        checkOutYearJL = new JLabel("Check out year: ");
+        checkOutYearJL.setFont(new Font("Arial", Font.BOLD, 20));
+        checkOutYearJL.setBounds(640, 380, 200, 50);
+        checkOutYearJL.setBorder(blackline);
         
-        menuPanel.add(checkInDay);
+        menuPanel.add(checkInDayJL);
         menuPanel.add(dayInBox);
-        menuPanel.add(checkInMonth);
+        menuPanel.add(checkInMonthJL);
         menuPanel.add(monthInBox);  
-        menuPanel.add(checkInYear);
+        menuPanel.add(checkInYearJL);
         menuPanel.add(yearInBox);
-        menuPanel.add(checkOutDay);
+        menuPanel.add(checkOutDayJL);
         menuPanel.add(dayOutBox);
-        menuPanel.add(checkOutMonth);
+        menuPanel.add(checkOutMonthJL);
         menuPanel.add(monthOutBox);  
-        menuPanel.add(checkOutYear);
+        menuPanel.add(checkOutYearJL);
         menuPanel.add(yearOutBox);
         this.add(menuPanel, BorderLayout.CENTER);
 
@@ -167,6 +176,127 @@ public class HotelDatesMenu extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+
+    public int getCheckInDay() 
+    {
+        return checkInDay;
+    }
+
+    public String getCheckInMonth() 
+    {
+        return checkInMonth;
+    }
+
+    public int getCheckInYear() 
+    {
+        return checkInYear;
+    }
+
+    public int getCheckOutDay() 
+    {
+        return checkOutDay;
+    }
+
+    public String getCheckOutMonth() 
+    {
+        return checkOutMonth;
+    }
+
+    public int getCheckOutYear() 
+    {
+        return checkOutYear;
+    }
     
+    public Boolean getRepeat()
+    {
+        return repeat;
+    }
+    
+    public Boolean getValidDate()
+    {
+        return validDate;
+    }
+
+    public JButton getNextButton() 
+    {
+        return nextButton;
+    }
+    
+    public void confirmSelection() throws ParseException
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Uses an object of the sdf SimpleDateFormat class to create a date format.
+        Date d1 = sdf.parse(String.valueOf(dayInBox.getSelectedItem())+ "/" +String.valueOf(monthInBox.getSelectedIndex() +1) +"/" +String.valueOf(yearInBox.getSelectedItem())); // Uses an object of the Date and SimpleDateFormat class to store the dates.
+        Date d2 = sdf.parse(String.valueOf(dayOutBox.getSelectedItem())+ "/" +String.valueOf(monthOutBox.getSelectedIndex() +1) +"/" +String.valueOf(yearOutBox.getSelectedItem()));
+        if(d1.compareTo(d2) >0) // Checks if the check in date happens after the check out date
+        {
+            validDate = false;
+            repeat = true;
+        }
+        else if(d1.compareTo(d2) < 0) // Checks if the check in date happens before the check out date
+        {
+            validDate = true;
+            //System.out.println("Month in: "  +monthInBox.getSelectedIndex());
+            //System.out.println("Month out: "  +monthOutBox.getSelectedIndex());
+            int userConfirmation = JOptionPane.showConfirmDialog(new JFrame(), "Would you like to continue?");
+
+            if (userConfirmation == JOptionPane.YES_OPTION) 
+            {
+                repeat = false;
+                checkInDay = (Integer)dayInBox.getSelectedItem();
+                checkInMonth = (String) monthInBox.getSelectedItem();
+                checkInYear = (Integer)yearInBox.getSelectedItem();
+                checkOutDay = (Integer)dayOutBox.getSelectedItem();
+                checkOutMonth = (String) monthOutBox.getSelectedItem();
+                checkOutYear = (Integer)yearOutBox.getSelectedItem();
+            } 
+            else if (userConfirmation == JOptionPane.NO_OPTION || userConfirmation == JOptionPane.CANCEL_OPTION || userConfirmation == JOptionPane.CLOSED_OPTION) 
+            {
+                repeat = true;
+            }
+        }
+        else if(d1.compareTo(d2) == 0 ) // Checks if the check in date is equal to the check out date
+        {
+            validDate = false;
+            repeat = true;
+        }
+    }
+    
+    /*public boolean compareDates() throws ParseException
+    {
+        boolean validDate = false;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Uses an object of the sdf SimpleDateFormat class to create a date format.
+        Date d1 = sdf.parse(String.valueOf(checkInDay)+ "/" +String.valueOf(checkInMonth) +"/" +String.valueOf(checkInYear)); // Uses an object of the Date and SimpleDateFormat class to store the dates.
+        Date d2 = sdf.parse(String.valueOf(checkOutDay)+ "/" +String.valueOf(checkOutMonth) +"/" +String.valueOf(checkOutYear));
+        if(d1.compareTo(d2) >0) // Checks if the check in date happens after the check out date
+        {
+            validDate = false;
+        }
+        else if(d1.compareTo(d2) < 0) // Checks if the check in date happens before the check out date
+        {
+            validDate = true;
+        }
+        else if(d1.compareTo(d2) == 0 ) // Checks if the check in date is equal to the check out date
+        {
+            validDate = false;
+        }
+        
+        return validDate;
+    }*/
+    
+    public void displayErrorMessage()
+    {
+        JOptionPane.showMessageDialog(new JFrame(), "Invalid selection! Check in date must occur before check out date and both dates cannot be the same!", "Invalid Selection",
+                    JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void mouseEnterHover()
+    {
+        getNextButton().setBackground(Color.GREEN);
+    }
+    
+    public void mouseExitHover()
+    {
+        getNextButton().setBackground(UIManager.getColor("control"));
+    }
     
 }

@@ -5,9 +5,11 @@
  */
 package project2hotelapp;
 
+import hotelControllers.BookDatesInteraction;
 import hotelDB.HotelProductDB;
 import hotelControllers.FeaturesMenuInteraction;
 import hotelControllers.LocationMenuInteraction;
+import hotelModel.HotelBookingDates;
 import hotelModel.HotelFeatures;
 import hotelModel.HotelLocations;
 import hotelModel.HotelRooms;
@@ -37,7 +39,7 @@ public class Project2HotelApp extends JFrame{
      */
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
-        bookDate = new HotelDatesMenu();
+        //bookDate = new HotelDatesMenu();
         //bookLocation = new GuestChooseHotel();
         //bookRooms = new GuestChooseRoom();
       
@@ -47,13 +49,10 @@ public class Project2HotelApp extends JFrame{
         hotelMenuDB.createHGuestTypeTable();
         hotelMenuDB.createHFeaturesTable();
         hotelMenuDB.closeConnection();*/
-        
-        /*HotelLocations locationModel = new HotelLocations();
-        HotelLocationMenu locationView = new HotelLocationMenu();
-        LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);*/
-        
-        
-        //locationModel.currentLocationBookings(locationView.getBookingLocation());
+    
+        HotelBookingDates datesModel = new HotelBookingDates();
+        HotelDatesMenu datesView = new HotelDatesMenu();
+        BookDatesInteraction selectDates = new BookDatesInteraction(datesModel, datesView);
     }
 
 }
