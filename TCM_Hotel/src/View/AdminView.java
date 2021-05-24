@@ -14,9 +14,11 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 /**
@@ -38,8 +40,6 @@ public class AdminView extends JFrame {
     private JLabel staffTitle;
     private JLabel phoneNumber;
     private JLabel emailAddress;
-
-    private JLabel adminInputPassword;
 
     private JTextField adminFNameField;
     private JTextField adminLNameField;
@@ -65,25 +65,54 @@ public class AdminView extends JFrame {
     private boolean showAdminJobTitleError = false;
     private boolean showAdminPhoneNumberError = false;
     private boolean showAdminEmailAddressError = false;
+    private boolean showAdminRegSuccess = false;
+
+    public boolean getShowAdminRegSuccess() {
+        return showAdminRegSuccess;
+    }
+
+    public boolean getValidAdminDetails() {
+        return validAdminDetails;
+    }
+
+    public boolean getShowAdminFNameError() {
+        return showAdminFNameError;
+    }
+
+    public boolean getShowAdminLNameError() {
+        return showAdminLNameError;
+    }
+
+    public boolean getShowAdminJobTitleError() {
+        return showAdminJobTitleError;
+    }
+
+    public boolean getShowAdminPhoneNumberError() {
+        return showAdminPhoneNumberError;
+    }
+
+    public boolean getShowAdminEmailAddressError() {
+        return showAdminEmailAddressError;
+    }
     
-    public JTextField getAdminFNameField() {
-        return adminFNameField;
+    public String getAdminFNameField() {
+        return adminFNameField.getText();
     }
 
-    public JTextField getAdminLNameField() {
-        return adminLNameField;
+    public String getAdminLNameField() {
+        return adminLNameField.getText();
     }
 
-    public JTextField getAdminJobTitleField() {
-        return adminJobTitleField;
+    public String getAdminJobTitleField() {
+        return adminJobTitleField.getText();
     }
 
     public long getAdminPhoneNumField() {
         return Long.parseLong(adminPhoneNumField.getText());
     }
 
-    public JTextField getAdminEmailField() {
-        return adminEmailField;
+    public String getAdminEmailField() {
+        return adminEmailField.getText();
     }
     
     public JButton getProceedToLogin() {
@@ -134,7 +163,7 @@ public class AdminView extends JFrame {
         adminLNameField.setBounds(500, 85, 200, 30);
         
         staffTitle = new JLabel("Your Job Title: ");
-        staffTitle.setBounds(300, 145, 300, 30);
+        staffTitle.setBounds(375, 145, 300, 30);
         staffTitle.setFont(new Font("Arial", Font.BOLD, 17));
         adminJobTitleField = new JTextField("", 30);
         adminJobTitleField.setBounds(500, 145, 200, 30);
@@ -240,9 +269,68 @@ public class AdminView extends JFrame {
             showAdminEmailAddressError = false;
         }
         
+        if (validAdminFName == true && validAdminLName == true && validAdminJobTitle == true && validAdminPhoneNumber == true && validAdminEmail == true){
+            validAdminDetails = true;
+            showAdminRegSuccess = true;
+        }
+        
     }
     
     public void adminDetailsReset(){
         
+        int resetReply = JOptionPane.showConfirmDialog(null, "Resetting will clear information you have entered!", "Reset Details!", JOptionPane.ERROR_MESSAGE);
+        if (resetReply == JOptionPane.YES_OPTION) {
+            String empty = "";
+            adminFNameField.setText(empty);
+            adminLNameField.setText(empty);
+            adminJobTitleField.setText(empty);
+            adminPhoneNumField.setText(empty);
+            adminEmailField.setText(empty);
+        } else if (resetReply == JOptionPane.NO_OPTION) {
+            adminFNameField.setText(inputFirstName);
+            adminLNameField.setText(inputLastName);
+            adminJobTitleField.setText(inputJobTitle);
+            adminEmailField.setText(inputEmail);
+        }
+        
+    }
+    
+    public void mouseEnterProceedToLogin() {
+        getProceedToLogin().setBackground(Color.LIGHT_GRAY);
+    }
+
+    public void mouseExitProceedToLogin() {
+        getProceedToLogin().setBackground(UIManager.getColor("control"));
+    }
+
+    public void mouseEnterResetAdminDetails() {
+        getResetAdminDetails().setBackground(Color.LIGHT_GRAY);
+    }
+
+    public void mouseExitResetAdminDetails() {
+        getResetAdminDetails().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void displayAdminFNameError() {
+        JOptionPane.showMessageDialog(null, "Your First Name must only contain letters of the Alphabet!", "Invalid First Name Error!", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void displayAdminLNameError() {
+        JOptionPane.showMessageDialog(null, "Your Last Name must only contain letters of the Alphabet!", "Invalid Last Name Error!", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void displayAdminJobTitleError() {
+        JOptionPane.showMessageDialog(null, "Your Job Title must only contain letters of the Alphabet!", "Invalid Job Title Error!", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void displayAdminPhoneNumberError() {
+        JOptionPane.showMessageDialog(null, "Your Phone Number must only contain Numbers", "Invalid Phone Number Error!", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void displayAdminEmailAddressError() {
+        JOptionPane.showMessageDialog(null, "You must have a valid Email Address!", "Invalid Email Error!", JOptionPane.ERROR_MESSAGE);
+    }
+    public void displayAdminRegSuccess() {
+        JOptionPane.showMessageDialog(null, "Administrator Registration Successful!", "Registration Success", JOptionPane.INFORMATION_MESSAGE);
     }
 }

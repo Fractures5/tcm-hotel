@@ -5,6 +5,7 @@
  */
 package hotelDB;
 
+import Model.AdminModel;
 import Model.GuestModel;
 import hotelDB.DBManager;
 import java.sql.BatchUpdateException;
@@ -32,20 +33,16 @@ public class HotelProductDB {
 
     }
     
-   /*public void registerGuest(GuestModel guest) {
+    public void registerAdmin(AdminModel admin) {
         try {
-            //Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/TCMHotelDB", "pdc", "pdc");
-            Statement stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO GUEST_LIST(GUEST_FNAME, GUEST_LNAME, GUEST_AGE, GUEST_PHONE, GUEST_EMAIL, GUEST_ACCNUM, GUEST_ACCPIN" + ") VALUES ('" + guest.getGuestFirstName()
-                    + "', '" + guest.getGuestLastName() + "', '" + guest.getGuestAge()
-                    + "', '" + guest.getGuestPhoneNumber() + "', '" + guest.getGuestEmail()
-                    + "', '" + guest.getGuestAccountNumber() + "', '" + guest.getGuestAccountPin());
-            stmt.executeBatch();
+            this.statement = conn.createStatement();
+            this.statement.addBatch("INSERT INTO ADMIN_LIST (ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS) VALUES('" + admin.getAdminFirstName() + "', '" + admin.getAdminLastName() + "', '" + admin.getAdminJobTitle()+ "', '" + admin.getAdminPhoneNumber() + "', '" + admin.getAdminEmailAddress() + "')");
+            this.statement.executeBatch();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }*/
-    
+    }
+
     public void registerGuest(GuestModel guest){
         try{
             this.statement = conn.createStatement();
@@ -54,6 +51,19 @@ public class HotelProductDB {
         }
         catch(SQLException ex){
             ex.printStackTrace();
+        }
+    }
+    
+    public void createAdminListTable() {
+        try {
+            this.statement = conn.createStatement();
+            //this.checkTableExistence("ADMIN_LIST");
+            this.statement.addBatch("CREATE TABLE ADMIN_LIST (ADMIN_FIRSTNAME VARCHAR(50), ADMIN_LASTNAME VARCHAR(50), ADMIN_JOBTITLE VARCHAR(50), ADMIN_PHONENUMBER VARCHAR(50), ADMIN_EMAILADDRESS VARCHAR(50))");
+            this.statement.executeBatch();
+            System.out.println("Table Admin_List has been created");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getNextException());
         }
     }
 

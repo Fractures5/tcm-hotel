@@ -109,9 +109,10 @@ public class GuestController{
             modelGuest.setGuestEmail(viewGuest.getEmailField());
             modelGuest.setGuestAccountNumber(viewGuest.getAccNumField());
             modelGuest.setGuestAccountPin(viewGuest.getAccPinField());
-            HotelProductDB test = new HotelProductDB();
-            DBManager db = new DBManager();
-            test.registerGuest(modelGuest);
+            HotelProductDB productDB = new HotelProductDB();
+            DBManager dbManage = new DBManager();
+            productDB.registerGuest(modelGuest);
+            
             
         }
     }

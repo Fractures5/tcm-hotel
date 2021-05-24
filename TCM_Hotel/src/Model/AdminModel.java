@@ -13,14 +13,14 @@ public class AdminModel {
 
     private String adminFirstName;
     private String adminLastName;
-    private String adminStaffTitle;
+    private String adminJobTitle;
     private long adminPhoneNumber;
     private String adminEmailAddress;
 
     public AdminModel() {
         this.adminFirstName = adminFirstName;
         this.adminLastName = adminLastName;
-        this.adminStaffTitle = adminStaffTitle;
+        this.adminJobTitle = adminJobTitle;
         this.adminPhoneNumber = adminPhoneNumber;
         this.adminEmailAddress = adminEmailAddress;
     }
@@ -41,12 +41,12 @@ public class AdminModel {
         this.adminLastName = adminLastName;
     }
 
-    public String getAdminStaffTitle() {
-        return adminStaffTitle;
+    public String getAdminJobTitle() {
+        return adminJobTitle;
     }
 
-    public void setAdminStaffTitle(String adminStaffTitle) {
-        this.adminStaffTitle = adminStaffTitle;
+    public void setAdminJobTitle(String adminJobTitle) {
+        this.adminJobTitle = adminJobTitle;
     }
 
     public long getAdminPhoneNumber() {

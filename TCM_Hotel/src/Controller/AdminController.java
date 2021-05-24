@@ -30,31 +30,74 @@ public class AdminController {
                 handleProceedToLoginClick();
             }
         });
-
- /*viewAdmin.getProceedToLogin().addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                handleProceedToLoginClick();
-            }
-        });
         
         viewAdmin.getResetAdminDetails().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 handleResetAdminDetailsClick();
             }
-        });*/
+        });
 
- /*viewAdmin.getProceedToLogin().addMouseListener(new java.awt.event.MouseAdapter() {
+        viewAdmin.getProceedToLogin().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 mouseEnteredProceedToLogin();
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 mouseExitedProceedToLogin();
             }
-        });*/
+        });
+        
+        viewAdmin.getResetAdminDetails().addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mouseEnteredResetAdminDetails();
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                mouseExitedResetAdminDetails();
+            }
+        });
     }
 
     public void handleProceedToLoginClick() {
+        
         viewAdmin.adminDetailsConfirmation();
+        
+        if (viewAdmin.getShowAdminFNameError() == true) {
+            viewAdmin.displayAdminFNameError();
+        }
+
+        if (viewAdmin.getShowAdminLNameError() == true) {
+            viewAdmin.displayAdminLNameError();
+        }
+        
+        if (viewAdmin.getShowAdminJobTitleError() == true) {
+            viewAdmin.displayAdminJobTitleError();
+        }
+        
+        if (viewAdmin.getShowAdminPhoneNumberError() == true) {
+            viewAdmin.displayAdminPhoneNumberError();
+        }
+        
+        if (viewAdmin.getShowAdminEmailAddressError() == true) {
+            viewAdmin.displayAdminEmailAddressError();
+        }
+        
+        if (viewAdmin.getShowAdminRegSuccess() == true){
+            
+            viewAdmin.displayAdminRegSuccess();
+        }
+        
+        if (viewAdmin.getValidAdminDetails() == true) {
+            viewAdmin.setVisible(false);
+            modelAdmin.setAdminFirstName(viewAdmin.getAdminFNameField());
+            modelAdmin.setAdminLastName(viewAdmin.getAdminLNameField());
+            modelAdmin.setAdminJobTitle(viewAdmin.getAdminJobTitleField());
+            modelAdmin.setAdminPhoneNumber(viewAdmin.getAdminPhoneNumField());
+            modelAdmin.setAdminEmailAddress(viewAdmin.getAdminEmailField());
+            //HotelProductDB productDB = new HotelProductDB();
+            //DBManager db = new DBManager();
+            //productDB.registerAdmin(modelAdmin);
+            //viewAdmin.showAdminRegistrationSuccess();
+        }
     }
 
     public void handleResetAdminDetailsClick() {
@@ -64,10 +107,25 @@ public class AdminController {
     }
 
     public void mouseEnteredProceedToLogin() {
+        
+        viewAdmin.mouseEnterProceedToLogin();
 
     }
 
     public void mouseExitedProceedToLogin() {
+        
+        viewAdmin.mouseExitProceedToLogin();
+
+    }
+    
+    public void mouseEnteredResetAdminDetails() {
+        viewAdmin.mouseEnterResetAdminDetails();
+
+    }
+
+    public void mouseExitedResetAdminDetails() {
+        
+        viewAdmin.mouseExitResetAdminDetails();
 
     }
 

@@ -454,7 +454,7 @@ public class GuestView extends JFrame{
     }
     
     public void displayEmailAddressError(){
-        JOptionPane.showMessageDialog(null, "You must have a valid email address!", "Invalid Email Error!", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You must have a valid Email Address!", "Invalid Email Error!", JOptionPane.ERROR_MESSAGE);
     }
     
     public void displayAccNumError(){

@@ -6,9 +6,12 @@
 package tcm.hotel;
 
 import Controller.AdminController;
+import Controller.LoginController;
 import Controller.GuestController;
+import Model.LoginModel;
 import Model.AdminModel;
 import Model.GuestModel;
+import View.LoginView;
 import View.AdminView;
 import View.GuestView;
 import hotelDB.DBManager;
@@ -24,6 +27,7 @@ public class DriverMVC {
         
         HotelProductDB hotelMenuDB = new HotelProductDB();
         DBManager manager = new DBManager();
+        hotelMenuDB.createAdminListTable();
         hotelMenuDB.createGuestListTable();
         hotelMenuDB.createHLocationTable();
         hotelMenuDB.createHRoomsTable();
@@ -31,16 +35,21 @@ public class DriverMVC {
         hotelMenuDB.createHFeaturesTable();
         hotelMenuDB.closeConnection();
         
-        AdminModel mAdmin = new AdminModel();
-        AdminView vAdmin = new AdminView();
-        AdminController cAdmin = new AdminController(mAdmin, vAdmin);
+        //AdminModel modelAdmin = new AdminModel();
+        //AdminView viewAdmin = new AdminView();
+        //AdminController controllerAdmin = new AdminController(modelAdmin, viewAdmin);
         
-        //GuestModel model = new GuestModel();
-        //GuestView view = new GuestView();
-        //GuestController controller = new GuestController(model, view);
+        LoginModel modelLogin = new LoginModel();
+        LoginView viewLogin = new LoginView();
+        LoginController controllerLogin = new LoginController(modelLogin, viewLogin);
         
-        //view.setVisible(true);
-        vAdmin.setVisible(true);
+        //GuestModel modelGuest = new GuestModel();
+        //GuestView viewGuest = new GuestView();
+        //GuestController controllerGuest = new GuestController(modelGuest, viewGuest);
+        
+        //viewGuest.setVisible(true);
+        //viewAdmin.setVisible(true);
+        viewLogin.setVisible(true);
         
     }
 
