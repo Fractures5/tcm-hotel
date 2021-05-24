@@ -296,7 +296,7 @@ public class GuestView extends JFrame{
         resetDetails.setPreferredSize(new Dimension(170, 70));
         resetDetails.setFont(new Font("Arial", Font.BOLD, 17));
         resetDetails.setBorder(new LineBorder(Color.black, 4));
-        resetDetails.setForeground(Color.black);
+        resetDetails.setForeground(Color.red);
 
         buttonPanel.add(resetDetails);
         buttonPanel.add(confirmDetails);

@@ -206,7 +206,7 @@ public class AdminView extends JFrame {
         resetAdminDetails.setPreferredSize(new Dimension(170, 70));
         resetAdminDetails.setFont(new Font("Arial", Font.BOLD, 17));
         resetAdminDetails.setBorder(new LineBorder(Color.black, 4));
-        resetAdminDetails.setForeground(Color.black);
+        resetAdminDetails.setForeground(Color.red);
         
         
         buttonPanel.add(resetAdminDetails);
@@ -268,12 +268,10 @@ public class AdminView extends JFrame {
             validAdminEmail = true;
             showAdminEmailAddressError = false;
         }
-        
         if (validAdminFName == true && validAdminLName == true && validAdminJobTitle == true && validAdminPhoneNumber == true && validAdminEmail == true){
             validAdminDetails = true;
             showAdminRegSuccess = true;
         }
-        
     }
     
     public void adminDetailsReset(){

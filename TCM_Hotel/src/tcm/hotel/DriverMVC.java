@@ -35,21 +35,21 @@ public class DriverMVC {
         hotelMenuDB.createHFeaturesTable();
         hotelMenuDB.closeConnection();
         
-        //AdminModel modelAdmin = new AdminModel();
-        //AdminView viewAdmin = new AdminView();
-        //AdminController controllerAdmin = new AdminController(modelAdmin, viewAdmin);
+        AdminModel modelAdmin = new AdminModel();
+        AdminView viewAdmin = new AdminView();
+        AdminController controllerAdmin = new AdminController(modelAdmin, viewAdmin);
         
-        LoginModel modelLogin = new LoginModel();
-        LoginView viewLogin = new LoginView();
-        LoginController controllerLogin = new LoginController(modelLogin, viewLogin);
+        //LoginModel modelLogin = new LoginModel();
+        //LoginView viewLogin = new LoginView();
+        //LoginController controllerLogin = new LoginController(modelLogin, viewLogin);
         
         //GuestModel modelGuest = new GuestModel();
         //GuestView viewGuest = new GuestView();
         //GuestController controllerGuest = new GuestController(modelGuest, viewGuest);
         
         //viewGuest.setVisible(true);
-        //viewAdmin.setVisible(true);
-        viewLogin.setVisible(true);
+        viewAdmin.setVisible(true);
+        //viewLogin.setVisible(true);
         
     }
 
