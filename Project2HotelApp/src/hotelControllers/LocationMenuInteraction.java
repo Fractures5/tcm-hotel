@@ -7,16 +7,20 @@ package hotelControllers;
 
 import hotelModel.HotelLocations;
 import hotelModel.HotelRooms;
+import hotelView.BookingCartMenu;
 import hotelView.HotelLocationMenu;
 import hotelView.HotelRoomsMenu;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import project2hotelapp.BookingDetails;
 import project2hotelapp.GuestChooseRoom;
+import project2hotelapp.GuestsBookingCart;
 
 /**
  *
@@ -24,9 +28,8 @@ import project2hotelapp.GuestChooseRoom;
  */
 public class LocationMenuInteraction {
     
-    HotelLocations locationsModel;
+    static HotelLocations locationsModel;
     HotelLocationMenu locationsView;
-   
     
     public LocationMenuInteraction(HotelLocations locationsModel, HotelLocationMenu locationsView)
     {
@@ -74,8 +77,6 @@ public class LocationMenuInteraction {
             locationsModel.setBookingLocation(locationsView.getBookingLocation());
             locationsModel.currentLocationBookings();
             
-            //System.out.println(locationsModel.getBookingLocation().get(0).getTitle());
-            
             HotelRooms roomsModel = new HotelRooms();
             HotelRoomsMenu roomsView = new HotelRoomsMenu();
             RoomMenuInteraction roomsAction = new RoomMenuInteraction(roomsModel, roomsView);
@@ -105,4 +106,8 @@ public class LocationMenuInteraction {
         locationsView.mouseExitHover();
     }
     
+    public static ArrayList<GuestsBookingCart> userLocation()
+    {
+        return locationsModel.getBookingLocation();
+    }
 }

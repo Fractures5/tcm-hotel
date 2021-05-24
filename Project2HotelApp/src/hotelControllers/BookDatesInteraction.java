@@ -70,7 +70,8 @@ public class BookDatesInteraction
         else if (datesView.getRepeat() == false)
         {
             datesView.setVisible(false);
-            datesModel.setCheckInDay(datesView.getCheckInDay());
+            
+            /*datesModel.setCheckInDay(datesView.getCheckInDay());
             datesModel.setCheckInMonth(datesView.getCheckInMonth());
             datesModel.setCheckInYear(datesView.getCheckInYear());
             datesModel.setCheckOutDay(datesView.getCheckOutDay());
@@ -82,7 +83,8 @@ public class BookDatesInteraction
             System.out.println(datesModel.getCheckInYear());
             System.out.println(datesModel.getCheckOutDay());
             System.out.println(datesModel.getCheckOutMonth());
-            System.out.println(datesModel.getCheckOutYear());
+            System.out.println(datesModel.getCheckOutYear());*/
+            datesModel.setDatesBooked(datesView.getDatesBooked());
             
             HotelLocations locationModel = new HotelLocations();
             HotelLocationMenu locationView = new HotelLocationMenu();
@@ -99,4 +101,9 @@ public class BookDatesInteraction
     {
         datesView.mouseExitHover();
     }
+    
+//    public static int bookingDatesData()
+//    {
+//        return datesModel.getCheckInDay();
+//    }
 }

@@ -103,7 +103,7 @@ public class GuestsBookingCart extends Products{
      * @param checkOutYear the parameter represents the check out year of the guest.
      * @author Siddarath 
      */
-    public GuestsBookingCart(int checkInDate, int checkInMonth, int checkInYear, int checkOutDate, int checkOutMonth, int checkOutYear)
+    public GuestsBookingCart(int checkInDate, String checkInMonth, int checkInYear, int checkOutDate, String checkOutMonth, int checkOutYear)
     {
         super(checkInDate, checkInMonth, checkInYear, checkOutDate, checkOutMonth, checkOutYear);
     }

@@ -5,6 +5,9 @@
  */
 package hotelModel;
 
+import java.util.ArrayList;
+import project2hotelapp.GuestsBookingCart;
+
 /**
  *
  * @author Siddarath
@@ -18,12 +21,24 @@ public class HotelBookingDates
     private String checkOutMonth;
     private int checkOutYear;
     
+    private ArrayList<GuestsBookingCart> bookedDates = null;
+    
     public HotelBookingDates()
     {
         
     }
 
-    public int getCheckInDay() 
+    public void setDatesBooked(ArrayList<GuestsBookingCart> bookedDates)
+    {
+        this.bookedDates = bookedDates;
+    }
+    
+    public ArrayList<GuestsBookingCart> getDatesBooked()
+    {
+        return bookedDates;
+    }
+    
+    /*public int getCheckInDay() 
     {
         return checkInDay;
     }
@@ -81,7 +96,7 @@ public class HotelBookingDates
     public void setCheckOutYear(int checkOutYear) 
     {
         this.checkOutYear = checkOutYear;
-    }
+    }*/
     
     
     

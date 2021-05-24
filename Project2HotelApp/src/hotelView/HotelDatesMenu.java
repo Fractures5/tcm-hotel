@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import javafx.scene.control.DatePicker;
 import javax.swing.BorderFactory;
@@ -27,6 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
+import project2hotelapp.GuestsBookingCart;
 
 /**
  *
@@ -38,12 +40,13 @@ public class HotelDatesMenu extends JFrame {
     private JLabel checkInDayJL, checkOutDayJL, checkInMonthJL, checkOutMonthJL, checkInYearJL, checkOutYearJL;
     private JPanel headerPanel, menuPanel, bottomPanel;
     private JButton nextButton;
-    private int checkInDay, checkInYear, checkOutDay, checkOutYear;
-    private String checkInMonth, checkOutMonth;
+    /*private int checkInDay, checkInYear, checkOutDay, checkOutYear;
+    private String checkInMonth, checkOutMonth;*/
     private Boolean repeat = false;
     private Boolean validDate = false;
     private Boolean validCheckInDay = false;
     private Boolean validCheckOutDay = false;
+    private ArrayList<GuestsBookingCart> datesBooked = new ArrayList<>();
     
     JComboBox <String> monthInBox, monthOutBox;
     String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August",
@@ -175,7 +178,7 @@ public class HotelDatesMenu extends JFrame {
         this.setVisible(true);
     }
 
-    public int getCheckInDay() 
+    /*public int getCheckInDay() 
     {
         return checkInDay;
     }
@@ -203,7 +206,7 @@ public class HotelDatesMenu extends JFrame {
     public int getCheckOutYear() 
     {
         return checkOutYear;
-    }
+    }*/
     
     public Boolean getRepeat()
     {
@@ -229,7 +232,12 @@ public class HotelDatesMenu extends JFrame {
     {
         return nextButton;
     }
-    
+
+    public ArrayList<GuestsBookingCart> getDatesBooked() 
+    {
+        return datesBooked;
+    }
+
     public void confirmSelection() throws ParseException
     {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Uses an object of the sdf SimpleDateFormat class to create a date format.
@@ -293,12 +301,17 @@ public class HotelDatesMenu extends JFrame {
                 {
                     repeat = false;
                     validDate = true;
-                    checkInDay = (Integer)dayInBox.getSelectedItem();
+                    
+                    GuestsBookingCart bookingDetails = new GuestsBookingCart( (Integer)dayInBox.getSelectedItem(), (String) monthInBox.getSelectedItem(), (Integer)yearInBox.getSelectedItem()
+                            ,(Integer)dayOutBox.getSelectedItem(), (String) monthOutBox.getSelectedItem(), (Integer)yearOutBox.getSelectedItem());
+                    datesBooked.add(bookingDetails);
+            
+                    /*checkInDay = (Integer)dayInBox.getSelectedItem();
                     checkInMonth = (String) monthInBox.getSelectedItem();
                     checkInYear = (Integer)yearInBox.getSelectedItem();
                     checkOutDay = (Integer)dayOutBox.getSelectedItem();
                     checkOutMonth = (String) monthOutBox.getSelectedItem();
-                    checkOutYear = (Integer)yearOutBox.getSelectedItem();
+                    checkOutYear = (Integer)yearOutBox.getSelectedItem();*/
                 } 
                 else if (userConfirmation == JOptionPane.NO_OPTION || userConfirmation == JOptionPane.CANCEL_OPTION || userConfirmation == JOptionPane.CLOSED_OPTION) 
                 {

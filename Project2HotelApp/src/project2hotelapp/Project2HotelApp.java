@@ -13,6 +13,7 @@ import hotelModel.HotelBookingDates;
 import hotelModel.HotelFeatures;
 import hotelModel.HotelLocations;
 import hotelModel.HotelRooms;
+import hotelView.BookingCartMenu;
 import hotelView.HotelDatesMenu;
 import hotelView.HotelFeaturesMenu;
 import hotelView.HotelLocationMenu;
@@ -32,7 +33,7 @@ public class Project2HotelApp extends JFrame{
     private static HotelDatesMenu bookDate;
     private static GuestChooseHotel bookLocation;
     private static GuestChooseRoom bookRooms;
-    
+    private static BookingCartMenu bookingCart;
   
     /**
      * @param args the command line arguments
@@ -42,7 +43,9 @@ public class Project2HotelApp extends JFrame{
         //bookDate = new HotelDatesMenu();
         //bookLocation = new GuestChooseHotel();
         //bookRooms = new GuestChooseRoom();
+        //bookingCart = new BookingCartMenu();
       
+        
         /*HotelProductDB hotelMenuDB = new HotelProductDB();
         hotelMenuDB.createHLocationTable();
         hotelMenuDB.createHRoomsTable();
