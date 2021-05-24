@@ -59,13 +59,31 @@ public class BookDatesInteraction
     {
         datesView.confirmSelection();
         
-        if (datesView.getRepeat() == true && datesView.getValidDate() == false)
+        if ((datesView.getValidCheckInDay() == false || datesView.getValidCheckOutDay() == false))
         {
-            datesView.displayErrorMessage();
+            datesView.displayIncorrectDayMessage();
+        }
+        else if((datesView.getValidCheckInDay() == true && datesView.getValidCheckInDay() == true ) && datesView.getRepeat() == true && datesView.getValidDate() == false)
+        {
+            datesView.displayDateErrorMessage();
         }
         else if (datesView.getRepeat() == false)
         {
             datesView.setVisible(false);
+            datesModel.setCheckInDay(datesView.getCheckInDay());
+            datesModel.setCheckInMonth(datesView.getCheckInMonth());
+            datesModel.setCheckInYear(datesView.getCheckInYear());
+            datesModel.setCheckOutDay(datesView.getCheckOutDay());
+            datesModel.setCheckOutMonth(datesView.getCheckOutMonth());
+            datesModel.setCheckOutYear(datesView.getCheckOutYear());
+            
+            System.out.println(datesModel.getCheckInDay());
+            System.out.println(datesModel.getCheckInMonth());
+            System.out.println(datesModel.getCheckInYear());
+            System.out.println(datesModel.getCheckOutDay());
+            System.out.println(datesModel.getCheckOutMonth());
+            System.out.println(datesModel.getCheckOutYear());
+            
             HotelLocations locationModel = new HotelLocations();
             HotelLocationMenu locationView = new HotelLocationMenu();
             LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);

@@ -25,12 +25,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
 
 /**
  *
@@ -46,6 +42,8 @@ public class HotelDatesMenu extends JFrame {
     private String checkInMonth, checkOutMonth;
     private Boolean repeat = false;
     private Boolean validDate = false;
+    private Boolean validCheckInDay = false;
+    private Boolean validCheckOutDay = false;
     
     JComboBox <String> monthInBox, monthOutBox;
     String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August",
@@ -89,7 +87,7 @@ public class HotelDatesMenu extends JFrame {
         menuPanel.add(instruction);
 
         dayInBox = new JComboBox(dayNo);
-        dayInBox.setBounds(410, 100, 100, 50);
+        dayInBox.setBounds(410, 100, 60, 50);
         dayInBox.setFont(new Font("Arial", Font.PLAIN, 20));
         
         monthInBox = new JComboBox(monthNames);
@@ -101,7 +99,7 @@ public class HotelDatesMenu extends JFrame {
         yearInBox.setFont(new Font("Arial", Font.PLAIN, 20));
         
         dayOutBox = new JComboBox(dayNo);
-        dayOutBox.setBounds(875, 100, 100, 50);
+        dayOutBox.setBounds(875, 100, 60, 50);
         dayOutBox.setFont(new Font("Arial", Font.PLAIN, 20));
         
         monthOutBox = new JComboBox(monthNames);
@@ -121,7 +119,7 @@ public class HotelDatesMenu extends JFrame {
         
         checkInMonthJL = new JLabel("Check in month: ");
         checkInMonthJL.setFont(new Font("Arial", Font.BOLD, 20));
-        checkInMonthJL.setBounds(210, 240, 175, 50);
+        checkInMonthJL.setBounds(210, 240, 185, 50);
         checkInMonthJL.setBorder(blackline);
         
         checkInYearJL = new JLabel("Check in year: ");
@@ -212,6 +210,16 @@ public class HotelDatesMenu extends JFrame {
         return repeat;
     }
     
+    public Boolean getValidCheckInDay()
+    {
+        return validCheckInDay;
+    }
+    
+    public Boolean getValidCheckOutDay()
+    {
+        return validCheckOutDay;
+    }
+    
     public Boolean getValidDate()
     {
         return validDate;
@@ -227,65 +235,101 @@ public class HotelDatesMenu extends JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Uses an object of the sdf SimpleDateFormat class to create a date format.
         Date d1 = sdf.parse(String.valueOf(dayInBox.getSelectedItem())+ "/" +String.valueOf(monthInBox.getSelectedIndex() +1) +"/" +String.valueOf(yearInBox.getSelectedItem())); // Uses an object of the Date and SimpleDateFormat class to store the dates.
         Date d2 = sdf.parse(String.valueOf(dayOutBox.getSelectedItem())+ "/" +String.valueOf(monthOutBox.getSelectedIndex() +1) +"/" +String.valueOf(yearOutBox.getSelectedItem()));
+        
         if(d1.compareTo(d2) >0) // Checks if the check in date happens after the check out date
         {
             validDate = false;
             repeat = true;
+            validCheckInDay = true;
+            validCheckOutDay = true;
         }
         else if(d1.compareTo(d2) < 0) // Checks if the check in date happens before the check out date
         {
-            validDate = true;
-            //System.out.println("Month in: "  +monthInBox.getSelectedIndex());
-            //System.out.println("Month out: "  +monthOutBox.getSelectedIndex());
-            int userConfirmation = JOptionPane.showConfirmDialog(new JFrame(), "Would you like to continue?");
-
-            if (userConfirmation == JOptionPane.YES_OPTION) 
+            if ((monthInBox.getSelectedIndex()+1 == 1 || monthInBox.getSelectedIndex()+1 == 3 || monthInBox.getSelectedIndex()+1 == 5 || monthInBox.getSelectedIndex()+1 == 7 
+                || monthInBox.getSelectedIndex()+1 == 8 || monthInBox.getSelectedIndex()+1 == 10 || monthInBox.getSelectedIndex()+1 == 12) && ((Integer)dayInBox.getSelectedItem() <=31 )) // If the user selected a month with 31 days, it checks if the day they selected is within the range. 
             {
-                repeat = false;
-                checkInDay = (Integer)dayInBox.getSelectedItem();
-                checkInMonth = (String) monthInBox.getSelectedItem();
-                checkInYear = (Integer)yearInBox.getSelectedItem();
-                checkOutDay = (Integer)dayOutBox.getSelectedItem();
-                checkOutMonth = (String) monthOutBox.getSelectedItem();
-                checkOutYear = (Integer)yearOutBox.getSelectedItem();
-            } 
-            else if (userConfirmation == JOptionPane.NO_OPTION || userConfirmation == JOptionPane.CANCEL_OPTION || userConfirmation == JOptionPane.CLOSED_OPTION) 
+                validCheckInDay = true;
+            }
+            else if (((monthInBox.getSelectedIndex()+1 == 4 || monthInBox.getSelectedIndex()+1 == 6 || monthInBox.getSelectedIndex()+1 == 9 || monthInBox.getSelectedIndex()+1 == 11) && (Integer)dayInBox.getSelectedItem() <= 30)) // If the user selected a month with 30 days, it checks if the day they selected is within the range.
             {
+                validCheckInDay = true;
+            }
+            else if ((monthInBox.getSelectedIndex()+1 == 2 && (Integer)dayInBox.getSelectedItem() <= 28)) // If the user selected a month with 28 days, it checks if the day they selected is within the range.
+            {
+                validCheckInDay = true;
+            }
+            else 
+            {   
+                validCheckInDay = false;
                 repeat = true;
+                validDate = false;
+            }
+            
+            if (((monthOutBox.getSelectedIndex() +1 == 1 || monthOutBox.getSelectedIndex()+1 == 3 || monthOutBox.getSelectedIndex()+1 == 5 || monthOutBox.getSelectedIndex()+1 == 7 || monthOutBox.getSelectedIndex() +1 == 8 || 
+                monthOutBox.getSelectedIndex()+1 == 10 || monthOutBox.getSelectedIndex()+1 == 12 ) && (Integer)dayOutBox.getSelectedItem() <=31 )) // If the user selected a month with 31 days, it checks if the day they selected is within the range. 
+            {
+                validCheckOutDay = true;
+            }
+            else if (((monthOutBox.getSelectedIndex()+1 == 4 || monthOutBox.getSelectedIndex()+1 == 6 || monthOutBox.getSelectedIndex()+1 == 9 || monthOutBox.getSelectedIndex()+1 == 11) && (Integer)dayOutBox.getSelectedItem() <= 30)) // If the user selected a month with 30 days, it checks if the day they selected is within the range.
+            {
+                validCheckOutDay = true;
+            }
+            else if ((monthOutBox.getSelectedIndex()+1 == 2 && (Integer)dayOutBox.getSelectedItem() <= 28)) // If the user selected a month with 28 days, it checks if the day they selected is within the range.
+            {
+                validCheckOutDay = true;
+            }
+            else 
+            {
+                validCheckOutDay = false;
+                repeat = true;
+                validDate = false;
+            }
+            
+            if (validCheckOutDay == true && validCheckInDay == true)
+            {
+                int userConfirmation = JOptionPane.showConfirmDialog(new JFrame(), "Would you like to continue?");
+
+                if (userConfirmation == JOptionPane.YES_OPTION) 
+                {
+                    repeat = false;
+                    validDate = true;
+                    checkInDay = (Integer)dayInBox.getSelectedItem();
+                    checkInMonth = (String) monthInBox.getSelectedItem();
+                    checkInYear = (Integer)yearInBox.getSelectedItem();
+                    checkOutDay = (Integer)dayOutBox.getSelectedItem();
+                    checkOutMonth = (String) monthOutBox.getSelectedItem();
+                    checkOutYear = (Integer)yearOutBox.getSelectedItem();
+                } 
+                else if (userConfirmation == JOptionPane.NO_OPTION || userConfirmation == JOptionPane.CANCEL_OPTION || userConfirmation == JOptionPane.CLOSED_OPTION) 
+                {
+                    repeat = true;
+                    validDate = true;
+                }
+            }
+            else
+            {
+               repeat = true;
+               validDate = false; 
             }
         }
         else if(d1.compareTo(d2) == 0 ) // Checks if the check in date is equal to the check out date
         {
             validDate = false;
+            validCheckInDay = true;
+            validCheckOutDay = true;
             repeat = true;
         }
     }
     
-    /*public boolean compareDates() throws ParseException
-    {
-        boolean validDate = false;
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Uses an object of the sdf SimpleDateFormat class to create a date format.
-        Date d1 = sdf.parse(String.valueOf(checkInDay)+ "/" +String.valueOf(checkInMonth) +"/" +String.valueOf(checkInYear)); // Uses an object of the Date and SimpleDateFormat class to store the dates.
-        Date d2 = sdf.parse(String.valueOf(checkOutDay)+ "/" +String.valueOf(checkOutMonth) +"/" +String.valueOf(checkOutYear));
-        if(d1.compareTo(d2) >0) // Checks if the check in date happens after the check out date
-        {
-            validDate = false;
-        }
-        else if(d1.compareTo(d2) < 0) // Checks if the check in date happens before the check out date
-        {
-            validDate = true;
-        }
-        else if(d1.compareTo(d2) == 0 ) // Checks if the check in date is equal to the check out date
-        {
-            validDate = false;
-        }
-        
-        return validDate;
-    }*/
-    
-    public void displayErrorMessage()
+    public void displayDateErrorMessage()
     {
         JOptionPane.showMessageDialog(new JFrame(), "Invalid selection! Check in date must occur before check out date and both dates cannot be the same!", "Invalid Selection",
+                    JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void displayIncorrectDayMessage()
+    {
+        JOptionPane.showMessageDialog(new JFrame(), "Invalid selection! The check in/out day you selected is not valid for that month. Please try again!", "Invalid Selection",
                     JOptionPane.ERROR_MESSAGE);
     }
     

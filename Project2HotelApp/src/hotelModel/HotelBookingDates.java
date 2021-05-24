@@ -12,10 +12,10 @@ package hotelModel;
 public class HotelBookingDates 
 {
     private int checkInDay;
-    private int checkInMonth;
+    private String checkInMonth;
     private int checkInYear;
     private int checkOutDay;
-    private int checkOutMonth;
+    private String checkOutMonth;
     private int checkOutYear;
     
     public HotelBookingDates()
@@ -33,17 +33,18 @@ public class HotelBookingDates
         this.checkInDay = checkInDay;
     }
 
-    public int getCheckInMonth() 
+    public String getCheckInMonth() 
     {
         return checkInMonth;
     }
 
-    public void setCheckInMonth(int checkInMonth) 
+    public void setCheckInMonth(String checkInMonth) 
     {
         this.checkInMonth = checkInMonth;
     }
 
-    public int getCheckInYear() {
+    public int getCheckInYear() 
+    {
         return checkInYear;
     }
 
@@ -62,12 +63,12 @@ public class HotelBookingDates
         this.checkOutDay = checkOutDay;
     }
 
-    public int getCheckOutMonth() 
+    public String getCheckOutMonth() 
     {
         return checkOutMonth;
     }
 
-    public void setCheckOutMonth(int checkOutMonth) 
+    public void setCheckOutMonth(String checkOutMonth) 
     {
         this.checkOutMonth = checkOutMonth;
     }

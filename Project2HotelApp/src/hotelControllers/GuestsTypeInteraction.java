@@ -71,8 +71,7 @@ public class GuestsTypeInteraction
             HotelFeatures featuresModel = new HotelFeatures();
             HotelFeaturesMenu featuresView = new HotelFeaturesMenu();
             FeaturesMenuInteraction selectFeatures = new FeaturesMenuInteraction(featuresModel, featuresView);
-        }
-        
+        }   
     }
     
     public void mouseEnteredHover()
