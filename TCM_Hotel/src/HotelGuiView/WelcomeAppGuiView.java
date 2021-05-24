@@ -10,7 +10,7 @@ import java.awt.event.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+//import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.Box;
@@ -33,7 +33,7 @@ public class WelcomeAppGuiView extends JFrame
     
     private JPanel topPanel;
     private JPanel middlePanel;
-    private JPanel imagePanel;
+    //private JPanel imagePanel;
     
     private JLabel welcomeLabel;
     private JLabel subWelcomeLabel;
@@ -115,15 +115,25 @@ public class WelcomeAppGuiView extends JFrame
         /*imagePanel.add(prev);
         imagePanel.add(next);
         add(imagePanel, BorderLayout.SOUTH);*/
-        slideshow = new ImageIcon[2];
-        slideshow[0] = new ImageIcon("test/image1.jpg");
-        slideshow[1] = new ImageIcon("test/image2.jpg");
+        slideshow = new ImageIcon[10];
+        slideshow[0] = new ImageIcon("test/hotel1.jpg");
+        slideshow[1] = new ImageIcon("test/hotel2.jpg");
+        slideshow[2] = new ImageIcon("test/hotel3.jpg");
+        slideshow[3] = new ImageIcon("test/hotel4.jpg");
+        slideshow[4] = new ImageIcon("test/hotel5.jpg");
+        slideshow[5] = new ImageIcon("test/hotel6.jpg");
+        slideshow[6] = new ImageIcon("test/hotel7.jpg");
+        slideshow[7] = new ImageIcon("test/hotel8.jpg");
+        slideshow[8] = new ImageIcon("test/hotel9.jpg");
+        slideshow[9] = new ImageIcon("test/hotel10.jpg");
+        //slideshow[9] = new ImageIcon("test/hotel10.jpg");
+        
         images = new JLabel("", JLabel.CENTER);
         add(images, BorderLayout.CENTER);
         images.setIcon(slideshow[0]);
-        images.setBounds(500, 20, 300, 500);
-        prev.setBounds(525, 400, 50, 20);
-        next.setBounds(625, 400, 50, 20);
+        images.setBounds(350, 15, 500, 495);
+        prev.setBounds(525, 450, 50, 20);
+        next.setBounds(625, 450, 50, 20);
 
         middlePanel.add(images);
         middlePanel.add(prev);
@@ -160,7 +170,7 @@ public class WelcomeAppGuiView extends JFrame
     {
         if (i == 0) 
         {
-            JOptionPane.showMessageDialog(null, "This is First Image");
+            JOptionPane.showMessageDialog(null, "You've reached the start of the slideshow!");
         } 
         else 
         {
@@ -173,7 +183,7 @@ public class WelcomeAppGuiView extends JFrame
     {
         if (i == slideshow.length - 1) 
         {
-            JOptionPane.showMessageDialog(null, "This is LastImage");
+            JOptionPane.showMessageDialog(null, "You've reached the end of the slideshow!");
         } 
         else 
         {
