@@ -11,6 +11,8 @@ import hotelView.HotelFeaturesMenu;
 import hotelView.HotelGuestTypesMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import project2hotelapp.GuestsBookingCart;
 
 /**
  *
@@ -18,7 +20,7 @@ import java.awt.event.ActionListener;
  */
 public class GuestsTypeInteraction 
 {
-    HotelGuests guestsModel;
+    static HotelGuests guestsModel;
     HotelGuestTypesMenu guestsView;
     
     public GuestsTypeInteraction(HotelGuests guestsModel, HotelGuestTypesMenu guestsView)
@@ -82,5 +84,10 @@ public class GuestsTypeInteraction
     public void mouseExitedHover()
     {
         guestsView.mouseExitHover();
+    }
+    
+    public static ArrayList<GuestsBookingCart> guestTypesBooked()
+    {
+        return guestsModel.getGuestsBooked();
     }
 }

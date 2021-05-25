@@ -6,9 +6,12 @@
 package hotelControllers;
 
 import hotelModel.HotelFeatures;
+import hotelView.BookingCartMenu;
 import hotelView.HotelFeaturesMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import project2hotelapp.GuestsBookingCart;
 
 /**
  *
@@ -16,7 +19,7 @@ import java.awt.event.ActionListener;
  */
 public class FeaturesMenuInteraction 
 {
-    HotelFeatures featuresModel;
+    static HotelFeatures featuresModel;
     HotelFeaturesMenu featuresView;
     
     public FeaturesMenuInteraction(HotelFeatures featuresModel, HotelFeaturesMenu featuresView)
@@ -65,7 +68,9 @@ public class FeaturesMenuInteraction
             featuresModel.setFeaturesBooked(featuresView.getFeaturesBooked());
             //System.out.println(featuresModel.getFeaturesBooked().get(0).getTitle() + " " + featuresModel.getFeaturesBooked().get(0).getPrice());
             featuresModel.currentFeatureBookings();
-           
+            
+            BookingCartMenu guestCart = new BookingCartMenu();
+                    
         }
     }
     
@@ -77,5 +82,10 @@ public class FeaturesMenuInteraction
     public void mouseExitedHover()
     {
         featuresView.mouseExitHover();
+    }
+    
+    public static ArrayList<GuestsBookingCart> guestFeaturesBooked()
+    {
+        return featuresModel.getFeaturesBooked();
     }
 }

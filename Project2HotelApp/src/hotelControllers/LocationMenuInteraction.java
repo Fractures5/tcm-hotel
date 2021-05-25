@@ -18,7 +18,7 @@ import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import project2hotelapp.BookingDetails;
+import project2hotelapp.CalculateCosts;
 import project2hotelapp.GuestChooseRoom;
 import project2hotelapp.GuestsBookingCart;
 
@@ -106,7 +106,7 @@ public class LocationMenuInteraction {
         locationsView.mouseExitHover();
     }
     
-    public static ArrayList<GuestsBookingCart> userLocation()
+    public static ArrayList<GuestsBookingCart> guestHotelLocation()
     {
         return locationsModel.getBookingLocation();
     }

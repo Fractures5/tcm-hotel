@@ -11,7 +11,9 @@ import hotelView.HotelGuestTypesMenu;
 import hotelView.HotelRoomsMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import project2hotelapp.BookingDetails;
+import java.util.ArrayList;
+import project2hotelapp.CalculateCosts;
+import project2hotelapp.GuestsBookingCart;
 
 /**
  *
@@ -19,16 +21,13 @@ import project2hotelapp.BookingDetails;
  */
 public class RoomMenuInteraction 
 {
-    HotelRooms roomsModel;
+    static HotelRooms roomsModel;
     HotelRoomsMenu  roomsView;
     
     public RoomMenuInteraction(HotelRooms roomsModel, HotelRoomsMenu  roomsView)
     {
         this.roomsModel = roomsModel;
         this.roomsView = roomsView;
-        
-        BookingDetails bd = new BookingDetails();
-        bd.hello();
         
         roomsView.getNextButton().addActionListener(new ActionListener()
         {
@@ -87,5 +86,10 @@ public class RoomMenuInteraction
     public void mouseExitedHover()
     {
         roomsView.mouseExitHover();
+    }
+    
+    public static ArrayList<GuestsBookingCart> guestBookedRooms()
+    {
+        return roomsModel.getRoomsBooked();
     }
 }

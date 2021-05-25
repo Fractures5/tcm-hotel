@@ -5,7 +5,11 @@
  */
 package hotelView;
 
+import hotelControllers.BookDatesInteraction;
+import hotelControllers.FeaturesMenuInteraction;
+import hotelControllers.GuestsTypeInteraction;
 import hotelControllers.LocationMenuInteraction;
+import hotelControllers.RoomMenuInteraction;
 import hotelModel.HotelBookingDates;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,12 +18,15 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.Box;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import project2hotelapp.BookingDetails;
+import javax.swing.ScrollPaneConstants;
+import project2hotelapp.CalculateCosts;
 import project2hotelapp.GuestsBookingCart;
 
 /**
@@ -28,9 +35,12 @@ import project2hotelapp.GuestsBookingCart;
  */
 public class BookingCartMenu extends JFrame
 {
-    private JLabel pageTitle, instruction;
+    private JLabel pageTitle, instruction, emptySpace;
     private JPanel headerPanel, menuPanel, bottomPanel;
+    private JButton homeButton, proceedButton;
     private static JTextArea bookingCartField;
+    private static JTextArea costsField;
+    private JScrollPane scroll;
     
     Toolkit kit = Toolkit.getDefaultToolkit();
     Dimension screenSize = kit.getScreenSize();
@@ -58,10 +68,27 @@ public class BookingCartMenu extends JFrame
 
         menuPanel = new JPanel();
         menuPanel.setBackground(Color.LIGHT_GRAY);
-        menuPanel.setPreferredSize(new Dimension(600, 450));
+        menuPanel.setPreferredSize(new Dimension(1100, 850));
         menuPanel.add(instruction);
         
-        JTextArea bookingCartField = BookingCartMenu.test();
+        JTextArea bookingCartField = BookingCartMenu.addBookingDetails();
+        bookingCartField.setFont(new Font("Arial", Font.BOLD, 16));
+        
+        scroll = new JScrollPane(bookingCartField, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setMinimumSize(new Dimension (900, 450));
+        scroll.setPreferredSize(new Dimension (900, 450));
+        
+        emptySpace = new JLabel("");
+        emptySpace.setPreferredSize(new Dimension (900, 10));
+        
+        CalculateCosts guestCosts = new CalculateCosts();
+        double totalCosts = guestCosts.guestsTotalCost();
+        costsField = new JTextArea();
+        costsField.setFont(new Font("Arial", Font.BOLD, 20));
+        costsField.setPreferredSize(new Dimension (900, 40));
+        costsField.setText("                                                       Total cost to pay: $" +totalCosts);
+        
+        //scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         /*bookingCartField.setPreferredSize(new Dimension(800, 500));
         Font textFieldFont = new Font("Arial", Font.BOLD, 24);
         bookingCartField.setFont(textFieldFont);
@@ -76,37 +103,103 @@ public class BookingCartMenu extends JFrame
         System.out.println(test.getCheckInMonth());
         
         bookingCartField.append("chur");*/
-        menuPanel.add(Box.createVerticalStrut(75));
-        menuPanel.add(bookingCartField);
-        
+        menuPanel.add(Box.createVerticalStrut(65));
+        menuPanel.add(scroll);
+        menuPanel.add(emptySpace);
+        menuPanel.add(costsField);
         this.add(menuPanel, BorderLayout.CENTER);
         
+        bottomPanel = new JPanel();
+        homeButton = new JButton("Return to Home");
+        homeButton.setPreferredSize(new Dimension(300,70));
+        homeButton.setFont(new Font("Arial", Font.BOLD, 24));
+        
+        proceedButton = new JButton("Proceed to Checkout");
+        proceedButton.setPreferredSize(new Dimension(300,70));
+        proceedButton.setFont(new Font("Arial", Font.BOLD, 24));
+        
+        bottomPanel.add(homeButton);
+        bottomPanel.add(proceedButton);
+        this.add(bottomPanel, BorderLayout.SOUTH);
+        
+        
         this.setTitle("Guests Booking Cart Confirmation");
-        this.setSize(frameWidth +350, frameHeight +250);
+        this.setSize(frameWidth +350, frameHeight +300);
         this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
     
-    public static JTextArea test()
+    public static JTextArea addBookingDetails()
     {
-        bookingCartField = new JTextArea();
-        bookingCartField.setPreferredSize(new Dimension(800, 500));
-        Font textFieldFont = new Font("Arial", Font.BOLD, 24);
-        bookingCartField.setFont(textFieldFont);
+        ArrayList<GuestsBookingCart> datesBooked = new ArrayList<GuestsBookingCart>();
+        datesBooked = BookDatesInteraction.guestBookingDates();
         
         ArrayList<GuestsBookingCart> locationBooked = new ArrayList<GuestsBookingCart>();
-        locationBooked = LocationMenuInteraction.userLocation();
+        locationBooked = LocationMenuInteraction.guestHotelLocation();
         
-        bookingCartField.setText(locationBooked.get(0).getTitle());
+        ArrayList<GuestsBookingCart> roomsBooked = new ArrayList<GuestsBookingCart>();
+        roomsBooked = RoomMenuInteraction.guestBookedRooms();
         
-        HotelBookingDates test = new HotelBookingDates();
-        System.out.println(test.getCheckInDay());
-        System.out.println(test.getCheckInMonth());
+        ArrayList<GuestsBookingCart> guestsTypesBooked = new ArrayList<GuestsBookingCart>();
+        guestsTypesBooked = GuestsTypeInteraction.guestTypesBooked();
         
-        bookingCartField.append("chur");
+        ArrayList<GuestsBookingCart> featuresBooked = new ArrayList<GuestsBookingCart>();
+        featuresBooked = FeaturesMenuInteraction.guestFeaturesBooked();
         
+        bookingCartField = new JTextArea();
+        //bookingCartField.setPreferredSize(new Dimension(950, 100));
+        
+        bookingCartField.setText("==================================================================================================\n");
+        bookingCartField.append("\n------------------------------------------------------------------------------ Booked dates ---------------------------------------------------------------------------\n\n");
+        bookingCartField.append("Check in date: " +datesBooked.get(0).getCheckInDay()+ " / " +datesBooked.get(0).getCheckInMonth()+ " / " +datesBooked.get(0).getCheckInYear() +"\n");
+        bookingCartField.append("Check out date: " +datesBooked.get(0).getCheckOutDay()+ " / " +datesBooked.get(0).getCheckOutMonth()+ " / " +datesBooked.get(0).getCheckOutYear() +"\n");
+        //bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+        
+        bookingCartField.append("\n--------------------------------------------------------------------------- Location Booked --------------------------------------------------------------------------\n\n");
+        bookingCartField.append("Title: " + locationBooked.get(0).getTitle() + "      Location: " +locationBooked.get(0).getRatingType() + "                Rating: " +locationBooked.get(0).getRatingType() + "             Vacancy: " +locationBooked.get(0).getVacancyType() + "\n");
+        //bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+        
+        bookingCartField.append("\n----------------------------------------------------------------------------- Rooms Booked ---------------------------------------------------------------------------\n\n");
+        for (GuestsBookingCart bookingDetails : roomsBooked)
+        {
+            bookingCartField.append("Title: " + bookingDetails.getTitle() + "           Room Type: " + bookingDetails.getRoomType() + "     Price: $" + bookingDetails.getPrice() + "\n");
+        }
+        //bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+        
+        bookingCartField.append("\n-------------------------------------------------------------------------- Guest types Booked ----------------------------------------------------------------------\n\n");
+        for (GuestsBookingCart bookingDetails : guestsTypesBooked)
+        {
+            bookingCartField.append("Title: " + bookingDetails.getTitle() + "          Guest Type: " + bookingDetails.getGuestType() + "            Price: $" + bookingDetails.getPrice() + "\n");
+        }
+       // bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+        
+        bookingCartField.append("\n--------------------------------------------------------------------------- Features Booked ------------------------------------------------------------------------\n\n");
+        for (GuestsBookingCart bookingDetails : featuresBooked)
+        {
+            bookingCartField.append("Title: " + bookingDetails.getTitle()+ "            Feature Type: " + bookingDetails.getFeatureType()+ "          Price: $" + bookingDetails.getPrice() + "\n");
+        }
+        bookingCartField.append("\n==================================================================================================\n");
         return bookingCartField;
     }
     
+     /*String test = "";
+        for (GuestsBookingCart bookingDetails : roomsBooked)
+        {
+            test = test + (String.format("%-10s", "Title: " + bookingDetails.getTitle()) + String.format("%-30s", "Room Type: " + bookingDetails.getRoomType()) + String.format("%-25s", "Price: $" + bookingDetails.getPrice() + "\n"));
+        }
+        
+        bookingCartField.append(test);
+        bookingCartField.append("\n");
+        for (GuestsBookingCart bookingDetails : guestsTypesBooked)
+        {
+            bookingCartField.append(String.format("%-59s", "Title: " + bookingDetails.getTitle()) + String.format("%-30s", "Guest Type: " + bookingDetails.getGuestType()) + String.format("%-25s", "Price: $" + bookingDetails.getPrice() + "\n"));
+        }
+        
+        bookingCartField.append("\n");
+        for (GuestsBookingCart bookingDetails : featuresBooked)
+        {
+            bookingCartField.append(String.format("%-59s", "Title: " + bookingDetails.getTitle())+ String.format("%-30s", "Feature Type: " + bookingDetails.getFeatureType())+ String.format("%-25s", "Price: $" + bookingDetails.getPrice() + "\n"));
+        }
+        bookingCartField.append("\n");*/
 }

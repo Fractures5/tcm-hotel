@@ -12,8 +12,10 @@ import hotelView.HotelLocationMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import project2hotelapp.GuestsBookingCart;
 
 
 /**
@@ -22,7 +24,7 @@ import java.util.logging.Logger;
  */
 public class BookDatesInteraction 
 {
-    HotelBookingDates datesModel;
+    static HotelBookingDates datesModel;
     HotelDatesMenu datesView;
     
     public BookDatesInteraction(HotelBookingDates datesModel, HotelDatesMenu datesView)
@@ -102,8 +104,8 @@ public class BookDatesInteraction
         datesView.mouseExitHover();
     }
     
-//    public static int bookingDatesData()
-//    {
-//        return datesModel.getCheckInDay();
-//    }
+    public static ArrayList<GuestsBookingCart> guestBookingDates()
+    {
+        return datesModel.getDatesBooked();
+    }
 }
