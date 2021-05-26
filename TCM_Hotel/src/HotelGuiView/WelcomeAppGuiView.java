@@ -4,13 +4,10 @@
  * and open the template in the editor.
  */
 package HotelGuiView;
-import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-//import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.Box;
@@ -33,8 +30,7 @@ public class WelcomeAppGuiView extends JFrame
     
     private JPanel topPanel;
     private JPanel middlePanel;
-    //private JPanel imagePanel;
-    
+
     private JLabel welcomeLabel;
     private JLabel subWelcomeLabel;
     
@@ -44,11 +40,22 @@ public class WelcomeAppGuiView extends JFrame
     private JButton buttonFour;
     
     private FAQGuiView accessFAQ;
+    private AboutUsGuiView accessAboutUs;
+    
+    private ImageIcon icon1;
+    private ImageIcon icon2;
+    private ImageIcon icon3;
+    private ImageIcon icon4;
+    
+    private JLabel icon1Label;
+    private JLabel icon2Label;
+    private JLabel icon3Label;
+    private JLabel icon4Label;
     
     private ImageIcon slideshow[];
     private JLabel images;
     private JButton prev, next;
-    private int i, l1;
+    private int i;
     
     
     public WelcomeAppGuiView()
@@ -73,7 +80,7 @@ public class WelcomeAppGuiView extends JFrame
         topPanel = new JPanel();
         topPanel.add(Box.createVerticalStrut(120));
         topPanel.setBackground(Color.blue);
-        welcomeLabel = new JLabel("Welcome to the TCM Online Booking System!");
+        welcomeLabel = new JLabel("TCM Hotel Online Booking System");
         welcomeLabel.setForeground(Color.white);
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 30));
         
@@ -109,12 +116,28 @@ public class WelcomeAppGuiView extends JFrame
         buttonFour.setBorder(new LineBorder(Color.BLACK, 5));
         buttonFour.setBounds(75, 370, 250, 70);
         
-        //JPanel imagePanel = new JPanel(new FlowLayout());
+        /*icon1 = new ImageIcon("test/hotel1.jpg");
+        icon2 = new ImageIcon("test/icon2.png");
+        icon3 = new ImageIcon("test/icon3.png");
+        icon4 = new ImageIcon("test/icon4.png");
+        
+        icon1Label = new JLabel("", JLabel.CENTER);
+        icon2Label = new JLabel("", JLabel.CENTER);
+        icon3Label = new JLabel("", JLabel.CENTER);
+        icon4Label = new JLabel("", JLabel.CENTER);
+        
+        add(icon1Label, BorderLayout.CENTER);
+        add(icon2Label, BorderLayout.CENTER);
+        add(icon3Label, BorderLayout.CENTER);
+        add(icon4Label, BorderLayout.CENTER);
+        
+        icon1Label.setBounds(25, 85, 50, 70);
+        icon2Label.setBounds(25, 85, 50, 70);
+        icon3Label.setBounds(25, 85, 50, 70);
+        icon4Label.setBounds(25, 85, 50, 70);*/
+        
         prev = new JButton("<<");
         next = new JButton(">>");
-        /*imagePanel.add(prev);
-        imagePanel.add(next);
-        add(imagePanel, BorderLayout.SOUTH);*/
         slideshow = new ImageIcon[10];
         slideshow[0] = new ImageIcon("test/hotel1.jpg");
         slideshow[1] = new ImageIcon("test/hotel2.jpg");
@@ -126,8 +149,7 @@ public class WelcomeAppGuiView extends JFrame
         slideshow[7] = new ImageIcon("test/hotel8.jpg");
         slideshow[8] = new ImageIcon("test/hotel9.jpg");
         slideshow[9] = new ImageIcon("test/hotel10.jpg");
-        //slideshow[9] = new ImageIcon("test/hotel10.jpg");
-        
+
         images = new JLabel("", JLabel.CENTER);
         add(images, BorderLayout.CENTER);
         images.setIcon(slideshow[0]);
@@ -135,21 +157,17 @@ public class WelcomeAppGuiView extends JFrame
         prev.setBounds(525, 450, 50, 20);
         next.setBounds(625, 450, 50, 20);
 
-        middlePanel.add(images);
-        middlePanel.add(prev);
-        middlePanel.add(next);
-        
-        //middlePanel.add(imagePanel);
-
         topPanel.add(welcomeLabel);
-        
-        //middlePanel.add(imagePanel);
-        
+
         middlePanel.add(subWelcomeLabel);
         middlePanel.add(buttonOne);
         middlePanel.add(buttonTwo);
         middlePanel.add(buttonThree);
         middlePanel.add(buttonFour);
+        
+        middlePanel.add(images);
+        middlePanel.add(prev);
+        middlePanel.add(next);
         
         welcomeFrame.add(topPanel, BorderLayout.NORTH);
         welcomeFrame.add(middlePanel, BorderLayout.CENTER);
@@ -264,7 +282,9 @@ public class WelcomeAppGuiView extends JFrame
     
     public void enterAboutUsView()
     {
-        //Make call to the About Us view class here
+        welcomeFrame.setVisible(false);
+        welcomeFrame.dispose();
+        accessAboutUs = new AboutUsGuiView();
     }
     
     public void enterAdminView()
