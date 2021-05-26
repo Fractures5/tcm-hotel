@@ -34,7 +34,7 @@ public class HotelFeaturesMenu extends JFrame
     private JLabel pageTitle, instruction;
     private JPanel headerPanel, menuPanel, bottomPanel;
     private JCheckBox spaCB, jacuzziCB, saunaCB, gymCB, noneCB;
-    private JButton backButton, nextButton;
+    private JButton nextButton;
     private Boolean showErrorMessage = false;
     private Boolean repeat = false;
     private ArrayList<GuestsBookingCart> guestFeaturesBooked = new ArrayList<>();
@@ -107,15 +107,11 @@ public class HotelFeaturesMenu extends JFrame
         this.add(menuPanel, BorderLayout.CENTER);
         
         bottomPanel = new JPanel();
-        backButton = new JButton("Go Back");
-        backButton.setPreferredSize(new Dimension(200,70));
-        backButton.setFont(new Font("Arial", Font.BOLD, 24));
         
         nextButton = new JButton("Next");
         nextButton.setPreferredSize(new Dimension(200,70));
         nextButton.setFont(new Font("Arial", Font.BOLD, 24));
-        
-        bottomPanel.add(backButton);
+       
         bottomPanel.add(nextButton);
         this.add(bottomPanel, BorderLayout.SOUTH);
         
@@ -148,17 +144,17 @@ public class HotelFeaturesMenu extends JFrame
     
     public void confirmSelection()
     {
-        if (!spaCB.isSelected() && !jacuzziCB.isSelected() && !saunaCB.isSelected() && !gymCB.isSelected() && !noneCB.isSelected()) 
+        if (!spaCB.isSelected() && !jacuzziCB.isSelected() && !saunaCB.isSelected() && !gymCB.isSelected() && !noneCB.isSelected()) // nothing selected
         {
             showErrorMessage = true;
             repeat = true;
         } 
-        else if(!spaCB.isSelected() && !jacuzziCB.isSelected() && !saunaCB.isSelected() && !gymCB.isSelected() && noneCB.isSelected())
+        /*else if(!spaCB.isSelected() && !jacuzziCB.isSelected() && !saunaCB.isSelected() && !gymCB.isSelected() && noneCB.isSelected())
         {
             showErrorMessage = false;
             repeat = false;
-        }
-        else if ((spaCB.isSelected() || jacuzziCB.isSelected() || saunaCB.isSelected() || gymCB.isSelected()) && (noneCB.isSelected()))
+        }*/
+        else if ((spaCB.isSelected() || jacuzziCB.isSelected() || saunaCB.isSelected() || gymCB.isSelected()) && (noneCB.isSelected())) // if a feature is selected the same time as no features
         {
             showErrorMessage = true;
             repeat = true;

@@ -36,7 +36,7 @@ public class HotelLocationMenu extends JFrame{
     private JPanel headerPanel, menuPanel, bottomPanel;
     private ButtonGroup group; 
     private JRadioButton[] locationButtons = new JRadioButton[8];
-    private JButton backButton, nextButton;
+    private JButton nextButton;
     private Boolean showErrorMessage = false;
     private Boolean repeat = false;
 
@@ -124,16 +124,11 @@ public class HotelLocationMenu extends JFrame{
         bottomPanel = new JPanel();
         bottomPanel.setBackground(Color.BLUE);
         bottomPanel.setPreferredSize(new Dimension(730,80));
-        
-        backButton = new JButton("Go Back");
-        backButton.setPreferredSize(new Dimension(200,70));
-        backButton.setFont(new Font("Arial", Font.BOLD, 24));
-        
+           
         nextButton = new JButton("Next");
         nextButton.setPreferredSize(new Dimension(200,70));
         nextButton.setFont(new Font("Arial", Font.BOLD, 24));
         
-        bottomPanel.add(backButton);
         bottomPanel.add(nextButton);
         this.add(bottomPanel, BorderLayout.SOUTH);
         

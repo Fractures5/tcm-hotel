@@ -33,7 +33,7 @@ public class HotelGuestTypesMenu extends JFrame
     private JLabel pageTitle, instruction, adultTitle, childTitle, infantTitle, elderlyTitle, vipTitle;
     private JPanel headerPanel, menuPanel, bottomPanel;
     private JComboBox<Integer> adultTypeBox, childTypeBox, infantTypeBox, elderlyTypeBox, vipTypeBox;
-    private JButton backButton, nextButton;
+    private JButton nextButton;
     private Boolean showErrorMessage = false;
     private Boolean repeat = false;
     Integer[] guestCount = {0,1,2,3,4,5};
@@ -127,15 +127,11 @@ public class HotelGuestTypesMenu extends JFrame
         this.add(menuPanel, BorderLayout.CENTER);
         
         bottomPanel = new JPanel();
-        backButton = new JButton("Go Back");
-        backButton.setPreferredSize(new Dimension(200,70));
-        backButton.setFont(new Font("Arial", Font.BOLD, 24));
-        
+ 
         nextButton = new JButton("Next");
         nextButton.setPreferredSize(new Dimension(200,70));
         nextButton.setFont(new Font("Arial", Font.BOLD, 24));
         
-        bottomPanel.add(backButton);
         bottomPanel.add(nextButton);
         this.add(bottomPanel, BorderLayout.SOUTH);
         
@@ -190,7 +186,6 @@ public class HotelGuestTypesMenu extends JFrame
                 repeat = true;
                 showErrorMessage = false;
             }
-
         }
     }
     
