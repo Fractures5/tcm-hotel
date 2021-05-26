@@ -61,10 +61,10 @@ public class DriverMVC {
         //viewAdmin.setVisible(true);
         //viewLogin.setVisible(true);
         
-        //AdminSysMenuModel modelAdminSystem = new AdminSysMenuModel();
-        //AdminSysMenuView viewAdminSystem = new AdminSysMenuView();
-        //AdminSysMenuController controllerAdminSys = new AdminSysMenuController(modelAdminSystem, viewAdminSystem);
-        //viewAdminSystem.setVisible(true);
+        AdminSysMenuModel modelAdminSystem = new AdminSysMenuModel();
+        AdminSysMenuView viewAdminSystem = new AdminSysMenuView();
+        AdminSysMenuController controllerAdminSys = new AdminSysMenuController(modelAdminSystem, viewAdminSystem);
+        viewAdminSystem.setVisible(true);
         
         
         //db.readRecordsTest(rs);

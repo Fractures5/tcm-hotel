@@ -19,6 +19,9 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +30,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import tcm.hotel.ViewRecords;
 
 /**
  *
@@ -106,7 +110,33 @@ public class AdminSysMenuView extends JFrame{
         JScrollPane staffScroll = new JScrollPane(staffTable);
         
         HotelProductDB db = new HotelProductDB();
-        ResultSet rs = db.getStaffRecords();
+        ArrayList<ViewRecords> testStaff = db.getStaffRecords();
+        
+        System.out.println(testStaff.get(0).getAdminFName());
+        //ArrayList<ViewRecords> staffList = new ArrayList<ViewRecords>();
+       
+        
+        //System.out.println("TEST");
+//        try{
+//            while (rs.next()) {
+//                System.out.println("TEST2");
+//                String adminFName = rs.getString("ADMIN_FIRSTNAME");
+//                String adminLName = rs.getString("ADMIN_LASTNAME");
+//                String adminJobTitle = rs.getString("ADMIN_JOBTITLE");
+//                String adminPhoneNum = rs.getString("ADMIN_PHONENUMBER");
+//                String adminEmail = rs.getString("ADMIN_EMAILADDRESS");
+//                System.out.println(adminFName + adminLName + adminJobTitle + adminPhoneNum + adminEmail);
+//                ViewRecords staffDetails = new ViewRecords(adminFName, adminLName, adminJobTitle, adminPhoneNum, adminEmail);
+//                staffList.add(staffDetails);
+//            }
+//            return staffList;
+//        }
+//        catch (SQLException ex){
+//            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
+        
+        /*System.out.println(list.get(0));
         
         DefaultTableModel tableModel = new DefaultTableModel();
         
@@ -127,7 +157,7 @@ public class AdminSysMenuView extends JFrame{
             tableModel.addRow(tableRow);
         }
         
-        staffTable.setModel(tableModel);
+        staffTable.setModel(tableModel);*/
         
         this.add(staffTable);
         

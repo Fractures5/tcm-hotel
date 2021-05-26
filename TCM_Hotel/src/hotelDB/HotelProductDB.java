@@ -16,8 +16,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tcm.hotel.ViewRecords;
 
 /**
  *
@@ -34,23 +36,11 @@ public class HotelProductDB {
         conn = dbManager.getConnection();
 
     }
-    
-    /*public void readRecordsTest(ResultSet rs){
-        try {
-            while (rs.next()) {
-                String adminFName = rs.getString("ADMIN_FIRSTNAME");
-                System.out.println(adminFName);
-            }
-            rs.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }*/
-    
-    public ResultSet getStaffRecords(){
+
+    public ArrayList<ViewRecords> getStaffRecords(){
         
         ResultSet rs = null;
-        
+        ArrayList<ViewRecords> staffList = new ArrayList<ViewRecords>();
         try {
             this.statement = conn.createStatement();
             rs = statement.executeQuery("SELECT ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS FROM ADMIN_LIST");
@@ -60,14 +50,18 @@ public class HotelProductDB {
                 String adminJobTitle = rs.getString("ADMIN_JOBTITLE");
                 String adminPhoneNum = rs.getString("ADMIN_PHONENUMBER");
                 String adminEmail = rs.getString("ADMIN_EMAILADDRESS");
-                System.out.println(adminFName + adminLName + adminJobTitle + adminPhoneNum + adminEmail);
+                ViewRecords staffDetails = new ViewRecords(adminFName, adminLName, adminJobTitle, adminPhoneNum, adminEmail);
+                staffList.add(staffDetails);
+                //System.out.println(adminFName + adminLName + adminJobTitle + adminPhoneNum + adminEmail);
             }
+            
             
         }
         catch (SQLException ex) {
             Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return (rs);
+        
+        return staffList;
         
     }
     
@@ -85,9 +79,9 @@ public class HotelProductDB {
                 String guestPhoneNum = rs.getString("GUEST_PHONENUMBER");
                 String guestEmailAddress = rs.getString("GUEST_EMAILADDRESS");
                 String guestAccountNumber = rs.getString("GUEST_ACCOUNTNUMBER");
-                System.out.println(guestFName + guestLName + guestAge + guestPhoneNum + guestEmailAddress + guestAccountNumber);
+                //System.out.println(guestFName + guestLName + guestAge + guestPhoneNum + guestEmailAddress + guestAccountNumber);
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -132,7 +126,7 @@ public class HotelProductDB {
     public void createGuestListTable(){
         try{
             this.statement = conn.createStatement();
-            this.checkTableExistence("GUEST_LIST");
+            //this.checkTableExistence("GUEST_LIST");
             this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50))");
             this.statement.executeBatch();
             System.out.println("Table Guest_List has been created");
