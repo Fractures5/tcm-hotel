@@ -5,7 +5,7 @@
  */
 package hotelDB;
 
-import Model.AdminModel;
+import Model.AdminFormModel;
 import Model.GuestModel;
 import hotelDB.DBManager;
 import java.sql.BatchUpdateException;
@@ -16,6 +16,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,7 +35,67 @@ public class HotelProductDB {
 
     }
     
-    public void registerAdmin(AdminModel admin) {
+    /*public void readRecordsTest(ResultSet rs){
+        try {
+            while (rs.next()) {
+                String adminFName = rs.getString("ADMIN_FIRSTNAME");
+                System.out.println(adminFName);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }*/
+    
+    public ResultSet getStaffRecords(){
+        
+        ResultSet rs = null;
+        
+        try {
+            this.statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS FROM ADMIN_LIST");
+            while (rs.next()) {
+                String adminFName = rs.getString("ADMIN_FIRSTNAME");
+                String adminLName = rs.getString("ADMIN_LASTNAME");
+                String adminJobTitle = rs.getString("ADMIN_JOBTITLE");
+                String adminPhoneNum = rs.getString("ADMIN_PHONENUMBER");
+                String adminEmail = rs.getString("ADMIN_EMAILADDRESS");
+                System.out.println(adminFName + adminLName + adminJobTitle + adminPhoneNum + adminEmail);
+            }
+            
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return (rs);
+        
+    }
+    
+    public ResultSet getGuestRecords(){
+        
+        ResultSet rs = null;
+        
+        try {
+            this.statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER FROM GUEST_LIST");
+            while (rs.next()) {
+                String guestFName = rs.getString("GUEST_FIRSTNAME");
+                String guestLName = rs.getString("GUEST_LASTNAME");
+                String guestAge = rs.getString("GUEST_AGE");
+                String guestPhoneNum = rs.getString("GUEST_PHONENUMBER");
+                String guestEmailAddress = rs.getString("GUEST_EMAILADDRESS");
+                String guestAccountNumber = rs.getString("GUEST_ACCOUNTNUMBER");
+                System.out.println(guestFName + guestLName + guestAge + guestPhoneNum + guestEmailAddress + guestAccountNumber);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return (rs);
+        
+    }
+    
+    public void registerAdmin(AdminFormModel admin) {
         try {
             this.statement = conn.createStatement();
             this.statement.addBatch("INSERT INTO ADMIN_LIST (ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS) VALUES('" + admin.getAdminFirstName() + "', '" + admin.getAdminLastName() + "', '" + admin.getAdminJobTitle()+ "', '" + admin.getAdminPhoneNumber() + "', '" + admin.getAdminEmailAddress() + "')");
@@ -46,7 +108,7 @@ public class HotelProductDB {
     public void registerGuest(GuestModel guest){
         try{
             this.statement = conn.createStatement();
-            this.statement.addBatch("INSERT INTO GUEST_LIST (GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER, GUEST_ACCOUNTPIN) VALUES('"+ guest.getGuestFirstName()+"', '"+ guest.getGuestLastName()+"', '"+ guest.getGuestAge()+"', '"+ guest.getGuestPhoneNumber()+"', '"+ guest.getGuestEmail()+"', '"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestAccountPin()+"')");
+            this.statement.addBatch("INSERT INTO GUEST_LIST (GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER) VALUES('"+ guest.getGuestFirstName()+"', '"+ guest.getGuestLastName()+"', '"+ guest.getGuestAge()+"', '"+ guest.getGuestPhoneNumber()+"', '"+ guest.getGuestEmail()+"', '"+ guest.getGuestAccountNumber()+"')");
             this.statement.executeBatch();
         }
         catch(SQLException ex){
@@ -70,7 +132,8 @@ public class HotelProductDB {
     public void createGuestListTable(){
         try{
             this.statement = conn.createStatement();
-            this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_ACCOUNTPIN VARCHAR(50))");
+            this.checkTableExistence("GUEST_LIST");
+            this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50))");
             this.statement.executeBatch();
             System.out.println("Table Guest_List has been created");
         }

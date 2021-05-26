@@ -84,8 +84,6 @@ public class LoginView extends JFrame{
         return showInvalidPasswordError;
     }
     
-    
-    
     public LoginView(){
         
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -176,10 +174,12 @@ public class LoginView extends JFrame{
         System.out.println(inputSystemPassword);
         
         if(inputSystemPassword.equals(correctSystemPassword)){
+            System.out.println("input password correct!");
             matchingSystemPassword = true;
             showInvalidPasswordError = false;
         }
         else{
+            System.out.println("input password incorrect!");
             matchingSystemPassword = false;
             showInvalidPasswordError = true;
         }

@@ -5,8 +5,14 @@
  */
 package Controller;
 
+import Model.AdminFormModel;
+import Model.AdminSysMenuModel;
 import Model.LoginModel;
+import View.AdminFormView;
+import View.AdminSysMenuView;
 import View.LoginView;
+import hotelDB.DBManager;
+import hotelDB.HotelProductDB;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,10 +24,14 @@ public class LoginController {
     
     LoginModel modelLogin;
     LoginView viewLogin;
+    AdminFormModel modelAdmin;
+    AdminFormView viewAdmin;
     
-    public LoginController(LoginModel modelLogin, LoginView viewLogin){
+    public LoginController(LoginModel modelLogin, LoginView viewLogin, AdminFormModel modelAdmin, AdminFormView viewAdmin){
         this.modelLogin = modelLogin;
         this.viewLogin = viewLogin;
+        this.modelAdmin = modelAdmin;
+        this.viewAdmin = viewAdmin;
         
         
         viewLogin.getLogin().addActionListener(new ActionListener(){
@@ -61,6 +71,21 @@ public class LoginController {
         
         if(viewLogin.getShowInvalidPasswordError() == false && viewLogin.getMatchingSystemPassword()== true){
             viewLogin.displayLoginSuccessful();
+            modelAdmin.setAdminFirstName(viewAdmin.getAdminFNameField());
+            modelAdmin.setAdminLastName(viewAdmin.getAdminLNameField());
+            modelAdmin.setAdminJobTitle(viewAdmin.getAdminJobTitleField());
+            modelAdmin.setAdminPhoneNumber(viewAdmin.getAdminPhoneNumField());
+            modelAdmin.setAdminEmailAddress(viewAdmin.getAdminEmailField());
+            System.out.println(modelAdmin.getAdminFirstName());
+            HotelProductDB productDB = new HotelProductDB();
+            DBManager db = new DBManager();
+            productDB.registerAdmin(modelAdmin);
+            viewLogin.setVisible(false);
+            AdminSysMenuModel modelAdminSystem = new AdminSysMenuModel();
+            AdminSysMenuView viewAdminSystem = new AdminSysMenuView();
+            AdminSysMenuController controllerAdminSys = new AdminSysMenuController(modelAdminSystem, viewAdminSystem);
+            viewAdminSystem.setVisible(true);
+            
         }
     }
     
