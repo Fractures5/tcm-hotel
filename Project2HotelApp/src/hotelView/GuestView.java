@@ -299,10 +299,10 @@ public class GuestView extends JFrame{
         buttonPanel.add(resetDetails);
         buttonPanel.add(confirmDetails);
         
-        
         this.add(headerPanel, BorderLayout.NORTH);
         this.add(centrePanel, BorderLayout.CENTER);
         this.add(buttonPanel, BorderLayout.SOUTH);
+        this.setVisible(true);
     }
     
     public void DetailsConfirmation(){

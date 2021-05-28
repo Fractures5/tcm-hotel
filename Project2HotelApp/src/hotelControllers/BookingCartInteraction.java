@@ -27,7 +27,8 @@ public class BookingCartInteraction
         {
             public void actionPerformed(ActionEvent e)
             {
-                
+                System.out.println("keffe");
+                handleProceedButtonPress();
             }
         });
         
@@ -60,11 +61,16 @@ public class BookingCartInteraction
     
     public void handleProceedButtonPress()
     {
-        cartView.setVisible(false);
+        System.out.println("procceed button is clicked");
+        cartView.confirmSelection();
         
-        GuestModel modelGuest = new GuestModel();
-        GuestView viewGuest = new GuestView();
-        GuestController controllerGuest = new GuestController(modelGuest, viewGuest);
+        if(cartView.getRepeat() == false)
+        {
+            cartView.setVisible(false);
+            GuestModel modelGuest = new GuestModel();
+            GuestView viewGuest = new GuestView();
+            GuestController controllerGuest = new GuestController(modelGuest, viewGuest);
+        }   
     }
     
     public void mouseExitHomeBtnHover()

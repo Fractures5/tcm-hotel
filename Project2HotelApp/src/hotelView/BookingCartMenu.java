@@ -22,6 +22,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -44,6 +45,7 @@ public class BookingCartMenu extends JFrame
     private static JTextArea bookingCartField;
     private static JTextArea costsField;
     private JScrollPane scroll;
+    private Boolean repeat = false;
     
     Toolkit kit = Toolkit.getDefaultToolkit();
     Dimension screenSize = kit.getScreenSize();
@@ -177,6 +179,19 @@ public class BookingCartMenu extends JFrame
         return bookingCartField;
     }
 
+    public void confirmSelection()
+    {
+        int userConfirmation = JOptionPane.showConfirmDialog(new JFrame(), "Would you like to continue?");
+
+        if (userConfirmation == JOptionPane.YES_OPTION) 
+        {
+            repeat = false;
+        } 
+        else if (userConfirmation == JOptionPane.NO_OPTION || userConfirmation == JOptionPane.CANCEL_OPTION || userConfirmation == JOptionPane.CLOSED_OPTION) 
+        {
+            repeat = true;
+        }
+    }
     public JButton getHomeButton() 
     {
         return homeButton;
@@ -185,6 +200,11 @@ public class BookingCartMenu extends JFrame
     public JButton getProceedButton() 
     {
         return proceedButton;
+    }
+
+    public Boolean getRepeat() 
+    {
+        return repeat;
     }
     
     public void mouseEnterHomeHover()

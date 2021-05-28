@@ -105,38 +105,32 @@ public class GuestController{
             modelGuest.setGuestAccountPin(viewGuest.getAccPinField());
             HotelProductDB productDB = new HotelProductDB();
             DBManager dbManage = new DBManager();
-            productDB.registerGuest(modelGuest);
-            
-            
+            productDB.registerGuest(modelGuest);   
         }
     }
 
-    public void handleResetDetailsClick(){
-        
+    public void handleResetDetailsClick()
+    {  
         viewGuest.DetailsReset();
-
     }
     
-    public void mouseEnteredConfirmDetails(){
-        
-        viewGuest.mouseEnterConfirmDetails();
-        
+    public void mouseEnteredConfirmDetails()
+    {      
+        viewGuest.mouseEnterConfirmDetails();   
     }
     
-    public void mouseExitedConfirmDetails(){
-        
-        viewGuest.mouseExitConfirmDetails();
-        
+    public void mouseExitedConfirmDetails()
+    {       
+        viewGuest.mouseExitConfirmDetails();      
     }
     
-    public void mouseEnteredResetDetails() {
-
+    public void mouseEnteredResetDetails() 
+    {
         viewGuest.mouseEnterResetDetails();
-
     }
 
-    public void mouseExitedResetDetails() {
-        
+    public void mouseExitedResetDetails() 
+    {        
         viewGuest.mouseExitResetDetails();
     }
 }

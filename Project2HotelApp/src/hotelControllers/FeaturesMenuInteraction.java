@@ -69,7 +69,10 @@ public class FeaturesMenuInteraction
             //System.out.println(featuresModel.getFeaturesBooked().get(0).getTitle() + " " + featuresModel.getFeaturesBooked().get(0).getPrice());
             featuresModel.currentFeatureBookings();
             
-            BookingCartMenu guestCart = new BookingCartMenu();
+            //BookingCartMenu guestCart = new BookingCartMenu();
+            
+            BookingCartMenu viewBookingCart = new BookingCartMenu();
+            BookingCartInteraction cartInteraction = new BookingCartInteraction(viewBookingCart);
                     
         }
     }
