@@ -48,7 +48,7 @@ public class DriverMVC {
 //        AdminFormModel modelAdmin = new AdminFormModel();
 //        AdminFormView viewAdmin = new AdminFormView();
 //        AdminFormController controllerAdmin = new AdminFormController(modelAdmin, viewAdmin);
-        
+            
 //        LoginModel modelLogin = new LoginModel();
 //        LoginView viewLogin = new LoginView();
 //        LoginController controllerLogin = new LoginController(modelLogin, viewLogin);
@@ -60,12 +60,10 @@ public class DriverMVC {
 //        viewGuest.setVisible(true);
 //        viewAdmin.setVisible(true);
 //        viewLogin.setVisible(true);
-        
+
         AdminSysMenuModel modelAdminSystem = new AdminSysMenuModel();
         AdminSysMenuView viewAdminSystem = new AdminSysMenuView();
         AdminSysMenuController controllerAdminSys = new AdminSysMenuController(modelAdminSystem, viewAdminSystem);
         viewAdminSystem.setVisible(true);
-
     }
-
 }

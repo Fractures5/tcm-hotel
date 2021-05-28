@@ -11,6 +11,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,7 +30,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import tcm.hotel.ViewRecords;
 
 /**
@@ -41,8 +46,8 @@ public class AdminSysMenuView extends JFrame{
     private JSplitPane splitPane;
     private JPanel buttonList;
     private JPanel displayedData;
-    private JPanel guestsRecords;
-    private JPanel staffRecords;
+    private JPanel guestsDataPanel;
+    private JPanel staffDataPanel;
     private JButton viewGuests;
     private JButton viewStaff;
     private JLabel testLabel;
@@ -64,12 +69,12 @@ public class AdminSysMenuView extends JFrame{
         return displayedData;
     }
 
-    public JPanel getGuestsRecords() {
-        return guestsRecords;
+    public JPanel getGuestsDataPanel() {
+        return guestsDataPanel;
     }
 
-    public JPanel getStaffRecords() {
-        return staffRecords;
+    public JPanel getstaffDataPanel() {
+        return staffDataPanel;
     }
 
     public JButton getViewGuests() {
@@ -101,8 +106,21 @@ public class AdminSysMenuView extends JFrame{
         
         viewGuests = new JButton("View Guests");
         viewStaff = new JButton("View Admins");
-
-        splitPane = new JSplitPane();
+        JButton test = new JButton("fsdoldsj");
+        displayedData = new JPanel();
+        buttonList = new JPanel();
+        
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        
+        buttonList.add(viewGuests);
+        buttonList.add(viewStaff);
+        splitPane.add(buttonList);
+        
+        displayedData.setLayout(new CardLayout());
+        
+        guestsDataPanel = new JPanel();
+        staffDataPanel = new JPanel();
+        
         
         JScrollPane guestScroll = new JScrollPane(guestsTable);
         JScrollPane staffScroll = new JScrollPane(staffTable);
@@ -119,6 +137,8 @@ public class AdminSysMenuView extends JFrame{
         guestsTable = new JTable(guestTableModel);
         staffTable = new JTable(staffTableModel);
         
+//        guestsTable.add(guestScroll);
+
         for (int i = 0; i < staffRecords.size(); i++){
             String adminFName = staffRecords.get(i).getAdminFName();
             String adminLName = staffRecords.get(i).getAdminLName();
@@ -145,9 +165,46 @@ public class AdminSysMenuView extends JFrame{
         staffTable.setModel(staffTableModel);
         guestsTable.setModel(guestTableModel);
         
+//        guestsTable.setMinimumSize(new Dimension(900,900));
+//        staffTable.setMinimumSize(new Dimension(900,900));
         
-        this.add(guestsTable);
-        this.add(staffTable);
+        guestsTable.setPreferredSize(new Dimension(900, 1000));
+        staffTable.setPreferredSize(new Dimension(1100, 1100));
+        
+        Font bigHeader = new Font("sansserif", Font.PLAIN, 16);
+        guestsTable.getTableHeader().setFont(bigHeader);
+        DefaultTableCellRenderer guestsRender = (DefaultTableCellRenderer)guestsTable.getDefaultRenderer(Object.class);
+        guestsRender.setHorizontalAlignment(SwingConstants.CENTER);
+        guestsTable.setRowHeight(50);
+        
+        staffTable.getTableHeader().setFont(bigHeader);
+        DefaultTableCellRenderer staffRender = (DefaultTableCellRenderer) staffTable.getDefaultRenderer(Object.class);
+        staffRender.setHorizontalAlignment(SwingConstants.CENTER);
+        staffTable.setRowHeight(50);
+        
+        guestsTable.setPreferredScrollableViewportSize(guestsTable.getPreferredSize());
+        guestsTable.setFillsViewportHeight(true);
+        guestsTable.setDragEnabled(true);
+        guestsTable.setRowMargin(100);
+        guestsTable.setGridColor(Color.blue);
+        guestsTable.setShowGrid(true);
+        
+        staffTable.setPreferredScrollableViewportSize(guestsTable.getPreferredSize());
+        staffTable.setFillsViewportHeight(true);
+        staffTable.setFillsViewportHeight(true);
+        staffTable.setDragEnabled(true);
+        staffTable.setRowMargin(40);
+        staffTable.setGridColor(Color.blue);
+        staffTable.setShowGrid(true);
+        
+        staffDataPanel.add(new JScrollPane(staffTable));
+        guestsDataPanel.add(new JScrollPane(guestsTable));
+        
+        //displayedData.add(guestsDataPanel);
+        displayedData.add(staffDataPanel);
+        
+        splitPane.add(displayedData);
+        this.add(splitPane);
     }
     
     public void showGuestRecords() throws ClassNotFoundException{
