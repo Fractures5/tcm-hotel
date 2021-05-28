@@ -5,11 +5,13 @@
  */
 package HotelGuiController;
 
+import HotelGuiView.FAQGuiView;
 import HotelGuiView.WelcomeAppGuiView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
+
 /**
  *
  * @author faaris
@@ -18,6 +20,9 @@ import java.awt.event.MouseAdapter;
 public class WelcomeAppGuiController 
 {
     WelcomeAppGuiView viewClass;
+    FAQGuiView accessFAQ;
+    FAQGuiController faqControl;
+
     //Will have a back button on both the FAQ and 
     //About Us page, so will need to make an object of both those
     //View classes and do the same thing of "hovering" and "clicking" 
@@ -191,6 +196,8 @@ public class WelcomeAppGuiController
     
     public void ClickButtonTwo()
     {
+        accessFAQ = new FAQGuiView();
+        faqControl = new FAQGuiController(accessFAQ);
         viewClass.enterFAQView();
     }
     

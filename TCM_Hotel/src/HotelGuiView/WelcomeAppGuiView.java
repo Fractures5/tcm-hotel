@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package HotelGuiView;
+
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -38,9 +39,6 @@ public class WelcomeAppGuiView extends JFrame
     private JButton buttonTwo;
     private JButton buttonThree;
     private JButton buttonFour;
-    
-    private FAQGuiView accessFAQ;
-    private AboutUsGuiView accessAboutUs;
     
     private ImageIcon icon1;
     private ImageIcon icon2;
@@ -209,8 +207,7 @@ public class WelcomeAppGuiView extends JFrame
             images.setIcon(slideshow[i]);
         }
     }
-    
-    
+
     public JButton getButtonOne()
     {
         return buttonOne;
@@ -277,14 +274,13 @@ public class WelcomeAppGuiView extends JFrame
         //Make call to FAQ view class here
         welcomeFrame.setVisible(false);
         welcomeFrame.dispose();
-        accessFAQ = new FAQGuiView();
     }
     
     public void enterAboutUsView()
     {
         welcomeFrame.setVisible(false);
         welcomeFrame.dispose();
-        accessAboutUs = new AboutUsGuiView();
+        //accessAboutUs = new AboutUsGuiView();
     }
     
     public void enterAdminView()

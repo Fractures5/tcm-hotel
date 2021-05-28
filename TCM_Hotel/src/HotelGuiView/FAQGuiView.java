@@ -11,12 +11,14 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.Box;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.UIManager;
 
 /**
  *
@@ -33,6 +35,8 @@ public class FAQGuiView extends JFrame
     
     private JTextArea FAQField;
     private JScrollPane fieldScroller;
+    
+    private JButton backButton;
     
     private JLabel FAQLabel; 
     
@@ -65,7 +69,7 @@ public class FAQGuiView extends JFrame
         
         FAQField = new JTextArea();
         FAQField.setFont(new Font("Aria", Font.BOLD, 15));
-        FAQField.setText("  **************************************************************************************************************************************************************************************************\n");
+        FAQField.append("  **************************************************************************************************************************************************************************************************\n");
         FAQField.append("   (Q): How can I make a booking for a room/s at the TCM Hotel?\n");
         FAQField.append("   (A): We here at TCM offer various booking options, including our on-site service center. The preferable and easiest\n");
         FAQField.append("          way to make a booking is through the TCM online booking system which is available 24/7.\n");
@@ -76,24 +80,61 @@ public class FAQGuiView extends JFrame
         FAQField.append("\n   (Q): Do we offer any specials/discount rates for customers?\n");
         FAQField.append("   (A): Yes, for children under the age of 11 pay $10 and any infants under the age of 2 are allowed free entry.\n");
         FAQField.append("          Elderly customers are given a discounted price of $10, and any customers who have a disability pay around $25.\n");
-        FAQField.append("          Regular/Adult price is set at $30.");
+        FAQField.append("          Regular/Adult price is set at $30.\n");
+        
+        FAQField.append("  **************************************************************************************************************************************************************************************************");
+        FAQField.append("\n   (Q): Are there any special features in my room booking that I can include?\n");
+        FAQField.append("   (A): When you have confirmed the rooms you want and the number of people that will be accommodating,\n");
+        FAQField.append("          you will be prompted to select one of the special features that every TCM hotel branch provides such as the sauna, jacuzzi, spa, tennis-court and gym.\n");
+
+        FAQField.append("  **************************************************************************************************************************************************************************************************");
+        FAQField.append("\n   (Q): Am I able to book a multiple rooms of different categories at once?\n");
+        FAQField.append("    (A): Yes, the online-booking system will prompt you to enter the amount of rooms you would like to accommodate\n");
+        FAQField.append("         and the type for each room. However, there is a limited amount of room types available, which will be indicated on 'Room Availability' tab when booking. \n");
+        FAQField.append("  **************************************************************************************************************************************************************************************************");
         
         FAQField.setBounds(15, 15, 855, 400);
         FAQField.setEditable(false);
         
+        backButton = new JButton("Return to the Main Menu");
+        backButton.setForeground(Color.black);
+        backButton.setFont(new Font("Arial", Font.BOLD, 15));
+        backButton.setBounds(300, 400, 855, 400);
         
         fieldScroller = new JScrollPane(FAQField, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         fieldScroller.setMinimumSize(new Dimension (855, 400));
         fieldScroller.setPreferredSize(new Dimension (855, 400));     
         
-        //FAQField.add(fieldScroller);
-        
         middlePanel = new JPanel();
+        bottomPanel = new JPanel();
+        bottomPanel.add(Box.createVerticalStrut(100));
+        bottomPanel.setBackground(Color.blue);
         
         topPanel.add(FAQLabel);
         middlePanel.add(fieldScroller);
-        //middlePanel.add(FAQField);
+        bottomPanel.add(backButton);
         FAQFrame.add(topPanel, BorderLayout.NORTH);
         FAQFrame.add(middlePanel, BorderLayout.CENTER);
+        FAQFrame.add(bottomPanel, BorderLayout.SOUTH);
+        FAQFrame.setVisible(true);
+    }
+    
+    public JButton getBackButton()
+    {
+        return backButton;
+    }
+    
+    public void mouseEnterHoverBackButton() {
+        getBackButton().setBackground(Color.LIGHT_GRAY);
+    }
+
+    public void mouseExitHoverBackButton() {
+        getBackButton().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void returnToMain()
+    {
+        FAQFrame.setVisible(false);
+        FAQFrame.dispose();
     }
 }
