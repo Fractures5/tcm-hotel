@@ -6,12 +6,15 @@
 package hotelDB;
 
 import hotelDB.DBManager;
+import hotelModel.GuestModel;
 import java.sql.BatchUpdateException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import project2hotelapp.GuestsBookingCart;
 
 /**
  *
@@ -27,8 +30,11 @@ public class HotelProductDB
     {
         dbManager = new DBManager();
         conn = dbManager.getConnection();
-        
-        
+    }
+    
+    public void closeConnection()
+    {
+        this.dbManager.closeConnnections();
     }
     
     public void createHLocationTable() 
@@ -164,8 +170,136 @@ public class HotelProductDB
         }
     }
     
-    public void closeConnection()
+//    public ArrayList<ViewRecords> getStaffRecords(){
+//        
+//        ResultSet rs = null;
+//        ArrayList<ViewRecords> saveStaffRecords = new ArrayList<ViewRecords>();
+//        try {
+//            this.statement = conn.createStatement();
+//            rs = statement.executeQuery("SELECT ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS FROM ADMIN_LIST");
+//            while (rs.next()) {
+//                String adminFName = rs.getString("ADMIN_FIRSTNAME");
+//                String adminLName = rs.getString("ADMIN_LASTNAME");
+//                String adminJobTitle = rs.getString("ADMIN_JOBTITLE");
+//                String adminPhoneNum = rs.getString("ADMIN_PHONENUMBER");
+//                String adminEmail = rs.getString("ADMIN_EMAILADDRESS");
+//                ViewRecords staffDetails = new ViewRecords(adminFName, adminLName, adminJobTitle, adminPhoneNum, adminEmail);
+//                saveStaffRecords.add(staffDetails);
+//            }   
+//        }
+//        catch (SQLException ex) {
+//            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        return saveStaffRecords;
+//        
+//    }
+    
+//    public ArrayList<ViewRecords> getGuestRecords(){
+//        
+//        ResultSet rs = null;
+//        ArrayList<ViewRecords> saveGuestRecords = new ArrayList<ViewRecords>();
+//        try {
+//            this.statement = conn.createStatement();
+//            rs = statement.executeQuery("SELECT GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER FROM GUEST_LIST");
+//            while (rs.next()) {
+//                String guestFName = rs.getString("GUEST_FIRSTNAME");
+//                String guestLName = rs.getString("GUEST_LASTNAME");
+//                String guestAge = rs.getString("GUEST_AGE");
+//                String guestPhoneNum = rs.getString("GUEST_PHONENUMBER");
+//                String guestEmailAddress = rs.getString("GUEST_EMAILADDRESS");
+//                String guestAccountNumber = rs.getString("GUEST_ACCOUNTNUMBER");
+//                ViewRecords guestDetails = new ViewRecords(guestFName, guestLName, guestAge, guestPhoneNum, guestEmailAddress, guestAccountNumber);
+//                saveGuestRecords.add(guestDetails);
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return saveGuestRecords;
+//        
+//    }
+    
+//    public void registerAdmin(AdminFormModel admin) {
+//        try {
+//            this.statement = conn.createStatement();
+//            this.statement.addBatch("INSERT INTO ADMIN_LIST (ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS) VALUES('" + admin.getAdminFirstName() + "', '" + admin.getAdminLastName() + "', '" + admin.getAdminJobTitle()+ "', '" + admin.getAdminPhoneNumber() + "', '" + admin.getAdminEmailAddress() + "')");
+//            this.statement.executeBatch();
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//    }
+
+    public void registerGuest(GuestModel guest){
+        try{
+            this.statement = conn.createStatement();
+            this.statement.addBatch("INSERT INTO GUEST_LIST (GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER) VALUES('"+ guest.getGuestFirstName()+"', '"+ guest.getGuestLastName()+"', '"+ guest.getGuestAge()+"', '"+ guest.getGuestPhoneNumber()+"', '"+ guest.getGuestEmail()+"', '"+ guest.getGuestAccountNumber()+"')");
+            this.statement.executeBatch();
+        }
+        catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    public void createAdminListTable() {
+        try {
+            this.statement = conn.createStatement();
+            //this.checkTableExistence("ADMIN_LIST");
+            this.statement.addBatch("CREATE TABLE ADMIN_LIST (ADMIN_FIRSTNAME VARCHAR(50), ADMIN_LASTNAME VARCHAR(50), ADMIN_JOBTITLE VARCHAR(50), ADMIN_PHONENUMBER VARCHAR(50), ADMIN_EMAILADDRESS VARCHAR(50))");
+            this.statement.executeBatch();
+            System.out.println("Table Admin_List has been created");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getNextException());
+        }
+    }
+
+    public void createGuestListTable(){
+        try{
+            this.statement = conn.createStatement();
+            //this.checkTableExistence("GUEST_LIST");
+            this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50))");
+            this.statement.executeBatch();
+            System.out.println("Table Guest_List has been created");
+        }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getNextException());
+        }
+    }
+    
+    public void createLocationBookedTable()
     {
-        this.dbManager.closeConnnections();
+        try
+        {
+            this.statement = conn.createStatement();
+            this.checkTableExistence("BOOKED_HOTEL_LOCATIONS");
+            this.statement.addBatch("CREATE  TABLE BOOKED_HOTEL_LOCATIONS (GUEST_FIRSTNAME VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50), LOCATION_TITLE   VARCHAR(50), LOCATION VARCHAR(20))");
+            this.statement.executeBatch();
+            System.out.println("BOOKED_HOTEL_LOCATIONS table is created");
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getNextException());
+        }
+        
+    }
+    
+    public void dbAddLocationsBooked(GuestModel guest, GuestsBookingCart locationBooked)
+    {
+        try
+        {
+            this.statement = conn.createStatement();
+            
+            this.statement.addBatch("INSERT INTO GUEST_LIST (GUEST_FIRSTNAME, GUEST_ACCOUNTNUMBER, LOCATION_TITLE, LOCATION) VALUES "
+                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '"+ locationBooked.getTitle()+"', '" +locationBooked.getLocationType()+"')");
+            this.statement.executeBatch();
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        
     }
 }

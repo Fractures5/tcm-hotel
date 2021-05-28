@@ -27,6 +27,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import project2hotelapp.CalculateCosts;
 import project2hotelapp.GuestsBookingCart;
@@ -78,6 +79,7 @@ public class BookingCartMenu extends JFrame
         JTextArea bookingCartField = BookingCartMenu.addBookingDetails();
         bookingCartField.setFont(new Font("Arial", Font.BOLD, 16));
         bookingCartField.setBorder(blackline);
+        bookingCartField.setEditable(false);
         
         scroll = new JScrollPane(bookingCartField, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         scroll.setMinimumSize(new Dimension (950, 450));
@@ -93,7 +95,7 @@ public class BookingCartMenu extends JFrame
         costsField.setBorder(blackline);
         costsField.setPreferredSize(new Dimension (950, 40));
         costsField.setText("                                                       Total cost to pay: $" +totalCosts);
-        
+        costsField.setEditable(false);
         
         menuPanel.add(Box.createVerticalStrut(65));
         menuPanel.add(scroll);
@@ -155,43 +157,53 @@ public class BookingCartMenu extends JFrame
         bookingCartField.append("\n----------------------------------------------------------------------------- Rooms Booked -------------------------------------------------------------------------------------------------\n\n");
         for (GuestsBookingCart bookingDetails : roomsBooked)
         {
-            bookingCartField.append("Title: " + bookingDetails.getTitle() + "           Room Type: " + bookingDetails.getRoomType() + "     Price: $" + bookingDetails.getPrice() + "\n");
+            bookingCartField.append("Title: " + bookingDetails.getTitle() + "                    Room Type: " + bookingDetails.getRoomType() + "                 Price: $" + bookingDetails.getPrice() + "\n");
         }
         //bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         
         bookingCartField.append("\n-------------------------------------------------------------------------- Guest types Booked ---------------------------------------------------------------------------------------------\n\n");
         for (GuestsBookingCart bookingDetails : guestsTypesBooked)
         {
-            bookingCartField.append("Title: " + bookingDetails.getTitle() + "          Guest Type: " + bookingDetails.getGuestType() + "            Price: $" + bookingDetails.getPrice() + "\n");
+            bookingCartField.append("Title: " + bookingDetails.getTitle() + "                   Guest Type: " + bookingDetails.getGuestType() + "                 Price: $" + bookingDetails.getPrice() + "\n");
         }
        // bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         
         bookingCartField.append("\n--------------------------------------------------------------------------- Features Booked -------------------------------------------------------------------------------------------------\n\n");
         for (GuestsBookingCart bookingDetails : featuresBooked)
         {
-            bookingCartField.append("Title: " + bookingDetails.getTitle()+ "            Feature Type: " + bookingDetails.getFeatureType()+ "          Price: $" + bookingDetails.getPrice() + "\n");
+            bookingCartField.append("Title: " + bookingDetails.getTitle()+ "                 Feature Type: " + bookingDetails.getFeatureType()+ "               Price: $" + bookingDetails.getPrice() + "\n");
         }
         bookingCartField.append("\n===============================================================================================================\n");
         return bookingCartField;
     }
+
+    public JButton getHomeButton() 
+    {
+        return homeButton;
+    }
+
+    public JButton getProceedButton() 
+    {
+        return proceedButton;
+    }
     
-     /*String test = "";
-        for (GuestsBookingCart bookingDetails : roomsBooked)
-        {
-            test = test + (String.format("%-10s", "Title: " + bookingDetails.getTitle()) + String.format("%-30s", "Room Type: " + bookingDetails.getRoomType()) + String.format("%-25s", "Price: $" + bookingDetails.getPrice() + "\n"));
-        }
-        
-        bookingCartField.append(test);
-        bookingCartField.append("\n");
-        for (GuestsBookingCart bookingDetails : guestsTypesBooked)
-        {
-            bookingCartField.append(String.format("%-59s", "Title: " + bookingDetails.getTitle()) + String.format("%-30s", "Guest Type: " + bookingDetails.getGuestType()) + String.format("%-25s", "Price: $" + bookingDetails.getPrice() + "\n"));
-        }
-        
-        bookingCartField.append("\n");
-        for (GuestsBookingCart bookingDetails : featuresBooked)
-        {
-            bookingCartField.append(String.format("%-59s", "Title: " + bookingDetails.getTitle())+ String.format("%-30s", "Feature Type: " + bookingDetails.getFeatureType())+ String.format("%-25s", "Price: $" + bookingDetails.getPrice() + "\n"));
-        }
-        bookingCartField.append("\n");*/
+    public void mouseEnterHomeHover()
+    {
+        getHomeButton().setBackground(Color.GREEN);
+    }
+    
+    public void mouseExitHomeHover()
+    {
+        getHomeButton().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void mouseEnterNextHover()
+    {
+        getProceedButton().setBackground(Color.GREEN);
+    }
+    
+    public void mouseExitNextHover()
+    {
+        getProceedButton().setBackground(UIManager.getColor("control"));
+    }
 }

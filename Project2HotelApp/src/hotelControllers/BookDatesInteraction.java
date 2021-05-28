@@ -36,9 +36,12 @@ public class BookDatesInteraction
         {
             public void actionPerformed(ActionEvent e) 
             {
-                try {
+                try 
+                {
                     handleNextButtonPress();
-                } catch (ParseException ex) {
+                } 
+                catch (ParseException ex) 
+                {
                     Logger.getLogger(BookDatesInteraction.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
