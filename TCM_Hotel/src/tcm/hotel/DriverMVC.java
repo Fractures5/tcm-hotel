@@ -56,78 +56,16 @@ public class DriverMVC {
 //        GuestModel modelGuest = new GuestModel();
 //        GuestView viewGuest = new GuestView();
 //        GuestController controllerGuest = new GuestController(modelGuest, viewGuest);
-//        
+////        
 //        viewGuest.setVisible(true);
-        //viewAdmin.setVisible(true);
-        //viewLogin.setVisible(true);
+//        viewAdmin.setVisible(true);
+//        viewLogin.setVisible(true);
         
         AdminSysMenuModel modelAdminSystem = new AdminSysMenuModel();
         AdminSysMenuView viewAdminSystem = new AdminSysMenuView();
         AdminSysMenuController controllerAdminSys = new AdminSysMenuController(modelAdminSystem, viewAdminSystem);
         viewAdminSystem.setVisible(true);
-        
-        
-        //db.readRecordsTest(rs);
-        
-        
-       /* DBManager db = new DBManager();
-        ResultSet rs;
-        Connection connection;
-        try{
-            connection = DriverManager.getConnection("jdbc:derby://localhost:1527/TCMHotelDB", "pdc", "pdc");
-            Statement statement = connection.createStatement();
-            String sql = "select GUEST_FIRSTNAME from GUEST_LIST";
-            rs = db.queryDB(sql);
-            ///rs = statement.executeQuery(sql);
-            //System.out.println(rs);
-            
-            while (rs.next()){
-                String fName = rs.getString("GUEST_FIRSTNAME");
-                System.out.println(fName);
-                System.out.println("test");
-            }
-        }
-        catch (SQLException ex){
-            System.out.println(ex.getMessage());
-        }*/
-        
-        
-        
-        
-        
-        
-        
-        /*PreparedStatement ps = null;
-        Connection connection = null;
 
-        try {
-            connection = DriverManager.getConnection("jdbc:derby://localhost:1527/TCMHotelDB", "pdc", "pdc");
-            String sql = "select * from GUEST_LIST";
-            ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                String fName = rs.getString("GUEST_FNAME");
-                String lName = rs.getString("GUEST_LNAME");
-                String age = rs.getString("GUEST_AGE");
-                System.out.println(fName + lName + age);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }*/
-
-        //this.add(guestsTable);
-              
     }
 
 }

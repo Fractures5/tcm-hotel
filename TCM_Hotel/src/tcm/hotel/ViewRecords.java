@@ -17,6 +17,13 @@ public class ViewRecords {
     private String adminPhoneNum = "";
     private String adminEmail = "";
     
+    private String guestFName = "";
+    private String guestLName = "";
+    private String guestAge = "";
+    private String guestPhoneNum = "";
+    private String guestEmailAddress = "";
+    private String guestAccountNumber = "";
+    
     public ViewRecords(String adminFName, String adminLName, String adminJobTitle, String adminPhoneNum, String adminEmail){
         
         this.adminFName = adminFName;
@@ -25,6 +32,16 @@ public class ViewRecords {
         this.adminPhoneNum = adminPhoneNum;
         this.adminEmail = adminEmail;
         
+    }
+    
+    public ViewRecords(String guestFName, String guestLName, String guestAge, String guestPhoneNum, String guestEmailAddress, String guestAccountNumber) {
+
+        this.guestFName = guestFName;
+        this.guestLName = guestLName;
+        this.guestAge = guestAge;
+        this.guestPhoneNum = guestPhoneNum;
+        this.guestEmailAddress = guestEmailAddress;
+        this.guestAccountNumber = guestAccountNumber;
     }
 
     public String getAdminFName() {
@@ -66,7 +83,54 @@ public class ViewRecords {
     public void setAdminEmail(String adminEmail) {
         this.adminEmail = adminEmail;
     }
-    
+
+    public String getGuestFName() {
+        return guestFName;
+    }
+
+    public void setGuestFName(String guestFName) {
+        this.guestFName = guestFName;
+    }
+
+    public String getGuestLName() {
+        return guestLName;
+    }
+
+    public void setGuestLName(String guestLName) {
+        this.guestLName = guestLName;
+    }
+
+    public String getGuestAge() {
+        return guestAge;
+    }
+
+    public void setGuestAge(String guestAge) {
+        this.guestAge = guestAge;
+    }
+
+    public String getGuestPhoneNum() {
+        return guestPhoneNum;
+    }
+
+    public void setGuestPhoneNum(String guestPhoneNum) {
+        this.guestPhoneNum = guestPhoneNum;
+    }
+
+    public String getGuestEmailAddress() {
+        return guestEmailAddress;
+    }
+
+    public void setGuestEmailAddress(String guestEmailAddress) {
+        this.guestEmailAddress = guestEmailAddress;
+    }
+
+    public String getGuestAccountNumber() {
+        return guestAccountNumber;
+    }
+
+    public void setGuestAccountNumber(String guestAccountNumber) {
+        this.guestAccountNumber = guestAccountNumber;
+    }
     
     
 }

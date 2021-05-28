@@ -40,7 +40,7 @@ public class HotelProductDB {
     public ArrayList<ViewRecords> getStaffRecords(){
         
         ResultSet rs = null;
-        ArrayList<ViewRecords> staffList = new ArrayList<ViewRecords>();
+        ArrayList<ViewRecords> saveStaffRecords = new ArrayList<ViewRecords>();
         try {
             this.statement = conn.createStatement();
             rs = statement.executeQuery("SELECT ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS FROM ADMIN_LIST");
@@ -51,8 +51,7 @@ public class HotelProductDB {
                 String adminPhoneNum = rs.getString("ADMIN_PHONENUMBER");
                 String adminEmail = rs.getString("ADMIN_EMAILADDRESS");
                 ViewRecords staffDetails = new ViewRecords(adminFName, adminLName, adminJobTitle, adminPhoneNum, adminEmail);
-                staffList.add(staffDetails);
-                //System.out.println(adminFName + adminLName + adminJobTitle + adminPhoneNum + adminEmail);
+                saveStaffRecords.add(staffDetails);
             }
             
             
@@ -61,14 +60,14 @@ public class HotelProductDB {
             Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return staffList;
+        return saveStaffRecords;
         
     }
     
-    public ResultSet getGuestRecords(){
+    public ArrayList<ViewRecords> getGuestRecords(){
         
         ResultSet rs = null;
-        
+        ArrayList<ViewRecords> saveGuestRecords = new ArrayList<ViewRecords>();
         try {
             this.statement = conn.createStatement();
             rs = statement.executeQuery("SELECT GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER FROM GUEST_LIST");
@@ -79,13 +78,14 @@ public class HotelProductDB {
                 String guestPhoneNum = rs.getString("GUEST_PHONENUMBER");
                 String guestEmailAddress = rs.getString("GUEST_EMAILADDRESS");
                 String guestAccountNumber = rs.getString("GUEST_ACCOUNTNUMBER");
-                //System.out.println(guestFName + guestLName + guestAge + guestPhoneNum + guestEmailAddress + guestAccountNumber);
+                ViewRecords guestDetails = new ViewRecords(guestFName, guestLName, guestAge, guestPhoneNum, guestEmailAddress, guestAccountNumber);
+                saveGuestRecords.add(guestDetails);
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return (rs);
+        return saveGuestRecords;
         
     }
     
