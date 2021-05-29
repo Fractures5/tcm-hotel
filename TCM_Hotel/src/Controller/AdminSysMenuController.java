@@ -44,9 +44,7 @@ public class AdminSysMenuController {
     }
     
     public void handleViewStaff() {
-        
         viewAdminSystem.showStaffRecords();
-
     }
     
 }

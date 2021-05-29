@@ -7,12 +7,15 @@ package View;
 
 import hotelDB.DBManager;
 import hotelDB.HotelProductDB;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,6 +26,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,6 +35,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -48,13 +53,18 @@ public class AdminSysMenuView extends JFrame{
     private JPanel displayedData;
     private JPanel guestsDataPanel;
     private JPanel staffDataPanel;
+    private JPanel headerPanel;
+    private JPanel bottomBtnPanel;
+    private JLabel systemHeaderMsg;
     private JButton viewGuests;
     private JButton viewStaff;
+    private JButton mainMenuReturn;
     private JLabel testLabel;
     private JLabel testLabel2;
     private CardLayout cardLayout;
     private JTable guestsTable;
     private JTable staffTable;
+    private static final int NUM_BTNS = 2;
     //private JScrollPane scroll;
 
     public JSplitPane getSplitPane() {
@@ -98,7 +108,7 @@ public class AdminSysMenuView extends JFrame{
         int frameWidth = screenWidth / 2;
         int frameHeight = screenHeight / 2;
 
-        this.setSize(frameWidth + 300, frameHeight + 300);
+        this.setSize(frameWidth + 600, frameHeight + 300);
         this.setResizable(false);
         this.setLocation((dim.width / 2 - this.getSize().width / 2), (dim.height / 2 - this.getSize().height / 2));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,9 +116,12 @@ public class AdminSysMenuView extends JFrame{
         
         viewGuests = new JButton("View Guests");
         viewStaff = new JButton("View Admins");
-        JButton test = new JButton("fsdoldsj");
-        displayedData = new JPanel();
+        
+        GridLayout layout = new GridLayout(NUM_BTNS, 1);
+        layout.setVgap(40);
+        layout.setHgap(40);
         buttonList = new JPanel();
+        buttonList.setLayout(layout);
         
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         
@@ -116,11 +129,8 @@ public class AdminSysMenuView extends JFrame{
         buttonList.add(viewStaff);
         splitPane.add(buttonList);
         
-        displayedData.setLayout(new CardLayout());
-        
         guestsDataPanel = new JPanel();
         staffDataPanel = new JPanel();
-        
         
         JScrollPane guestScroll = new JScrollPane(guestsTable);
         JScrollPane staffScroll = new JScrollPane(staffTable);
@@ -164,14 +174,11 @@ public class AdminSysMenuView extends JFrame{
         
         staffTable.setModel(staffTableModel);
         guestsTable.setModel(guestTableModel);
+
+        guestsTable.setPreferredSize(new Dimension(1200, 600));
+        staffTable.setPreferredSize(new Dimension(1200, 600));
         
-//        guestsTable.setMinimumSize(new Dimension(900,900));
-//        staffTable.setMinimumSize(new Dimension(900,900));
-        
-        guestsTable.setPreferredSize(new Dimension(900, 1000));
-        staffTable.setPreferredSize(new Dimension(1100, 1100));
-        
-        Font bigHeader = new Font("sansserif", Font.PLAIN, 16);
+        Font bigHeader = new Font("sansserif", Font.BOLD, 15);
         guestsTable.getTableHeader().setFont(bigHeader);
         DefaultTableCellRenderer guestsRender = (DefaultTableCellRenderer)guestsTable.getDefaultRenderer(Object.class);
         guestsRender.setHorizontalAlignment(SwingConstants.CENTER);
@@ -185,7 +192,7 @@ public class AdminSysMenuView extends JFrame{
         guestsTable.setPreferredScrollableViewportSize(guestsTable.getPreferredSize());
         guestsTable.setFillsViewportHeight(true);
         guestsTable.setDragEnabled(true);
-        guestsTable.setRowMargin(100);
+//        guestsTable.setRowMargin(100);
         guestsTable.setGridColor(Color.blue);
         guestsTable.setShowGrid(true);
         
@@ -200,18 +207,45 @@ public class AdminSysMenuView extends JFrame{
         staffDataPanel.add(new JScrollPane(staffTable));
         guestsDataPanel.add(new JScrollPane(guestsTable));
         
-        //displayedData.add(guestsDataPanel);
-        displayedData.add(staffDataPanel);
+        displayedData = new JPanel(new CardLayout());
+        displayedData.add(staffDataPanel, "Staff Data");
+        displayedData.add(guestsDataPanel, "Guests Data");
+        
+        headerPanel = new JPanel();
+        headerPanel.add(Box.createVerticalStrut(100));
+        headerPanel.setBackground(Color.blue);
+        systemHeaderMsg = new JLabel("TCM Hotel System Administration ");
+        systemHeaderMsg.setForeground(Color.white);
+        systemHeaderMsg.setFont(new Font("Arial", Font.BOLD, 30));
+        headerPanel.add(systemHeaderMsg);
+        
+        bottomBtnPanel = new JPanel();
+        bottomBtnPanel.setPreferredSize(new Dimension(frameWidth + 600, 100));
+        bottomBtnPanel.setBackground(Color.blue);
+
+        mainMenuReturn = new JButton("Return to Main Menu");
+        mainMenuReturn.setPreferredSize(new Dimension(300, 80));
+        mainMenuReturn.setFont(new Font("Arial", Font.BOLD, 17));
+        mainMenuReturn.setBorder(new LineBorder(Color.black, 4));
+        mainMenuReturn.setForeground(Color.black);
+        
+        bottomBtnPanel.add(mainMenuReturn);
         
         splitPane.add(displayedData);
-        this.add(splitPane);
+        this.add(headerPanel, BorderLayout.NORTH);
+        this.add(splitPane, BorderLayout.CENTER);
+        this.add(bottomBtnPanel, BorderLayout.SOUTH);
+
     }
-    
-    public void showGuestRecords() throws ClassNotFoundException{
+    public void showGuestRecords(){
+        cardLayout = (CardLayout) displayedData.getLayout();
+        cardLayout.show(displayedData, "Guests Data");
+        
     }
     
     public void showStaffRecords() {
+        cardLayout = (CardLayout) displayedData.getLayout();
+        cardLayout.show(displayedData, "Staff Data");
+    }
         
     }
-    
-}
