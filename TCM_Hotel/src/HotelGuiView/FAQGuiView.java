@@ -89,8 +89,8 @@ public class FAQGuiView extends JFrame
 
         FAQField.append("  **************************************************************************************************************************************************************************************************");
         FAQField.append("\n   (Q): Am I able to book a multiple rooms of different categories at once?\n");
-        FAQField.append("    (A): Yes, the online-booking system will prompt you to enter the amount of rooms you would like to accommodate\n");
-        FAQField.append("         and the type for each room. However, there is a limited amount of room types available, which will be indicated on 'Room Availability' tab when booking. \n");
+        FAQField.append("   (A): Yes, the online-booking system will prompt you to enter the amount of rooms you would like to accommodate\n");
+        FAQField.append("          and the type for each room. However, there is a limited amount of room types available, which will be indicated on 'Room Availability' tab when booking. \n");
         FAQField.append("  **************************************************************************************************************************************************************************************************");
         
         FAQField.setBounds(15, 15, 855, 400);

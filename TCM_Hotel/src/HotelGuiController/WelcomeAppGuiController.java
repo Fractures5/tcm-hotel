@@ -5,6 +5,7 @@
  */
 package HotelGuiController;
 
+import HotelGuiView.AboutUsGuiView;
 import HotelGuiView.FAQGuiView;
 import HotelGuiView.WelcomeAppGuiView;
 import java.awt.event.ActionEvent;
@@ -20,8 +21,12 @@ import java.awt.event.MouseAdapter;
 public class WelcomeAppGuiController 
 {
     WelcomeAppGuiView viewClass;
+    
     FAQGuiView accessFAQ;
     FAQGuiController faqControl;
+    
+    AboutUsGuiView accessAboutUs;
+    AboutUsGuiController aboutUsControl;
 
     //Will have a back button on both the FAQ and 
     //About Us page, so will need to make an object of both those
@@ -203,6 +208,8 @@ public class WelcomeAppGuiController
     
     public void ClickButtonThree() 
     {
+        accessAboutUs = new AboutUsGuiView();
+        aboutUsControl = new AboutUsGuiController(accessAboutUs);
         viewClass.enterAboutUsView();
     }
     

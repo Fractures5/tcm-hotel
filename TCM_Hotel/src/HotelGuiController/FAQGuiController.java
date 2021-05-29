@@ -56,7 +56,8 @@ public class FAQGuiController
         faqClass.mouseEnterHoverBackButton();
     }
 
-    public void ExitMouseHoverBackButton() {
+    public void ExitMouseHoverBackButton() 
+    {
         faqClass.mouseExitHoverBackButton();
     }
 }

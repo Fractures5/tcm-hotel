@@ -259,11 +259,6 @@ public class WelcomeAppGuiView extends JFrame
         getButtonFour().setBackground(UIManager.getColor("control"));
     }    
     
-    //Create 4 new methods which call the view class depeding on its
-    //corresponding button, will have to create an object of that class
-    //and use the dot operator to access the method so that when tne button
-    //is clicked, it will open up the new frame for the button press
-    
     public void enterBookingView()
     {
         //Make call to Booking view class here
@@ -271,7 +266,6 @@ public class WelcomeAppGuiView extends JFrame
     
     public void enterFAQView()
     {
-        //Make call to FAQ view class here
         welcomeFrame.setVisible(false);
         welcomeFrame.dispose();
     }
@@ -280,7 +274,6 @@ public class WelcomeAppGuiView extends JFrame
     {
         welcomeFrame.setVisible(false);
         welcomeFrame.dispose();
-        //accessAboutUs = new AboutUsGuiView();
     }
     
     public void enterAdminView()
