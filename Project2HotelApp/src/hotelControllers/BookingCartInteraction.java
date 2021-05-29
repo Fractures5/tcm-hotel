@@ -27,25 +27,11 @@ public class BookingCartInteraction
         {
             public void actionPerformed(ActionEvent e)
             {
-                System.out.println("keffe");
                 handleProceedButtonPress();
             }
         });
         
         cartView.getProceedButton().addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseEntered(java.awt.event.MouseEvent evt) 
-            {
-                mouseExitHomeBtnHover();
-            }
-            
-            public void mouseExited(java.awt.event.MouseEvent evt) 
-            {
-                mouseExitHomeBtnHover();
-            }
-        });
-        
-        cartView.getHomeButton().addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseEntered(java.awt.event.MouseEvent evt) 
             {
@@ -57,11 +43,23 @@ public class BookingCartInteraction
                 mouseExitProceedBtnHover();
             }
         });
+        
+        cartView.getHomeButton().addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseEntered(java.awt.event.MouseEvent evt) 
+            {
+                mouseExitHomeBtnHover();
+            }
+            
+            public void mouseExited(java.awt.event.MouseEvent evt) 
+            {
+                mouseExitHomeBtnHover();
+            }
+        });
     }
     
     public void handleProceedButtonPress()
     {
-        System.out.println("procceed button is clicked");
         cartView.confirmSelection();
         
         if(cartView.getRepeat() == false)

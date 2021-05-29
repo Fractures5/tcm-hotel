@@ -273,8 +273,8 @@ public class HotelProductDB
         try
         {
             this.statement = conn.createStatement();
-            this.checkTableExistence("BOOKED_HOTEL_LOCATIONS");
-            this.statement.addBatch("CREATE  TABLE BOOKED_HOTEL_LOCATIONS (GUEST_FIRSTNAME VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50), LOCATION_TITLE   VARCHAR(50), LOCATION VARCHAR(20))");
+            //this.checkTableExistence("BOOKED_HOTEL_LOCATIONS");
+            this.statement.addBatch("CREATE TABLE BOOKED_HOTEL_LOCATIONS (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), LOCATION_TITLE   VARCHAR(50), LOCATION VARCHAR(20))");
             this.statement.executeBatch();
             System.out.println("BOOKED_HOTEL_LOCATIONS table is created");
         }
@@ -286,20 +286,164 @@ public class HotelProductDB
         
     }
     
-    public void dbAddLocationsBooked(GuestModel guest, GuestsBookingCart locationBooked)
+    public void dbAddLocationsBooked(GuestModel guest, ArrayList<GuestsBookingCart> locationBooked)
     {
         try
         {
             this.statement = conn.createStatement();
             
-            this.statement.addBatch("INSERT INTO GUEST_LIST (GUEST_FIRSTNAME, GUEST_ACCOUNTNUMBER, LOCATION_TITLE, LOCATION) VALUES "
-                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '"+ locationBooked.getTitle()+"', '" +locationBooked.getLocationType()+"')");
+            this.statement.addBatch("INSERT INTO BOOKED_HOTEL_LOCATIONS (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, LOCATION_TITLE, LOCATION) VALUES "
+                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '"+ locationBooked.get(0).getTitle()+"', '" +locationBooked.get(0).getLocationType()+"')");
             this.statement.executeBatch();
         }
         catch(SQLException ex)
         {
             ex.printStackTrace();
+        }  
+    }
+    
+    public void createDatesBookedTable()
+    {
+        try
+        {
+            this.statement = conn.createStatement();
+            //this.checkTableExistence("BOOKED_HOTEL_DATES");
+            this.statement.addBatch("CREATE TABLE BOOKED_HOTEL_DATES (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), LOCATION VARCHAR(20), CHECK_IN_DAY VARCHAR(50), CHECK_IN_MONTH VARCHAR(15), CHECK_IN_YEAR VARCHAR(10),"
+                    + "CHECK_OUT_DAY VARCHAR(50), CHECK_OUT_MONTH VARCHAR(15), CHECK_OUT_YEAR VARCHAR(10))");
+            this.statement.executeBatch();
+            System.out.println("BOOKED_HOTEL_DATES table is created");
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getNextException());
         }
         
+    }
+    
+    public void dbAddDatesBooked(GuestModel guest, ArrayList<GuestsBookingCart> locationBooked, ArrayList<GuestsBookingCart> datesBooked)
+    {
+        try
+        {
+            this.statement = conn.createStatement();
+            
+            this.statement.addBatch("INSERT INTO BOOKED_HOTEL_DATES (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, LOCATION, CHECK_IN_DAY, CHECK_IN_MONTH, CHECK_IN_YEAR, CHECK_OUT_DAY, CHECK_OUT_MONTH, CHECK_OUT_YEAR) VALUES "
+                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +locationBooked.get(0).getLocationType()+ "', '" +datesBooked.get(0).getCheckInDay()+"', '" +datesBooked.get(0).getCheckInMonth()+"', '" +datesBooked.get(0).getCheckInYear()
+                    +"', '" +datesBooked.get(0).getCheckOutDay()+"', '" +datesBooked.get(0).getCheckOutMonth()+"', '" +datesBooked.get(0).getCheckOutYear()+"' )");
+            this.statement.executeBatch();
+        }
+        catch(SQLException ex)
+        {
+            ex.getNextException();
+            ex.printStackTrace();
+        }  
+    }
+    
+    public void createRoomsBookedTable()
+    {
+        try
+        {
+            this.statement = conn.createStatement();
+            //this.checkTableExistence("BOOKED_HOTEL_DATES");
+            this.statement.addBatch("CREATE TABLE BOOKED_HOTEL_ROOMS (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), ROOM_TITLE VARCHAR(50), ROOM_TYPE VARCHAR(30))");
+            this.statement.executeBatch();
+            System.out.println("BOOKED_HOTEL_ROOMS table is created");
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getNextException());
+        }
+        
+    }
+    
+    public void dbAddRoomsBooked(GuestModel guest, ArrayList<GuestsBookingCart> roomsDetails)
+    {
+        try
+        {
+            for (GuestsBookingCart roomsBooked : roomsDetails) 
+            {
+                this.statement = conn.createStatement();
+                this.statement.addBatch("INSERT INTO BOOKED_HOTEL_ROOMS (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, ROOM_TITLE, ROOM_TYPE) VALUES "
+                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +roomsBooked.getTitle()+ "', '" +roomsBooked.getRoomType()+"' )");
+                this.statement.executeBatch();
+            }   
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }  
+    }
+    
+    public void createGuestTypeBookedTable()
+    {
+        try
+        {
+            this.statement = conn.createStatement();
+            //this.checkTableExistence("BOOKED_HOTEL_DATES");
+            this.statement.addBatch("CREATE TABLE BOOKED_GUEST_TYPES (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), GUEST_TITLE VARCHAR(20), GUEST_TYPE VARCHAR(10))");
+            this.statement.executeBatch();
+            System.out.println("BOOKED_GUEST_TYPES table is created");
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getNextException());
+        }
+        
+    }
+    
+    public void dbAddGuestTypeBooked(GuestModel guest, ArrayList<GuestsBookingCart> guestTypeDetails)
+    {
+        try
+        {
+            for (GuestsBookingCart guestTypeBooked : guestTypeDetails) 
+            {
+                this.statement = conn.createStatement();
+                this.statement.addBatch("INSERT INTO BOOKED_GUEST_TYPES (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, GUEST_TITLE, GUEST_TYPE) VALUES "
+                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +guestTypeBooked.getTitle()+ "', '" +guestTypeBooked.getGuestType()+"' )");
+                this.statement.executeBatch();
+            }
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }  
+    }
+    
+    public void createFeaturesBookedTable()
+    {
+        try
+        {
+            this.statement = conn.createStatement();
+            //this.checkTableExistence("BOOKED_HOTEL_DATES");
+            this.statement.addBatch("CREATE TABLE BOOKED_FEATURES (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), FEATURE_TITLE VARCHAR(20), FEATURE_TYPE VARCHAR(10))");
+            this.statement.executeBatch();
+            System.out.println("BOOKED_FEATURES table is created");
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getNextException());
+        }
+        
+    }
+    
+    public void dbAddFeaturesBooked(GuestModel guest, ArrayList<GuestsBookingCart> featuresDetails)
+    {
+        try
+        {
+            for (GuestsBookingCart featuresBooked : featuresDetails) 
+            {
+                this.statement = conn.createStatement();
+                this.statement.addBatch("INSERT INTO BOOKED_FEATURES (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, FEATURE_TITLE, FEATURE_TYPE) VALUES "
+                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +featuresBooked.getTitle()+ "', '" +featuresBooked.getFeatureType()+"' )");
+                this.statement.executeBatch();
+            }  
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }  
     }
 }

@@ -35,6 +35,6 @@ public class HotelFeatures
         for (GuestsBookingCart bookingDetails : featuresSelected)
         {
             System.out.println(String.format("%-59s", "Title: " + bookingDetails.getTitle())+ String.format("%-30s", "Feature Type: " + bookingDetails.getFeatureType())+ String.format("%-25s", "Price: $" + bookingDetails.getPrice()));
-        }
+        }  
     }
 }

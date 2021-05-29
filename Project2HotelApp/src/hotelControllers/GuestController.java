@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import project2hotelapp.GuestsBookingCart;
 /**
  *
  * @author Anuk
@@ -96,6 +97,22 @@ public class GuestController{
         
         if (viewGuest.getValidGuest() == true){
             viewGuest.setVisible(false);
+            
+            ArrayList<GuestsBookingCart> datesBooked = new ArrayList<GuestsBookingCart>();
+            datesBooked = BookDatesInteraction.guestBookingDates();
+        
+            ArrayList<GuestsBookingCart> locationBooked = new ArrayList<GuestsBookingCart>();
+            locationBooked = LocationMenuInteraction.guestHotelLocation();
+        
+            ArrayList<GuestsBookingCart> roomsBooked = new ArrayList<GuestsBookingCart>();
+            roomsBooked = RoomMenuInteraction.guestBookedRooms();
+        
+            ArrayList<GuestsBookingCart> guestsTypesBooked = new ArrayList<GuestsBookingCart>();
+            guestsTypesBooked = GuestsTypeInteraction.guestTypesBooked();
+        
+            ArrayList<GuestsBookingCart> featuresBooked = new ArrayList<GuestsBookingCart>();
+            featuresBooked = FeaturesMenuInteraction.guestFeaturesBooked();
+        
             modelGuest.setGuestFirstName(viewGuest.getfNameField());
             modelGuest.setGuestLastName(viewGuest.getlNameField());
             modelGuest.setGuestAge(viewGuest.getAgeField());
@@ -103,9 +120,16 @@ public class GuestController{
             modelGuest.setGuestEmail(viewGuest.getEmailField());
             modelGuest.setGuestAccountNumber(viewGuest.getAccNumField());
             modelGuest.setGuestAccountPin(viewGuest.getAccPinField());
+            
             HotelProductDB productDB = new HotelProductDB();
             DBManager dbManage = new DBManager();
-            productDB.registerGuest(modelGuest);   
+            productDB.registerGuest(modelGuest);
+            productDB.dbAddDatesBooked(modelGuest, locationBooked, datesBooked);
+            productDB.dbAddLocationsBooked(modelGuest, locationBooked);
+            productDB.dbAddRoomsBooked(modelGuest, roomsBooked);
+            productDB.dbAddGuestTypeBooked(modelGuest, guestsTypesBooked);
+            productDB.dbAddFeaturesBooked(modelGuest, featuresBooked);
+            
         }
     }
 

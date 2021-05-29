@@ -84,6 +84,7 @@ public class BookingCartMenu extends JFrame
         bookingCartField.setEditable(false);
         
         scroll = new JScrollPane(bookingCartField, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.getVerticalScrollBar().setValue(0);
         scroll.setMinimumSize(new Dimension (950, 450));
         scroll.setPreferredSize(new Dimension (950, 450));
         

@@ -46,12 +46,18 @@ public class Project2HotelApp extends JFrame{
         //bookingCart = new BookingCartMenu();
       
         
-        /*HotelProductDB hotelMenuDB = new HotelProductDB();
+        HotelProductDB hotelMenuDB = new HotelProductDB();
         hotelMenuDB.createHLocationTable();
         hotelMenuDB.createHRoomsTable();
         hotelMenuDB.createHGuestTypeTable();
         hotelMenuDB.createHFeaturesTable();
-        hotelMenuDB.closeConnection();*/
+        hotelMenuDB.createGuestListTable();
+        hotelMenuDB.createDatesBookedTable();
+        hotelMenuDB.createLocationBookedTable();
+        hotelMenuDB.createRoomsBookedTable();
+        hotelMenuDB.createGuestTypeBookedTable();
+        hotelMenuDB.createFeaturesBookedTable();
+        hotelMenuDB.closeConnection();
     
         HotelBookingDates datesModel = new HotelBookingDates();
         HotelDatesMenu datesView = new HotelDatesMenu();
