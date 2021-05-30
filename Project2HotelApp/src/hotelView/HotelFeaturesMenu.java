@@ -53,7 +53,7 @@ public class HotelFeaturesMenu extends JFrame
         featuresMenu = FeaturesMenu.showMenu();
         Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.LIGHT_GRAY, 10));
         
-        pageTitle = new JLabel("Rooms Menu\n");
+        pageTitle = new JLabel("Hotel Features Menu\n");
         pageTitle.setFont(new Font("Arial", Font.BOLD, 30));
         pageTitle.setForeground(Color.YELLOW);
         

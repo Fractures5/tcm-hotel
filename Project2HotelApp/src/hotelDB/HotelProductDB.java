@@ -18,7 +18,7 @@ import project2hotelapp.GuestsBookingCart;
 
 /**
  *
- * @author Siddarath
+ * @author Siddarath/anuk
  */
 public class HotelProductDB 
 {
@@ -170,6 +170,31 @@ public class HotelProductDB
         }
     }
     
+    public boolean checkTableStatus(String name)
+    {
+        boolean createTable = true;
+        
+        try
+        {
+            DatabaseMetaData dbmd = this.conn.getMetaData();
+            String[] types  = {"TABLE"};
+            statement = this.conn.createStatement();
+            ResultSet rs = dbmd.getTables(null, null, name, types);
+            
+            if(rs.next())
+            {
+                System.out.println("Table " +name+ " already exists! Doesnt need to be dropped!"); 
+                createTable = false;
+            }
+            rs.close();
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return createTable;
+    }
+    
 //    public ArrayList<ViewRecords> getStaffRecords(){
 //        
 //        ResultSet rs = null;
@@ -243,11 +268,21 @@ public class HotelProductDB
     
     public void createAdminListTable() {
         try {
+            
             this.statement = conn.createStatement();
-            //this.checkTableExistence("ADMIN_LIST");
-            this.statement.addBatch("CREATE TABLE ADMIN_LIST (ADMIN_FIRSTNAME VARCHAR(50), ADMIN_LASTNAME VARCHAR(50), ADMIN_JOBTITLE VARCHAR(50), ADMIN_PHONENUMBER VARCHAR(50), ADMIN_EMAILADDRESS VARCHAR(50))");
-            this.statement.executeBatch();
-            System.out.println("Table Admin_List has been created");
+            boolean createTable = this.checkTableStatus("ADMIN_LIST");
+            
+            if (createTable == true)
+            {
+                this.statement.addBatch("CREATE TABLE ADMIN_LIST (ADMIN_FIRSTNAME VARCHAR(50), ADMIN_LASTNAME VARCHAR(50), ADMIN_JOBTITLE VARCHAR(50), ADMIN_PHONENUMBER VARCHAR(50), ADMIN_EMAILADDRESS VARCHAR(50))");
+                this.statement.executeBatch();
+                System.out.println("Table ADMIN_LIST has been created");
+            }
+            else if (createTable == false)
+            {
+                System.out.println("ADMIN_LIST table has not been dropped or created again!");
+            }
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             System.out.println(ex.getNextException());
@@ -257,10 +292,19 @@ public class HotelProductDB
     public void createGuestListTable(){
         try{
             this.statement = conn.createStatement();
-            //this.checkTableExistence("GUEST_LIST");
-            this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50))");
-            this.statement.executeBatch();
-            System.out.println("Table Guest_List has been created");
+            boolean createTable = this.checkTableStatus("GUEST_LIST");
+            
+            if (createTable == true)
+            {
+                //this.checkTableExistence("GUEST_LIST");
+                this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50))");
+                this.statement.executeBatch();
+                System.out.println("Table GUEST_LIST has been created");
+            }
+            else if (createTable == false)
+            {
+                System.out.println("GUEST_LIST table has not been droppped or created again!");
+            }           
         }
         catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -273,17 +317,24 @@ public class HotelProductDB
         try
         {
             this.statement = conn.createStatement();
-            //this.checkTableExistence("BOOKED_HOTEL_LOCATIONS");
-            this.statement.addBatch("CREATE TABLE BOOKED_HOTEL_LOCATIONS (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), LOCATION_TITLE   VARCHAR(50), LOCATION VARCHAR(20))");
-            this.statement.executeBatch();
-            System.out.println("BOOKED_HOTEL_LOCATIONS table is created");
+            boolean createTable = this.checkTableStatus("BOOKED_HOTEL_LOCATIONS");
+            
+            if (createTable == true)
+            {
+                this.statement.addBatch("CREATE TABLE BOOKED_HOTEL_LOCATIONS (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), LOCATION_TITLE   VARCHAR(50), LOCATION VARCHAR(20))");
+                this.statement.executeBatch();
+                System.out.println("BOOKED_HOTEL_LOCATIONS table is created");
+            }
+            else if (createTable == false)
+            {
+                System.out.println("BOOKED_HOTEL_LOCATIONS table has not been dropped or created again!");
+            }
         }
         catch(SQLException ex)
         {
             System.out.println(ex.getMessage());
             System.out.println(ex.getNextException());
-        }
-        
+        }        
     }
     
     public void dbAddLocationsBooked(GuestModel guest, ArrayList<GuestsBookingCart> locationBooked)
@@ -291,7 +342,6 @@ public class HotelProductDB
         try
         {
             this.statement = conn.createStatement();
-            
             this.statement.addBatch("INSERT INTO BOOKED_HOTEL_LOCATIONS (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, LOCATION_TITLE, LOCATION) VALUES "
                     + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '"+ locationBooked.get(0).getTitle()+"', '" +locationBooked.get(0).getLocationType()+"')");
             this.statement.executeBatch();
@@ -307,11 +357,19 @@ public class HotelProductDB
         try
         {
             this.statement = conn.createStatement();
-            //this.checkTableExistence("BOOKED_HOTEL_DATES");
-            this.statement.addBatch("CREATE TABLE BOOKED_HOTEL_DATES (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), LOCATION VARCHAR(20), CHECK_IN_DAY VARCHAR(50), CHECK_IN_MONTH VARCHAR(15), CHECK_IN_YEAR VARCHAR(10),"
-                    + "CHECK_OUT_DAY VARCHAR(50), CHECK_OUT_MONTH VARCHAR(15), CHECK_OUT_YEAR VARCHAR(10))");
-            this.statement.executeBatch();
-            System.out.println("BOOKED_HOTEL_DATES table is created");
+            boolean createTable = this.checkTableStatus("BOOKED_HOTEL_DATES");
+            
+            if (createTable == true)
+            {
+                this.statement.addBatch("CREATE TABLE BOOKED_HOTEL_DATES (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), LOCATION VARCHAR(20), CHECK_IN_DAY VARCHAR(50), CHECK_IN_MONTH VARCHAR(15), CHECK_IN_YEAR VARCHAR(10),"
+                        + "CHECK_OUT_DAY VARCHAR(50), CHECK_OUT_MONTH VARCHAR(15), CHECK_OUT_YEAR VARCHAR(10))");
+                this.statement.executeBatch();
+                System.out.println("BOOKED_HOTEL_DATES table is created");
+            }
+            else if (createTable == false)
+            {
+                System.out.println("BOOKED_HOTEL_DATES table has not been dropped or created again!");
+            }
         }
         catch(SQLException ex)
         {
@@ -325,8 +383,7 @@ public class HotelProductDB
     {
         try
         {
-            this.statement = conn.createStatement();
-            
+            this.statement = conn.createStatement(); 
             this.statement.addBatch("INSERT INTO BOOKED_HOTEL_DATES (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, LOCATION, CHECK_IN_DAY, CHECK_IN_MONTH, CHECK_IN_YEAR, CHECK_OUT_DAY, CHECK_OUT_MONTH, CHECK_OUT_YEAR) VALUES "
                     + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +locationBooked.get(0).getLocationType()+ "', '" +datesBooked.get(0).getCheckInDay()+"', '" +datesBooked.get(0).getCheckInMonth()+"', '" +datesBooked.get(0).getCheckInYear()
                     +"', '" +datesBooked.get(0).getCheckOutDay()+"', '" +datesBooked.get(0).getCheckOutMonth()+"', '" +datesBooked.get(0).getCheckOutYear()+"' )");
@@ -344,10 +401,18 @@ public class HotelProductDB
         try
         {
             this.statement = conn.createStatement();
-            //this.checkTableExistence("BOOKED_HOTEL_DATES");
-            this.statement.addBatch("CREATE TABLE BOOKED_HOTEL_ROOMS (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), ROOM_TITLE VARCHAR(50), ROOM_TYPE VARCHAR(30))");
-            this.statement.executeBatch();
-            System.out.println("BOOKED_HOTEL_ROOMS table is created");
+            boolean createTable = this.checkTableStatus("BOOKED_HOTEL_DATES");
+            
+            if (createTable == true)
+            {
+                this.statement.addBatch("CREATE TABLE BOOKED_HOTEL_ROOMS (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), ROOM_TITLE VARCHAR(50), ROOM_TYPE VARCHAR(30))");
+                this.statement.executeBatch();
+                System.out.println("BOOKED_HOTEL_ROOMS table is created");
+            }
+            else if (createTable == false)
+            {
+                System.out.println("BOOKED_HOTEL_ROOMS table has not been dropped or created again!");
+            }
         }
         catch(SQLException ex)
         {
@@ -380,10 +445,18 @@ public class HotelProductDB
         try
         {
             this.statement = conn.createStatement();
-            //this.checkTableExistence("BOOKED_HOTEL_DATES");
-            this.statement.addBatch("CREATE TABLE BOOKED_GUEST_TYPES (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), GUEST_TITLE VARCHAR(20), GUEST_TYPE VARCHAR(10))");
-            this.statement.executeBatch();
-            System.out.println("BOOKED_GUEST_TYPES table is created");
+            boolean createTable = this.checkTableStatus("BOOKED_HOTEL_DATES");
+            
+            if (createTable == true)
+            {
+                this.statement.addBatch("CREATE TABLE BOOKED_GUEST_TYPES (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), GUEST_TITLE VARCHAR(20), GUEST_TYPE VARCHAR(10))");
+                this.statement.executeBatch();
+                System.out.println("BOOKED_GUEST_TYPES table is created");
+            }
+            else if (createTable == false)
+            {
+                System.out.println("BOOKED_HOTEL_DATES table has not been dropped or created again!");
+            }
         }
         catch(SQLException ex)
         {
@@ -415,11 +488,19 @@ public class HotelProductDB
     {
         try
         {
-            this.statement = conn.createStatement();
-            //this.checkTableExistence("BOOKED_HOTEL_DATES");
-            this.statement.addBatch("CREATE TABLE BOOKED_FEATURES (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), FEATURE_TITLE VARCHAR(20), FEATURE_TYPE VARCHAR(10))");
-            this.statement.executeBatch();
-            System.out.println("BOOKED_FEATURES table is created");
+            this.statement = conn.createStatement(); 
+            boolean createTable = this.checkTableStatus("BOOKED_HOTEL_DATES");
+            
+            if (createTable == true)
+            {
+                this.statement.addBatch("CREATE TABLE BOOKED_FEATURES (GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_FIRSTNAME VARCHAR(50), FEATURE_TITLE VARCHAR(20), FEATURE_TYPE VARCHAR(10))");
+                this.statement.executeBatch();
+                System.out.println("BOOKED_FEATURES table is created");
+            }
+            else if (createTable == false)
+            {
+                System.out.println("BOOKED_FEATURES table has not been dropped or created again!");
+            }
         }
         catch(SQLException ex)
         {

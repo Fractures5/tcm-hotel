@@ -92,19 +92,19 @@ public class HotelGuestTypesMenu extends JFrame
         vipTypeBox.setPreferredSize(new Dimension(50, 50));
         vipTypeBox.setFont(new Font("Arial", Font.PLAIN, 20));
         
-        adultTitle = new JLabel("Title: " +guestTypeMenu.get(0).getTitle() + "            Guest Type: " +guestTypeMenu.get(0).getGuestType()+ "           Price: $" +guestTypeMenu.get(0).getPrice());
+        adultTitle = new JLabel("Title: " +guestTypeMenu.get(0).getTitle() + "            Guest Type: " +guestTypeMenu.get(0).getGuestType()+ "           Price: $" +guestTypeMenu.get(0).getPrice()+ "          Guest Numbers: ");
         adultTitle.setFont(new Font("Arial", Font.BOLD, 20));
         adultTitle.setBorder(blackline);
-        childTitle = new JLabel("Title: " +guestTypeMenu.get(1).getTitle() + "            Guest Type: " +guestTypeMenu.get(1).getGuestType()+ "           Price: $" +guestTypeMenu.get(1).getPrice());
+        childTitle = new JLabel("Title: " +guestTypeMenu.get(1).getTitle() + "            Guest Type: " +guestTypeMenu.get(1).getGuestType()+ "           Price: $" +guestTypeMenu.get(1).getPrice()+ "          Guest Numbers: ");
         childTitle.setFont(new Font("Arial", Font.BOLD, 20));
         childTitle.setBorder(blackline);
-        infantTitle = new JLabel("Title: " +guestTypeMenu.get(2).getTitle() + "            Guest Type: " +guestTypeMenu.get(2).getGuestType()+ "           Price: $" +guestTypeMenu.get(2).getPrice());
+        infantTitle = new JLabel("Title: " +guestTypeMenu.get(2).getTitle() + "            Guest Type: " +guestTypeMenu.get(2).getGuestType()+ "           Price: $" +guestTypeMenu.get(2).getPrice()+ "          Guest Numbers: ");
         infantTitle.setFont(new Font("Arial", Font.BOLD, 20));
         infantTitle.setBorder(blackline);
-        elderlyTitle = new JLabel("Title: " +guestTypeMenu.get(3).getTitle() + "            Guest Type: " +guestTypeMenu.get(3).getGuestType()+ "           Price: $" +guestTypeMenu.get(3).getPrice());
+        elderlyTitle = new JLabel("Title: " +guestTypeMenu.get(3).getTitle() + "            Guest Type: " +guestTypeMenu.get(3).getGuestType()+ "           Price: $" +guestTypeMenu.get(3).getPrice()+ "          Guest Numbers: ");
         elderlyTitle.setFont(new Font("Arial", Font.BOLD, 20));
         elderlyTitle.setBorder(blackline);
-        vipTitle = new JLabel("Title: " +guestTypeMenu.get(4).getTitle() + "            Guest Type: " +guestTypeMenu.get(4).getGuestType()+ "           Price: $" +guestTypeMenu.get(4).getPrice());
+        vipTitle = new JLabel("Title: " +guestTypeMenu.get(4).getTitle() + "            Guest Type: " +guestTypeMenu.get(4).getGuestType()+ "           Price: $" +guestTypeMenu.get(4).getPrice()+ "          Guest Numbers: ");
         vipTitle.setFont(new Font("Arial", Font.BOLD, 20));
         vipTitle.setBorder(blackline);
         
