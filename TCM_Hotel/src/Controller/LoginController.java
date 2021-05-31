@@ -73,7 +73,8 @@ public class LoginController {
             viewLogin.displayLoginSuccessful();
             modelAdmin.setAdminFirstName(viewAdmin.getAdminFNameField());
             modelAdmin.setAdminLastName(viewAdmin.getAdminLNameField());
-            modelAdmin.setAdminJobTitle(viewAdmin.getAdminJobTitleField());
+            modelAdmin.setAdminJobTitle(viewAdmin.getJobTitleList().getSelectedItem().toString());
+            //modelAdmin.setAdminJobTitle(viewAdmin.getAdminJobTitleField());
             modelAdmin.setAdminPhoneNumber(viewAdmin.getAdminPhoneNumField());
             modelAdmin.setAdminEmailAddress(viewAdmin.getAdminEmailField());
             System.out.println(modelAdmin.getAdminFirstName());

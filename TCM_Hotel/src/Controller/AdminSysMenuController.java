@@ -35,6 +35,36 @@ public class AdminSysMenuController {
                 handleViewStaff();
             }
         });
+        
+        viewAdminSystem.getViewLocationsBooked().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                handleViewLocationsBooked();
+            }
+        });
+        
+        viewAdminSystem.getViewRoomsBooked().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                handleViewRoomsBooked();
+            }
+        });
+        
+        viewAdminSystem.getViewFeaturesBooked().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                handleViewFeaturesBooked();
+            }
+        });
+        
+        viewAdminSystem.getViewGuestTypesBooked().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                handleViewGuestTypesBooked();
+            }
+        });
+        
+        viewAdminSystem.getViewDatesBooked().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                handleViewDatesBooked();
+            }
+        });
     }
     
     public void handleViewGuests(){
@@ -47,4 +77,23 @@ public class AdminSysMenuController {
         viewAdminSystem.showStaffRecords();
     }
     
+    public void handleViewLocationsBooked(){
+        viewAdminSystem.showLocationsBkdRecords();
+    }
+    
+    public void handleViewRoomsBooked(){
+        viewAdminSystem.showRoomsBkdRecords();
+    }
+    
+    public void handleViewFeaturesBooked(){
+        viewAdminSystem.showFeaturesBkdRecords();
+    }
+    
+    public void handleViewGuestTypesBooked(){
+        viewAdminSystem.showGuestTypesBkdRecords();
+    }
+    
+    public void handleViewDatesBooked(){
+        viewAdminSystem.showGuestDatesBkdRecords();
+    }
 }

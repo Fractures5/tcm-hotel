@@ -24,6 +24,25 @@ public class ViewRecords {
     private String guestEmailAddress = "";
     private String guestAccountNumber = "";
     
+    private String locationTitle = "";
+    private LocationType location;
+    
+    private String roomTitle = "";
+    private RoomType roomType;
+    
+    private String featureTitle = "";
+    private ExtraFeatureTypes featureType;
+    
+    private String guestTitle = "";
+    private GuestType guestType;
+    
+    private String checkInDay = "";
+    private String checkInMonth = "";
+    private String checkInYear = "";
+    private String checkOutDay = "";
+    private String checkOutMonth = "";
+    private String checkOutYear = "";
+    
     public ViewRecords(String adminFName, String adminLName, String adminJobTitle, String adminPhoneNum, String adminEmail){
         
         this.adminFName = adminFName;
@@ -42,6 +61,115 @@ public class ViewRecords {
         this.guestPhoneNum = guestPhoneNum;
         this.guestEmailAddress = guestEmailAddress;
         this.guestAccountNumber = guestAccountNumber;
+    }
+    
+    public ViewRecords(String guestAccountNumber, String guestFName, String locationTitle, LocationType location) {
+        
+        this.guestAccountNumber = guestAccountNumber;
+        this.guestFName = guestFName;
+        this.locationTitle = locationTitle;
+        this.location = location;
+    }
+    
+    public ViewRecords(String guestAccountNumber, String guestFName, String roomTitle, RoomType roomType) {
+        
+        this.guestAccountNumber = guestAccountNumber;
+        this.guestFName = guestFName;
+        this.roomTitle = roomTitle;
+        this.roomType = roomType;
+    }
+    
+    public ViewRecords(String guestAccountNumber, String guestFName, String featureTitle, ExtraFeatureTypes featureType) {
+        
+        this.guestAccountNumber = guestAccountNumber;
+        this.guestFName = guestFName;
+        this.featureTitle = featureTitle;
+        this.featureType = featureType;
+    }
+    
+    public ViewRecords(String guestAccountNumber, String guestFName, String guestTitle, GuestType guestType) {
+        
+        this.guestAccountNumber = guestAccountNumber;
+        this.guestFName = guestFName;
+        this.guestTitle = guestTitle;
+        this.guestType = guestType;
+    }
+    
+    public ViewRecords(String guestAccountNumber, String guestFName, LocationType location, String checkInDay,
+            String checkInMonth, String checkInYear, String checkOutDay, String checkOutMonth, String checkOutYear) {
+        
+        this.guestAccountNumber = guestAccountNumber;
+        this.guestFName = guestFName;
+        this.location = location;
+        this.checkInDay = checkInDay;
+        this.checkInMonth = checkInMonth;
+        this.checkInYear = checkInYear;
+        this.checkOutDay = checkOutDay;
+        this.checkOutMonth = checkOutMonth;
+        this.checkOutYear = checkOutYear;
+    }
+
+    public String getCheckInDay() {
+        return checkInDay;
+    }
+
+    public String getCheckInMonth() {
+        return checkInMonth;
+    }
+
+    public String getCheckInYear() {
+        return checkInYear;
+    }
+
+    public String getCheckOutDay() {
+        return checkOutDay;
+    }
+
+    public String getCheckOutMonth() {
+        return checkOutMonth;
+    }
+
+    public String getCheckOutYear() {
+        return checkOutYear;
+    }
+    
+    
+
+    public ExtraFeatureTypes getFeatureType() {
+        return featureType;
+    }
+
+    public String getGuestTitle() {
+        return guestTitle;
+    }
+
+    public GuestType getGuestType() {
+        return guestType;
+    }
+    
+    public String getFeatureTitle() {
+        return featureTitle;
+    }
+
+    public ExtraFeatureTypes getfeatureType() {
+        return featureType;
+    }
+
+    
+    public String getRoomTitle() {
+        return roomTitle;
+    }
+
+    public RoomType getRoomType() {
+        return roomType;
+    }
+    
+    public String getLocationTitle() {
+        return locationTitle;
+    }
+
+    public LocationType getLocation() {
+        return location;
     }
 
     public String getAdminFName() {

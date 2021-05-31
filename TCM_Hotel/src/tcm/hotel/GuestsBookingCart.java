@@ -5,6 +5,12 @@
  */
 package tcm.hotel;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 import java.util.ArrayList;
 
 /**
@@ -19,8 +25,8 @@ import java.util.ArrayList;
  * cost of the hotel booking.
  * @author Siddarath
  */
-public class GuestsBookingCart extends Products
-{    
+public class GuestsBookingCart extends Products{    
+    
     /**
      * This is a default constructor.
      * It has no parameters and returns nothing.
@@ -57,9 +63,9 @@ public class GuestsBookingCart extends Products
      * @param availabilityType the parameter represents the enumerated type AvailabilityType which holds the number of rooms available to the specific room type.
      * @author Siddarath 
      */
-    public GuestsBookingCart(String title, RoomType roomType, Double price, RoomAvailableType availabilityType)
+    public GuestsBookingCart(String title, RoomType roomType, Double price)
     {
-        super(title, roomType, price, availabilityType);
+        super(title, roomType, price);
     }
     
     /**
@@ -103,7 +109,7 @@ public class GuestsBookingCart extends Products
      * @param checkOutYear the parameter represents the check out year of the guest.
      * @author Siddarath 
      */
-    public GuestsBookingCart(int checkInDate, int checkInMonth, int checkInYear, int checkOutDate, int checkOutMonth, int checkOutYear)
+    public GuestsBookingCart(int checkInDate, String checkInMonth, int checkInYear, int checkOutDate, String checkOutMonth, int checkOutYear)
     {
         super(checkInDate, checkInMonth, checkInYear, checkOutDate, checkOutMonth, checkOutYear);
     }
@@ -135,7 +141,7 @@ public class GuestsBookingCart extends Products
     {
         for (GuestsBookingCart bookingDetails : products)
         {
-            System.out.println("Title: " + bookingDetails.getTitle() + "  Location: " +bookingDetails.getRatingType() + "                Rating: " +bookingDetails.getRatingType() + "             Vacancy: " +bookingDetails.getVacancyType());
+            System.out.println("Title: " + bookingDetails.getTitle() + "  Location: " +bookingDetails.getLocationType()+ "                Rating: " +bookingDetails.getRatingType() + "             Vacancy: " +bookingDetails.getVacancyType());
         }
     }
     

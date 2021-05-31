@@ -16,8 +16,8 @@ package tcm.hotel;
  * class. This class also contains the abstract method for displaying a special banner message for each inherited class.
  * @author Siddarath
  */
-public abstract class Products 
-{
+public abstract class Products {
+    
     protected String title;
     protected Double price;
     protected LocationType locationType;
@@ -27,8 +27,9 @@ public abstract class Products
     protected ExtraFeatureTypes featureType;
     protected RatingType ratingType;
     protected RoomAvailableType availabilityType;
-    protected int checkInDay, checkInMonth, checkInYear;
-    protected int checkOutDay, checkOutMonth, checkOutYear;
+    protected int checkInDay, checkInYear;
+    protected int checkOutDay, checkOutYear;
+    protected String checkInMonth, checkOutMonth;
     
     /**
      * This is a default constructor.
@@ -65,12 +66,11 @@ public abstract class Products
      * @param availabilityType the parameter represents the enumerated type AvailabilityType which holds the number of rooms available to the specific room type.
      * @author Siddarath
      */
-    public Products(String title, RoomType roomType, Double price, RoomAvailableType availabilityType)
+    public Products(String title, RoomType roomType, Double price)
     {
         this.title = title;
         this.roomType = roomType;
         this.price = price;
-        this.availabilityType = availabilityType;
     }
     
     /**
@@ -114,7 +114,7 @@ public abstract class Products
      * @param checkOutYear the parameter represents the check out year of the guest.
      * @author Siddarath
      */
-    public Products(int checkInDay, int checkInMonth, int checkInYear, int checkOutDay, int checkOutMonth, int checkOutYear)
+    public Products(int checkInDay, String checkInMonth, int checkInYear, int checkOutDay, String checkOutMonth, int checkOutYear)
     {
         this.checkInDay = checkInDay;
         this.checkInMonth = checkInMonth;
@@ -236,12 +236,12 @@ public abstract class Products
         this.checkInDay = checkInDate;
     }
 
-    public int getCheckInMonth() 
+    public String getCheckInMonth() 
     {
         return checkInMonth;
     }
 
-    public void setCheckInMonth(int checkInMonth) 
+    public void setCheckInMonth(String checkInMonth) 
     {
         this.checkInMonth = checkInMonth;
     }
@@ -264,12 +264,12 @@ public abstract class Products
         this.checkOutDay = checkOutDate;
     }
 
-    public int getCheckOutMonth() 
+    public String getCheckOutMonth() 
     {
         return checkOutMonth;
     }
 
-    public void setCheckOutMonth(int checkOutMonth) 
+    public void setCheckOutMonth(String checkOutMonth) 
     {
         this.checkOutMonth = checkOutMonth;
     }

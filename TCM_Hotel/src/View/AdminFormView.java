@@ -12,6 +12,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,6 +27,8 @@ import javax.swing.border.LineBorder;
  * @author Anuk
  */
 public class AdminFormView extends JFrame {
+    
+    private JComboBox jobTitleList;
 
     private JPanel adminHeader;
     private JPanel centrePanel;
@@ -67,6 +70,11 @@ public class AdminFormView extends JFrame {
     private boolean showAdminEmailAddressError = false;
     private boolean showAdminRegSuccess = false;
 
+    public JComboBox getJobTitleList() {
+        return jobTitleList;
+    }
+
+    
     public boolean getShowAdminRegSuccess() {
         return showAdminRegSuccess;
     }
@@ -125,6 +133,7 @@ public class AdminFormView extends JFrame {
 
     public AdminFormView() {
         
+        
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -165,8 +174,11 @@ public class AdminFormView extends JFrame {
         staffTitle = new JLabel("Your Job Title: ");
         staffTitle.setBounds(375, 145, 300, 30);
         staffTitle.setFont(new Font("Arial", Font.BOLD, 17));
-        adminJobTitleField = new JTextField("", 30);
-        adminJobTitleField.setBounds(500, 145, 200, 30);
+        String[] jobTitleStrings = {"CEO", "Manager", "Desk Staff", "Network Staff", "Clerk", "Supervisor", "Senior Staff"};
+        jobTitleList = new JComboBox(jobTitleStrings);
+        jobTitleList.setBounds(500, 145, 200, 30);
+//        adminJobTitleField = new JTextField("", 30);
+//        adminJobTitleField.setBounds(500, 145, 200, 30);
         
         phoneNumber = new JLabel("Administrator Phone Number: ");
         phoneNumber.setBounds(260, 225, 300, 30);
@@ -186,7 +198,8 @@ public class AdminFormView extends JFrame {
         centrePanel.add(lName);
         centrePanel.add(adminLNameField);
         centrePanel.add(staffTitle);
-        centrePanel.add(adminJobTitleField);
+        centrePanel.add(jobTitleList);
+        //centrePanel.add(adminJobTitleField);
         centrePanel.add(phoneNumber);
         centrePanel.add(adminPhoneNumField);
         centrePanel.add(emailAddress);
@@ -221,7 +234,8 @@ public class AdminFormView extends JFrame {
         
         inputFirstName = adminFNameField.getText();
         inputLastName = adminLNameField.getText();
-        inputJobTitle = adminJobTitleField.getText();
+        inputJobTitle = (String) jobTitleList.getSelectedItem();
+        //inputJobTitle = adminJobTitleField.getText();
         inputEmail = adminEmailField.getText();
         
         if (inputFirstName.matches("[A-Za-z]+")) {
@@ -242,14 +256,14 @@ public class AdminFormView extends JFrame {
             adminLNameField.setText("");
         }
         
-        if (inputJobTitle.matches("[A-Za-z]+")) {
+        /*if (inputJobTitle.matches("[A-Za-z]+")) {
             validAdminJobTitle = true;
             showAdminJobTitleError = false;
         } else if (!inputJobTitle.matches("[A-Za-z]+")) {
             validAdminJobTitle = false;
             showAdminJobTitleError = true;
             adminJobTitleField.setText("");
-        }
+        }*/
         
         try {
             inputPhoneNumber = getAdminPhoneNumField();
@@ -268,7 +282,7 @@ public class AdminFormView extends JFrame {
             validAdminEmail = true;
             showAdminEmailAddressError = false;
         }
-        if (validAdminFName == true && validAdminLName == true && validAdminJobTitle == true && validAdminPhoneNumber == true && validAdminEmail == true){
+        if (validAdminFName == true && validAdminLName == true && /*validAdminJobTitle == true &&*/ validAdminPhoneNumber == true && validAdminEmail == true){
             validAdminDetails = true;
             showAdminRegSuccess = true;
         }
@@ -281,13 +295,13 @@ public class AdminFormView extends JFrame {
             String empty = "";
             adminFNameField.setText(empty);
             adminLNameField.setText(empty);
-            adminJobTitleField.setText(empty);
+            //adminJobTitleField.setText(empty);
             adminPhoneNumField.setText(empty);
             adminEmailField.setText(empty);
         } else if (resetReply == JOptionPane.NO_OPTION) {
             adminFNameField.setText(inputFirstName);
             adminLNameField.setText(inputLastName);
-            adminJobTitleField.setText(inputJobTitle);
+            //adminJobTitleField.setText(inputJobTitle);
             adminEmailField.setText(inputEmail);
         }
         

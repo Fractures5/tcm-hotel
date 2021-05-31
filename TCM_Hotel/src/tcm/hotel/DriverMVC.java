@@ -7,16 +7,19 @@ package tcm.hotel;
 
 import Controller.AdminFormController;
 import Controller.AdminSysMenuController;
+import Controller.BookDatesInteraction;
 import Controller.LoginController;
 import Controller.GuestController;
 import Model.LoginModel;
 import Model.AdminFormModel;
 import Model.AdminSysMenuModel;
 import Model.GuestModel;
+import Model.HotelBookingDates;
 import View.LoginView;
 import View.AdminFormView;
 import View.AdminSysMenuView;
 import View.GuestView;
+import View.HotelDatesMenu;
 import hotelDB.DBManager;
 import hotelDB.HotelProductDB;
 import java.awt.CardLayout;
@@ -37,6 +40,11 @@ public class DriverMVC {
         
         HotelProductDB hotelMenuDB = new HotelProductDB();
         DBManager manager = new DBManager();
+        hotelMenuDB.createDatesBookedTable();
+        hotelMenuDB.createFeaturesBookedTable();
+        hotelMenuDB.createGuestTypeBookedTable();
+        hotelMenuDB.createLocationBookedTable();
+        hotelMenuDB.createRoomsBookedTable();
         hotelMenuDB.createAdminListTable();
         hotelMenuDB.createGuestListTable();
         hotelMenuDB.createHLocationTable();
@@ -52,6 +60,10 @@ public class DriverMVC {
 //        LoginModel modelLogin = new LoginModel();
 //        LoginView viewLogin = new LoginView();
 //        LoginController controllerLogin = new LoginController(modelLogin, viewLogin);
+
+//        HotelBookingDates datesModel = new HotelBookingDates();
+//        HotelDatesMenu datesView = new HotelDatesMenu();
+//        BookDatesInteraction selectDates = new BookDatesInteraction(datesModel, datesView);
         
 //        GuestModel modelGuest = new GuestModel();
 //        GuestView viewGuest = new GuestView();
