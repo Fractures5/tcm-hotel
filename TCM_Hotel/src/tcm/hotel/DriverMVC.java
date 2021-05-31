@@ -68,7 +68,7 @@ public class DriverMVC {
         GuestModel modelGuest = new GuestModel();
         GuestView viewGuest = new GuestView();
         GuestController controllerGuest = new GuestController(modelGuest, viewGuest);
-//////      
+////////      
         viewGuest.setVisible(true);
 //        viewAdmin.setVisible(true);
 //        viewLogin.setVisible(true);

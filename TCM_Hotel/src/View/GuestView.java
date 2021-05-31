@@ -311,9 +311,9 @@ public class GuestView extends JFrame{
     
     public void DetailsConfirmation(){
         
-        inputFirstName = fNameField.getText();
+        inputFirstName = fNameField.getText().toLowerCase();
         inputLastName = lNameField.getText();
-        inputEmail = emailField.getText();
+        inputEmail = emailField.getText().toLowerCase();
         inputAccountNumber = accNumField.getText();
         inputAccountPin = (new String(this.accPinField.getPassword()));
         
@@ -369,9 +369,31 @@ public class GuestView extends JFrame{
         
         Iterator<Map.Entry<String, String> > iterator = guestRecords.entrySet().iterator();
         
+        if ((!guestRecords.containsKey(inputAccountNumber))){
+                System.out.println("LKFJDSLKFJDSLKFJDSLJFDS");
+                System.out.println("successful");
+                validAccountNumber = true;
+                showAccNumberError = false;
+                //finished = true;
+            }
+        
         boolean finished = false;
         while(iterator.hasNext() && finished == false){
             Map.Entry<String, String> entry = iterator.next();
+            
+            /*if ((!guestRecords.containsKey(inputAccountNumber))){
+                System.out.println("LKFJDSLKFJDSLKFJDSLJFDS");
+                System.out.println("successful");
+                validAccountNumber = true;
+                showAccNumberError = false;
+                finished = true;
+            }*/
+            /*if ((!entry.getKey().contains(inputAccountNumber))&&(!entry.getValue().equals(inputFirstName))){
+                System.out.println("successful");
+                validAccountNumber = true;
+                showAccNumberError = false;
+                finished = true;
+            }*/
             if ((entry.getKey().equals(inputAccountNumber)) && (entry.getValue().equals(inputFirstName))){
             //if ((inputAccountNumber.equals(entry.getKey())) && (inputFirstName.equals(entry.getValue()))){
                 System.out.println("direct identical");
@@ -386,11 +408,7 @@ public class GuestView extends JFrame{
                 validAccountNumber = false;
                 showAccNumberError = true;
             }
-            else if ((!entry.getKey().equals(inputAccountNumber)) && (!entry.getValue().equals(inputFirstName))){
-                System.out.println("successful");
-                validAccountNumber = true;
-                showAccNumberError = false;
-            }
+            
             /*if ((entry.getKey().contains(inputAccountNumber)) && (!entry.getValue().contains(inputFirstName))){
                 System.out.println("You have entered an existing account number but first name is different!");
                 validAccountNumber = false;

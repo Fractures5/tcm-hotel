@@ -331,7 +331,7 @@ public class FileInputOutput
             pw = new PrintWriter("Guests.txt");
             for (Map.Entry<String, String> entry : guestRecords.entrySet()) 
             {
-                pw.println(entry.getKey() + " " + entry.getValue());
+                pw.println(entry.getKey() + " " + entry.getValue().toLowerCase());
             }
         } 
         catch (FileNotFoundException ex) 
