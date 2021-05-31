@@ -15,6 +15,8 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Box;
@@ -231,8 +233,8 @@ public class GuestView extends JFrame{
         ageField = new JTextField("", 20);
         ageField.setBounds(425, 145, 100, 30);
         
-        phoneNumber = new JLabel("Contact Phone: ");
-        phoneNumber.setBounds(285, 205, 300, 30);
+        phoneNumber = new JLabel("Contact Phone (Exclude Zero for Mobile): ");
+        phoneNumber.setBounds(90, 205, 400, 30);
         phoneNumber.setFont(new Font("Arial", Font.BOLD, 17));
         phoneNumField = new JTextField("", 50);
         phoneNumField.setBounds(425, 205, 200, 30);
@@ -364,25 +366,53 @@ public class GuestView extends JFrame{
         }
 
         HashMap<String, String> guestRecords = GuestForm.readGuestRecords();
-
-        if (guestRecords.containsKey(inputAccountNumber)) {
+        
+        Iterator<Map.Entry<String, String> > iterator = guestRecords.entrySet().iterator();
+        
+        boolean finished = false;
+        while(iterator.hasNext() && finished == false){
+            Map.Entry<String, String> entry = iterator.next();
+            if ((entry.getKey().equals(inputAccountNumber)) && (entry.getValue().equals(inputFirstName))){
+            //if ((inputAccountNumber.equals(entry.getKey())) && (inputFirstName.equals(entry.getValue()))){
+                System.out.println("direct identical");
+                System.out.println("this record exists - guest may continue");
+                validAccountNumber = true;
+                showAccNumberError = false;
+                finished = true;
+            }
+            else if ((entry.getKey().equals(inputAccountNumber)) && (!entry.getValue().equals(inputFirstName))){
+                System.out.println("NOT SAME USER");
+                System.out.println("GUEST MAY NOT CONTINUE");
+                validAccountNumber = false;
+                showAccNumberError = true;
+            }
+            else if ((!entry.getKey().equals(inputAccountNumber)) && (!entry.getValue().equals(inputFirstName))){
+                System.out.println("successful");
+                validAccountNumber = true;
+                showAccNumberError = false;
+            }
+            /*if ((entry.getKey().contains(inputAccountNumber)) && (!entry.getValue().contains(inputFirstName))){
+                System.out.println("You have entered an existing account number but first name is different!");
+                validAccountNumber = false;
+                showAccNumberError = true;
+            }*/
+        }
+        
+        /*if (guestRecords.containsKey(inputAccountNumber)) {
             validAccountNumber = false;
             showAccNumberError = true;
             accNumField.setText("");
         } else if (!guestRecords.containsKey(inputAccountNumber)) {
             validAccountNumber = true;
             showAccNumberError = false;
-        }
+        }*/
 
         System.out.println(inputFirstName + " " + inputLastName + " " + inputGuestAge + " " + inputPhoneNumber + " " + inputEmail + " " + inputAccountNumber + " " + inputAccountPin + " ");
         
         if (validFName == true && validLName == true && validAge == true && validPhoneNumber == true && validEmail == true && validAccountNumber == true) {
             validGuest = true;
             System.out.println("Guest object will be created");
-            
-            //Guest guest = new Guest(inputFirstName, inputLastName, inputGuestAge, inputEmail, inputPhoneNumber, inputAccountNumber, inputAccountPin);
-            //ArrayList<Guest> list = form.getArrayList();
-            //list.add(guest);
+
             guestRecords.put(inputAccountNumber, inputFirstName);
             try {
                 FileInputOutput.writeGuestToGuestsFile(guestRecords);

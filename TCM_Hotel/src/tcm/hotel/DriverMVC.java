@@ -65,17 +65,17 @@ public class DriverMVC {
 //        HotelDatesMenu datesView = new HotelDatesMenu();
 //        BookDatesInteraction selectDates = new BookDatesInteraction(datesModel, datesView);
         
-//        GuestModel modelGuest = new GuestModel();
-//        GuestView viewGuest = new GuestView();
-//        GuestController controllerGuest = new GuestController(modelGuest, viewGuest);
-////        
-//        viewGuest.setVisible(true);
+        GuestModel modelGuest = new GuestModel();
+        GuestView viewGuest = new GuestView();
+        GuestController controllerGuest = new GuestController(modelGuest, viewGuest);
+//////      
+        viewGuest.setVisible(true);
 //        viewAdmin.setVisible(true);
 //        viewLogin.setVisible(true);
 
-        AdminSysMenuModel modelAdminSystem = new AdminSysMenuModel();
-        AdminSysMenuView viewAdminSystem = new AdminSysMenuView();
-        AdminSysMenuController controllerAdminSys = new AdminSysMenuController(modelAdminSystem, viewAdminSystem);
-        viewAdminSystem.setVisible(true);
+//        AdminSysMenuModel modelAdminSystem = new AdminSysMenuModel();
+//        AdminSysMenuView viewAdminSystem = new AdminSysMenuView();
+//        AdminSysMenuController controllerAdminSys = new AdminSysMenuController(modelAdminSystem, viewAdminSystem);
+//        viewAdminSystem.setVisible(true);
     }
 }

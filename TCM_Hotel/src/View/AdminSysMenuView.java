@@ -226,11 +226,11 @@ public class AdminSysMenuView extends JFrame{
         
         JScrollPane guestScroll = new JScrollPane(guestsTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         JScrollPane staffScroll = new JScrollPane(staffTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        JScrollPane locBkdScroll = new JScrollPane(locationsBkdTable);
-        JScrollPane roomsBkdScroll = new JScrollPane(roomsBkdTable);
-        JScrollPane featuresBkdScroll = new JScrollPane(featuresBkdTable);
-        JScrollPane guestTypesBkdScroll = new JScrollPane(guestTypesBkdTable);
-        JScrollPane datesBkdScroll = new JScrollPane(datesBkdTable);
+        JScrollPane locBkdScroll = new JScrollPane(locationsBkdTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane roomsBkdScroll = new JScrollPane(roomsBkdTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane featuresBkdScroll = new JScrollPane(featuresBkdTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane guestTypesBkdScroll = new JScrollPane(guestTypesBkdTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane datesBkdScroll = new JScrollPane(datesBkdTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         
         guestScroll.setMinimumSize(new Dimension(1300, 650));
         guestScroll.setPreferredSize(new Dimension (1300,650));
@@ -349,6 +349,7 @@ public class AdminSysMenuView extends JFrame{
         datesBkdTable.setPreferredSize(new Dimension(1300, 650));
         
         Font bigHeader = new Font("sansserif", Font.BOLD, 15);
+        Font smallHeader = new Font("sansserif", Font.BOLD, 12);
         
         guestsTable.getTableHeader().setFont(bigHeader);
         DefaultTableCellRenderer guestsRender = (DefaultTableCellRenderer)guestsTable.getDefaultRenderer(Object.class);
@@ -362,17 +363,17 @@ public class AdminSysMenuView extends JFrame{
         
         locationsBkdTable.getTableHeader().setFont(bigHeader);
         DefaultTableCellRenderer locationsBkdRender = (DefaultTableCellRenderer) locationsBkdTable.getDefaultRenderer(Object.class);
-        staffRender.setHorizontalAlignment(SwingConstants.CENTER);
+        locationsBkdRender.setHorizontalAlignment(SwingConstants.CENTER);
         locationsBkdTable.setRowHeight(50);
         
         roomsBkdTable.getTableHeader().setFont(bigHeader);
         DefaultTableCellRenderer roomsBkdRender = (DefaultTableCellRenderer) roomsBkdTable.getDefaultRenderer(Object.class);
-        staffRender.setHorizontalAlignment(SwingConstants.CENTER);
+        roomsBkdRender.setHorizontalAlignment(SwingConstants.CENTER);
         roomsBkdTable.setRowHeight(50);
         
         featuresBkdTable.getTableHeader().setFont(bigHeader);
         DefaultTableCellRenderer featuresBkdender = (DefaultTableCellRenderer) featuresBkdTable.getDefaultRenderer(Object.class);
-        staffRender.setHorizontalAlignment(SwingConstants.CENTER);
+        featuresBkdender.setHorizontalAlignment(SwingConstants.CENTER);
         featuresBkdTable.setRowHeight(50);
         
         guestTypesBkdTable.getTableHeader().setFont(bigHeader);
@@ -380,50 +381,48 @@ public class AdminSysMenuView extends JFrame{
         guestTypesBkdRender.setHorizontalAlignment(SwingConstants.CENTER);
         guestTypesBkdTable.setRowHeight(50);
         
-        datesBkdTable.getTableHeader().setFont(bigHeader);
+        datesBkdTable.getTableHeader().setFont(smallHeader);
         DefaultTableCellRenderer datesBkdRender = (DefaultTableCellRenderer)datesBkdTable.getDefaultRenderer(Object.class);
-        guestTypesBkdRender.setHorizontalAlignment(SwingConstants.CENTER);
+        datesBkdRender.setHorizontalAlignment(SwingConstants.CENTER);
         datesBkdTable.setRowHeight(50);
         
         
         guestsTable.setPreferredScrollableViewportSize(guestsTable.getPreferredSize());
         guestsTable.setFillsViewportHeight(true);
         guestsTable.setDragEnabled(true);
-        //guestsTable.setRowMargin(100);
-        //guestsTable.setGridColor(Color.blue);
-        //guestsTable.setShowGrid(true);
         
         staffTable.setPreferredScrollableViewportSize(staffTable.getPreferredSize());
         staffTable.setFillsViewportHeight(true);
         staffTable.setDragEnabled(true);
-        //staffTable.setRowMargin(40);
-        //staffTable.setGridColor(Color.blue);
-        //staffTable.setShowGrid(true);
         
-//        guestsDataPanel.add(new JScrollPane(guestsTable));
-//        staffDataPanel.add(new JScrollPane(staffTable));
-//        locationsBkdPanel.add(new JScrollPane(locationsBkdTable));
-//        roomsBkdPanel.add(new JScrollPane(roomsBkdTable));
-//        featuresBkdPanel.add(new JScrollPane(featuresBkdTable));
-//        guestTypesBkdPanel.add(new JScrollPane(guestTypesBkdTable));
-//        datesBkdPanel.add(new JScrollPane(datesBkdTable));
+        locationsBkdTable.setPreferredScrollableViewportSize(staffTable.getPreferredSize());
+        locationsBkdTable.setFillsViewportHeight(true);
+        locationsBkdTable.setDragEnabled(true);
         
+        roomsBkdTable.setPreferredScrollableViewportSize(staffTable.getPreferredSize());
+        roomsBkdTable.setFillsViewportHeight(true);
+        roomsBkdTable.setDragEnabled(true);
+        
+        featuresBkdTable.setPreferredScrollableViewportSize(staffTable.getPreferredSize());
+        featuresBkdTable.setFillsViewportHeight(true);
+        featuresBkdTable.setDragEnabled(true);
+        
+        guestTypesBkdTable.setPreferredScrollableViewportSize(staffTable.getPreferredSize());
+        guestTypesBkdTable.setFillsViewportHeight(true);
+        guestTypesBkdTable.setDragEnabled(true);
+        
+        datesBkdTable.setPreferredScrollableViewportSize(staffTable.getPreferredSize());
+        datesBkdTable.setFillsViewportHeight(true);
+        datesBkdTable.setDragEnabled(true);
+
         guestsDataPanel.add(guestScroll);
         staffDataPanel.add(staffScroll);
-        locationsBkdPanel.add(new JScrollPane(locationsBkdTable));
-        roomsBkdPanel.add(new JScrollPane(roomsBkdTable));
-        featuresBkdPanel.add(new JScrollPane(featuresBkdTable));
-        guestTypesBkdPanel.add(new JScrollPane(guestTypesBkdTable));
-        datesBkdPanel.add(new JScrollPane(datesBkdTable));
-        
-//        guestsDataPanel.add(new JScrollPane(guestsTable));
-//        staffDataPanel.add(new JScrollPane(staffTable));
-//        locationsBkdPanel.add(new JScrollPane(locationsBkdTable));
-//        roomsBkdPanel.add(new JScrollPane(roomsBkdTable));
-//        featuresBkdPanel.add(new JScrollPane(featuresBkdTable));
-//        guestTypesBkdPanel.add(new JScrollPane(guestTypesBkdTable));
-//        datesBkdPanel.add(new JScrollPane(datesBkdTable));
-        
+        locationsBkdPanel.add(locBkdScroll);
+        roomsBkdPanel.add(roomsBkdScroll);
+        featuresBkdPanel.add(featuresBkdScroll);
+        guestTypesBkdPanel.add(guestTypesBkdScroll);
+        datesBkdPanel.add(datesBkdScroll);
+
         displayedData = new JPanel(new CardLayout());
         displayedData.add(staffDataPanel, "Staff Data");
         displayedData.add(guestsDataPanel, "Guests Data");
