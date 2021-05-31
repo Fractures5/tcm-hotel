@@ -63,6 +63,7 @@ public class FAQGuiView extends JFrame
         topPanel = new JPanel();
         topPanel.add(Box.createVerticalStrut(120));
         topPanel.setBackground(Color.blue);
+        
         FAQLabel = new JLabel("FAQ (Frequently Asked Questions)");
         FAQLabel.setForeground(Color.white);
         FAQLabel.setFont(new Font("Arial", Font.BOLD, 30));

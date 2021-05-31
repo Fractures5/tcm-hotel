@@ -21,6 +21,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 
 /**
@@ -45,6 +48,9 @@ public class AboutUsGuiView extends JFrame
     private BufferedImage pic2;
     private BufferedImage pic3;
     
+    private JTextArea AboutUsField;
+    private JScrollPane scrollPane;
+            
     private JButton returnButton;
     
     public AboutUsGuiView () throws IOException
@@ -80,6 +86,9 @@ public class AboutUsGuiView extends JFrame
         returnButton.setBounds(300, 400, 855, 400);
         
         middlePanel = new JPanel();
+        bottomPanel = new JPanel();
+        bottomPanel.add(Box.createVerticalStrut(100));
+        bottomPanel.setBackground(Color.blue);
         
         pic1 = ImageIO.read(new File("test/1.jpg"));
         Image scaledImage1 = pic1.getScaledInstance(100, 100, 700);
@@ -95,15 +104,44 @@ public class AboutUsGuiView extends JFrame
         Image scaledImage3 = pic3.getScaledInstance(100, 100, 700);
         imageLabel3 = new JLabel(new ImageIcon(scaledImage3));
         imageLabel3.setBounds(200, 25, 50, 50); 
-             
-        bottomPanel = new JPanel();
-        bottomPanel.add(Box.createVerticalStrut(100));
-        bottomPanel.setBackground(Color.blue);
+        
+        AboutUsField = new JTextArea();
+        AboutUsField.setFont(new Font("Aria", Font.BOLD, 15));
+        AboutUsField.append("****************************************************************Our Vision*****************************************************************\n");
+        AboutUsField.append("      We here as part of the management of TCM are a group of young developers looking to give more chances and\n");
+        AboutUsField.append("      oppurtunities for people to experiance the culture of the most iconic places in New Zealand. We created our     \n");
+        AboutUsField.append("      own hotel brand and set up locations all over NZ from Wellignton to Dunedin and back to Auckland - we aim  \n");
+        AboutUsField.append("      to provide cheap places for travellers and tourists alike to immerse themselves into the culture \n");
+        AboutUsField.append("      each region of New Zealand... And with Discounts, Special Features and low prices - ALL HERE AT TCM! \n");
+        AboutUsField.append("**********************************************************************************************************************************************\n\n");
+        AboutUsField.append("*************************************************************Contact Details***************************************************************\n");
+        AboutUsField.append("                                    If you have any further issues in regards to our company, feel free to contact us: \n");
+        AboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
+        AboutUsField.append("                                              Email: tdv2188@autuni.ac.nz (Faaris Khan)     - Founding Manager\n");
+        AboutUsField.append("                                                       Ph: (07) 2529423             Mob: +64 0217284610\n");
+        AboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
+        AboutUsField.append("                                              Email: xdx4418@autuni.ac.nz (Siddarath Kumar) - Co-Founding Manager\n");
+        AboutUsField.append("                                                       Ph: (09) 3218302             Mob: +64 0275209512\n");
+        AboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
+        AboutUsField.append("                                              Email: vwv9667@autuni.ac.nz (Anuk Silva)      - Co-Founding Manager\n");
+        AboutUsField.append("                                                       Ph: (08) 2157029             Mob: +64 0237180321\n");
+        AboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
+        AboutUsField.append("**********************************************************************************************************************************************");
+
+        AboutUsField.setBounds(15, 15, 855, 400);
+        AboutUsField.setEditable(false);
+        
+        scrollPane = new JScrollPane(AboutUsField, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPane.setMinimumSize(new Dimension (855, 400));
+        scrollPane.setPreferredSize(new Dimension (855, 300));     
+        
+        //CREATE LABEL WHICH WHEN CLICKED TAKES U TO A LINK
         
         topPanel.add(aboutUsLabel);
         middlePanel.add(imageLabel2);
         middlePanel.add(imageLabel1);
         middlePanel.add(imageLabel3);
+        middlePanel.add(scrollPane);
         bottomPanel.add(returnButton);
         
         aboutUsFrame.add(topPanel, BorderLayout.NORTH);

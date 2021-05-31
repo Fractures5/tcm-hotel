@@ -12,6 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -79,7 +82,11 @@ public class WelcomeAppGuiController
         {
             public void actionPerformed(ActionEvent e) 
             {
-                ClickButtonThree();
+                try {
+                    ClickButtonThree();
+                } catch (IOException ex) {
+                    Logger.getLogger(WelcomeAppGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
 
@@ -206,7 +213,7 @@ public class WelcomeAppGuiController
         viewClass.enterFAQView();
     }
     
-    public void ClickButtonThree() 
+    public void ClickButtonThree() throws IOException 
     {
         accessAboutUs = new AboutUsGuiView();
         aboutUsControl = new AboutUsGuiController(accessAboutUs);
