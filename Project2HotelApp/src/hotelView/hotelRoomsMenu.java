@@ -52,11 +52,11 @@ public class HotelRoomsMenu extends JFrame
     {
         ArrayList<RoomMenu> roomMenu = new ArrayList<RoomMenu>();
         roomMenu = RoomMenu.showMenu();
-        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.LIGHT_GRAY, 10));
+        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
         
         title = new JLabel("Rooms Menu\n");
         title.setFont(new Font("Arial", Font.BOLD, 30));
-        title.setForeground(Color.YELLOW);
+        title.setForeground(Color.WHITE);
         
         instruction = new JLabel("Please choose the rooms you would like to book!");
         instruction.setFont(new Font("Arial", Font.BOLD, 20));
@@ -69,75 +69,106 @@ public class HotelRoomsMenu extends JFrame
         this.add(headerPanel, BorderLayout.NORTH);
         
         menuPanel = new JPanel();
-        menuPanel.setBackground(Color.LIGHT_GRAY);
+        //menuPanel.setBackground(Color.LIGHT_GRAY);
         menuPanel.setPreferredSize(new Dimension(600, 450));
         menuPanel.add(instruction);
         
         standardRoomBox = new JComboBox(roomQuantity);
         standardRoomBox.setPreferredSize(new Dimension(50, 50));
         standardRoomBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        standardRoomBox.setBackground(Color.WHITE);
+        standardRoomBox.setOpaque(true);
  
         deluxeRoomBox = new JComboBox(roomQuantity);
         deluxeRoomBox.setPreferredSize(new Dimension(50, 50));
         deluxeRoomBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        deluxeRoomBox.setBackground(Color.WHITE);
+        deluxeRoomBox.setOpaque(true);
         
         twinRoomBox = new JComboBox(roomQuantity);
         twinRoomBox.setPreferredSize(new Dimension(50, 50));
         twinRoomBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        twinRoomBox.setBackground(Color.WHITE);
+        twinRoomBox.setOpaque(true);
         
         queenRoomBox = new JComboBox(roomQuantity);
         queenRoomBox.setPreferredSize(new Dimension(50, 50));
         queenRoomBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        queenRoomBox.setBackground(Color.WHITE);
+        queenRoomBox.setOpaque(true);
         
         familyRoomBox = new JComboBox(roomQuantity);
         familyRoomBox.setPreferredSize(new Dimension(50, 50));
         familyRoomBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        familyRoomBox.setBackground(Color.WHITE);
+        familyRoomBox.setOpaque(true);
         
         couplesRoomBox = new JComboBox(roomQuantity);
         couplesRoomBox.setPreferredSize(new Dimension(50, 50));
         couplesRoomBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        couplesRoomBox.setBackground(Color.WHITE);
+        couplesRoomBox.setOpaque(true);
         
         standardTitle = new JLabel("Title: " +roomMenu.get(0).getTitle()+ "                 Room Type: " +roomMenu.get(0).getRoomType()+ "           Price: $" +roomMenu.get(0).getPrice()+ "               Rooms: ");
         standardTitle.setFont(new Font("Arial", Font.BOLD, 20));
         standardTitle.setBorder(blackline);
-        deluxeTitle = new JLabel("Title: " +roomMenu.get(1).getTitle()+ "                     Room Type: " +roomMenu.get(1).getRoomType()+ "                     Price: $" +roomMenu.get(1).getPrice()+ "             Rooms: ");
+        standardTitle.setBackground(Color.WHITE);
+        standardTitle.setOpaque(true);
+        
+        deluxeTitle = new JLabel("Title: " +roomMenu.get(1).getTitle()+ "                        Room Type: " +roomMenu.get(1).getRoomType()+ "                Price: $" +roomMenu.get(1).getPrice()+ "               Rooms: ");
         deluxeTitle.setFont(new Font("Arial", Font.BOLD, 20));
         deluxeTitle.setBorder(blackline);
-        twinTitle = new JLabel("Title: " +roomMenu.get(2).getTitle()+ "                       Room Type: " +roomMenu.get(2).getRoomType()+ "                    Price: $" +roomMenu.get(2).getPrice()+ "                  Rooms: ");
+        deluxeTitle.setBackground(Color.WHITE);
+        deluxeTitle.setOpaque(true);
+        
+        twinTitle = new JLabel("Title: " +roomMenu.get(2).getTitle()+ "                         Room Type: " +roomMenu.get(2).getRoomType()+ "                     Price: $" +roomMenu.get(2).getPrice()+ "               Rooms: ");
         twinTitle.setFont(new Font("Arial", Font.BOLD, 20));
         twinTitle.setBorder(blackline);
-        queenTitle = new JLabel("Title: " +roomMenu.get(3).getTitle()+ "                        Room Type: " +roomMenu.get(3).getRoomType()+ "                Price: $" +roomMenu.get(3).getPrice()+ "                Rooms: ");
+        twinTitle.setBackground(Color.WHITE);
+        twinTitle.setOpaque(true);
+        
+        queenTitle = new JLabel("Title: " +roomMenu.get(3).getTitle()+ "                       Room Type: " +roomMenu.get(3).getRoomType()+ "                  Price: $" +roomMenu.get(3).getPrice()+ "               Rooms: ");
         queenTitle.setFont(new Font("Arial", Font.BOLD, 20)); 
         queenTitle.setBorder(blackline);
-        familyTitle = new JLabel("Title: " +roomMenu.get(4).getTitle()+ "                             Room Type: " +roomMenu.get(4).getRoomType()+ "      Price: $" +roomMenu.get(4).getPrice()+ "                            Rooms: ");
+        queenTitle.setBackground(Color.WHITE);
+        queenTitle.setOpaque(true);
+        
+        familyTitle = new JLabel("Title: " +roomMenu.get(4).getTitle()+ "                               Room Type: " +roomMenu.get(4).getRoomType()+ "                  Price: $" +roomMenu.get(4).getPrice()+ "               Rooms: ");
         familyTitle.setFont(new Font("Arial", Font.BOLD, 20));
         familyTitle.setBorder(blackline);
-        couplesTitle = new JLabel("Title: " +roomMenu.get(5).getTitle()+ "       Room Type: " +roomMenu.get(5).getRoomType()+ "     Price: $" +roomMenu.get(5).getPrice()+ "         Rooms: ");
+        familyTitle.setBackground(Color.WHITE);
+        familyTitle.setOpaque(true);
+        
+        couplesTitle = new JLabel("Title: " +roomMenu.get(5).getTitle()+ "   Room Type: " +roomMenu.get(5).getRoomType()+ "                 Price: $" +roomMenu.get(5).getPrice()+ "              Rooms: ");
         couplesTitle.setFont(new Font("Arial", Font.BOLD, 20));
         couplesTitle.setBorder(blackline);
+        couplesTitle.setBackground(Color.WHITE);
+        couplesTitle.setOpaque(true);
         
-        menuPanel.add(Box.createVerticalStrut(10));
+        menuPanel.add(Box.createVerticalStrut(40));
         menuPanel.add(standardTitle);
         menuPanel.add(standardRoomBox);
-        menuPanel.add(Box.createVerticalStrut(75));
+        menuPanel.add(Box.createVerticalStrut(83));
         menuPanel.add(deluxeTitle);
         menuPanel.add(deluxeRoomBox);
-        menuPanel.add(Box.createVerticalStrut(75));
+        menuPanel.add(Box.createVerticalStrut(83));
         menuPanel.add(twinTitle);
         menuPanel.add(twinRoomBox);
-        menuPanel.add(Box.createVerticalStrut(75));
+        menuPanel.add(Box.createVerticalStrut(83));
         menuPanel.add(queenTitle);
         menuPanel.add(queenRoomBox);
-        menuPanel.add(Box.createVerticalStrut(75));
+        menuPanel.add(Box.createVerticalStrut(83));
         menuPanel.add(familyTitle);
         menuPanel.add(familyRoomBox);
-        menuPanel.add(Box.createVerticalStrut(75));
+        menuPanel.add(Box.createVerticalStrut(83));
         menuPanel.add(couplesTitle);
         menuPanel.add(couplesRoomBox);
+        menuPanel.add(Box.createVerticalStrut(83));
         
         this.add(menuPanel, BorderLayout.CENTER);
         
         bottomPanel = new JPanel();
+        bottomPanel.setBackground(Color.BLUE);
         nextButton = new JButton("Next");
         nextButton.setPreferredSize(new Dimension(200,70));
         nextButton.setFont(new Font("Arial", Font.BOLD, 24));
@@ -146,12 +177,8 @@ public class HotelRoomsMenu extends JFrame
         this.add(bottomPanel, BorderLayout.SOUTH);
         
         this.setTitle("Guests booking rooms");
-        //this.setSize(1200,700);
-        //this.setLocation(500,150);
         this.setSize(frameWidth +350, frameHeight +250);
         this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
-
-        //this.setLocation(350,100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }

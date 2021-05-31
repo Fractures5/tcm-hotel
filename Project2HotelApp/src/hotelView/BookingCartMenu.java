@@ -74,7 +74,7 @@ public class BookingCartMenu extends JFrame
         instruction.setForeground(Color.BLACK);
 
         menuPanel = new JPanel();
-        menuPanel.setBackground(Color.LIGHT_GRAY);
+        //menuPanel.setBackground(Color.LIGHT_GRAY);
         menuPanel.setPreferredSize(new Dimension(1100, 850));
         menuPanel.add(instruction);
         
@@ -107,6 +107,7 @@ public class BookingCartMenu extends JFrame
         this.add(menuPanel, BorderLayout.CENTER);
         
         bottomPanel = new JPanel();
+        bottomPanel.setBackground(Color.BLUE);
         homeButton = new JButton("Return to Home");
         homeButton.setPreferredSize(new Dimension(300,70));
         homeButton.setFont(new Font("Arial", Font.BOLD, 24));
@@ -160,7 +161,7 @@ public class BookingCartMenu extends JFrame
         bookingCartField.append("\n----------------------------------------------------------------------------- Rooms Booked -------------------------------------------------------------------------------------------------\n\n");
         for (GuestsBookingCart bookingDetails : roomsBooked)
         {
-            bookingCartField.append("Title: " + bookingDetails.getTitle() + "                    Room Type: " + bookingDetails.getRoomType() + "                 Price: $" + bookingDetails.getPrice() + "\n");
+            bookingCartField.append("Title: " + bookingDetails.getTitle() + "--------Room Type: " + bookingDetails.getRoomType() + "---------Price: $" + bookingDetails.getPrice() + "\n");
         }
         //bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         

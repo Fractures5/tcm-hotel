@@ -71,7 +71,7 @@ public class HotelDatesMenu extends JFrame {
     {
         title = new JLabel("Hotel Date Booking Menu\n");
         title.setFont(new Font("Arial", Font.BOLD, 30));
-        title.setForeground(Color.YELLOW);
+        title.setForeground(Color.WHITE);
 
         instruction = new JLabel("Please pick the check in and check out dates!");
         instruction.setFont(new Font("Arial", Font.BOLD, 20));
@@ -84,7 +84,7 @@ public class HotelDatesMenu extends JFrame {
         this.add(headerPanel, BorderLayout.NORTH);
 
         menuPanel = new JPanel(null);
-        menuPanel.setBackground(Color.LIGHT_GRAY);
+        //menuPanel.setBackground(Color.LIGHT_GRAY);
         menuPanel.setPreferredSize(new Dimension(600,450));
         instruction.setBounds(370, 20, 500, 50);
         menuPanel.add(instruction);
@@ -92,57 +92,81 @@ public class HotelDatesMenu extends JFrame {
         dayInBox = new JComboBox(dayNo);
         dayInBox.setBounds(410, 100, 60, 50);
         dayInBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        dayInBox.setBackground(Color.WHITE);
+        dayInBox.setOpaque(true);
         
         monthInBox = new JComboBox(monthNames);
         monthInBox.setBounds(410, 240, 125, 50);
         monthInBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        monthInBox.setBackground(Color.WHITE);
+        monthInBox.setOpaque(true);
         
         yearInBox = new JComboBox(years);
         yearInBox.setBounds(410, 380, 85, 50);
         yearInBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        yearInBox.setBackground(Color.WHITE);
+        yearInBox.setOpaque(true);
         
         dayOutBox = new JComboBox(dayNo);
         dayOutBox.setBounds(875, 100, 60, 50);
         dayOutBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        dayOutBox.setBackground(Color.WHITE);
+        dayOutBox.setOpaque(true);
         
         monthOutBox = new JComboBox(monthNames);
         monthOutBox.setBounds(875, 240, 125, 50);
         monthOutBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        monthOutBox.setBackground(Color.WHITE);
+        monthOutBox.setOpaque(true);
         
         yearOutBox = new JComboBox(years);
         yearOutBox.setBounds(875, 380, 85, 50);
         yearOutBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        yearOutBox.setBackground(Color.WHITE);
+        yearOutBox.setOpaque(true);
         
-        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.LIGHT_GRAY, 10));
+        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
 
         checkInDayJL = new JLabel("Check in day: ");
         checkInDayJL.setFont(new Font("Arial", Font.BOLD, 20));
         checkInDayJL.setBounds(210, 100, 175, 50);
+        checkInDayJL.setBackground(Color.WHITE);
+        checkInDayJL.setOpaque(true);
         checkInDayJL.setBorder(blackline);
         
         checkInMonthJL = new JLabel("Check in month: ");
         checkInMonthJL.setFont(new Font("Arial", Font.BOLD, 20));
         checkInMonthJL.setBounds(210, 240, 185, 50);
+        checkInMonthJL.setBackground(Color.WHITE);
+        checkInMonthJL.setOpaque(true);
         checkInMonthJL.setBorder(blackline);
         
         checkInYearJL = new JLabel("Check in year: ");
         checkInYearJL.setFont(new Font("Arial", Font.BOLD, 20));
         checkInYearJL.setBounds(210, 380, 175, 50);
+        checkInYearJL.setBackground(Color.WHITE);
+        checkInYearJL.setOpaque(true);
         checkInYearJL.setBorder(blackline);
         
         checkOutDayJL = new JLabel("Check out day: ");
         checkOutDayJL.setFont(new Font("Arial", Font.BOLD, 20));
         checkOutDayJL.setBounds(640, 100, 200, 50);
+        checkOutDayJL.setBackground(Color.WHITE);
+        checkOutDayJL.setOpaque(true);
         checkOutDayJL.setBorder(blackline);
         
         checkOutMonthJL = new JLabel("Check out month: ");
         checkOutMonthJL.setFont(new Font("Arial", Font.BOLD, 20));
         checkOutMonthJL.setBounds(640, 240, 200, 50);
+        checkOutMonthJL.setBackground(Color.WHITE);
+        checkOutMonthJL.setOpaque(true);
         checkOutMonthJL.setBorder(blackline);
         
         checkOutYearJL = new JLabel("Check out year: ");
         checkOutYearJL.setFont(new Font("Arial", Font.BOLD, 20));
         checkOutYearJL.setBounds(640, 380, 200, 50);
+        checkOutYearJL.setBackground(Color.WHITE);
+        checkOutYearJL.setOpaque(true);
         checkOutYearJL.setBorder(blackline);
         
         menuPanel.add(checkInDayJL);
@@ -177,36 +201,6 @@ public class HotelDatesMenu extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
-    /*public int getCheckInDay() 
-    {
-        return checkInDay;
-    }
-
-    public String getCheckInMonth() 
-    {
-        return checkInMonth;
-    }
-
-    public int getCheckInYear() 
-    {
-        return checkInYear;
-    }
-
-    public int getCheckOutDay() 
-    {
-        return checkOutDay;
-    }
-
-    public String getCheckOutMonth() 
-    {
-        return checkOutMonth;
-    }
-
-    public int getCheckOutYear() 
-    {
-        return checkOutYear;
-    }*/
     
     public Boolean getRepeat()
     {
@@ -305,13 +299,6 @@ public class HotelDatesMenu extends JFrame {
                     GuestsBookingCart bookingDetails = new GuestsBookingCart( (Integer)dayInBox.getSelectedItem(), (String) monthInBox.getSelectedItem(), (Integer)yearInBox.getSelectedItem()
                             ,(Integer)dayOutBox.getSelectedItem(), (String) monthOutBox.getSelectedItem(), (Integer)yearOutBox.getSelectedItem());
                     datesBooked.add(bookingDetails);
-            
-                    /*checkInDay = (Integer)dayInBox.getSelectedItem();
-                    checkInMonth = (String) monthInBox.getSelectedItem();
-                    checkInYear = (Integer)yearInBox.getSelectedItem();
-                    checkOutDay = (Integer)dayOutBox.getSelectedItem();
-                    checkOutMonth = (String) monthOutBox.getSelectedItem();
-                    checkOutYear = (Integer)yearOutBox.getSelectedItem();*/
                 } 
                 else if (userConfirmation == JOptionPane.NO_OPTION || userConfirmation == JOptionPane.CANCEL_OPTION || userConfirmation == JOptionPane.CLOSED_OPTION) 
                 {

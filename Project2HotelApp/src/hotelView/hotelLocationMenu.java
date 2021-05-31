@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -22,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
+import javax.swing.border.Border;
 import project2hotelapp.GuestChooseRoom;
 import project2hotelapp.GuestsBookingCart;
 import project2hotelapp.LocationMenu;
@@ -72,15 +74,15 @@ public class HotelLocationMenu extends JFrame{
     
     public HotelLocationMenu()
     {
+        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
+        
         title = new JLabel("Hotel Locations Menu\n");
         title.setFont(new Font("Arial", Font.BOLD, 30));
-        title.setForeground(Color.YELLOW);
+        title.setForeground(Color.WHITE);
         
         instruction = new JLabel("Please tick the hotel location you would like to book at!");
         instruction.setFont(new Font("Arial", Font.BOLD, 20));
         instruction.setForeground(Color.BLACK);
-        //instruction.setHorizontalAlignment(JLabel.CENTER);
-        //instruction.setVerticalAlignment(JLabel.CENTER);
         
         headerPanel = new JPanel();
         headerPanel.setBackground(Color.BLUE);
@@ -89,7 +91,7 @@ public class HotelLocationMenu extends JFrame{
         this.add(headerPanel, BorderLayout.NORTH);
         
         menuPanel = new JPanel();
-        menuPanel.setBackground(Color.LIGHT_GRAY);
+        //menuPanel.setBackground(Color.LIGHT_GRAY);
         menuPanel.setPreferredSize(new Dimension(600,450));
         menuPanel.add(instruction);
         menuPanel.add(Box.createVerticalStrut(75));
@@ -100,7 +102,7 @@ public class HotelLocationMenu extends JFrame{
         locationButtons [0] = new JRadioButton("Title: Auckland Hotel - 31 Starcent Ave                          Location: Auckland                       Rating: Five      Vacancy: Yes");
         locationButtons [1] = new JRadioButton("Title: Rotorua Hotel - 17 Geyser Crescent                      Location: Rotorua                        Rating: Three     Vacancy: Yes");
         locationButtons [2] = new JRadioButton("Title: Taupo Hotel - 48 Lake Ave                                       Location: Taupo                           Rating: Four       Vacancy: No");
-        locationButtons [3] = new JRadioButton("Title: Palmerston Hotel - 69 Leggy Ave                            Location: Palmerston Hotel        Rating: Four       Vacancy: Yes");
+        locationButtons [3] = new JRadioButton("Title: Palmerston Hotel - 69 Leggy Ave                            Location: Palmerston North        Rating: Four       Vacancy: Yes");
         locationButtons [4] = new JRadioButton("Title: Wellington Hotel - 128 Bee Ave                               Location: Wellington                   Rating: Five        Vacancy: No");
         locationButtons [5] = new JRadioButton("Title: Christchurch Hotel - 27 Meadow Lane                    Location: Christchurch               Rating: Four        Vacancy: Yes");
         locationButtons [6] = new JRadioButton("Title: Dunedin Hotel - 987 Lonely Road                            Location: Dunedin                        Rating: Four        Vacancy: No");
@@ -114,6 +116,10 @@ public class HotelLocationMenu extends JFrame{
         {
             locationButtons[i].setPreferredSize(new Dimension(1100, 50));
             locationButtons[i].setFont(new Font("Arial", Font.BOLD, 18));
+            locationButtons[i].setBackground(Color.WHITE);
+            locationButtons[i].setOpaque(true);
+            locationButtons[i].setBorderPainted(true);
+            locationButtons[i].setBorder(blackline);
             group.add(locationButtons[i]);
             menuPanel.add(locationButtons[i]);
             menuPanel.add(Box.createVerticalStrut(60));

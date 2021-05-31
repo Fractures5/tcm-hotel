@@ -59,7 +59,7 @@ public class RoomMenu extends Products{
         RoomMenu twinRoom = new RoomMenu("Twin Size Room (2 single bed)", RoomType.TWIN, 250.00);
         RoomMenu queenRoom = new RoomMenu("Queen Size (1 queen sized bed)", RoomType.QUEEN, 225.00);
         RoomMenu familyRoom = new RoomMenu("Family Room (Large room)", RoomType.FAMILY, 300.00);
-        RoomMenu couplesRoom = new RoomMenu("Couples Room (Custom heart-shaped king size bed)", RoomType.COUPLE, 315.00);
+        RoomMenu couplesRoom = new RoomMenu("Couples Room (Heart-shaped king size bed)", RoomType.COUPLE, 315.00);
         
         ArrayList<RoomMenu> rooms = new ArrayList<RoomMenu>(); // Creating the array list object.
         rooms.add(standardRoom); // Stores details into the array list object.

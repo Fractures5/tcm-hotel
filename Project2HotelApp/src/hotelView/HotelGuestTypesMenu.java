@@ -51,11 +51,11 @@ public class HotelGuestTypesMenu extends JFrame
     {
         ArrayList<GuestsTypeMenu> guestTypeMenu = new ArrayList<GuestsTypeMenu>();
         guestTypeMenu = GuestsTypeMenu.showMenu();
-        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.LIGHT_GRAY, 10));
+        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
         
         pageTitle = new JLabel("Guest Types Menu");
         pageTitle.setFont(new Font("Arial", Font.BOLD, 30));
-        pageTitle.setForeground(Color.YELLOW);
+        pageTitle.setForeground(Color.WHITE);
         
         instruction = new JLabel("Please choose the guest type and number of guests you would like to book!");
         instruction.setFont(new Font("Arial", Font.BOLD, 20));
@@ -68,65 +68,91 @@ public class HotelGuestTypesMenu extends JFrame
         this.add(headerPanel, BorderLayout.NORTH);
         
         menuPanel = new JPanel();
-        menuPanel.setBackground(Color.LIGHT_GRAY);
+        //menuPanel.setBackground(Color.LIGHT_GRAY);
         menuPanel.setPreferredSize(new Dimension(600, 450));
         menuPanel.add(instruction);
         
         adultTypeBox = new JComboBox(guestCount);
         adultTypeBox.setPreferredSize(new Dimension(50, 50));
         adultTypeBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        adultTypeBox.setBackground(Color.WHITE);
+        adultTypeBox.setOpaque(true);
         
         childTypeBox = new JComboBox(guestCount);
         childTypeBox.setPreferredSize(new Dimension(50, 50));
         childTypeBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        childTypeBox.setBackground(Color.WHITE);
+        childTypeBox.setOpaque(true);
         
         infantTypeBox = new JComboBox(guestCount);
         infantTypeBox.setPreferredSize(new Dimension(50, 50));
         infantTypeBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        infantTypeBox.setBackground(Color.WHITE);
+        infantTypeBox.setOpaque(true);
 
         elderlyTypeBox = new JComboBox(guestCount);
         elderlyTypeBox.setPreferredSize(new Dimension(50, 50));
         elderlyTypeBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        elderlyTypeBox.setBackground(Color.WHITE);
+        elderlyTypeBox.setOpaque(true);
         
         vipTypeBox = new JComboBox(guestCount);
         vipTypeBox.setPreferredSize(new Dimension(50, 50));
         vipTypeBox.setFont(new Font("Arial", Font.PLAIN, 20));
+        vipTypeBox.setBackground(Color.WHITE);
+        vipTypeBox.setOpaque(true);
         
         adultTitle = new JLabel("Title: " +guestTypeMenu.get(0).getTitle() + "            Guest Type: " +guestTypeMenu.get(0).getGuestType()+ "           Price: $" +guestTypeMenu.get(0).getPrice()+ "          Guest Numbers: ");
         adultTitle.setFont(new Font("Arial", Font.BOLD, 20));
         adultTitle.setBorder(blackline);
+        adultTitle.setBackground(Color.WHITE);
+        adultTitle.setOpaque(true);
+        
         childTitle = new JLabel("Title: " +guestTypeMenu.get(1).getTitle() + "            Guest Type: " +guestTypeMenu.get(1).getGuestType()+ "           Price: $" +guestTypeMenu.get(1).getPrice()+ "          Guest Numbers: ");
         childTitle.setFont(new Font("Arial", Font.BOLD, 20));
         childTitle.setBorder(blackline);
+        childTitle.setBackground(Color.WHITE);
+        childTitle.setOpaque(true);
+        
         infantTitle = new JLabel("Title: " +guestTypeMenu.get(2).getTitle() + "            Guest Type: " +guestTypeMenu.get(2).getGuestType()+ "           Price: $" +guestTypeMenu.get(2).getPrice()+ "          Guest Numbers: ");
         infantTitle.setFont(new Font("Arial", Font.BOLD, 20));
         infantTitle.setBorder(blackline);
+        infantTitle.setBackground(Color.WHITE);
+        infantTitle.setOpaque(true);
+        
         elderlyTitle = new JLabel("Title: " +guestTypeMenu.get(3).getTitle() + "            Guest Type: " +guestTypeMenu.get(3).getGuestType()+ "           Price: $" +guestTypeMenu.get(3).getPrice()+ "          Guest Numbers: ");
         elderlyTitle.setFont(new Font("Arial", Font.BOLD, 20));
         elderlyTitle.setBorder(blackline);
+        elderlyTitle.setBackground(Color.WHITE);
+        elderlyTitle.setOpaque(true);
+        
         vipTitle = new JLabel("Title: " +guestTypeMenu.get(4).getTitle() + "            Guest Type: " +guestTypeMenu.get(4).getGuestType()+ "           Price: $" +guestTypeMenu.get(4).getPrice()+ "          Guest Numbers: ");
         vipTitle.setFont(new Font("Arial", Font.BOLD, 20));
         vipTitle.setBorder(blackline);
+        vipTitle.setBackground(Color.WHITE);
+        vipTitle.setOpaque(true);
         
         menuPanel.add(Box.createVerticalStrut(50));
         menuPanel.add(adultTitle);
         menuPanel.add(adultTypeBox);
-        menuPanel.add(Box.createVerticalStrut(85));
+        menuPanel.add(Box.createVerticalStrut(95));
         menuPanel.add(childTitle);
         menuPanel.add(childTypeBox);
-        menuPanel.add(Box.createVerticalStrut(85));
+        menuPanel.add(Box.createVerticalStrut(95));
         menuPanel.add(infantTitle);
         menuPanel.add(infantTypeBox);
-        menuPanel.add(Box.createVerticalStrut(85));
+        menuPanel.add(Box.createVerticalStrut(95));
         menuPanel.add(elderlyTitle);
         menuPanel.add(elderlyTypeBox);
-        menuPanel.add(Box.createVerticalStrut(85));
+        menuPanel.add(Box.createVerticalStrut(95));
         menuPanel.add(vipTitle);
         menuPanel.add(vipTypeBox);
+        menuPanel.add(Box.createVerticalStrut(95));
         
         this.add(menuPanel, BorderLayout.CENTER);
         
         bottomPanel = new JPanel();
+        bottomPanel.setBackground(Color.BLUE);
  
         nextButton = new JButton("Next");
         nextButton.setPreferredSize(new Dimension(200,70));
