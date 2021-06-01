@@ -6,17 +6,17 @@
 package project2hotelapp;
 
 /**
- * The purpose of this abstract class is to maintain the protected instance variables for hotel products
+ * The purpose of this class is to maintain the protected instance variables for hotel products
  * and these variables are the product title, price, location type, room type, guest type,
  * vacancy type, extra features type, rating type, room availability type and the check in and out
  * dates. These variables are used in the menu output and the guest booking cart process.
  * This is a super class/parent class so the sub classes FeaturesMenu, GuestsTypeMenu,
  * LocationMenu, GuestsBookingCart and RoomMenu will inherit certain characteristics from it.
  * This class also has get and set methods for each variable so its accessible from outside this
- * class. This class also contains the abstract method for displaying a special banner message for each inherited class.
+ * class. 
  * @author Siddarath
  */
-public abstract class Products {
+public class Products {
     
     protected String title;
     protected Double price;
@@ -26,7 +26,6 @@ public abstract class Products {
     protected VacancyType vacancyType;
     protected ExtraFeatureTypes featureType;
     protected RatingType ratingType;
-    protected RoomAvailableType availabilityType;
     protected int checkInDay, checkInYear;
     protected int checkOutDay, checkOutYear;
     protected String checkInMonth, checkOutMonth;
@@ -63,7 +62,6 @@ public abstract class Products {
      * @param title the parameter represents the title of selection, in this case it would be the title of the room selected.
      * @param roomType the parameter represents the enumerated type RoomType which holds the different types of rooms the guests can book.
      * @param price the parameter in this constructor represents the price of the type of rooms selected by the guest.
-     * @param availabilityType the parameter represents the enumerated type AvailabilityType which holds the number of rooms available to the specific room type.
      * @author Siddarath
      */
     public Products(String title, RoomType roomType, Double price)
@@ -216,16 +214,6 @@ public abstract class Products {
         this.ratingType = ratingType;
     }
 
-    public RoomAvailableType getAvailabilityType() 
-    {
-        return availabilityType;
-    }
-
-    public void setAvailabilityType(RoomAvailableType availabilityType) 
-    {
-        this.availabilityType = availabilityType;
-    }
-
     public int getCheckInDay() 
     {
         return checkInDay;
@@ -282,12 +270,5 @@ public abstract class Products {
     public void setCheckOutYear(int checkOutYear) 
     {
         this.checkOutYear = checkOutYear;
-    }
-    
-    /**
-     * The menuBanner method below is an abstract method which will be
-     * overridden by the sub classes (menu classes) with a special banner graphics.
-     * @author Siddarath
-     */
-    public abstract void menuBanner();
+    }   
 }

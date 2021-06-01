@@ -5,7 +5,6 @@
  */
 package project2hotelapp;
 
-import hotelControllers.BookDatesInteraction;
 import hotelControllers.FeaturesMenuInteraction;
 import hotelControllers.GuestsTypeInteraction;
 import hotelControllers.LocationMenuInteraction;
@@ -13,16 +12,28 @@ import hotelControllers.RoomMenuInteraction;
 import java.util.ArrayList;
 
 /**
- *
+ * This class is used to calculate the total costs of the guests
+ * booking. It contains a method with performs the required calculations 
+ * which is called in the booking cart menu.
+ * 
  * @author Siddarath
  */
 public class CalculateCosts 
 {
+    /**
+     * This is the default constructor.
+     */
     public CalculateCosts()
     {
         
     }
     
+    /**
+     * This method calculates the total price of the guests booking which includes the room prices, guest type prices
+     * and the extra feature prices.
+     * @return totalPrice the parameter which represents the total price for the confirmed booking for the guest.
+     * @Siddarath
+     */
     public double guestsTotalCost()
     {
         ArrayList<GuestsBookingCart> locationBooked = new ArrayList<GuestsBookingCart>();

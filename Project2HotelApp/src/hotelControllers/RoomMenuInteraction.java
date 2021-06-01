@@ -5,8 +5,8 @@
  */
 package hotelControllers;
 
-import hotelModel.HotelGuests;
-import hotelModel.HotelRooms;
+import hotelModel.BookedGuestTypes;
+import hotelModel.BookedHotelRooms;
 import hotelView.HotelGuestTypesMenu;
 import hotelView.HotelRoomsMenu;
 import java.awt.event.ActionEvent;
@@ -21,10 +21,10 @@ import project2hotelapp.GuestsBookingCart;
  */
 public class RoomMenuInteraction 
 {
-    static HotelRooms roomsModel;
+    static BookedHotelRooms roomsModel;
     HotelRoomsMenu  roomsView;
     
-    public RoomMenuInteraction(HotelRooms roomsModel, HotelRoomsMenu  roomsView)
+    public RoomMenuInteraction(BookedHotelRooms roomsModel, HotelRoomsMenu  roomsView)
     {
         this.roomsModel = roomsModel;
         this.roomsView = roomsView;
@@ -41,12 +41,12 @@ public class RoomMenuInteraction
         {
             public void mouseEntered(java.awt.event.MouseEvent evt) 
             {
-                mouseEnteredHover();
+                mouseEnteredNextHover();
             }
             
             public void mouseExited(java.awt.event.MouseEvent evt) 
             {
-                mouseExitedHover();
+                mouseExitedNextHover();
             }
         });
     }
@@ -59,33 +59,30 @@ public class RoomMenuInteraction
         {
             roomsView.displayErrorMessage();
         }
-        else if(roomsView.getRepeat() == true && roomsView.getShowErrorMesssage() == false) // take this out maybe not needed
+        /*else if(roomsView.getRepeat() == true && roomsView.getShowErrorMesssage() == false) // take this out maybe not needed
         {
             
-        }
+        }*/
         else if (roomsView.getRepeat() == false) 
         {
             roomsView.addUserRoomsSelection();
             roomsView.setVisible(false);
             roomsModel.setRoomsBooked(roomsView.getRoomsBooked());
-            //System.out.println(roomsModel.getRoomsBooked().get(0).getTitle() + " " + roomsModel.getRoomsBooked().get(0).getPrice());
-            roomsModel.currentRoomBookings();
             
-            
-            HotelGuests guestsModel = new HotelGuests();
+            BookedGuestTypes guestsModel = new BookedGuestTypes();
             HotelGuestTypesMenu guestsView = new HotelGuestTypesMenu();
             GuestsTypeInteraction selectGuests = new GuestsTypeInteraction(guestsModel, guestsView);
         }
     }
     
-    public void mouseEnteredHover()
+    public void mouseEnteredNextHover()
     {
-        roomsView.mouseEnterHover();
+        roomsView.mouseEnterNextHover();
     }
     
-    public void mouseExitedHover()
+    public void mouseExitedNextHover()
     {
-        roomsView.mouseExitHover();
+        roomsView.mouseExitNextHover();
     }
     
     public static ArrayList<GuestsBookingCart> guestBookedRooms()

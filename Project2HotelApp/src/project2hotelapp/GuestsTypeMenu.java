@@ -11,9 +11,9 @@ import java.util.ArrayList;
  * The purpose of this class is to create the menu of the guest types available by adding information
  * about the guest types into an array list. This class is a child class and inherits
  * certain methods/variables/characteristics from the Parent class Products. This class contains the 
- * specific constructors for initializing data only for guest types, and it contains the static menu output methods, 
- * toString methods and the special abstract method which all help output the array list in a neat manner 
- * to show the guest types available menu which is used in the guest menu class. 
+ * specific constructors for initializing data only for guest types, and its array list used
+ * to show the guests types available menu which is used in the hotelGuestTypesMenu GUI view and is used to add
+ * data into the guests booking cart.
  * @author Siddarath
  */
 public class GuestsTypeMenu extends Products {
@@ -43,11 +43,10 @@ public class GuestsTypeMenu extends Products {
     }
     
     /**
-     * This method will essentially output the menu of the guest types to the user.
      * This static method showMenu will create an object of the GuestsTypeMenu class and assign it to values
      * that are details about the guest types the hotel provides. Then the method adds these assigned objects
-     * to the array list and then it outputs the array list that stores the information about the guest types
-     * along with the unique index number which the guest can refer when selecting an option from this menu.
+     * to the array list and is then used in the hotelGuestTypesMenu view GUI to output the menu details and used to add
+     * the selected guest types to the users booking cart.
      * @return guests the array list which holds all the information about the guest types.
      * @author Siddarath
      */
@@ -66,42 +65,6 @@ public class GuestsTypeMenu extends Products {
         guests.add(elderly);
         guests.add(vip);
         
-        /*GuestsTypeMenu guestTypeTitle = new GuestsTypeMenu();
-        guestTypeTitle.menuBanner(); // Calls the abstract method to display this menus specific banner.
-        
-        for (GuestsTypeMenu guestTypes: guests)
-        {
-            System.out.println("(" +guests.indexOf(guestTypes)+ ") - " +guestTypes); // Prints out the guest type menu formatted with its index number in the front.
-        }*/
-        
         return guests; 
-    }
-    
-    /**
-     * This toString method will return a string representation of the GuestsTypeMenu class object.
-     * This method utilizes the "strong.format" skill to make the menu look more organized in a column
-     * format that is spaced out, legible and appealing.
-     * @return a string which outputs all the instances variable values for the GuestsTypeMenu class. 
-     * @author Siddarath
-     */
-    public String toString()
-    {
-        String output = String.format("%-30s", "Title: " + this.getTitle()); // String.format is used to format the guest type menu in columns.
-        output += String.format("%-30s", "Customer Type: " + this.getGuestType());
-        output += String.format("%-25s", "Price: $" + this.getPrice());
-        
-        return output;
-    }
-
-    /**
-     * This is the abstract method inherited from the Products class. This method will
-     * output a special banner graphic to make the menu more appealing.
-     * @author Siddarath
-     */
-    @Override
-    public void menuBanner() {
-        System.out.println("\n---------------------------------------------------------------------------------");
-        System.out.println("                          Customer types menu");
-        System.out.println("---------------------------------------------------------------------------------");
     }
 }

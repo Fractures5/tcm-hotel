@@ -5,15 +5,14 @@
  */
 package hotelDB;
 
-import hotelDB.DBManager;
 import hotelModel.GuestModel;
-import java.sql.BatchUpdateException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import project2hotelapp.CalculateCosts;
 import project2hotelapp.GuestsBookingCart;
 
 /**
@@ -37,11 +36,57 @@ public class HotelProductDB
         this.dbManager.closeConnnections();
     }
     
+    public void checkTableExistence(String name)
+    {
+        try
+        {
+            DatabaseMetaData dbmd = this.conn.getMetaData();
+            String[] types  = {"TABLE"};
+            statement = this.conn.createStatement();
+            ResultSet rs = dbmd.getTables(null, null, name, types);
+            
+            if(rs.next())
+            {
+                statement.executeUpdate("Drop table " +name);
+                System.out.println("Table " +name+ " has been deleted"); 
+            }
+            rs.close();
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public boolean checkTableStatus(String name)
+    {
+        boolean createTable = true;
+        
+        try
+        {
+            DatabaseMetaData dbmd = this.conn.getMetaData();
+            String[] types  = {"TABLE"};
+            statement = this.conn.createStatement();
+            ResultSet rs = dbmd.getTables(null, null, name, types);
+            
+            if(rs.next())
+            {
+                System.out.println("Table " +name+ " already exists! Doesnt need to be dropped!"); 
+                createTable = false;
+            }
+            rs.close();
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return createTable;
+    }
+    
     public void createHLocationTable() 
     {
         try
         {
-            //Class.forName("jdbc:derby://localhost:1527/TCMHotelDB"); 
             this.statement = conn.createStatement();
             this.checkTableExistence("HOTEL_LOCATIONS");
             this.statement.addBatch("CREATE  TABLE HOTEL_LOCATIONS  (HOTEL_ID INT,   TITLE   VARCHAR(50),   LOCATION VARCHAR(20),   RATING INT, VACANCY_TYPE VARCHAR(1))");
@@ -61,18 +106,12 @@ public class HotelProductDB
             System.out.println(ex.getMessage());
             System.out.println(ex.getNextException());
         }
-        
-        /*catch(ClassNotFoundException e)
-        {
-            
-        }*/
     }
     
     public void createHRoomsTable()
     {
         try
-        {
-            //Class.forName("jdbc:derby://localhost:1527/TCMHotelDB"); 
+        { 
             this.statement = conn.createStatement();
             this.checkTableExistence("HOTEL_ROOMS");
             this.statement.addBatch("CREATE  TABLE HOTEL_ROOMS  (ROOM_TYPE_ID INT,   TITLE   VARCHAR(50),   ROOM_TYPE VARCHAR(20), PRICE   FLOAT, ROOM_AVAILABLE VARCHAR(1))");
@@ -135,134 +174,26 @@ public class HotelProductDB
         }
     }
     
-    public void checkTableExistence(String name)
-    {
-        try
-        {
-            DatabaseMetaData dbmd = this.conn.getMetaData();
-            String[] types  = {"TABLE"};
-            statement = this.conn.createStatement();
-            ResultSet rs = dbmd.getTables(null, null, name, types);
-            
-            if(rs.next())
-            {
-                statement.executeUpdate("Drop table " +name);
-                System.out.println("Table " +name+ " has been deleted"); 
-            }
-//            ResultSet rs = dbmd.getTables(null, null, null, types);
-//            
-//            while(rs.next())
-//            {
-//                String table_name = rs.getString("TABLE NAME");
-//                System.out.println(table_name);
-//                if(table_name.equalsIgnoreCase(name))
-//                {
-//                    statement.executeUpdate("Drop table " +name);
-//                    System.out.println("Table " +name+ " has been deleted");
-//                    break;
-//                }
-//            }
-            rs.close();
-        }
-        catch(SQLException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    public boolean checkTableStatus(String name)
-    {
-        boolean createTable = true;
-        
-        try
-        {
-            DatabaseMetaData dbmd = this.conn.getMetaData();
-            String[] types  = {"TABLE"};
-            statement = this.conn.createStatement();
-            ResultSet rs = dbmd.getTables(null, null, name, types);
-            
-            if(rs.next())
-            {
-                System.out.println("Table " +name+ " already exists! Doesnt need to be dropped!"); 
-                createTable = false;
-            }
-            rs.close();
-        }
-        catch(SQLException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-        return createTable;
-    }
-    
-//    public ArrayList<ViewRecords> getStaffRecords(){
-//        
-//        ResultSet rs = null;
-//        ArrayList<ViewRecords> saveStaffRecords = new ArrayList<ViewRecords>();
-//        try {
-//            this.statement = conn.createStatement();
-//            rs = statement.executeQuery("SELECT ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS FROM ADMIN_LIST");
-//            while (rs.next()) {
-//                String adminFName = rs.getString("ADMIN_FIRSTNAME");
-//                String adminLName = rs.getString("ADMIN_LASTNAME");
-//                String adminJobTitle = rs.getString("ADMIN_JOBTITLE");
-//                String adminPhoneNum = rs.getString("ADMIN_PHONENUMBER");
-//                String adminEmail = rs.getString("ADMIN_EMAILADDRESS");
-//                ViewRecords staffDetails = new ViewRecords(adminFName, adminLName, adminJobTitle, adminPhoneNum, adminEmail);
-//                saveStaffRecords.add(staffDetails);
-//            }   
-//        }
-//        catch (SQLException ex) {
-//            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        return saveStaffRecords;
-//        
-//    }
-    
-//    public ArrayList<ViewRecords> getGuestRecords(){
-//        
-//        ResultSet rs = null;
-//        ArrayList<ViewRecords> saveGuestRecords = new ArrayList<ViewRecords>();
-//        try {
-//            this.statement = conn.createStatement();
-//            rs = statement.executeQuery("SELECT GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER FROM GUEST_LIST");
-//            while (rs.next()) {
-//                String guestFName = rs.getString("GUEST_FIRSTNAME");
-//                String guestLName = rs.getString("GUEST_LASTNAME");
-//                String guestAge = rs.getString("GUEST_AGE");
-//                String guestPhoneNum = rs.getString("GUEST_PHONENUMBER");
-//                String guestEmailAddress = rs.getString("GUEST_EMAILADDRESS");
-//                String guestAccountNumber = rs.getString("GUEST_ACCOUNTNUMBER");
-//                ViewRecords guestDetails = new ViewRecords(guestFName, guestLName, guestAge, guestPhoneNum, guestEmailAddress, guestAccountNumber);
-//                saveGuestRecords.add(guestDetails);
-//            }
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return saveGuestRecords;
-//        
-//    }
-    
-//    public void registerAdmin(AdminFormModel admin) {
-//        try {
-//            this.statement = conn.createStatement();
-//            this.statement.addBatch("INSERT INTO ADMIN_LIST (ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS) VALUES('" + admin.getAdminFirstName() + "', '" + admin.getAdminLastName() + "', '" + admin.getAdminJobTitle()+ "', '" + admin.getAdminPhoneNumber() + "', '" + admin.getAdminEmailAddress() + "')");
-//            this.statement.executeBatch();
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
-
-    public void registerGuest(GuestModel guest){
+    public void createGuestListTable(){
         try{
             this.statement = conn.createStatement();
-            this.statement.addBatch("INSERT INTO GUEST_LIST (GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER) VALUES('"+ guest.getGuestFirstName()+"', '"+ guest.getGuestLastName()+"', '"+ guest.getGuestAge()+"', '"+ guest.getGuestPhoneNumber()+"', '"+ guest.getGuestEmail()+"', '"+ guest.getGuestAccountNumber()+"')");
-            this.statement.executeBatch();
+            boolean createTable = this.checkTableStatus("GUEST_LIST");
+            
+            if (createTable == true)
+            {
+                //this.checkTableExistence("GUEST_LIST");
+                this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_TOTALPAID VARCHAR(50))");
+                this.statement.executeBatch();
+                System.out.println("Table GUEST_LIST has been created");
+            }
+            else if (createTable == false)
+            {
+                System.out.println("GUEST_LIST table has not been droppped or created again!");
+            }           
         }
-        catch(SQLException ex){
-            ex.printStackTrace();
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getNextException());
         }
     }
     
@@ -288,29 +219,7 @@ public class HotelProductDB
             System.out.println(ex.getNextException());
         }
     }
-
-    public void createGuestListTable(){
-        try{
-            this.statement = conn.createStatement();
-            boolean createTable = this.checkTableStatus("GUEST_LIST");
-            
-            if (createTable == true)
-            {
-                //this.checkTableExistence("GUEST_LIST");
-                this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50))");
-                this.statement.executeBatch();
-                System.out.println("Table GUEST_LIST has been created");
-            }
-            else if (createTable == false)
-            {
-                System.out.println("GUEST_LIST table has not been droppped or created again!");
-            }           
-        }
-        catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            System.out.println(ex.getNextException());
-        }
-    }
+    
     
     public void createLocationBookedTable()
     {
@@ -335,21 +244,6 @@ public class HotelProductDB
             System.out.println(ex.getMessage());
             System.out.println(ex.getNextException());
         }        
-    }
-    
-    public void dbAddLocationsBooked(GuestModel guest, ArrayList<GuestsBookingCart> locationBooked)
-    {
-        try
-        {
-            this.statement = conn.createStatement();
-            this.statement.addBatch("INSERT INTO BOOKED_HOTEL_LOCATIONS (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, LOCATION_TITLE, LOCATION) VALUES "
-                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '"+ locationBooked.get(0).getTitle()+"', '" +locationBooked.get(0).getLocationType()+"')");
-            this.statement.executeBatch();
-        }
-        catch(SQLException ex)
-        {
-            ex.printStackTrace();
-        }  
     }
     
     public void createDatesBookedTable()
@@ -379,23 +273,6 @@ public class HotelProductDB
         
     }
     
-    public void dbAddDatesBooked(GuestModel guest, ArrayList<GuestsBookingCart> locationBooked, ArrayList<GuestsBookingCart> datesBooked)
-    {
-        try
-        {
-            this.statement = conn.createStatement(); 
-            this.statement.addBatch("INSERT INTO BOOKED_HOTEL_DATES (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, LOCATION, CHECK_IN_DAY, CHECK_IN_MONTH, CHECK_IN_YEAR, CHECK_OUT_DAY, CHECK_OUT_MONTH, CHECK_OUT_YEAR) VALUES "
-                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +locationBooked.get(0).getLocationType()+ "', '" +datesBooked.get(0).getCheckInDay()+"', '" +datesBooked.get(0).getCheckInMonth()+"', '" +datesBooked.get(0).getCheckInYear()
-                    +"', '" +datesBooked.get(0).getCheckOutDay()+"', '" +datesBooked.get(0).getCheckOutMonth()+"', '" +datesBooked.get(0).getCheckOutYear()+"' )");
-            this.statement.executeBatch();
-        }
-        catch(SQLException ex)
-        {
-            ex.getNextException();
-            ex.printStackTrace();
-        }  
-    }
-    
     public void createRoomsBookedTable()
     {
         try
@@ -420,24 +297,6 @@ public class HotelProductDB
             System.out.println(ex.getNextException());
         }
         
-    }
-    
-    public void dbAddRoomsBooked(GuestModel guest, ArrayList<GuestsBookingCart> roomsDetails)
-    {
-        try
-        {
-            for (GuestsBookingCart roomsBooked : roomsDetails) 
-            {
-                this.statement = conn.createStatement();
-                this.statement.addBatch("INSERT INTO BOOKED_HOTEL_ROOMS (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, ROOM_TITLE, ROOM_TYPE) VALUES "
-                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +roomsBooked.getTitle()+ "', '" +roomsBooked.getRoomType()+"' )");
-                this.statement.executeBatch();
-            }   
-        }
-        catch(SQLException ex)
-        {
-            ex.printStackTrace();
-        }  
     }
     
     public void createGuestTypeBookedTable()
@@ -466,24 +325,6 @@ public class HotelProductDB
         
     }
     
-    public void dbAddGuestTypeBooked(GuestModel guest, ArrayList<GuestsBookingCart> guestTypeDetails)
-    {
-        try
-        {
-            for (GuestsBookingCart guestTypeBooked : guestTypeDetails) 
-            {
-                this.statement = conn.createStatement();
-                this.statement.addBatch("INSERT INTO BOOKED_GUEST_TYPES (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, GUEST_TITLE, GUEST_TYPE) VALUES "
-                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +guestTypeBooked.getTitle()+ "', '" +guestTypeBooked.getGuestType()+"' )");
-                this.statement.executeBatch();
-            }
-        }
-        catch(SQLException ex)
-        {
-            ex.printStackTrace();
-        }  
-    }
-    
     public void createFeaturesBookedTable()
     {
         try
@@ -510,6 +351,95 @@ public class HotelProductDB
         
     }
     
+    public void registerGuest(GuestModel guest, CalculateCosts guestCosts){
+        try{
+            this.statement = conn.createStatement();
+            this.statement.addBatch("INSERT INTO GUEST_LIST (GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER, GUEST_TOTALPAID) VALUES('"+ guest.getGuestFirstName()+"', '"+ guest.getGuestLastName()+"', '"+ guest.getGuestAge()+"', '"+ guest.getGuestPhoneNumber()+"', '"+ guest.getGuestEmail()+"', '"+ guest.getGuestAccountNumber()+"', '"+ guestCosts.guestsTotalCost()+"')");
+            this.statement.executeBatch();
+        }
+        catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    public void registerAdmin(AdminFormModel admin) {
+        try {
+            this.statement = conn.createStatement();
+            this.statement.addBatch("INSERT INTO ADMIN_LIST (ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS) VALUES('" + admin.getAdminFirstName() + "', '" + admin.getAdminLastName() + "', '" + admin.getAdminJobTitle()+ "', '" + admin.getAdminPhoneNumber() + "', '" + admin.getAdminEmailAddress() + "')");
+            this.statement.executeBatch();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void dbAddLocationsBooked(GuestModel guest, ArrayList<GuestsBookingCart> locationBooked)
+    {
+        try
+        {
+            this.statement = conn.createStatement();
+            this.statement.addBatch("INSERT INTO BOOKED_HOTEL_LOCATIONS (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, LOCATION_TITLE, LOCATION) VALUES "
+                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '"+ locationBooked.get(0).getTitle()+"', '" +locationBooked.get(0).getLocationType()+"')");
+            this.statement.executeBatch();
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }  
+    }
+    
+    public void dbAddDatesBooked(GuestModel guest, ArrayList<GuestsBookingCart> locationBooked, ArrayList<GuestsBookingCart> datesBooked)
+    {
+        try
+        {
+            this.statement = conn.createStatement(); 
+            this.statement.addBatch("INSERT INTO BOOKED_HOTEL_DATES (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, LOCATION, CHECK_IN_DAY, CHECK_IN_MONTH, CHECK_IN_YEAR, CHECK_OUT_DAY, CHECK_OUT_MONTH, CHECK_OUT_YEAR) VALUES "
+                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +locationBooked.get(0).getLocationType()+ "', '" +datesBooked.get(0).getCheckInDay()+"', '" +datesBooked.get(0).getCheckInMonth()+"', '" +datesBooked.get(0).getCheckInYear()
+                    +"', '" +datesBooked.get(0).getCheckOutDay()+"', '" +datesBooked.get(0).getCheckOutMonth()+"', '" +datesBooked.get(0).getCheckOutYear()+"' )");
+            this.statement.executeBatch();
+        }
+        catch(SQLException ex)
+        {
+            ex.getNextException();
+            ex.printStackTrace();
+        }  
+    }
+    
+    public void dbAddRoomsBooked(GuestModel guest, ArrayList<GuestsBookingCart> roomsDetails)
+    {
+        try
+        {
+            for (GuestsBookingCart roomsBooked : roomsDetails) 
+            {
+                this.statement = conn.createStatement();
+                this.statement.addBatch("INSERT INTO BOOKED_HOTEL_ROOMS (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, ROOM_TITLE, ROOM_TYPE) VALUES "
+                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +roomsBooked.getTitle()+ "', '" +roomsBooked.getRoomType()+"' )");
+                this.statement.executeBatch();
+            }   
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }  
+    }
+    
+    public void dbAddGuestTypeBooked(GuestModel guest, ArrayList<GuestsBookingCart> guestTypeDetails)
+    {
+        try
+        {
+            for (GuestsBookingCart guestTypeBooked : guestTypeDetails) 
+            {
+                this.statement = conn.createStatement();
+                this.statement.addBatch("INSERT INTO BOOKED_GUEST_TYPES (GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, GUEST_TITLE, GUEST_TYPE) VALUES "
+                    + "('"+ guest.getGuestAccountNumber()+"', '"+ guest.getGuestFirstName()+"', '" +guestTypeBooked.getTitle()+ "', '" +guestTypeBooked.getGuestType()+"' )");
+                this.statement.executeBatch();
+            }
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }  
+    }
+    
     public void dbAddFeaturesBooked(GuestModel guest, ArrayList<GuestsBookingCart> featuresDetails)
     {
         try
@@ -526,5 +456,179 @@ public class HotelProductDB
         {
             ex.printStackTrace();
         }  
+    }
+    
+    public ArrayList<ViewRecords> getStaffRecords(){
+        
+        ResultSet rs = null;
+        ArrayList<ViewRecords> saveStaffRecords = new ArrayList<ViewRecords>();
+        try {
+            this.statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT ADMIN_FIRSTNAME, ADMIN_LASTNAME, ADMIN_JOBTITLE, ADMIN_PHONENUMBER, ADMIN_EMAILADDRESS FROM ADMIN_LIST");
+            while (rs.next()) {
+                String adminFName = rs.getString("ADMIN_FIRSTNAME");
+                String adminLName = rs.getString("ADMIN_LASTNAME");
+                String adminJobTitle = rs.getString("ADMIN_JOBTITLE");
+                String adminPhoneNum = rs.getString("ADMIN_PHONENUMBER");
+                String adminEmail = rs.getString("ADMIN_EMAILADDRESS");
+                ViewRecords staffDetails = new ViewRecords(adminFName, adminLName, adminJobTitle, adminPhoneNum, adminEmail);
+                saveStaffRecords.add(staffDetails);
+            }
+            
+            
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return saveStaffRecords;
+        
+    }
+    
+    public ArrayList<ViewRecords> getGuestRecords(){
+        
+        ResultSet rs = null;
+        ArrayList<ViewRecords> saveGuestRecords = new ArrayList<ViewRecords>();
+        try {
+            this.statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER, GUEST_TOTALPAID FROM GUEST_LIST");
+            while (rs.next()) {
+                String guestFName = rs.getString("GUEST_FIRSTNAME");
+                String guestLName = rs.getString("GUEST_LASTNAME");
+                String guestAge = rs.getString("GUEST_AGE");
+                String guestPhoneNum = rs.getString("GUEST_PHONENUMBER");
+                String guestEmailAddress = rs.getString("GUEST_EMAILADDRESS");
+                String guestAccountNumber = rs.getString("GUEST_ACCOUNTNUMBER");
+                String guestTotalPaid = rs.getString("GUEST_TOTALPAID");
+                ViewRecords guestDetails = new ViewRecords(guestFName, guestLName, guestAge, guestPhoneNum, guestEmailAddress, guestAccountNumber, guestTotalPaid);
+                saveGuestRecords.add(guestDetails);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return saveGuestRecords;
+    }
+    
+     public ArrayList<ViewRecords> getLocationsBookedRecords(){
+        
+        ResultSet rs = null;
+        ArrayList<ViewRecords> saveLocationsBookedRcds = new ArrayList<ViewRecords>();
+        try {
+            this.statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, LOCATION_TITLE, LOCATION FROM BOOKED_HOTEL_LOCATIONS");
+            while (rs.next()) {
+                String gAccNumber = rs.getString("GUEST_ACCOUNTNUMBER");
+                String gFName = rs.getString("GUEST_FIRSTNAME");
+                String locTitle = rs.getString("LOCATION_TITLE");
+                LocationType location = LocationType.valueOf(rs.getString("LOCATION"));
+                ViewRecords locBookedDetails = new ViewRecords(gAccNumber, gFName, locTitle, location);
+                saveLocationsBookedRcds.add(locBookedDetails);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return saveLocationsBookedRcds;
+        
+    }
+     
+    public ArrayList<ViewRecords> getDatesBookedRecords() {
+
+        ResultSet rs = null;
+        ArrayList<ViewRecords> saveDatesBookedRecords = new ArrayList<ViewRecords>();
+        try {
+            this.statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, LOCATION, CHECK_IN_DAY, CHECK_IN_MONTH, CHECK_IN_YEAR, CHECK_OUT_DAY, CHECK_OUT_MONTH, CHECK_OUT_YEAR FROM BOOKED_HOTEL_DATES");
+            while (rs.next()) {
+                String gAccNumber = rs.getString("GUEST_ACCOUNTNUMBER");
+                String gFName = rs.getString("GUEST_FIRSTNAME");
+                LocationType location = LocationType.valueOf(rs.getString("LOCATION"));
+                String checkInDay = rs.getString("CHECK_IN_DAY");
+                String checkInMonth = rs.getString("CHECK_IN_MONTH");
+                String checkInYear = rs.getString("CHECK_IN_YEAR");
+                String checkOutDay = rs.getString("CHECK_OUT_DAY");
+                String checkOutMonth = rs.getString("CHECK_OUT_MONTH");
+                String checkOutYear = rs.getString("CHECK_OUT_YEAR");
+                ViewRecords datesBookedDetails = new ViewRecords(gAccNumber, gFName, location, checkInDay, checkInMonth, checkInYear, checkOutDay, checkOutMonth, checkOutYear);
+                saveDatesBookedRecords.add(datesBookedDetails);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return saveDatesBookedRecords;
+
+    }
+    
+     public ArrayList<ViewRecords> getRoomsBookedRecords() {
+
+        ResultSet rs = null;
+        ArrayList<ViewRecords> saveRoomsBookedRcds = new ArrayList<ViewRecords>();
+        try {
+            this.statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, ROOM_TITLE, ROOM_TYPE FROM BOOKED_HOTEL_ROOMS");
+            while (rs.next()) {
+                String gAccNumber = rs.getString("GUEST_ACCOUNTNUMBER");
+                String gFName = rs.getString("GUEST_FIRSTNAME");
+                String roomTitle = rs.getString("ROOM_TITLE");
+                RoomType location = RoomType.valueOf(rs.getString("ROOM_TYPE"));
+                ViewRecords roomsBookedDetails = new ViewRecords(gAccNumber, gFName, roomTitle, location);
+                saveRoomsBookedRcds.add(roomsBookedDetails);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return saveRoomsBookedRcds;
+
+    }
+     
+    public ArrayList<ViewRecords> getGuestTypesRecords() {
+
+        ResultSet rs = null;
+        ArrayList<ViewRecords> saveGuestTypesRecords = new ArrayList<ViewRecords>();
+        try {
+            this.statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, GUEST_TITLE, GUEST_TITLE, GUEST_TYPE FROM BOOKED_GUEST_TYPES");
+            while (rs.next()) {
+                String gAccNumber = rs.getString("GUEST_ACCOUNTNUMBER");
+                String gFName = rs.getString("GUEST_FIRSTNAME");
+                String guestTitle = rs.getString("GUEST_TITLE");
+                GuestType guestType = GuestType.valueOf(rs.getString("GUEST_TYPE"));
+                ViewRecords guestTypesBookedDetails = new ViewRecords(gAccNumber, gFName, guestTitle, guestType);
+                saveGuestTypesRecords.add(guestTypesBookedDetails);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return saveGuestTypesRecords;
+
+    }
+    
+    public ArrayList<ViewRecords> getFeaturesBookedRecords(){
+        
+        ResultSet rs = null;
+        ArrayList<ViewRecords> saveFeaturesBookedRcds = new ArrayList<ViewRecords>();
+        try {
+            this.statement = conn.createStatement();
+            rs = statement.executeQuery("SELECT GUEST_ACCOUNTNUMBER, GUEST_FIRSTNAME, FEATURE_TITLE, FEATURE_TYPE FROM BOOKED_FEATURES");
+            while (rs.next()) {
+                String gAccNumber = rs.getString("GUEST_ACCOUNTNUMBER");
+                String gFName = rs.getString("GUEST_FIRSTNAME");
+                String featureTitle = rs.getString("FEATURE_TITLE");
+                ExtraFeatureTypes featureType = ExtraFeatureTypes.valueOf(rs.getString("FEATURE_TYPE"));
+                ViewRecords featuresBookedDetails = new ViewRecords(gAccNumber, gFName, featureTitle, featureType);
+                saveFeaturesBookedRcds.add(featuresBookedDetails);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return saveFeaturesBookedRcds;
+        
     }
 }

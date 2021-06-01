@@ -5,7 +5,7 @@
  */
 package hotelControllers;
 
-import hotelModel.HotelFeatures;
+import hotelModel.BookedHotelFeatures;
 import hotelView.BookingCartMenu;
 import hotelView.HotelFeaturesMenu;
 import java.awt.event.ActionEvent;
@@ -19,10 +19,10 @@ import project2hotelapp.GuestsBookingCart;
  */
 public class FeaturesMenuInteraction 
 {
-    static HotelFeatures featuresModel;
+    static BookedHotelFeatures featuresModel;
     HotelFeaturesMenu featuresView;
     
-    public FeaturesMenuInteraction(HotelFeatures featuresModel, HotelFeaturesMenu featuresView)
+    public FeaturesMenuInteraction(BookedHotelFeatures featuresModel, HotelFeaturesMenu featuresView)
     {
         this.featuresModel = featuresModel;
         this.featuresView = featuresView;
@@ -39,12 +39,12 @@ public class FeaturesMenuInteraction
         {
             public void mouseEntered(java.awt.event.MouseEvent evt) 
             {
-                mouseEnteredHover();
+                mouseEnteredNextHover();
             }
             
             public void mouseExited(java.awt.event.MouseEvent evt) 
             {
-                mouseExitedHover();
+                mouseExitedNextHover();
             }
         });
     }
@@ -57,34 +57,29 @@ public class FeaturesMenuInteraction
         {
             featuresView.displayErrorMessage();
         }
-        else if(featuresView.getRepeat() == true && featuresView.getShowErrorMesssage() == false) // take this out maybe not needed
+        /*else if(featuresView.getRepeat() == true && featuresView.getShowErrorMesssage() == false) // take this out maybe not needed
         {
             
-        }
+        }*/
         else if (featuresView.getRepeat() == false) 
         {
             featuresView.addUserFeatureSelection();
             featuresView.setVisible(false);
             featuresModel.setFeaturesBooked(featuresView.getFeaturesBooked());
-            //System.out.println(featuresModel.getFeaturesBooked().get(0).getTitle() + " " + featuresModel.getFeaturesBooked().get(0).getPrice());
-            featuresModel.currentFeatureBookings();
-            
-            //BookingCartMenu guestCart = new BookingCartMenu();
             
             BookingCartMenu viewBookingCart = new BookingCartMenu();
-            BookingCartInteraction cartInteraction = new BookingCartInteraction(viewBookingCart);
-                    
+            BookingCartInteraction cartInteraction = new BookingCartInteraction(viewBookingCart);       
         }
     }
     
-    public void mouseEnteredHover()
+    public void mouseEnteredNextHover()
     {
-        featuresView.mouseEnterHover();
+        featuresView.mouseEnterNextHover();
     }
     
-    public void mouseExitedHover()
+    public void mouseExitedNextHover()
     {
-        featuresView.mouseExitHover();
+        featuresView.mouseExitNextHover();
     }
     
     public static ArrayList<GuestsBookingCart> guestFeaturesBooked()

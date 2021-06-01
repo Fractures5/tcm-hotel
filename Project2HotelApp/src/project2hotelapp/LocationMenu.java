@@ -11,9 +11,9 @@ import java.util.ArrayList;
  * The purpose of this class is to create the menu of the location types available by adding information
  * about the location types into an array list. This class is a child class and inherits
  * certain methods/variables/characteristics from the Parent class Products. This class contains the 
- * specific constructors for initializing data only for location types, and it contains the static menu output methods, 
- * toString methods and the special abstract method which all help output the array list in a neat manner 
- * to show the hotel location menu which is used in the guest menu class. 
+ * specific constructors for initializing data only for location types, and its array list is used to
+ * to hold data which is used in the hotelLocationMenu GUI class to add the users selection to their
+ * booking cart. 
  * @author Siddarath
  */
 public class LocationMenu extends Products{
@@ -73,45 +73,6 @@ public class LocationMenu extends Products{
         locations.add(dudHotel);
         locations.add(queensHotel);
         
-        /*LocationMenu menuTitle = new LocationMenu();
-        menuTitle.menuBanner(); // Calls the abstract method to display this menus specific banner.
-        
-        
-        for (LocationMenu locationType: locations)
-        {
-            System.out.println("(" +locations.indexOf(locationType) +") - " +locationType); // Prints out the hotel location menu formatted with its index number in the front.
-        }*/
-        
         return locations;
     }
-    
-    /**
-     * This toString method will return a string representation of the LocationMenu class object.
-     * This method utilizes the "strong.format" skill to make the menu look more organized in a column
-     * format that is spaced out, legible and appealing.
-     * @return a string which outputs all the instances variable values for the LocationMenu class. 
-     * @author Siddarath
-     */
-    public String toString()
-    {
-        String output = String.format("%-40s", "Title: " +this.getTitle()); // String.format is used to format the location menu in columns.
-        output += String.format("%-30s", "Location: " +this.getLocationType());
-        output += String.format("%-20s", "Rating: " +this.getRatingType());
-        output += String.format("%-20s", "Vacancy: " +this.getVacancyType());
-        
-        return output;
-    }
-
-    /**
-     * This is the abstract method inherited from the Products class. This method will
-     * output a special banner graphic to make the menu more appealing.
-     * @author Siddarath
-     */
-    @Override
-    public void menuBanner() {
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("                                                  Hotel Locations menu");
-        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-    }
-
 }

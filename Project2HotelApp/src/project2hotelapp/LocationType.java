@@ -9,7 +9,7 @@ package project2hotelapp;
  * This enumeration type class named LocationType
  * maintains the eight different hotel locations which a
  * guest can choose to pick their hotel from as shown in the
- * guest menu.
+ * hotel locations menu.
  * @author Siddarath
  */
 public enum LocationType {

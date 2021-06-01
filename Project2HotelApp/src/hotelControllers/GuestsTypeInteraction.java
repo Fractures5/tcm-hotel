@@ -5,8 +5,8 @@
  */
 package hotelControllers;
 
-import hotelModel.HotelFeatures;
-import hotelModel.HotelGuests;
+import hotelModel.BookedHotelFeatures;
+import hotelModel.BookedGuestTypes;
 import hotelView.HotelFeaturesMenu;
 import hotelView.HotelGuestTypesMenu;
 import java.awt.event.ActionEvent;
@@ -20,10 +20,10 @@ import project2hotelapp.GuestsBookingCart;
  */
 public class GuestsTypeInteraction 
 {
-    static HotelGuests guestsModel;
+    static BookedGuestTypes guestsModel;
     HotelGuestTypesMenu guestsView;
     
-    public GuestsTypeInteraction(HotelGuests guestsModel, HotelGuestTypesMenu guestsView)
+    public GuestsTypeInteraction(BookedGuestTypes guestsModel, HotelGuestTypesMenu guestsView)
     {
         this.guestsModel = guestsModel;
         this.guestsView = guestsView;
@@ -35,16 +35,17 @@ public class GuestsTypeInteraction
                 handleNextButtonPress();
             }
         });
+        
         guestsView.getNextButton().addMouseListener(new java.awt.event.MouseAdapter()
         {
             public void mouseEntered(java.awt.event.MouseEvent evt) 
             {
-                mouseEnteredHover();
+                mouseEnteredNextHover();
             }
             
             public void mouseExited(java.awt.event.MouseEvent evt) 
             {
-                mouseExitedHover();
+                mouseExitedNextHover();
             }
         });
     }
@@ -57,33 +58,30 @@ public class GuestsTypeInteraction
         {
             guestsView.displayErrorMessage();
         }
-        else if(guestsView.getRepeat() == true && guestsView.getShowErrorMesssage() == false)// take this out maybe not needed
+        /*else if(guestsView.getRepeat() == true && guestsView.getShowErrorMesssage() == false)// take this out maybe not needed
         {
             
-        }
+        }*/
         else if (guestsView.getRepeat() == false) 
         {
             guestsView.addGuestTypesSelection();
             guestsView.setVisible(false);
             guestsModel.setGuestsBooked(guestsView.getGuestTypesBooked());
-            //System.out.println(guestsModel.getGuestsBooked().get(0).getTitle() + " " +guestsModel.getGuestsBooked().get(0).getGuestType()+ "" +guestsModel.getGuestsBooked().get(0).getPrice());
-            //System.out.println(guestsModel.getGuestsBooked().get(1).getTitle() + " " +guestsModel.getGuestsBooked().get(1).getGuestType()+ "" +guestsModel.getGuestsBooked().get(1).getPrice());
-            guestsModel.currentGuestBookings();
             
-            HotelFeatures featuresModel = new HotelFeatures();
+            BookedHotelFeatures featuresModel = new BookedHotelFeatures();
             HotelFeaturesMenu featuresView = new HotelFeaturesMenu();
             FeaturesMenuInteraction selectFeatures = new FeaturesMenuInteraction(featuresModel, featuresView);
         }   
     }
     
-    public void mouseEnteredHover()
+    public void mouseEnteredNextHover()
     {
-        guestsView.mouseEnterHover();
+        guestsView.mouseEnterNextHover();
     }
     
-    public void mouseExitedHover()
+    public void mouseExitedNextHover()
     {
-        guestsView.mouseExitHover();
+        guestsView.mouseExitNextHover();
     }
     
     public static ArrayList<GuestsBookingCart> guestTypesBooked()

@@ -54,7 +54,6 @@ public class GuestsBookingCart extends Products{
      * @param title the parameter represents the title of selection, in this case it would be the title of the room selected.
      * @param roomType the parameter represents the enumerated type RoomType which holds the different types of rooms the guests can book.
      * @param price the parameter in this constructor represents the price of the type of rooms selected by the guest.
-     * @param availabilityType the parameter represents the enumerated type AvailabilityType which holds the number of rooms available to the specific room type.
      * @author Siddarath 
      */
     public GuestsBookingCart(String title, RoomType roomType, Double price)
@@ -109,14 +108,13 @@ public class GuestsBookingCart extends Products{
     }
     
     /**
-     * This method will output the current check in and check out dates.
+     * This method will output the current check in and check out dates. This is used for testing the guest selections.
      * @param products the parameter that represents an array list of the GuestsBookingCart class. It will be used to extract and display information about the booked check in/out dates.
      * @author Siddarath
      */
-    public void currentBookingDates(ArrayList<GuestsBookingCart> products)
+    public void currentBookingDates(ArrayList<GuestsBookingCart> products) 
     {
         GuestsBookingCart cartTitle = new GuestsBookingCart();
-        cartTitle.menuBanner();
         
         for (GuestsBookingCart bookingDetails : products)
         {
@@ -127,7 +125,7 @@ public class GuestsBookingCart extends Products{
     }
     
     /**
-     * This method will output the current location of the hotel that the user booked.
+     * This method will output the current location of the hotel that the user booked. This is used for testing the guest selections.
      * @param products the parameter that represents an array list of the GuestsBookingCart class. It will be used to extract and display information about the booked hotel location.
      * @author Siddarath
      */
@@ -140,7 +138,7 @@ public class GuestsBookingCart extends Products{
     }
     
     /**
-     * This method will output the current rooms the guest has booked at the particular hotel location.
+     * This method will output the current rooms the guest has booked at the particular hotel location. This is used for testing the guest selections.
      * @param products the parameter that represents an array list of the GuestsBookingCart class. It will be used to extract and display information about the booked rooms.
      * @author Siddarath
      */
@@ -154,7 +152,7 @@ public class GuestsBookingCart extends Products{
     }
     
     /**
-     * This method will output the current booking for the type of guest that will be staying at the hotel.
+     * This method will output the current booking for the type of guest that will be staying at the hotel. This is used for testing the guest selections.
      * @param products the parameter that represents an array list of the GuestsBookingCart class. It will be used to extract and display information about the booked guest types.
      * @author Siddarath
      */
@@ -167,7 +165,7 @@ public class GuestsBookingCart extends Products{
     }
     
     /**
-     * This method will output the current booking for the type of extra features the guest has selected.
+     * This method will output the current booking for the type of extra features the guest has selected. This is used for testing the guest selections.
      * @param products the parameter that represents an array list of the GuestsBookingCart class. It will be used to extract and display information about the booked features.
      * @author Siddarath
      */
@@ -177,50 +175,5 @@ public class GuestsBookingCart extends Products{
         {
             System.out.println(String.format("%-59s", "Title: " + bookingDetails.getTitle())+ String.format("%-30s", "Feature Type: " + bookingDetails.getFeatureType())+ String.format("%-25s", "Price: $" + bookingDetails.getPrice()));
         }
-    }
-    
-    /**
-     * This method uses the parameters to calculate the total cost of the guests hotel booking. 
-     * The total price is comprised of the total cost of the rooms booked, types of guests selected
-     * and the extra features selected if any. The method returns the total price to the guestMenu class
-     * where it is then used to be added to the current cart booking output and the file input output files
-     * for the receipt once the user has paid.
-     * @param rooms products the parameter that represents an array list of the GuestsBookingCart class. It will be used to get the prices of booked rooms.
-     * @param guestType products the parameter that represents an array list of the GuestsBookingCart class. It will be used to get the prices of the selected guest types.
-     * @param features products the parameter that represents an array list of the GuestsBookingCart class. It will be used to get the prices of the features selected.
-     * @return totalPrice the parameter which represents the total price for the confirmed booking for the guest.
-     * @author Siddarath
-     */
-    public double totalCost(ArrayList<GuestsBookingCart> rooms, ArrayList<GuestsBookingCart> guestType,  ArrayList<GuestsBookingCart> features)
-    {
-        double totalPrice = 0.0;
-        for(int i = 0; i < rooms.size(); i++)
-        {
-            totalPrice += rooms.get(i).getPrice();
-        }
-        
-        for(int i = 0; i < guestType.size(); i++)
-        {
-            totalPrice += guestType.get(i).getPrice();
-        }
-        
-        for(int i = 0; i < features.size(); i++)
-        {
-            totalPrice += features.get(i).getPrice();
-        }
-        
-        return totalPrice;
-    }
-
-    /**
-     * This is the abstract method inherited from the Products class. This method will
-     * output a special banner graphic to make the current bookings heading more appealing.
-     * @author Siddarath
-     */
-    @Override
-    public void menuBanner() {
-        System.out.println("====================================================================================================================================");
-        System.out.println("                                                     Your Current booking!                                                       ");
-        System.out.println("====================================================================================================================================");
     }
 }

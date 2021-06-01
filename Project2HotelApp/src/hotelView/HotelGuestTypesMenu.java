@@ -47,11 +47,12 @@ public class HotelGuestTypesMenu extends JFrame
     int frameWidth = screenWidth / 2;
     int frameHeight = screenHeight / 2;
     
+    Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
+    
     public HotelGuestTypesMenu()
     {
         ArrayList<GuestsTypeMenu> guestTypeMenu = new ArrayList<GuestsTypeMenu>();
         guestTypeMenu = GuestsTypeMenu.showMenu();
-        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
         
         pageTitle = new JLabel("Guest Types Menu");
         pageTitle.setFont(new Font("Arial", Font.BOLD, 30));
@@ -65,10 +66,8 @@ public class HotelGuestTypesMenu extends JFrame
         headerPanel.setBackground(Color.BLUE);
         headerPanel.setPreferredSize(new Dimension(700, 70));
         headerPanel.add(pageTitle);
-        this.add(headerPanel, BorderLayout.NORTH);
         
         menuPanel = new JPanel();
-        //menuPanel.setBackground(Color.LIGHT_GRAY);
         menuPanel.setPreferredSize(new Dimension(600, 450));
         menuPanel.add(instruction);
         
@@ -149,24 +148,23 @@ public class HotelGuestTypesMenu extends JFrame
         menuPanel.add(vipTypeBox);
         menuPanel.add(Box.createVerticalStrut(95));
         
-        this.add(menuPanel, BorderLayout.CENTER);
-        
-        bottomPanel = new JPanel();
-        bottomPanel.setBackground(Color.BLUE);
- 
         nextButton = new JButton("Next");
         nextButton.setPreferredSize(new Dimension(200,70));
         nextButton.setFont(new Font("Arial", Font.BOLD, 24));
         
+        bottomPanel = new JPanel();
+        bottomPanel.setBackground(Color.BLUE);
         bottomPanel.add(nextButton);
+        
+        this.add(headerPanel, BorderLayout.NORTH);
+        this.add(menuPanel, BorderLayout.CENTER);
         this.add(bottomPanel, BorderLayout.SOUTH);
         
         this.setTitle("Guests booking guests types");
-        //this.setSize(1200,700);
         this.setSize(frameWidth +350, frameHeight +250);
         this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
-        //this.setLocation(350,100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
         this.setVisible(true);
     }
     
@@ -213,22 +211,6 @@ public class HotelGuestTypesMenu extends JFrame
                 showErrorMessage = false;
             }
         }
-    }
-    
-    public void displayErrorMessage()
-    {
-       JOptionPane.showMessageDialog(new JFrame(), "Please select the number of guests and what type of guests will be staying before moving to the next stage", "Invalid Selection",
-                    JOptionPane.ERROR_MESSAGE); 
-    }
-    
-    public void mouseEnterHover()
-    {
-        getNextButton().setBackground(Color.GREEN);
-    }
-    
-    public void mouseExitHover()
-    {
-        getNextButton().setBackground(UIManager.getColor("control"));
     }
     
     public void addGuestTypesSelection()
@@ -296,5 +278,21 @@ public class HotelGuestTypesMenu extends JFrame
                 count++;
             }
         }
+    }
+    
+    public void displayErrorMessage()
+    {
+        JOptionPane.showMessageDialog(new JFrame(), "Please select the number of guests and what type of guests will be staying before moving to the next stage", "Invalid Selection",
+                     JOptionPane.ERROR_MESSAGE); 
+    }
+    
+    public void mouseEnterNextHover()
+    {
+        getNextButton().setBackground(Color.GREEN);
+    }
+    
+    public void mouseExitNextHover()
+    {
+        getNextButton().setBackground(UIManager.getColor("control"));
     }
 }

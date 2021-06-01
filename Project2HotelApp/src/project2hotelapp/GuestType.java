@@ -8,7 +8,7 @@ package project2hotelapp;
 /**
  * This enumerated type class named GuestType maintains the five
  * different types of guests types to which the guests can book
- * hotels for in the guests menu.
+ * hotels for in the guest types menu.
  * @author Siddarath
  */
 public enum GuestType {

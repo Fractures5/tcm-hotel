@@ -5,8 +5,8 @@
  */
 package hotelControllers;
 
-import hotelModel.HotelBookingDates;
-import hotelModel.HotelLocations;
+import hotelModel.BookedHotelDates;
+import hotelModel.BookedHotelLocations;
 import hotelView.HotelDatesMenu;
 import hotelView.HotelLocationMenu;
 import java.awt.event.ActionEvent;
@@ -24,10 +24,10 @@ import project2hotelapp.GuestsBookingCart;
  */
 public class BookDatesInteraction 
 {
-    static HotelBookingDates datesModel;
+    static BookedHotelDates datesModel;
     HotelDatesMenu datesView;
     
-    public BookDatesInteraction(HotelBookingDates datesModel, HotelDatesMenu datesView)
+    public BookDatesInteraction(BookedHotelDates datesModel, HotelDatesMenu datesView)
     {
         this.datesModel = datesModel;
         this.datesView = datesView;
@@ -50,12 +50,12 @@ public class BookDatesInteraction
         {
             public void mouseEntered(java.awt.event.MouseEvent evt) 
             {
-                mouseEnteredHover();
+                mouseEnteredNextHover();
             }
             
             public void mouseExited(java.awt.event.MouseEvent evt) 
             {
-                mouseExitedHover();
+                mouseExitedNextHover();
             }
         });
     }
@@ -75,36 +75,22 @@ public class BookDatesInteraction
         else if (datesView.getRepeat() == false)
         {
             datesView.setVisible(false);
-            
-            /*datesModel.setCheckInDay(datesView.getCheckInDay());
-            datesModel.setCheckInMonth(datesView.getCheckInMonth());
-            datesModel.setCheckInYear(datesView.getCheckInYear());
-            datesModel.setCheckOutDay(datesView.getCheckOutDay());
-            datesModel.setCheckOutMonth(datesView.getCheckOutMonth());
-            datesModel.setCheckOutYear(datesView.getCheckOutYear());
-            
-            System.out.println(datesModel.getCheckInDay());
-            System.out.println(datesModel.getCheckInMonth());
-            System.out.println(datesModel.getCheckInYear());
-            System.out.println(datesModel.getCheckOutDay());
-            System.out.println(datesModel.getCheckOutMonth());
-            System.out.println(datesModel.getCheckOutYear());*/
             datesModel.setDatesBooked(datesView.getDatesBooked());
             
-            HotelLocations locationModel = new HotelLocations();
+            BookedHotelLocations locationModel = new BookedHotelLocations();
             HotelLocationMenu locationView = new HotelLocationMenu();
             LocationMenuInteraction locationAction = new LocationMenuInteraction(locationModel, locationView);
         }
     }
     
-    public void mouseEnteredHover()
+    public void mouseEnteredNextHover()
     {
-        datesView.mouseEnterHover();
+        datesView.mouseEnterNextHover();
     }
     
-    public void mouseExitedHover()
+    public void mouseExitedNextHover()
     {
-        datesView.mouseExitHover();
+        datesView.mouseExitNextHover();
     }
     
     public static ArrayList<GuestsBookingCart> guestBookingDates()

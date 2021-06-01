@@ -7,34 +7,18 @@ package project2hotelapp;
 
 import hotelControllers.BookDatesInteraction;
 import hotelDB.HotelProductDB;
-import hotelControllers.FeaturesMenuInteraction;
-import hotelControllers.LocationMenuInteraction;
-import hotelControllers.RoomMenuInteraction;
-import hotelModel.HotelBookingDates;
-import hotelModel.HotelFeatures;
-import hotelModel.HotelLocations;
-import hotelModel.HotelRooms;
-import hotelView.BookingCartMenu;
+
+import hotelModel.BookedHotelDates;
 import hotelView.HotelDatesMenu;
-import hotelView.HotelFeaturesMenu;
-import hotelView.HotelLocationMenu;
-import hotelView.HotelRoomsMenu;
 import java.sql.SQLException;
-import javafx.scene.control.DatePicker;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 
 /**
  *
  * @author Siddarath
  */
 public class Project2HotelApp extends JFrame{
-    
-    
-    private static HotelDatesMenu bookDate;
-    private static GuestChooseHotel bookLocation;
-    private static GuestChooseRoom bookRooms;
-    private static BookingCartMenu bookingCart;
   
     /**
      * @param args the command line arguments
@@ -60,7 +44,7 @@ public class Project2HotelApp extends JFrame{
         hotelMenuDB.createFeaturesBookedTable();
         hotelMenuDB.closeConnection();
     
-        HotelBookingDates datesModel = new HotelBookingDates();
+        BookedHotelDates datesModel = new BookedHotelDates();
         HotelDatesMenu datesView = new HotelDatesMenu();
         BookDatesInteraction selectDates = new BookDatesInteraction(datesModel, datesView);
 

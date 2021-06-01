@@ -12,14 +12,9 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import javafx.scene.control.DatePicker;
 import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -34,14 +29,13 @@ import project2hotelapp.GuestsBookingCart;
  *
  * @author Siddarath
  */
-public class HotelDatesMenu extends JFrame {
+public class HotelDatesMenu extends JFrame 
+{
     
     private JLabel title, instruction;
     private JLabel checkInDayJL, checkOutDayJL, checkInMonthJL, checkOutMonthJL, checkInYearJL, checkOutYearJL;
     private JPanel headerPanel, menuPanel, bottomPanel;
     private JButton nextButton;
-    /*private int checkInDay, checkInYear, checkOutDay, checkOutYear;
-    private String checkInMonth, checkOutMonth;*/
     private Boolean repeat = false;
     private Boolean validDate = false;
     private Boolean validCheckInDay = false;
@@ -67,6 +61,8 @@ public class HotelDatesMenu extends JFrame {
     int frameWidth = screenWidth / 2;
     int frameHeight = screenHeight / 2;
 
+    Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
+    
     public HotelDatesMenu()
     {
         title = new JLabel("Hotel Date Booking Menu\n");
@@ -81,10 +77,8 @@ public class HotelDatesMenu extends JFrame {
         headerPanel.setBackground(Color.BLUE);
         headerPanel.setPreferredSize(new Dimension(700,70));
         headerPanel.add(title);
-        this.add(headerPanel, BorderLayout.NORTH);
-
+        
         menuPanel = new JPanel(null);
-        //menuPanel.setBackground(Color.LIGHT_GRAY);
         menuPanel.setPreferredSize(new Dimension(600,450));
         instruction.setBounds(370, 20, 500, 50);
         menuPanel.add(instruction);
@@ -125,8 +119,6 @@ public class HotelDatesMenu extends JFrame {
         yearOutBox.setBackground(Color.WHITE);
         yearOutBox.setOpaque(true);
         
-        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
-
         checkInDayJL = new JLabel("Check in day: ");
         checkInDayJL.setFont(new Font("Arial", Font.BOLD, 20));
         checkInDayJL.setBounds(210, 100, 175, 50);
@@ -181,24 +173,25 @@ public class HotelDatesMenu extends JFrame {
         menuPanel.add(monthOutBox);  
         menuPanel.add(checkOutYearJL);
         menuPanel.add(yearOutBox);
-        this.add(menuPanel, BorderLayout.CENTER);
-
-        bottomPanel = new JPanel();
-        bottomPanel.setBackground(Color.BLUE);
-        bottomPanel.setPreferredSize(new Dimension(730,80));
-
-
+        
         nextButton = new JButton("Next");
         nextButton.setPreferredSize(new Dimension(200,70));
         nextButton.setFont(new Font("Arial", Font.BOLD, 24));
-
+        
+        bottomPanel = new JPanel();
+        bottomPanel.setBackground(Color.BLUE);
+        bottomPanel.setPreferredSize(new Dimension(730,80));
         bottomPanel.add(nextButton);
+        
+        this.add(headerPanel, BorderLayout.NORTH);
+        this.add(menuPanel, BorderLayout.CENTER);
         this.add(bottomPanel, BorderLayout.SOUTH);
 
         this.setTitle("Guests booking dates");
         this.setSize(frameWidth +250, frameHeight +170);
         this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
         this.setVisible(true);
     }
     
@@ -333,14 +326,13 @@ public class HotelDatesMenu extends JFrame {
                     JOptionPane.ERROR_MESSAGE);
     }
     
-    public void mouseEnterHover()
+    public void mouseEnterNextHover()
     {
         getNextButton().setBackground(Color.GREEN);
     }
     
-    public void mouseExitHover()
+    public void mouseExitNextHover()
     {
         getNextButton().setBackground(UIManager.getColor("control"));
-    }
-    
+    }   
 }

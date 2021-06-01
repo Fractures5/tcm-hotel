@@ -48,11 +48,12 @@ public class HotelRoomsMenu extends JFrame
     int frameWidth = screenWidth / 2;
     int frameHeight = screenHeight / 2;
     
+    Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
+    
     public HotelRoomsMenu()
     {
         ArrayList<RoomMenu> roomMenu = new ArrayList<RoomMenu>();
         roomMenu = RoomMenu.showMenu();
-        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
         
         title = new JLabel("Rooms Menu\n");
         title.setFont(new Font("Arial", Font.BOLD, 30));
@@ -66,10 +67,8 @@ public class HotelRoomsMenu extends JFrame
         headerPanel.setBackground(Color.BLUE);
         headerPanel.setPreferredSize(new Dimension(700, 70));
         headerPanel.add(title);
-        this.add(headerPanel, BorderLayout.NORTH);
         
         menuPanel = new JPanel();
-        //menuPanel.setBackground(Color.LIGHT_GRAY);
         menuPanel.setPreferredSize(new Dimension(600, 450));
         menuPanel.add(instruction);
         
@@ -165,21 +164,23 @@ public class HotelRoomsMenu extends JFrame
         menuPanel.add(couplesRoomBox);
         menuPanel.add(Box.createVerticalStrut(83));
         
-        this.add(menuPanel, BorderLayout.CENTER);
-        
-        bottomPanel = new JPanel();
-        bottomPanel.setBackground(Color.BLUE);
         nextButton = new JButton("Next");
         nextButton.setPreferredSize(new Dimension(200,70));
         nextButton.setFont(new Font("Arial", Font.BOLD, 24));
         
+        bottomPanel = new JPanel();
+        bottomPanel.setBackground(Color.BLUE);
         bottomPanel.add(nextButton);
+        
+        this.add(headerPanel, BorderLayout.NORTH);
+        this.add(menuPanel, BorderLayout.CENTER);
         this.add(bottomPanel, BorderLayout.SOUTH);
         
         this.setTitle("Guests booking rooms");
         this.setSize(frameWidth +350, frameHeight +250);
         this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
         this.setVisible(true);
     }
     
@@ -227,22 +228,6 @@ public class HotelRoomsMenu extends JFrame
             }
 
         }
-    }
-    
-    public void displayErrorMessage()
-    {
-       JOptionPane.showMessageDialog(new JFrame(), "Please select the rooms you would like to book before moving to the next stage", "Invalid Selection",
-                    JOptionPane.ERROR_MESSAGE); 
-    }
-    
-    public void mouseEnterHover()
-    {
-        getNextButton().setBackground(Color.GREEN);
-    }
-    
-    public void mouseExitHover()
-    {
-        getNextButton().setBackground(UIManager.getColor("control"));
     }
     
     public void addUserRoomsSelection()
@@ -322,5 +307,21 @@ public class HotelRoomsMenu extends JFrame
                 count++;
             }
         }
+    }
+    
+    public void displayErrorMessage()
+    {
+       JOptionPane.showMessageDialog(new JFrame(), "Please select the rooms you would like to book before moving to the next stage", "Invalid Selection",
+                    JOptionPane.ERROR_MESSAGE); 
+    }
+    
+    public void mouseEnterNextHover()
+    {
+        getNextButton().setBackground(Color.GREEN);
+    }
+    
+    public void mouseExitNextHover()
+    {
+        getNextButton().setBackground(UIManager.getColor("control"));
     }
 }

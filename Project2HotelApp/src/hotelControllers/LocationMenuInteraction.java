@@ -5,21 +5,13 @@
  */
 package hotelControllers;
 
-import hotelModel.HotelLocations;
-import hotelModel.HotelRooms;
-import hotelView.BookingCartMenu;
+import hotelModel.BookedHotelLocations;
+import hotelModel.BookedHotelRooms;
 import hotelView.HotelLocationMenu;
 import hotelView.HotelRoomsMenu;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Locale;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import project2hotelapp.CalculateCosts;
-import project2hotelapp.GuestChooseRoom;
 import project2hotelapp.GuestsBookingCart;
 
 /**
@@ -28,10 +20,10 @@ import project2hotelapp.GuestsBookingCart;
  */
 public class LocationMenuInteraction {
     
-    static HotelLocations locationsModel;
+    static BookedHotelLocations locationsModel;
     HotelLocationMenu locationsView;
     
-    public LocationMenuInteraction(HotelLocations locationsModel, HotelLocationMenu locationsView)
+    public LocationMenuInteraction(BookedHotelLocations locationsModel, HotelLocationMenu locationsView)
     {
         this.locationsModel = locationsModel;
         this.locationsView = locationsView;
@@ -48,12 +40,12 @@ public class LocationMenuInteraction {
         {
             public void mouseEntered(java.awt.event.MouseEvent evt) 
             {
-                mouseEnteredHover();
+                mouseEnteredNextHover();
             }
             
             public void mouseExited(java.awt.event.MouseEvent evt) 
             {
-                mouseExitedHover();
+                mouseExitedNextHover();
             }
         });
     }
@@ -67,43 +59,29 @@ public class LocationMenuInteraction {
         {
             locationsView.displayErrorMessage();
         }
-        else if(locationsView.getRepeat() == true && locationsView.getShowErrorMesssage() == false) // take this out maybe not needed
+        /*else if(locationsView.getRepeat() == true && locationsView.getShowErrorMesssage() == false) // take this out maybe not needed
         {
             // no error is shown
-        }
+        }*/
         else if (locationsView.getRepeat() == false) 
         {
             locationsView.setVisible(false);
             locationsModel.setBookingLocation(locationsView.getBookingLocation());
-            locationsModel.currentLocationBookings();
             
-            HotelRooms roomsModel = new HotelRooms();
+            BookedHotelRooms roomsModel = new BookedHotelRooms();
             HotelRoomsMenu roomsView = new HotelRoomsMenu();
             RoomMenuInteraction roomsAction = new RoomMenuInteraction(roomsModel, roomsView);
         }
-        
-        
-        
-        /*if (locationsView.confirmSelection() == false)
-        {
-            locationsView.displayErrorMessage();
-        }
-        else
-        {
-            locationsView.setVisible(false);
-            locationsModel.setBookingLocation(locationsView.getBookingLocation());
-            // add code here to add studet to the model data array or something
-        }*/
     }
     
-    public void mouseEnteredHover()
+    public void mouseEnteredNextHover()
     {
-        locationsView.mouseEnterHover();
+        locationsView.mouseEnterNextHover();
     }
     
-    public void mouseExitedHover()
+    public void mouseExitedNextHover()
     {
-        locationsView.mouseExitHover();
+        locationsView.mouseExitNextHover();
     }
     
     public static ArrayList<GuestsBookingCart> guestHotelLocation()

@@ -11,9 +11,9 @@ import java.util.ArrayList;
  * The purpose of this class is to create the menu of the extra features by adding information
  * about the extra features into an array list. This class is a child class and inherits
  * certain methods/variables/characteristics from the Parent class Products. This class contains the 
- * specific constructors for initializing data only for features, and it contains the static menu output methods, 
- * toString methods and the special abstract method which all help output the array list in a neat manner 
- * to show the features menu which is used in the guest menu class. 
+ * specific constructors for initializing data only for features, and its array list is used
+ * to show the feature types available menu which is used in the hotelFeaturesMenu GUI view and used to add
+ * data into the guests booking cart.
  * @author Siddarath
  */
 public class FeaturesMenu extends Products {
@@ -46,8 +46,8 @@ public class FeaturesMenu extends Products {
      * This method will essentially output the menu of the extra features to the user.
      * This static method showMenu will create an object of the FeaturesMenu class and assign it to values
      * that are details about the extra features the hotel provides. Then the method adds these assigned objects
-     * to the array list and then it outputs the array list that stores the information about the extra features
-     * along with the unique index number which the guest can refer when selecting an option from this menu.
+     * to the array list and is then used in the hotelFeaturesMenu view GUI to output the menu details and used to add
+     * the selected features to the users booking cart.
      * @return features the array list which holds all the information about the extra features.
      * @author Siddarath
      */
@@ -64,43 +64,6 @@ public class FeaturesMenu extends Products {
         features.add(sauna);
         features.add(gym);
         
-        /*FeaturesMenu featuresTitle = new FeaturesMenu();
-        featuresTitle.menuBanner(); // Calls the abstract method to display this menus specific banner.
-        
-        
-        for (FeaturesMenu featureTypes: features)
-        {
-            System.out.println("(" +features.indexOf(featureTypes)+ ") - " +featureTypes); // Prints out the features menu formatted with its index number in the front.
-        }*/
-        
         return features;
-    }
-    
-    /**
-     * This toString method will return a string representation of the FeaturesMenu class object.
-     * This method utilizes the "strong.format" skill to make the menu look more organized in a column
-     * format that is spaced out, legible and appealing.
-     * @return a string which outputs all the instances variable values for the FeaturesMenu class. 
-     * @author Siddarath
-     */
-    public String toString()
-    {
-        String output = String.format("%-30s", "Title: " + this.getTitle()); // String.format is used to format the features menu in columns.
-        output += String.format("%-30s", "Feature Type: " + this.getFeatureType());
-        output += String.format("%-25s", "Price: $" + this.getPrice());
-        
-        return output;
-    }
-
-    /**
-     * This is the abstract method inherited from the Products class. This method will
-     * output a special banner graphic to make the menu more appealing.
-     * @author Siddarath
-     */
-    @Override
-    public void menuBanner() {
-        System.out.println("\n---------------------------------------------------------------------------------");
-        System.out.println("                          Special Features Menu");
-        System.out.println("---------------------------------------------------------------------------------");
     }
 }

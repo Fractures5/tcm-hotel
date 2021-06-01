@@ -5,13 +5,11 @@
  */
 package hotelView;
 
-import hotelControllers.LocationMenuInteraction;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -24,7 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
-import project2hotelapp.GuestChooseRoom;
 import project2hotelapp.GuestsBookingCart;
 import project2hotelapp.LocationMenu;
 
@@ -52,6 +49,76 @@ public class HotelLocationMenu extends JFrame{
     int frameWidth = screenWidth / 2;
     int frameHeight = screenHeight / 2;
     
+    Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
+    
+    public HotelLocationMenu()
+    {
+        title = new JLabel("Hotel Locations Menu\n");
+        title.setFont(new Font("Arial", Font.BOLD, 30));
+        title.setForeground(Color.WHITE);
+        
+        instruction = new JLabel("Please tick the hotel location you would like to book at!");
+        instruction.setFont(new Font("Arial", Font.BOLD, 20));
+        instruction.setForeground(Color.BLACK);
+        
+        headerPanel = new JPanel();
+        headerPanel.setBackground(Color.BLUE);
+        headerPanel.setPreferredSize(new Dimension(700,70));
+        headerPanel.add(title);
+        
+        menuPanel = new JPanel();
+        menuPanel.setPreferredSize(new Dimension(600,450));
+        menuPanel.add(instruction);
+        menuPanel.add(Box.createVerticalStrut(75));
+        
+        locationButtons [0] = new JRadioButton("Title: Auckland Hotel - 31 Starcent Ave                          Location: Auckland                       Rating: Five      Vacancy: Yes");
+        locationButtons [1] = new JRadioButton("Title: Rotorua Hotel - 17 Geyser Crescent                      Location: Rotorua                        Rating: Three     Vacancy: Yes");
+        locationButtons [2] = new JRadioButton("Title: Taupo Hotel - 48 Lake Ave                                       Location: Taupo                           Rating: Four       Vacancy: No");
+        locationButtons [3] = new JRadioButton("Title: Palmerston Hotel - 69 Leggy Ave                            Location: Palmerston North        Rating: Four       Vacancy: Yes");
+        locationButtons [4] = new JRadioButton("Title: Wellington Hotel - 128 Bee Ave                               Location: Wellington                   Rating: Five        Vacancy: No");
+        locationButtons [5] = new JRadioButton("Title: Christchurch Hotel - 27 Meadow Lane                    Location: Christchurch               Rating: Four        Vacancy: Yes");
+        locationButtons [6] = new JRadioButton("Title: Dunedin Hotel - 987 Lonely Road                            Location: Dunedin                        Rating: Four        Vacancy: No");
+        locationButtons [7] = new JRadioButton("Title: Queenstown Hotel - 52 New South Drive               Location: Queenstown                Rating: Five         Vacancy: Yes");
+
+        locationButtons[2].setEnabled(false);
+        locationButtons[4].setEnabled(false);
+        locationButtons[6].setEnabled(false);
+        group = new ButtonGroup();
+        
+        for(int i = 0; i<8; i++)
+        {
+            locationButtons[i].setPreferredSize(new Dimension(1100, 50));
+            locationButtons[i].setFont(new Font("Arial", Font.BOLD, 18));
+            locationButtons[i].setBackground(Color.WHITE);
+            locationButtons[i].setOpaque(true);
+            locationButtons[i].setBorderPainted(true);
+            locationButtons[i].setBorder(blackline);
+            group.add(locationButtons[i]);
+            menuPanel.add(locationButtons[i]);
+            menuPanel.add(Box.createVerticalStrut(60));
+        }
+          
+        nextButton = new JButton("Next");
+        nextButton.setPreferredSize(new Dimension(200,70));
+        nextButton.setFont(new Font("Arial", Font.BOLD, 24));
+        
+        bottomPanel = new JPanel();
+        bottomPanel.setBackground(Color.BLUE);
+        bottomPanel.setPreferredSize(new Dimension(730,80));
+        bottomPanel.add(nextButton);
+        
+        this.add(headerPanel, BorderLayout.NORTH);
+        this.add(menuPanel, BorderLayout.CENTER);
+        this.add(bottomPanel, BorderLayout.SOUTH);
+        
+        this.setTitle("Guests booking hotel location");
+        this.setSize(frameWidth +350, frameHeight +300);
+        this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setVisible(true);
+    }
+    
     public Boolean getShowErrorMesssage()
     {
         return showErrorMessage;
@@ -70,80 +137,6 @@ public class HotelLocationMenu extends JFrame{
     public ArrayList<GuestsBookingCart> getBookingLocation()
     {
         return locationBooked;
-    }
-    
-    public HotelLocationMenu()
-    {
-        Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
-        
-        title = new JLabel("Hotel Locations Menu\n");
-        title.setFont(new Font("Arial", Font.BOLD, 30));
-        title.setForeground(Color.WHITE);
-        
-        instruction = new JLabel("Please tick the hotel location you would like to book at!");
-        instruction.setFont(new Font("Arial", Font.BOLD, 20));
-        instruction.setForeground(Color.BLACK);
-        
-        headerPanel = new JPanel();
-        headerPanel.setBackground(Color.BLUE);
-        headerPanel.setPreferredSize(new Dimension(700,70));
-        headerPanel.add(title);
-        this.add(headerPanel, BorderLayout.NORTH);
-        
-        menuPanel = new JPanel();
-        //menuPanel.setBackground(Color.LIGHT_GRAY);
-        menuPanel.setPreferredSize(new Dimension(600,450));
-        menuPanel.add(instruction);
-        menuPanel.add(Box.createVerticalStrut(75));
-        //menuPanel.add(Box.createHorizontalStrut(500));
-        
-        group = new ButtonGroup();
-        
-        locationButtons [0] = new JRadioButton("Title: Auckland Hotel - 31 Starcent Ave                          Location: Auckland                       Rating: Five      Vacancy: Yes");
-        locationButtons [1] = new JRadioButton("Title: Rotorua Hotel - 17 Geyser Crescent                      Location: Rotorua                        Rating: Three     Vacancy: Yes");
-        locationButtons [2] = new JRadioButton("Title: Taupo Hotel - 48 Lake Ave                                       Location: Taupo                           Rating: Four       Vacancy: No");
-        locationButtons [3] = new JRadioButton("Title: Palmerston Hotel - 69 Leggy Ave                            Location: Palmerston North        Rating: Four       Vacancy: Yes");
-        locationButtons [4] = new JRadioButton("Title: Wellington Hotel - 128 Bee Ave                               Location: Wellington                   Rating: Five        Vacancy: No");
-        locationButtons [5] = new JRadioButton("Title: Christchurch Hotel - 27 Meadow Lane                    Location: Christchurch               Rating: Four        Vacancy: Yes");
-        locationButtons [6] = new JRadioButton("Title: Dunedin Hotel - 987 Lonely Road                            Location: Dunedin                        Rating: Four        Vacancy: No");
-        locationButtons [7] = new JRadioButton("Title: Queenstown Hotel - 52 New South Drive               Location: Queenstown                Rating: Five         Vacancy: Yes");
-
-        locationButtons[2].setEnabled(false);
-        locationButtons[4].setEnabled(false);
-        locationButtons[6].setEnabled(false);
-        
-        for(int i = 0; i<8; i++)
-        {
-            locationButtons[i].setPreferredSize(new Dimension(1100, 50));
-            locationButtons[i].setFont(new Font("Arial", Font.BOLD, 18));
-            locationButtons[i].setBackground(Color.WHITE);
-            locationButtons[i].setOpaque(true);
-            locationButtons[i].setBorderPainted(true);
-            locationButtons[i].setBorder(blackline);
-            group.add(locationButtons[i]);
-            menuPanel.add(locationButtons[i]);
-            menuPanel.add(Box.createVerticalStrut(60));
-        }
-        this.add(menuPanel, BorderLayout.CENTER);
-        
-        
-        bottomPanel = new JPanel();
-        bottomPanel.setBackground(Color.BLUE);
-        bottomPanel.setPreferredSize(new Dimension(730,80));
-           
-        nextButton = new JButton("Next");
-        nextButton.setPreferredSize(new Dimension(200,70));
-        nextButton.setFont(new Font("Arial", Font.BOLD, 24));
-        
-        bottomPanel.add(nextButton);
-        this.add(bottomPanel, BorderLayout.SOUTH);
-        
-        this.setTitle("Guests booking hotel location");
-        //this.setSize(1400,825);
-        this.setSize(frameWidth +350, frameHeight +300);
-        this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
     }
     
     public void confirmSelection()
@@ -196,8 +189,7 @@ public class HotelLocationMenu extends JFrame{
         {
            showErrorMessage = true;
            repeat = true;
-        }
-         
+        }     
     }
     
     public void displayErrorMessage()
@@ -206,12 +198,12 @@ public class HotelLocationMenu extends JFrame{
              JOptionPane.ERROR_MESSAGE);
     }
     
-    public void mouseEnterHover()
+    public void mouseEnterNextHover()
     {
         getNextButton().setBackground(Color.GREEN);
     }
     
-    public void mouseExitHover()
+    public void mouseExitNextHover()
     {
         getNextButton().setBackground(UIManager.getColor("control"));
     }

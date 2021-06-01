@@ -10,7 +10,7 @@ import hotelControllers.FeaturesMenuInteraction;
 import hotelControllers.GuestsTypeInteraction;
 import hotelControllers.LocationMenuInteraction;
 import hotelControllers.RoomMenuInteraction;
-import hotelModel.HotelBookingDates;
+import hotelModel.BookedHotelDates;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -125,6 +125,7 @@ public class BookingCartMenu extends JFrame
         this.setSize(frameWidth +350, frameHeight +300);
         this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
         this.setVisible(true);
     }
     
@@ -168,14 +169,14 @@ public class BookingCartMenu extends JFrame
         bookingCartField.append("\n-------------------------------------------------------------------------- Guest types Booked ---------------------------------------------------------------------------------------------\n\n");
         for (GuestsBookingCart bookingDetails : guestsTypesBooked)
         {
-            bookingCartField.append("Title: " + bookingDetails.getTitle() + "                   Guest Type: " + bookingDetails.getGuestType() + "                 Price: $" + bookingDetails.getPrice() + "\n");
+            bookingCartField.append("Title: " + bookingDetails.getTitle() + "--------Guest Type: " + bookingDetails.getGuestType() + "--------Price: $" + bookingDetails.getPrice() + "\n");
         }
        // bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         
         bookingCartField.append("\n--------------------------------------------------------------------------- Features Booked -------------------------------------------------------------------------------------------------\n\n");
         for (GuestsBookingCart bookingDetails : featuresBooked)
         {
-            bookingCartField.append("Title: " + bookingDetails.getTitle()+ "                 Feature Type: " + bookingDetails.getFeatureType()+ "               Price: $" + bookingDetails.getPrice() + "\n");
+            bookingCartField.append("Title: " + bookingDetails.getTitle()+ "--------Feature Type: " + bookingDetails.getFeatureType()+ "--------Price: $" + bookingDetails.getPrice() + "\n");
         }
         bookingCartField.append("\n===============================================================================================================\n");
         return bookingCartField;
