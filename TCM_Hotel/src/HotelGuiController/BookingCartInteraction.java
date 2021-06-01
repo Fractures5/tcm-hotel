@@ -57,7 +57,7 @@ public class BookingCartInteraction
         {
             public void mouseEntered(java.awt.event.MouseEvent evt) 
             {
-                mouseExitHomeBtnHover();
+                mouseEnterHomeBtnHover();
             }
             
             public void mouseExited(java.awt.event.MouseEvent evt) 
@@ -82,6 +82,7 @@ public class BookingCartInteraction
     
     public void handleHomeButtonPress()
     {
+        cartView.confirmLeaveBooking();
         cartView.setVisible(false);
         WelcomeAppGuiMenu accessMainMenu = new WelcomeAppGuiMenu();
         WelcomeAppGuiInteraction mainMenuControl = new WelcomeAppGuiInteraction(accessMainMenu);

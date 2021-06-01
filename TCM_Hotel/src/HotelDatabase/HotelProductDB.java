@@ -286,7 +286,7 @@ public class HotelProductDB
         try
         {
             this.statement = conn.createStatement();
-            boolean createTable = this.checkTableStatus("BOOKED_HOTEL_DATES");
+            boolean createTable = this.checkTableStatus("BOOKED_HOTEL_ROOMS");
             
             if (createTable == true)
             {
@@ -312,7 +312,7 @@ public class HotelProductDB
         try
         {
             this.statement = conn.createStatement();
-            boolean createTable = this.checkTableStatus("BOOKED_HOTEL_DATES");
+            boolean createTable = this.checkTableStatus("BOOKED_GUEST_TYPES");
             
             if (createTable == true)
             {
@@ -338,7 +338,7 @@ public class HotelProductDB
         try
         {
             this.statement = conn.createStatement(); 
-            boolean createTable = this.checkTableStatus("BOOKED_HOTEL_DATES");
+            boolean createTable = this.checkTableStatus("BOOKED_FEATURES");
             
             if (createTable == true)
             {
