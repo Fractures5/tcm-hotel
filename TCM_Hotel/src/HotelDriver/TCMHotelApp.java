@@ -1,4 +1,4 @@
-package HotelDataFiles;
+package HotelDriver;
 
 import HotelGuiController.WelcomeAppGuiInteraction;
 import HotelGuiView.WelcomeAppGuiMenu;
