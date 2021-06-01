@@ -18,22 +18,33 @@ import project2hotelapp.GuestsBookingCart;
  */
 public class BookedHotelLocations 
 {
-    
+    private ArrayList<GuestsBookingCart> locationInfo = null;
+
     /**
      * This is the BookedHotelLocations classes default constructor.
      */
-    private ArrayList<GuestsBookingCart> locationInfo = null;
-
     public BookedHotelLocations() 
     {
         
     }
 
+    /**
+     * This setBookingLocation method updates the value of the object named locationInfo 
+     * which is an array list object of the GuestBookingCart class. 
+     * @param locationInfo the parameter represents array list object from the GuestBookingCart class.
+     * @author Siddarath
+     */
     public void setBookingLocation(ArrayList<GuestsBookingCart> locationInfo)
     {
         this.locationInfo = locationInfo;
     }
     
+    /**
+     * This getBookingLocation method will return the value of the object named locationInfo 
+     * which is an array list object of the class GuestBookingCart.
+     * @return locationInfo the array list object.
+     * @author Siddarath
+     */
     public ArrayList<GuestsBookingCart> getBookingLocation()
     {
         return locationInfo;
