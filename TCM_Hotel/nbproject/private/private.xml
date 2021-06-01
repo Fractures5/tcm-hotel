@@ -4,10 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Anuk/git_pdc_project/tcm-hotel/TCM_Hotel/src/View/AdminFormView.java</file>
-            <file>file:/C:/Users/Anuk/git_pdc_project/tcm-hotel/TCM_Hotel/src/Model/AdminFormModel.java</file>
             <file>file:/C:/Users/Anuk/git_pdc_project/tcm-hotel/TCM_Hotel/src/View/GuestView.java</file>
-            <file>file:/C:/Users/Anuk/git_pdc_project/tcm-hotel/TCM_Hotel/src/Controller/LoginController.java</file>
-            <file>file:/C:/Users/Anuk/git_pdc_project/tcm-hotel/TCM_Hotel/src/Controller/AdminFormController.java</file>
+            <file>file:/C:/Users/Anuk/git_pdc_project/tcm-hotel/TCM_Hotel/src/tcm/hotel/FileInputOutput.java</file>
+            <file>file:/C:/Users/Anuk/git_pdc_project/tcm-hotel/TCM_Hotel/src/Controller/GuestController.java</file>
+            <file>file:/C:/Users/Anuk/git_pdc_project/tcm-hotel/TCM_Hotel/src/tcm/hotel/GuestForm.java</file>
+            <file>file:/C:/Users/Anuk/git_pdc_project/tcm-hotel/TCM_Hotel/Guests.txt</file>
             <file>file:/C:/Users/Anuk/git_pdc_project/tcm-hotel/TCM_Hotel/src/tcm/hotel/DriverMVC.java</file>
         </group>
     </open-files>

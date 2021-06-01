@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -41,6 +42,8 @@ import tcm.hotel.GuestGUI;
 public class GuestView extends JFrame{
     
     private GuestForm form;
+    
+    private JCheckBox showAccPin;
     
     private JPanel headerPanel;
     private JPanel centrePanel;
@@ -92,6 +95,10 @@ public class GuestView extends JFrame{
     private boolean showAccNumberError = false;
     
     private int resetReply;
+
+    public JCheckBox getShowAccPin() {
+        return showAccPin;
+    }
     
     public boolean getValidGuest() {
         return validGuest;
@@ -233,7 +240,7 @@ public class GuestView extends JFrame{
         ageField = new JTextField("", 20);
         ageField.setBounds(425, 145, 100, 30);
         
-        phoneNumber = new JLabel("Contact Phone (Exclude Zero for Mobile): ");
+        phoneNumber = new JLabel("Contact Phone (Exclude Zero at Start): ");
         phoneNumber.setBounds(90, 205, 400, 30);
         phoneNumber.setFont(new Font("Arial", Font.BOLD, 17));
         phoneNumField = new JTextField("", 50);
@@ -268,6 +275,10 @@ public class GuestView extends JFrame{
         accPinField = new JPasswordField("", 30);
         accPinField.setBounds(475, 565, 200, 30);
         
+        showAccPin = new JCheckBox("Show Account Pin");
+        showAccPin.setBounds(535, 610, 200, 20);
+        showAccPin.setFont(new Font("Arial", Font.BOLD, 13));
+        
         centrePanel.add(fName);
         centrePanel.add(fNameField);
         centrePanel.add(lName);
@@ -283,7 +294,8 @@ public class GuestView extends JFrame{
         centrePanel.add(accNumField);
         centrePanel.add(accountPin);
         centrePanel.add(accPinField);
-        
+        centrePanel.add(showAccPin);
+
         buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.blue);
         buttonPanel.setBounds(0, 275, 600, 700);
@@ -508,4 +520,14 @@ public class GuestView extends JFrame{
     public void displayAccNumError(){
         JOptionPane.showMessageDialog(null, "You must enter your own Bank Account Number!", "Invalid Account Number Error!", JOptionPane.ERROR_MESSAGE);
     }
+    
+    public void toggleShowAccPin(){
+        accPinField.setEchoChar(showAccPin.isSelected() ? '\u0000' : (Character) UIManager.get("PasswordField.ecoChar"));
+    }
+    
+    public void toggleHideAccPin(){
+        accPinField.setEchoChar('*');
+    }
+    
+    
 }

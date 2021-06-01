@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import tcm.hotel.CalculateCosts;
 import tcm.hotel.FileInputOutput;
 import tcm.hotel.Guest;
 import tcm.hotel.GuestForm;
@@ -53,6 +54,13 @@ public class GuestController{
             }
         });
         
+        viewGuest.getShowAccPin().addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                handleShowAccPinClick();
+            }
+        
+        });
+        
         viewGuest.getConfirmDetails().addMouseListener(new java.awt.event.MouseAdapter() {
             
             public void mouseEntered(java.awt.event.MouseEvent evt){
@@ -74,6 +82,8 @@ public class GuestController{
                mouseExitedResetDetails();
             }
         });
+        
+        
     }
     
     public void handleConfirmDetailsClick() {
@@ -130,7 +140,8 @@ public class GuestController{
             
             HotelProductDB productDB = new HotelProductDB();
             DBManager dbManage = new DBManager();
-            productDB.registerGuest(modelGuest);
+            CalculateCosts guestCosts = new CalculateCosts();
+            productDB.registerGuest(modelGuest, guestCosts);
             productDB.dbAddDatesBooked(modelGuest, locationBooked, datesBooked);
             productDB.dbAddLocationsBooked(modelGuest, locationBooked);
             productDB.dbAddRoomsBooked(modelGuest, roomsBooked);
@@ -169,5 +180,14 @@ public class GuestController{
     public void mouseExitedResetDetails() {
         
         viewGuest.mouseExitResetDetails();
+    }
+    
+    public void handleShowAccPinClick(){
+        if(viewGuest.getShowAccPin().isSelected()){
+            viewGuest.toggleShowAccPin();
+        }
+        else{
+            viewGuest.toggleHideAccPin();
+        }
     }
 }

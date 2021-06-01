@@ -198,7 +198,7 @@ public class AdminSysMenuView extends JFrame{
         ArrayList<ViewRecords> guestTypesBkdRecords = db.getGuestTypesRecords();
         ArrayList<ViewRecords> datesBkdRecords = db.getDatesBookedRecords();
         
-        String guestColumns[] = {"Guest First Name", "Guest Last Name", "Guest Age", "Guest Phone Number", "Guest Email Address", "Guest Account Number"};
+        String guestColumns[] = {"Guest First Name", "Guest Last Name", "Guest Age", "Guest Phone Number", "Guest Email Address", "Guest Account Number", "Guest Total Paid"};
         String staffColumns[] = {"Admin First Name", "Admin Last Name", "Admin Job Title", "Admin Phone Number", "Admin Email Address"};
         String locBkdColumns[] = {"Guest Account Number", "Guest First Name", "Location Title", "Location"};
         String roomsBkdColumns[] = {"Guest Account Number", "Guest First Name", "Room Title", "Room Type"};
@@ -271,8 +271,9 @@ public class AdminSysMenuView extends JFrame{
             String guestPhoneNum = guestRecords.get(i).getGuestPhoneNum();
             String guestEmail = guestRecords.get(i).getGuestEmailAddress();
             String guestAccNumber = guestRecords.get(i).getGuestAccountNumber();
+            String guestTotalPaid = guestRecords.get(i).getGuestTotalPaid();
             
-            Object[] guestData = {guestFName, guestLName, guestAge, guestPhoneNum, guestEmail, guestAccNumber};
+            Object[] guestData = {guestFName, guestLName, guestAge, guestPhoneNum, guestEmail, guestAccNumber, guestTotalPaid};
             guestTableModel.addRow(guestData);
         }
         
@@ -457,7 +458,6 @@ public class AdminSysMenuView extends JFrame{
         this.add(splitPane, BorderLayout.CENTER);
         this.add(bottomBtnPanel, BorderLayout.SOUTH);
         
-
     }
     public void showGuestRecords(){
         cardLayout = (CardLayout) displayedData.getLayout();

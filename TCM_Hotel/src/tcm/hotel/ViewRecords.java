@@ -23,6 +23,7 @@ public class ViewRecords {
     private String guestPhoneNum = "";
     private String guestEmailAddress = "";
     private String guestAccountNumber = "";
+    private String guestTotalPaid = "";
     
     private String locationTitle = "";
     private LocationType location;
@@ -53,7 +54,7 @@ public class ViewRecords {
         
     }
     
-    public ViewRecords(String guestFName, String guestLName, String guestAge, String guestPhoneNum, String guestEmailAddress, String guestAccountNumber) {
+    public ViewRecords(String guestFName, String guestLName, String guestAge, String guestPhoneNum, String guestEmailAddress, String guestAccountNumber, String guestTotalPaid) {
 
         this.guestFName = guestFName;
         this.guestLName = guestLName;
@@ -61,6 +62,7 @@ public class ViewRecords {
         this.guestPhoneNum = guestPhoneNum;
         this.guestEmailAddress = guestEmailAddress;
         this.guestAccountNumber = guestAccountNumber;
+        this.guestTotalPaid = guestTotalPaid;
     }
     
     public ViewRecords(String guestAccountNumber, String guestFName, String locationTitle, LocationType location) {
@@ -109,6 +111,10 @@ public class ViewRecords {
         this.checkOutYear = checkOutYear;
     }
 
+    public String getGuestTotalPaid() {
+        return guestTotalPaid;
+    }
+    
     public String getCheckInDay() {
         return checkInDay;
     }
@@ -132,8 +138,6 @@ public class ViewRecords {
     public String getCheckOutYear() {
         return checkOutYear;
     }
-    
-    
 
     public ExtraFeatureTypes getFeatureType() {
         return featureType;

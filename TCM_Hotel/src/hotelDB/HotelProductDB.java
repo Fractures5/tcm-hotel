@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tcm.hotel.CalculateCosts;
 import tcm.hotel.ExtraFeatureTypes;
 import tcm.hotel.GuestType;
 import tcm.hotel.GuestsBookingCart;
@@ -71,7 +72,7 @@ public class HotelProductDB {
         ArrayList<ViewRecords> saveGuestRecords = new ArrayList<ViewRecords>();
         try {
             this.statement = conn.createStatement();
-            rs = statement.executeQuery("SELECT GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER FROM GUEST_LIST");
+            rs = statement.executeQuery("SELECT GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER, GUEST_TOTALPAID FROM GUEST_LIST");
             while (rs.next()) {
                 String guestFName = rs.getString("GUEST_FIRSTNAME");
                 String guestLName = rs.getString("GUEST_LASTNAME");
@@ -79,7 +80,8 @@ public class HotelProductDB {
                 String guestPhoneNum = rs.getString("GUEST_PHONENUMBER");
                 String guestEmailAddress = rs.getString("GUEST_EMAILADDRESS");
                 String guestAccountNumber = rs.getString("GUEST_ACCOUNTNUMBER");
-                ViewRecords guestDetails = new ViewRecords(guestFName, guestLName, guestAge, guestPhoneNum, guestEmailAddress, guestAccountNumber);
+                String guestTotalPaid = rs.getString("GUEST_TOTALPAID");
+                ViewRecords guestDetails = new ViewRecords(guestFName, guestLName, guestAge, guestPhoneNum, guestEmailAddress, guestAccountNumber, guestTotalPaid);
                 saveGuestRecords.add(guestDetails);
             }
             
@@ -100,10 +102,10 @@ public class HotelProductDB {
         }
     }
 
-    public void registerGuest(GuestModel guest){
+    public void registerGuest(GuestModel guest, CalculateCosts guestCosts){
         try{
             this.statement = conn.createStatement();
-            this.statement.addBatch("INSERT INTO GUEST_LIST (GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER) VALUES('"+ guest.getGuestFirstName()+"', '"+ guest.getGuestLastName()+"', '"+ guest.getGuestAge()+"', '"+ guest.getGuestPhoneNumber()+"', '"+ guest.getGuestEmail()+"', '"+ guest.getGuestAccountNumber()+"')");
+            this.statement.addBatch("INSERT INTO GUEST_LIST (GUEST_FIRSTNAME, GUEST_LASTNAME, GUEST_AGE, GUEST_PHONENUMBER, GUEST_EMAILADDRESS, GUEST_ACCOUNTNUMBER, GUEST_TOTALPAID) VALUES('"+ guest.getGuestFirstName()+"', '"+ guest.getGuestLastName()+"', '"+ guest.getGuestAge()+"', '"+ guest.getGuestPhoneNumber()+"', '"+ guest.getGuestEmail()+"', '"+ guest.getGuestAccountNumber()+"', '"+guestCosts.guestsTotalCost()+"')");
             this.statement.executeBatch();
         }
         catch(SQLException ex){
@@ -128,7 +130,7 @@ public class HotelProductDB {
         try{
             this.statement = conn.createStatement();
             //this.checkTableExistence("GUEST_LIST");
-            this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50))");
+            this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_TOTALPAID VARCHAR(50))");
             this.statement.executeBatch();
             System.out.println("Table Guest_List has been created");
         }
