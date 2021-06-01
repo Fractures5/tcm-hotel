@@ -1,0 +1,132 @@
+
+====================================================================================================================================
+                                                      John's booking!                               
+                                                      Booking ID: 1234                             
+====================================================================================================================================
+Check in date: 5/2/2021
+Check out date: 2/6/2022
+
+Title: Christchurch Hotel - 27 Meadow Lane                 Location: CHRISTCHURCH       Rating: FOUR             Vacancy: YES            
+Title: Queen Size (1 queen sized bed)                      Room Type: QUEEN              Price: $225.0            
+Title: Standard Room (1 Double size bed)                   Room Type: STANDARD           Price: $200.0            
+Title: Adult (18-64 yrs)                                   Guest Type: ADULT             Price: $30.0             
+Title: Child (4-17 yrs)                                    Guest Type: CHILD             Price: $10.0             
+Title: Infant (0-3 yrs)                                    Guest Type: INFANT            Price: $0.0              
+Title: Spa pass                                            Feature Type: SPA             Price: $10.0             
+
+Total cost of the booking: $475.0
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+====================================================================================================================================
+                                                      Will's booking!                               
+                                                      Booking ID: 9876                             
+====================================================================================================================================
+Check in date: 5/2/2021
+Check out date: 2/6/2022
+
+Title: Christchurch Hotel - 27 Meadow Lane                 Location: CHRISTCHURCH       Rating: FOUR             Vacancy: YES            
+Title: Queen Size (1 queen sized bed)                      Room Type: QUEEN              Price: $225.0            
+Title: Standard Room (1 Double size bed)                   Room Type: STANDARD           Price: $200.0            
+Title: Standard Room (1 Double size bed)                   Room Type: STANDARD           Price: $200.0            
+Title: Deluxe Room (1 King Size bed)                       Room Type: DELUXE             Price: $375.0            
+Title: Twin Size Room (2 single bed)                       Room Type: TWIN               Price: $250.0            
+Title: Queen Size (1 queen sized bed)                      Room Type: QUEEN              Price: $225.0            
+Title: Family Room (Large room)                            Room Type: FAMILY             Price: $300.0            
+Title: Family Room (Large room)                            Room Type: FAMILY             Price: $300.0            
+Title: Queen Size (1 queen sized bed)                      Room Type: QUEEN              Price: $225.0            
+Title: Twin Size Room (2 single bed)                       Room Type: TWIN               Price: $250.0            
+Title: Twin Size Room (2 single bed)                       Room Type: TWIN               Price: $250.0            
+Title: Deluxe Room (1 King Size bed)                       Room Type: DELUXE             Price: $375.0            
+Title: Adult (18-64 yrs)                                   Guest Type: ADULT             Price: $30.0             
+Title: Child (4-17 yrs)                                    Guest Type: CHILD             Price: $10.0             
+Title: Infant (0-3 yrs)                                    Guest Type: INFANT            Price: $0.0              
+Title: Adult (18-64 yrs)                                   Guest Type: ADULT             Price: $30.0             
+Title: Child (4-17 yrs)                                    Guest Type: CHILD             Price: $10.0             
+Title: Infant (0-3 yrs)                                    Guest Type: INFANT            Price: $0.0              
+Title: Eldery (65+ yrs)                                    Guest Type: ELDERY            Price: $15.0             
+Title: VIP (Famous)                                        Guest Type: VIP               Price: $100.0            
+Title: Child (4-17 yrs)                                    Guest Type: CHILD             Price: $10.0             
+Title: Infant (0-3 yrs)                                    Guest Type: INFANT            Price: $0.0              
+Title: Eldery (65+ yrs)                                    Guest Type: ELDERY            Price: $15.0             
+Title: VIP (Famous)                                        Guest Type: VIP               Price: $100.0            
+Title: Adult (18-64 yrs)                                   Guest Type: ADULT             Price: $30.0             
+Title: Child (4-17 yrs)                                    Guest Type: CHILD             Price: $10.0             
+Title: Infant (0-3 yrs)                                    Guest Type: INFANT            Price: $0.0              
+Title: Eldery (65+ yrs)                                    Guest Type: ELDERY            Price: $15.0             
+Title: VIP (Famous)                                        Guest Type: VIP               Price: $100.0            
+Title: VIP (Famous)                                        Guest Type: VIP               Price: $100.0            
+Title: Infant (0-3 yrs)                                    Guest Type: INFANT            Price: $0.0              
+Title: Child (4-17 yrs)                                    Guest Type: CHILD             Price: $10.0             
+Title: Child (4-17 yrs)                                    Guest Type: CHILD             Price: $10.0             
+Title: Adult (18-64 yrs)                                   Guest Type: ADULT             Price: $30.0             
+Title: Adult (18-64 yrs)                                   Guest Type: ADULT             Price: $30.0             
+Title: Spa pass                                            Feature Type: SPA             Price: $10.0             
+Title: Spa pass                                            Feature Type: SPA             Price: $10.0             
+Title: Jacuzzi pass                                        Feature Type: JACUZZI         Price: $10.0             
+Title: Sauna pass                                          Feature Type: SAUNA           Price: $10.0             
+
+Total cost of the booking: $3870.0
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+====================================================================================================================================
+                                                      James's booking!                               
+                                                      Booking ID: 9876                             
+====================================================================================================================================
+Check in date: 5/5/2021
+Check out date: 9/2/2022
+
+Title: Rotorua Hotel - 17 Geyser Crescent                  Location: ROTORUA            Rating: THREE            Vacancy: YES            
+Title: Standard Room (1 Double size bed)                   Room Type: STANDARD           Price: $200.0            
+Title: Standard Room (1 Double size bed)                   Room Type: STANDARD           Price: $200.0            
+Title: Queen Size (1 queen sized bed)                      Room Type: QUEEN              Price: $225.0            
+Title: Twin Size Room (2 single bed)                       Room Type: TWIN               Price: $250.0            
+Title: Deluxe Room (1 King Size bed)                       Room Type: DELUXE             Price: $375.0            
+Title: Adult (18-64 yrs)                                   Guest Type: ADULT             Price: $30.0             
+Title: Adult (18-64 yrs)                                   Guest Type: ADULT             Price: $30.0             
+Title: Child (4-17 yrs)                                    Guest Type: CHILD             Price: $10.0             
+Title: VIP (Famous)                                        Guest Type: VIP               Price: $100.0            
+Title: VIP (Famous)                                        Guest Type: VIP               Price: $100.0            
+Title: Gym pass                                            Feature Type: GYM             Price: $20.0             
+
+Total cost of the booking: $1540.0
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+====================================================================================================================================
+                                                      Peter's booking!                               
+                                                      Booking ID: 1029                             
+====================================================================================================================================
+Check in date: 9/12/2021
+Check out date: 6/2/2023
+
+Title: Queenstown Hotel - 52 New South Drive               Location: QUEENSTOWN         Rating: FIVE             Vacancy: YES            
+Title: Queen Size (1 queen sized bed)                      Room Type: QUEEN              Price: $225.0            
+Title: Deluxe Room (1 King Size bed)                       Room Type: DELUXE             Price: $375.0            
+Title: Adult (18-64 yrs)                                   Guest Type: ADULT             Price: $30.0             
+Title: Adult (18-64 yrs)                                   Guest Type: ADULT             Price: $30.0             
+Title: Infant (0-3 yrs)                                    Guest Type: INFANT            Price: $0.0              
+Title: VIP (Famous)                                        Guest Type: VIP               Price: $100.0            
+Title: Child (4-17 yrs)                                    Guest Type: CHILD             Price: $10.0             
+Title: Sauna pass                                          Feature Type: SAUNA           Price: $10.0             
+
+Total cost of the booking: $780.0
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+====================================================================================================================================
+                                                      Brian's booking!                               
+                                                      Booking ID: 18272                             
+====================================================================================================================================
+Check in date: 2/5/2021
+Check out date: 6/9/2022
+
+Title: Palmerston North Hotel - 69 Leggy Lane              Location: PALMERSTONNORTH    Rating: FOUR             Vacancy: YES            
+Title: Queen Size (1 queen sized bed)                      Room Type: QUEEN              Price: $225.0            
+Title: VIP (Famous)                                        Guest Type: VIP               Price: $100.0            
+Title: VIP (Famous)                                        Guest Type: VIP               Price: $100.0            
+Title: Spa pass                                            Feature Type: SPA             Price: $10.0             
+
+Total cost of the booking: $435.0
+------------------------------------------------------------------------------------------------------------------------------------
