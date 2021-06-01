@@ -55,8 +55,6 @@ public class HotelProductDB {
                 ViewRecords staffDetails = new ViewRecords(adminFName, adminLName, adminJobTitle, adminPhoneNum, adminEmail);
                 saveStaffRecords.add(staffDetails);
             }
-            
-            
         }
         catch (SQLException ex) {
             Logger.getLogger(HotelProductDB.class.getName()).log(Level.SEVERE, null, ex);
