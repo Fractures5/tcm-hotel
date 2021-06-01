@@ -118,11 +118,13 @@ public class FAQGuiView extends JFrame
         return backButton;
     }
     
-    public void mouseEnterHoverBackButton() {
+    public void mouseEnterHoverBackButton() 
+    {
         getBackButton().setBackground(Color.LIGHT_GRAY);
     }
 
-    public void mouseExitHoverBackButton() {
+    public void mouseExitHoverBackButton() 
+    {
         getBackButton().setBackground(UIManager.getColor("control"));
     }
     

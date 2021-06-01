@@ -28,20 +28,25 @@ public class AboutUsGuiController
     {
         this.aboutUsClass = aboutUsClass;
         
-        aboutUsClass.getReturnButton().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        aboutUsClass.getReturnButton().addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
                 ClickReturnButton();
             }
         });
 
-        aboutUsClass.getReturnButton().addMouseListener(new MouseAdapter() {
+        aboutUsClass.getReturnButton().addMouseListener(new MouseAdapter() 
+        {
             @Override
-            public void mouseEntered(MouseEvent evt) {
+            public void mouseEntered(MouseEvent evt) 
+            {
                 EnterMouseHoverReturnButton();
             }
 
             @Override
-            public void mouseExited(MouseEvent evt) {
+            public void mouseExited(MouseEvent evt)
+            {
                 ExitMouseHoverReturnButton();
             }
         });
@@ -50,52 +55,74 @@ public class AboutUsGuiController
         {
             public void mouseClicked(MouseEvent e)
             {
-                try {
+                try 
+                {
                     Desktop.getDesktop().browse(new URI("mailto:tdv2188@autuni.ac.nz"));
-                } catch (URISyntaxException ex) {
+                } 
+                catch (URISyntaxException ex) 
+                {
                     Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
+                } 
+                catch (IOException ex) 
+                {
                     Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
         
-        aboutUsClass.getLabel2().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                try {
+        aboutUsClass.getLabel2().addMouseListener(new MouseAdapter()
+        {
+            public void mouseClicked(MouseEvent e)
+            {
+                try 
+                {
                     Desktop.getDesktop().browse(new URI("mailto:xdx4418@autuni.ac.nz"));
-                } catch (URISyntaxException ex) {
+                } 
+                catch (URISyntaxException ex)
+                {
                     Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
+                } 
+                catch (IOException ex) 
+                {
                     Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
         
-        aboutUsClass.getLabel3().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                try {
+        aboutUsClass.getLabel3().addMouseListener(new MouseAdapter() 
+        {
+            public void mouseClicked(MouseEvent e) 
+            {
+                try
+                {
                     Desktop.getDesktop().browse(new URI("mailto:vwv9667@autuni.ac.nz"));
-                } catch (URISyntaxException ex) {
+                } 
+                catch (URISyntaxException ex)
+                {
                     Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
+                } 
+                catch (IOException ex)
+                {
                     Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
     
-    public void ClickReturnButton() {
+    public void ClickReturnButton() 
+    {
         accessMainMenu = new WelcomeAppGuiView();
         mainMenuControl = new WelcomeAppGuiController(accessMainMenu);
         aboutUsClass.returnToMainMenu();
     }
 
-    public void EnterMouseHoverReturnButton() {
+    public void EnterMouseHoverReturnButton() 
+    {
         aboutUsClass.mouseEnterHoverReturnButton();
     }
 
-    public void ExitMouseHoverReturnButton() {
+    public void ExitMouseHoverReturnButton() 
+    {
         aboutUsClass.mouseExitHoverReturnButton();
     }
 }

@@ -72,9 +72,12 @@ public class WelcomeAppGuiController
         {
             public void actionPerformed(ActionEvent e) 
             {
-                try {
+                try 
+                {
                     ClickButtonThree();
-                } catch (IOException ex) {
+                } 
+                catch (IOException ex) 
+                {
                     Logger.getLogger(WelcomeAppGuiController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

@@ -151,15 +151,18 @@ public class AboutUsGuiView extends JFrame
         return imageLabel1;
     }
     
-    public JLabel getLabel2() {
+    public JLabel getLabel2() 
+    {
         return imageLabel2;
     }
     
-    public JLabel getLabel3() {
+    public JLabel getLabel3() 
+    {
         return imageLabel3;
     }
 
-    public JButton getReturnButton() {
+    public JButton getReturnButton() 
+    {
         return returnButton;
     }
 
@@ -168,7 +171,8 @@ public class AboutUsGuiView extends JFrame
         getReturnButton().setBackground(Color.LIGHT_GRAY);
     }
 
-    public void mouseExitHoverReturnButton() {
+    public void mouseExitHoverReturnButton() 
+    {
         getReturnButton().setBackground(UIManager.getColor("control"));
     }
 

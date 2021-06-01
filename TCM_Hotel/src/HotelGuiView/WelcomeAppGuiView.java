@@ -192,39 +192,48 @@ public class WelcomeAppGuiView extends JFrame
         getButtonOne().setBackground(UIManager.getColor("control"));
     }
     
-    public JButton getButtonTwo() {
+    public JButton getButtonTwo() 
+    {
         return buttonTwo;
     }
 
-    public void mouseEnterHoverButtonTwo() {
+    public void mouseEnterHoverButtonTwo() 
+    {
         getButtonTwo().setBackground(Color.LIGHT_GRAY);
     }
 
-    public void mouseExitHoverButtonTwo() {
+    public void mouseExitHoverButtonTwo()
+    {
         getButtonTwo().setBackground(UIManager.getColor("control"));
     }
     
-    public JButton getButtonThree() {
+    public JButton getButtonThree() 
+    {
         return buttonThree;
     }
 
-    public void mouseEnterHoverButtonThree() {
+    public void mouseEnterHoverButtonThree() 
+    {
         getButtonThree().setBackground(Color.LIGHT_GRAY);
     }
 
-    public void mouseExitHoverButtonThree() {
+    public void mouseExitHoverButtonThree() 
+    {
         getButtonThree().setBackground(UIManager.getColor("control"));
     }
     
-    public JButton getButtonFour() {
+    public JButton getButtonFour()
+    {
         return buttonFour;
     }
 
-    public void mouseEnterHoverButtonFour() {
+    public void mouseEnterHoverButtonFour() 
+    {
         getButtonFour().setBackground(Color.LIGHT_GRAY);
     }
 
-    public void mouseExitHoverButtonFour() {
+    public void mouseExitHoverButtonFour() 
+    {
         getButtonFour().setBackground(UIManager.getColor("control"));
     }    
     

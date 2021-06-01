@@ -11,7 +11,6 @@ import HotelGuiView.WelcomeAppGuiView;
 
 public class GuiMainClass
 {
-    //Main method, which includes creates an object of the main menu view and controller class
     public static void main(String[] args) 
     {
         WelcomeAppGuiView viewClass = new WelcomeAppGuiView();
