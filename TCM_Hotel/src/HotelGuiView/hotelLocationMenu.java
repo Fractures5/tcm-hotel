@@ -74,7 +74,7 @@ public class HotelLocationMenu extends JFrame{
         locationButtons [0] = new JRadioButton("Title: Auckland Hotel - 31 Starcent Ave                          Location: Auckland                       Rating: Five      Vacancy: Yes");
         locationButtons [1] = new JRadioButton("Title: Rotorua Hotel - 17 Geyser Crescent                      Location: Rotorua                        Rating: Three     Vacancy: Yes");
         locationButtons [2] = new JRadioButton("Title: Taupo Hotel - 48 Lake Ave                                       Location: Taupo                           Rating: Four       Vacancy: No");
-        locationButtons [3] = new JRadioButton("Title: Palmerston Hotel - 69 Leggy Ave                            Location: Palmerston North        Rating: Four       Vacancy: Yes");
+        locationButtons [3] = new JRadioButton("Title: Palmerston Hotel - 69 Leggy Lane                            Location: Palmerston North        Rating: Four       Vacancy: Yes");
         locationButtons [4] = new JRadioButton("Title: Wellington Hotel - 128 Bee Ave                               Location: Wellington                   Rating: Five        Vacancy: No");
         locationButtons [5] = new JRadioButton("Title: Christchurch Hotel - 27 Meadow Lane                    Location: Christchurch               Rating: Four        Vacancy: Yes");
         locationButtons [6] = new JRadioButton("Title: Dunedin Hotel - 987 Lonely Road                            Location: Dunedin                        Rating: Four        Vacancy: No");

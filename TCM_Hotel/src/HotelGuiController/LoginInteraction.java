@@ -14,6 +14,8 @@ import HotelDatabase.HotelProductDB;
 import HotelGuiView.WelcomeAppGuiMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,6 +51,18 @@ public class LoginInteraction {
             }
         });
         
+        viewLogin.getLogin().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                EnterMouseHoverLoginButton();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent evt) {
+                ExitMouseHoverLoginButton();
+            }
+        });
+        
         viewLogin.getClearPassword().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 handleClearPasswordClick();
@@ -56,11 +70,35 @@ public class LoginInteraction {
 
         });
         
+        viewLogin.getClearPassword().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                EnterMouseHoverClearPasswordButton();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent evt) {
+                ExitMouseHoverClearPasswordButton();
+            }
+        });
+        
         viewLogin.getMainMenu().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 handleMainMenuClick();
             }
 
+        });
+        
+        viewLogin.getMainMenu().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                EnterMouseHoverMainMenuButton();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent evt) {
+                ExitMouseHoverMainMenuButton();
+            }
         });
         
         viewLogin.getShowPassword().addActionListener(new ActionListener() {
@@ -118,4 +156,33 @@ public class LoginInteraction {
         }
     }
     
+    public void EnterMouseHoverLoginButton()
+    {
+        menuLogin.mouseEnterHoverLoginButton();
+    }
+    
+    public void ExitMouseHoverLoginButton() 
+    {
+        menuLogin.mouseExitHoverLoginButton();
+    }
+    
+    public void EnterMouseHoverClearPasswordButton() 
+    {
+        menuLogin.mouseEnterHoverClearPasswordButton();
+    }
+
+    public void ExitMouseHoverClearPasswordButton() 
+    {
+        menuLogin.mouseExitHoverClearPasswordButton();
+    }
+    
+    public void EnterMouseHoverMainMenuButton() 
+    {
+        menuLogin.mouseEnterHoverMainMenuButton();
+    }
+
+    public void ExitMouseHoverMainMenuButton() 
+    {
+        menuLogin.mouseExitHoverMainMenuButton();
+    }   
 }

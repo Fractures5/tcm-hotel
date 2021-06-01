@@ -216,4 +216,33 @@ public class LoginMenu extends JFrame{
     public void displayLoginSuccessful(){
         JOptionPane.showMessageDialog(null, "You have Successfully Logged in!", "System Login Success", JOptionPane.INFORMATION_MESSAGE);
     }
+    
+    //login
+    //clearPassword
+    //mainMenu
+   
+
+    public void mouseEnterHoverLoginButton() {
+        getLogin().setBackground(Color.GREEN);
+    }
+
+    public void mouseExitHoverLoginButton() {
+        getLogin().setBackground(UIManager.getColor("control"));
+    } 
+
+    public void mouseEnterHoverClearPasswordButton() {
+        getClearPassword().setBackground(Color.ORANGE);
+    }
+
+    public void mouseExitHoverClearPasswordButton() {
+        getClearPassword().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void mouseEnterHoverMainMenuButton() {
+        getMainMenu().setBackground(Color.RED);
+    }
+
+    public void mouseExitHoverMainMenuButton() {
+        getMainMenu().setBackground(UIManager.getColor("control"));
+    }
 }

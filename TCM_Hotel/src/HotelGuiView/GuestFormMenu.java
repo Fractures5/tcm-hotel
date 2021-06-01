@@ -309,7 +309,7 @@ public class GuestFormMenu extends JFrame{
         resetDetails.setPreferredSize(new Dimension(170, 70));
         resetDetails.setFont(new Font("Arial", Font.BOLD, 17));
         resetDetails.setBorder(new LineBorder(Color.black, 4));
-        resetDetails.setForeground(Color.red);
+        resetDetails.setForeground(Color.black);
 
         buttonPanel.add(resetDetails);
         buttonPanel.add(confirmDetails);
@@ -482,7 +482,7 @@ public class GuestFormMenu extends JFrame{
     }
     
     public void mouseEnterConfirmDetails(){
-        getConfirmDetails().setBackground(Color.LIGHT_GRAY);
+        getConfirmDetails().setBackground(Color.GREEN);
     }
     
     public void mouseExitConfirmDetails(){
@@ -490,7 +490,7 @@ public class GuestFormMenu extends JFrame{
     }
     
     public void mouseEnterResetDetails() {
-        getResetDetails().setBackground(Color.LIGHT_GRAY);
+        getResetDetails().setBackground(Color.RED);
     }
 
     public void mouseExitResetDetails() {

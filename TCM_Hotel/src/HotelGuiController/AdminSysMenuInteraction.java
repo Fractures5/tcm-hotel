@@ -9,6 +9,8 @@ import HotelGuiView.AdminSysMenu;
 import HotelGuiView.WelcomeAppGuiMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -69,6 +71,18 @@ public class AdminSysMenuInteraction {
                 handleViewDatesBooked();
             }
         });
+        
+        viewAdminSystem.getMainMenuReturnButton().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                EnterMouseHoverMainMenuReturnButton();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent evt) {
+                ExitMouseHoverMainMenuReturnButton();
+            }
+        });
     }
     
     public void handleViewGuests(){
@@ -106,5 +120,15 @@ public class AdminSysMenuInteraction {
         WelcomeAppGuiMenu accessMainMenu = new WelcomeAppGuiMenu();
         WelcomeAppGuiInteraction mainMenuControl = new WelcomeAppGuiInteraction(accessMainMenu);
         viewAdminSystem.returnToMain();
+    }
+    
+    public void EnterMouseHoverMainMenuReturnButton()
+    {
+        viewAdminSystem.mouseEnterHoverLoginButton();
+    }
+    
+    public void ExitMouseHoverMainMenuReturnButton()
+    {
+        viewAdminSystem.mouseExitHoverLoginButton();
     }
 }

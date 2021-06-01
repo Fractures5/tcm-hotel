@@ -212,7 +212,7 @@ public class BookingCartMenu extends JFrame
     
     public void mouseEnterHomeHover()
     {
-        getHomeButton().setBackground(Color.GREEN);
+        getHomeButton().setBackground(Color.RED);
     }
     
     public void mouseExitHomeHover()
@@ -228,5 +228,10 @@ public class BookingCartMenu extends JFrame
     public void mouseExitNextHover()
     {
         getProceedButton().setBackground(UIManager.getColor("control"));
+    }
+    
+    public void confirmLeaveBooking() 
+    {
+        JOptionPane.showMessageDialog(null, "You have clicked to return to the main menu. Now returning...", "Returning to main menu!", JOptionPane.WARNING_MESSAGE);
     }
 }
