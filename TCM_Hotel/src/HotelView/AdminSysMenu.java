@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package HotelView;
 
-import hotelDB.DBManager;
-import hotelDB.HotelProductDB;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -52,7 +50,7 @@ import tcm.hotel.ViewRecords;
  *
  * @author Anuk
  */
-public class AdminSysMenuView extends JFrame{
+public class AdminSysMenu extends JFrame{
     
     private JSplitPane splitPane;
     
@@ -139,7 +137,7 @@ public class AdminSysMenuView extends JFrame{
     }
     
     
-    public AdminSysMenuView() throws SQLException{
+    public AdminSysMenu() throws SQLException{
         
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();

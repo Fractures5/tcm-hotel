@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package HotelView;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -39,7 +39,7 @@ import tcm.hotel.GuestGUI;
  *
  * @author Anuk
  */
-public class GuestView extends JFrame{
+public class GuestFormMenu extends JFrame{
     
     private GuestForm form;
     
@@ -195,7 +195,7 @@ public class GuestView extends JFrame{
         return resetDetails;
     }
     
-    public GuestView(){
+    public GuestFormMenu(){
         
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
@@ -447,7 +447,7 @@ public class GuestView extends JFrame{
             try {
                 FileInputOutput.writeGuestToGuestsFile(guestRecords);
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(GuestView.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GuestFormMenu.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else if(validFName == false || validLName == false || validAge == false || validPhoneNumber == false || validEmail == false || validAccountNumber == false ){

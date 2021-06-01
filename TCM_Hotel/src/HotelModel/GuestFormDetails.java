@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package HotelModel;
 
 import java.util.ArrayList;
 import tcm.hotel.Guest;
@@ -12,7 +12,7 @@ import tcm.hotel.Guest;
  *
  * @author Anuk
  */
-public class GuestModel {
+public class GuestFormDetails {
     
     private String guestFirstName;
     private String guestLastName;
@@ -32,7 +32,7 @@ public class GuestModel {
         this.hotelGuest = hotelGuest;
     }
     
-    public GuestModel(){
+    public GuestFormDetails(){
         this.guestFirstName = guestFirstName;
         this.guestLastName = guestLastName;
         this.guestAge = guestAge;

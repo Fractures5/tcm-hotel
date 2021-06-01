@@ -5,21 +5,21 @@
  */
 package tcm.hotel;
 
-import Controller.AdminFormController;
-import Controller.AdminSysMenuController;
+import HotelController.AdminFormInteraction;
+import HotelController.AdminSysMenuInteraction;
 import Controller.BookDatesInteraction;
-import Controller.LoginController;
-import Controller.GuestController;
-import Model.LoginModel;
-import Model.AdminFormModel;
-import Model.AdminSysMenuModel;
-import Model.GuestModel;
-import Model.HotelBookingDates;
-import View.LoginView;
-import View.AdminFormView;
-import View.AdminSysMenuView;
-import View.GuestView;
-import View.HotelDatesMenu;
+import HotelController.LoginInteraction;
+import HotelController.GuestFormInteraction;
+import HotelModel.LoginModel;
+import HotelModel.AdminFormDetails;
+import HotelModel.AdminSysMenuModel;
+import HotelModel.GuestFormDetails;
+import HotelModel.HotelBookingDates;
+import HotelView.LoginMenu;
+import HotelView.AdminFormMenu;
+import HotelView.AdminSysMenu;
+import HotelView.GuestFormMenu;
+import HotelView.HotelDatesMenu;
 import hotelDB.DBManager;
 import hotelDB.HotelProductDB;
 import java.awt.CardLayout;
@@ -53,28 +53,28 @@ public class DriverMVC {
         hotelMenuDB.createHFeaturesTable();
         hotelMenuDB.closeConnection();
         
-//        AdminFormModel modelAdmin = new AdminFormModel();
-//        AdminFormView viewAdmin = new AdminFormView();
-//        AdminFormController controllerAdmin = new AdminFormController(modelAdmin, viewAdmin);
+//        AdminFormDetails modelAdmin = new AdminFormDetails();
+//        AdminFormMenu viewAdmin = new AdminFormMenu();
+//        AdminFormInteraction controllerAdmin = new AdminFormInteraction(modelAdmin, viewAdmin);
             
 //        LoginModel modelLogin = new LoginModel();
-//        LoginView viewLogin = new LoginView();
-//        LoginController controllerLogin = new LoginController(modelLogin, viewLogin);
+//        LoginMenu viewLogin = new LoginMenu();
+//        LoginInteraction controllerLogin = new LoginInteraction(modelLogin, viewLogin);
 
 //        HotelBookingDates datesModel = new HotelBookingDates();
 //        HotelDatesMenu datesView = new HotelDatesMenu();
 //        BookDatesInteraction selectDates = new BookDatesInteraction(datesModel, datesView);
         
-//        GuestModel modelGuest = new GuestModel();
-//        GuestView viewGuest = new GuestView();
-//        GuestController controllerGuest = new GuestController(modelGuest, viewGuest);
+//        GuestFormDetails modelGuest = new GuestFormDetails();
+//        GuestFormMenu viewGuest = new GuestFormMenu();
+//        GuestFormInteraction controllerGuest = new GuestFormInteraction(modelGuest, viewGuest);
 //        viewGuest.setVisible(true);
 //        viewAdmin.setVisible(true);
 //        viewLogin.setVisible(true);
 
         AdminSysMenuModel modelAdminSystem = new AdminSysMenuModel();
-        AdminSysMenuView viewAdminSystem = new AdminSysMenuView();
-        AdminSysMenuController controllerAdminSys = new AdminSysMenuController(modelAdminSystem, viewAdminSystem);
+        AdminSysMenu viewAdminSystem = new AdminSysMenu();
+        AdminSysMenuInteraction controllerAdminSys = new AdminSysMenuInteraction(modelAdminSystem, viewAdminSystem);
         viewAdminSystem.setVisible(true);
     }
 }

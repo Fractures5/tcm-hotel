@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package HotelView;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -26,7 +26,7 @@ import javax.swing.border.LineBorder;
  *
  * @author Anuk
  */
-public class AdminFormView extends JFrame {
+public class AdminFormMenu extends JFrame {
     
     private JComboBox jobTitleList;
 
@@ -131,7 +131,7 @@ public class AdminFormView extends JFrame {
         return resetAdminDetails;
     }
 
-    public AdminFormView() {
+    public AdminFormMenu() {
         
         
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -177,8 +177,6 @@ public class AdminFormView extends JFrame {
         String[] jobTitleStrings = {"CEO", "Manager", "Desk Staff", "Network Staff", "Clerk", "Supervisor", "Senior Staff"};
         jobTitleList = new JComboBox(jobTitleStrings);
         jobTitleList.setBounds(500, 145, 200, 30);
-//        adminJobTitleField = new JTextField("", 30);
-//        adminJobTitleField.setBounds(500, 145, 200, 30);
         
         phoneNumber = new JLabel("Administrator Phone Number: ");
         phoneNumber.setBounds(260, 225, 300, 30);
@@ -199,7 +197,6 @@ public class AdminFormView extends JFrame {
         centrePanel.add(adminLNameField);
         centrePanel.add(staffTitle);
         centrePanel.add(jobTitleList);
-        //centrePanel.add(adminJobTitleField);
         centrePanel.add(phoneNumber);
         centrePanel.add(adminPhoneNumField);
         centrePanel.add(emailAddress);
@@ -235,7 +232,6 @@ public class AdminFormView extends JFrame {
         inputFirstName = adminFNameField.getText();
         inputLastName = adminLNameField.getText();
         inputJobTitle = (String) jobTitleList.getSelectedItem();
-        //inputJobTitle = adminJobTitleField.getText();
         inputEmail = adminEmailField.getText();
         
         if (inputFirstName.matches("[A-Za-z]+")) {
@@ -295,13 +291,11 @@ public class AdminFormView extends JFrame {
             String empty = "";
             adminFNameField.setText(empty);
             adminLNameField.setText(empty);
-            //adminJobTitleField.setText(empty);
             adminPhoneNumField.setText(empty);
             adminEmailField.setText(empty);
         } else if (resetReply == JOptionPane.NO_OPTION) {
             adminFNameField.setText(inputFirstName);
             adminLNameField.setText(inputLastName);
-            //adminJobTitleField.setText(inputJobTitle);
             adminEmailField.setText(inputEmail);
         }
         

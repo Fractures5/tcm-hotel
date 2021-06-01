@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package HotelView;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -27,7 +27,7 @@ import javax.swing.border.LineBorder;
  *
  * @author Anuk
  */
-public class LoginView extends JFrame{
+public class LoginMenu extends JFrame{
     
     private String correctSystemPassword;
     private String inputSystemPassword;
@@ -84,7 +84,7 @@ public class LoginView extends JFrame{
         return showInvalidPasswordError;
     }
     
-    public LoginView(){
+    public LoginMenu(){
         
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();

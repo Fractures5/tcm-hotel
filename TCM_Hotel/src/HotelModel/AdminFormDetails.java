@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package HotelModel;
 
 /**
  *
  * @author Anuk
  */
-public class AdminFormModel {
+public class AdminFormDetails {
 
     private String adminFirstName;
     private String adminLastName;
@@ -17,7 +17,7 @@ public class AdminFormModel {
     private long adminPhoneNumber;
     private String adminEmailAddress;
 
-    public AdminFormModel() {
+    public AdminFormDetails() {
         this.adminFirstName = adminFirstName;
         this.adminLastName = adminLastName;
         this.adminJobTitle = adminJobTitle;

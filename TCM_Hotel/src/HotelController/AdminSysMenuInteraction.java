@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package HotelController;
 
-import Model.AdminSysMenuModel;
-import View.AdminSysMenuView;
+import HotelModel.AdminSysMenuModel;
+import HotelView.AdminSysMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,12 +14,12 @@ import java.awt.event.ActionListener;
  *
  * @author Anuk
  */
-public class AdminSysMenuController {
+public class AdminSysMenuInteraction {
     
     AdminSysMenuModel modelAdminSystem;
-    AdminSysMenuView viewAdminSystem;
+    AdminSysMenu viewAdminSystem;
     
-    public AdminSysMenuController(AdminSysMenuModel modelAdminSystem, AdminSysMenuView viewAdminSystem){
+    public AdminSysMenuInteraction(AdminSysMenuModel modelAdminSystem, AdminSysMenu viewAdminSystem){
         
         this.modelAdminSystem = modelAdminSystem;
         this.viewAdminSystem = viewAdminSystem;

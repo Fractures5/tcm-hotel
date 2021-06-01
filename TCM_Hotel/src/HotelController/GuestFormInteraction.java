@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package HotelController;
 
-import Model.GuestModel;
-import View.GuestView;
+import HotelModel.GuestFormDetails;
+import HotelView.GuestFormMenu;
 import hotelDB.DBManager;
 import hotelDB.HotelProductDB;
 import java.awt.event.ActionListener;
@@ -30,17 +30,16 @@ import tcm.hotel.GuestsBookingCart;
  *
  * @author Anuk
  */
-public class GuestController{
+public class GuestFormInteraction{
     
-    GuestModel modelGuest;
-    GuestView viewGuest;
+    GuestFormDetails detailsGuestForm;
+    GuestFormMenu menuGuestForm;
     
-    //HotelProductDB db;
     private GuestForm guestForm = new GuestForm();
     
-    public GuestController(GuestModel modelGuest, GuestView viewGuest){
-        this.modelGuest = modelGuest;
-        this.viewGuest = viewGuest;
+    public GuestFormInteraction(GuestFormDetails modelGuest, GuestFormMenu viewGuest){
+        this.detailsGuestForm = modelGuest;
+        this.menuGuestForm = viewGuest;
         
         viewGuest.getConfirmDetails().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -88,32 +87,32 @@ public class GuestController{
     
     public void handleConfirmDetailsClick() {
         
-        viewGuest.DetailsConfirmation();
+        menuGuestForm.DetailsConfirmation();
         
-        if (viewGuest.getShowFNameError() == true){
-            viewGuest.displayFNameError();
-        }
-        
-        if (viewGuest.getShowLNameError() == true){
-            viewGuest.displayLNameError();
+        if (menuGuestForm.getShowFNameError() == true){
+            menuGuestForm.displayFNameError();
         }
         
-        if (viewGuest.getShowAgeError() == true){
-            viewGuest.displayAgeError();
-        }
-        if (viewGuest.getShowPhoneNumberError()== true){
-            viewGuest.displayPhoneNumberError();
-        }
-        if (viewGuest.getShowEmailAddressError() == true){
-            viewGuest.displayEmailAddressError();
-        }
-        if (viewGuest.getShowAccNumberError()== true){
-            viewGuest.displayAccNumError();
+        if (menuGuestForm.getShowLNameError() == true){
+            menuGuestForm.displayLNameError();
         }
         
-        if (viewGuest.getValidGuest() == true){
+        if (menuGuestForm.getShowAgeError() == true){
+            menuGuestForm.displayAgeError();
+        }
+        if (menuGuestForm.getShowPhoneNumberError()== true){
+            menuGuestForm.displayPhoneNumberError();
+        }
+        if (menuGuestForm.getShowEmailAddressError() == true){
+            menuGuestForm.displayEmailAddressError();
+        }
+        if (menuGuestForm.getShowAccNumberError()== true){
+            menuGuestForm.displayAccNumError();
+        }
+        
+        if (menuGuestForm.getValidGuest() == true){
             
-            viewGuest.setVisible(false);
+            menuGuestForm.setVisible(false);
             
             ArrayList<GuestsBookingCart> datesBooked = new ArrayList<GuestsBookingCart>();
             datesBooked = BookDatesInteraction.guestBookingDates();
@@ -130,64 +129,61 @@ public class GuestController{
             ArrayList<GuestsBookingCart> featuresBooked = new ArrayList<GuestsBookingCart>();
             featuresBooked = FeaturesMenuInteraction.guestFeaturesBooked();
             
-            modelGuest.setGuestFirstName(viewGuest.getfNameField());
-            modelGuest.setGuestLastName(viewGuest.getlNameField());
-            modelGuest.setGuestAge(viewGuest.getAgeField());
-            modelGuest.setGuestPhoneNumber(viewGuest.getPhoneNumField());
-            modelGuest.setGuestEmail(viewGuest.getEmailField());
-            modelGuest.setGuestAccountNumber(viewGuest.getAccNumField());
-            modelGuest.setGuestAccountPin(viewGuest.getAccPinField());
+            detailsGuestForm.setGuestFirstName(menuGuestForm.getfNameField());
+            detailsGuestForm.setGuestLastName(menuGuestForm.getlNameField());
+            detailsGuestForm.setGuestAge(menuGuestForm.getAgeField());
+            detailsGuestForm.setGuestPhoneNumber(menuGuestForm.getPhoneNumField());
+            detailsGuestForm.setGuestEmail(menuGuestForm.getEmailField());
+            detailsGuestForm.setGuestAccountNumber(menuGuestForm.getAccNumField());
+            detailsGuestForm.setGuestAccountPin(menuGuestForm.getAccPinField());
             
             HotelProductDB productDB = new HotelProductDB();
             DBManager dbManage = new DBManager();
             CalculateCosts guestCosts = new CalculateCosts();
-            productDB.registerGuest(modelGuest, guestCosts);
-            productDB.dbAddDatesBooked(modelGuest, locationBooked, datesBooked);
-            productDB.dbAddLocationsBooked(modelGuest, locationBooked);
-            productDB.dbAddRoomsBooked(modelGuest, roomsBooked);
-            productDB.dbAddGuestTypeBooked(modelGuest, guestsTypesBooked);
-            productDB.dbAddFeaturesBooked(modelGuest, featuresBooked);
-            
-            
-            
+            productDB.registerGuest(detailsGuestForm, guestCosts);
+            productDB.dbAddDatesBooked(detailsGuestForm, locationBooked, datesBooked);
+            productDB.dbAddLocationsBooked(detailsGuestForm, locationBooked);
+            productDB.dbAddRoomsBooked(detailsGuestForm, roomsBooked);
+            productDB.dbAddGuestTypeBooked(detailsGuestForm, guestsTypesBooked);
+            productDB.dbAddFeaturesBooked(detailsGuestForm, featuresBooked);
         }
     }
 
     public void handleResetDetailsClick(){
         
-        viewGuest.DetailsReset();
+        menuGuestForm.DetailsReset();
 
     }
     
     public void mouseEnteredConfirmDetails(){
         
-        viewGuest.mouseEnterConfirmDetails();
+        menuGuestForm.mouseEnterConfirmDetails();
         
     }
     
     public void mouseExitedConfirmDetails(){
         
-        viewGuest.mouseExitConfirmDetails();
+        menuGuestForm.mouseExitConfirmDetails();
         
     }
     
     public void mouseEnteredResetDetails() {
 
-        viewGuest.mouseEnterResetDetails();
+        menuGuestForm.mouseEnterResetDetails();
 
     }
 
     public void mouseExitedResetDetails() {
         
-        viewGuest.mouseExitResetDetails();
+        menuGuestForm.mouseExitResetDetails();
     }
     
     public void handleShowAccPinClick(){
-        if(viewGuest.getShowAccPin().isSelected()){
-            viewGuest.toggleShowAccPin();
+        if(menuGuestForm.getShowAccPin().isSelected()){
+            menuGuestForm.toggleShowAccPin();
         }
         else{
-            viewGuest.toggleHideAccPin();
+            menuGuestForm.toggleHideAccPin();
         }
     }
 }
