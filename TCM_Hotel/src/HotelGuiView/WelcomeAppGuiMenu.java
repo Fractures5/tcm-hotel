@@ -20,7 +20,7 @@ import javax.swing.border.LineBorder;
  * @author faaris
  */
 
-public class WelcomeAppGuiView extends JFrame
+public class WelcomeAppGuiMenu extends JFrame
 {   
     private JPanel topPanel;
     private JPanel middlePanel;
@@ -49,7 +49,7 @@ public class WelcomeAppGuiView extends JFrame
     private int i;
     
     
-    public WelcomeAppGuiView()
+    public WelcomeAppGuiMenu()
     {   
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();

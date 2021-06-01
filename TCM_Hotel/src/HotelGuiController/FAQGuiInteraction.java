@@ -5,8 +5,8 @@
  */
 package HotelGuiController;
 
-import HotelGuiView.FAQGuiView;
-import HotelGuiView.WelcomeAppGuiView;
+import HotelGuiView.FAQGuiMenu;
+import HotelGuiView.WelcomeAppGuiMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -15,13 +15,13 @@ import java.awt.event.MouseAdapter;
  *
  * @author faari
  */
-public class FAQGuiController 
+public class FAQGuiInteraction 
 {
-    FAQGuiView faqClass;
-    WelcomeAppGuiView accessMainMenu;
-    WelcomeAppGuiController mainMenuControl;
+    FAQGuiMenu faqClass;
+    WelcomeAppGuiMenu accessMainMenu;
+    WelcomeAppGuiInteraction mainMenuControl;
     
-    public FAQGuiController(FAQGuiView faqClass)
+    public FAQGuiInteraction(FAQGuiMenu faqClass)
     {
         this.faqClass = faqClass;
         
@@ -47,8 +47,8 @@ public class FAQGuiController
     
     public void ClickBackButton()
     {
-        accessMainMenu = new WelcomeAppGuiView();
-        mainMenuControl = new WelcomeAppGuiController(accessMainMenu);
+        accessMainMenu = new WelcomeAppGuiMenu();
+        mainMenuControl = new WelcomeAppGuiInteraction(accessMainMenu);
         faqClass.returnToMain();
     }
     

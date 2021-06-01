@@ -1,8 +1,8 @@
 package HotelGuiController;
 
-import HotelGuiView.AboutUsGuiView;
-import HotelGuiView.FAQGuiView;
-import HotelGuiView.WelcomeAppGuiView;
+import HotelGuiView.AboutUsGuiMenu;
+import HotelGuiView.FAQGuiMenu;
+import HotelGuiView.WelcomeAppGuiMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -16,17 +16,17 @@ import java.util.logging.Logger;
  * @author faaris
  */
 
-public class WelcomeAppGuiController 
+public class WelcomeAppGuiInteraction 
 {
-    WelcomeAppGuiView viewClass;
+    WelcomeAppGuiMenu viewClass;
     
-    FAQGuiView accessFAQ;
-    FAQGuiController faqControl;
+    FAQGuiMenu accessFAQ;
+    FAQGuiInteraction faqControl;
     
-    AboutUsGuiView accessAboutUs;
-    AboutUsGuiController aboutUsControl;
+    AboutUsGuiMenu accessAboutUs;
+    AboutUsGuiInteraction aboutUsControl;
     
-    public WelcomeAppGuiController(WelcomeAppGuiView viewClass)
+    public WelcomeAppGuiInteraction(WelcomeAppGuiMenu viewClass)
     {
         this.viewClass = viewClass;
         
@@ -78,7 +78,7 @@ public class WelcomeAppGuiController
                 } 
                 catch (IOException ex) 
                 {
-                    Logger.getLogger(WelcomeAppGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(WelcomeAppGuiInteraction.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -199,15 +199,15 @@ public class WelcomeAppGuiController
     
     public void ClickButtonTwo()
     {
-        accessFAQ = new FAQGuiView();
-        faqControl = new FAQGuiController(accessFAQ);
+        accessFAQ = new FAQGuiMenu();
+        faqControl = new FAQGuiInteraction(accessFAQ);
         viewClass.enterFAQView();
     }
     
     public void ClickButtonThree() throws IOException 
     {
-        accessAboutUs = new AboutUsGuiView();
-        aboutUsControl = new AboutUsGuiController(accessAboutUs);
+        accessAboutUs = new AboutUsGuiMenu();
+        aboutUsControl = new AboutUsGuiInteraction(accessAboutUs);
         viewClass.enterAboutUsView();
     }
     

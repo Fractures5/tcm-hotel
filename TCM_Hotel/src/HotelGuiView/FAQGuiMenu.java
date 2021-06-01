@@ -20,7 +20,7 @@ import javax.swing.UIManager;
  * @author faari
  */
 
-public class FAQGuiView extends JFrame
+public class FAQGuiMenu extends JFrame
 {
     private JPanel topPanel;
     private JPanel middlePanel;
@@ -33,7 +33,7 @@ public class FAQGuiView extends JFrame
     
     private JLabel FAQLabel; 
     
-    public FAQGuiView()
+    public FAQGuiMenu()
     {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();

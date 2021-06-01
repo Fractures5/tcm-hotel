@@ -26,7 +26,7 @@ import javax.swing.UIManager;
  *
  * @author faari
  */
-public class AboutUsGuiView extends JFrame
+public class AboutUsGuiMenu extends JFrame
 {
     private JPanel topPanel;
     private JPanel middlePanel;
@@ -47,7 +47,7 @@ public class AboutUsGuiView extends JFrame
             
     private JButton returnButton;
     
-    public AboutUsGuiView () throws IOException
+    public AboutUsGuiMenu () throws IOException
     {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();

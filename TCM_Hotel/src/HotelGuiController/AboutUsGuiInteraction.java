@@ -1,7 +1,7 @@
 package HotelGuiController;
 
-import HotelGuiView.AboutUsGuiView;
-import HotelGuiView.WelcomeAppGuiView;
+import HotelGuiView.AboutUsGuiMenu;
+import HotelGuiView.WelcomeAppGuiMenu;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,14 +17,14 @@ import java.util.logging.Logger;
  *
  * @author faari
  */
-public class AboutUsGuiController 
+public class AboutUsGuiInteraction 
 {
-    AboutUsGuiView aboutUsClass;
+    AboutUsGuiMenu aboutUsClass;
     
-    WelcomeAppGuiView accessMainMenu;
-    WelcomeAppGuiController mainMenuControl;
+    WelcomeAppGuiMenu accessMainMenu;
+    WelcomeAppGuiInteraction mainMenuControl;
     
-    public AboutUsGuiController(AboutUsGuiView aboutUsClass)
+    public AboutUsGuiInteraction(AboutUsGuiMenu aboutUsClass)
     {
         this.aboutUsClass = aboutUsClass;
         
@@ -61,11 +61,11 @@ public class AboutUsGuiController
                 } 
                 catch (URISyntaxException ex) 
                 {
-                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(AboutUsGuiInteraction.class.getName()).log(Level.SEVERE, null, ex);
                 } 
                 catch (IOException ex) 
                 {
-                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(AboutUsGuiInteraction.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -80,11 +80,11 @@ public class AboutUsGuiController
                 } 
                 catch (URISyntaxException ex)
                 {
-                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(AboutUsGuiInteraction.class.getName()).log(Level.SEVERE, null, ex);
                 } 
                 catch (IOException ex) 
                 {
-                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(AboutUsGuiInteraction.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -99,11 +99,11 @@ public class AboutUsGuiController
                 } 
                 catch (URISyntaxException ex)
                 {
-                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(AboutUsGuiInteraction.class.getName()).log(Level.SEVERE, null, ex);
                 } 
                 catch (IOException ex)
                 {
-                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(AboutUsGuiInteraction.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -111,8 +111,8 @@ public class AboutUsGuiController
     
     public void ClickReturnButton() 
     {
-        accessMainMenu = new WelcomeAppGuiView();
-        mainMenuControl = new WelcomeAppGuiController(accessMainMenu);
+        accessMainMenu = new WelcomeAppGuiMenu();
+        mainMenuControl = new WelcomeAppGuiInteraction(accessMainMenu);
         aboutUsClass.returnToMainMenu();
     }
 
