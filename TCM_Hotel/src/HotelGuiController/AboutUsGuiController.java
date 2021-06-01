@@ -7,10 +7,16 @@ package HotelGuiController;
 
 import HotelGuiView.AboutUsGuiView;
 import HotelGuiView.WelcomeAppGuiView;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -42,6 +48,44 @@ public class AboutUsGuiController
             @Override
             public void mouseExited(MouseEvent evt) {
                 ExitMouseHoverReturnButton();
+            }
+        });
+        
+        aboutUsClass.getLabel1().addMouseListener(new MouseAdapter()
+        {
+            public void mouseClicked(MouseEvent e)
+            {
+                try {
+                    Desktop.getDesktop().browse(new URI("mailto:tdv2188@autuni.ac.nz"));
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        aboutUsClass.getLabel2().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("mailto:xdx4418@autuni.ac.nz"));
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        aboutUsClass.getLabel3().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("mailto:vwv9667@autuni.ac.nz"));
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(AboutUsGuiController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

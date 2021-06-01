@@ -7,6 +7,7 @@ package HotelGuiView;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
@@ -48,7 +49,7 @@ public class AboutUsGuiView extends JFrame
     private BufferedImage pic2;
     private BufferedImage pic3;
     
-    private JTextArea AboutUsField;
+    private JTextArea aboutUsField;
     private JScrollPane scrollPane;
             
     private JButton returnButton;
@@ -64,14 +65,15 @@ public class AboutUsGuiView extends JFrame
         int frameWidth = screenWidth / 2;
         int frameHeight = screenHeight / 2;
 
-        this.setSize(frameWidth, frameHeight + 350);
+        this.setSize(frameWidth, frameHeight + 160);
         this.setResizable(false);
         this.setLocation((dim.width / 2 - this.getSize().width / 2), (dim.height / 2 - this.getSize().height / 2));
 
-        aboutUsFrame = new JFrame("About Us");
-        aboutUsFrame.setBounds(500, 200, 900, 700);
-        aboutUsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        aboutUsFrame.setVisible(true);
+        //aboutUsFrame = new JFrame("About Us");
+        this.setTitle("About Us");
+        //aboutUsFrame.setBounds(500, 200, 900, 700);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
         
         topPanel = new JPanel();
         topPanel.add(Box.createVerticalStrut(120));
@@ -81,6 +83,7 @@ public class AboutUsGuiView extends JFrame
         aboutUsLabel.setFont(new Font("Arial", Font.BOLD, 30));
         
         returnButton = new JButton("Return to the Main Menu");
+        returnButton.setPreferredSize(new Dimension(250, 70));
         returnButton.setForeground(Color.black);
         returnButton.setFont(new Font("Arial", Font.BOLD, 15));
         returnButton.setBounds(300, 400, 855, 400);
@@ -93,49 +96,52 @@ public class AboutUsGuiView extends JFrame
         pic1 = ImageIO.read(new File("test/1.jpg"));
         Image scaledImage1 = pic1.getScaledInstance(100, 100, 700);
         imageLabel1 = new JLabel(new ImageIcon(scaledImage1));
-        imageLabel1.setBounds(1000, 250, 200, 100);
+        imageLabel1.setBounds(100, 250, 200, 100);
+        imageLabel1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        //THE IMAGE IS A CLICKABLE IMAGE - IT WILL OPEN A LINK AND TAKE YOU THERE
         
         pic2 = ImageIO.read(new File("test/2.png"));
         Image scaledImage2 = pic2.getScaledInstance(100, 100, 700);
         imageLabel2 = new JLabel(new ImageIcon(scaledImage2));
         imageLabel2.setBounds(150, 25, 50, 50);
+        imageLabel2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         
         pic3 = ImageIO.read(new File("test/3.jpg"));
         Image scaledImage3 = pic3.getScaledInstance(100, 100, 700);
         imageLabel3 = new JLabel(new ImageIcon(scaledImage3));
         imageLabel3.setBounds(200, 25, 50, 50); 
+        imageLabel3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         
-        AboutUsField = new JTextArea();
-        AboutUsField.setFont(new Font("Aria", Font.BOLD, 15));
-        AboutUsField.append("****************************************************************Our Vision*****************************************************************\n");
-        AboutUsField.append("      We here as part of the management of TCM are a group of young developers looking to give more chances and\n");
-        AboutUsField.append("      oppurtunities for people to experiance the culture of the most iconic places in New Zealand. We created our     \n");
-        AboutUsField.append("      own hotel brand and set up locations all over NZ from Wellignton to Dunedin and back to Auckland - we aim  \n");
-        AboutUsField.append("      to provide cheap places for travellers and tourists alike to immerse themselves into the culture \n");
-        AboutUsField.append("      each region of New Zealand... And with Discounts, Special Features and low prices - ALL HERE AT TCM! \n");
-        AboutUsField.append("**********************************************************************************************************************************************\n\n");
-        AboutUsField.append("*************************************************************Contact Details***************************************************************\n");
-        AboutUsField.append("                                    If you have any further issues in regards to our company, feel free to contact us: \n");
-        AboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
-        AboutUsField.append("                                              Email: tdv2188@autuni.ac.nz (Faaris Khan)     - Founding Manager\n");
-        AboutUsField.append("                                                       Ph: (07) 2529423             Mob: +64 0217284610\n");
-        AboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
-        AboutUsField.append("                                              Email: xdx4418@autuni.ac.nz (Siddarath Kumar) - Co-Founding Manager\n");
-        AboutUsField.append("                                                       Ph: (09) 3218302             Mob: +64 0275209512\n");
-        AboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
-        AboutUsField.append("                                              Email: vwv9667@autuni.ac.nz (Anuk Silva)      - Co-Founding Manager\n");
-        AboutUsField.append("                                                       Ph: (08) 2157029             Mob: +64 0237180321\n");
-        AboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
-        AboutUsField.append("**********************************************************************************************************************************************");
+        aboutUsField = new JTextArea();
+        aboutUsField.setFont(new Font("Aria", Font.BOLD, 15));
+        aboutUsField.setText("                                                                    Click on one of the images to send us an email!\n\n");
+        aboutUsField.append("****************************************************************Our Vision*****************************************************************\n");
+        aboutUsField.append("      We here as part of the management of TCM are a group of young developers looking to give more chances and\n");
+        aboutUsField.append("      oppurtunities for people to experiance the culture of the most iconic places in New Zealand. We created our     \n");
+        aboutUsField.append("      own hotel brand and set up locations all over NZ from Wellignton to Dunedin and back to Auckland - we aim  \n");
+        aboutUsField.append("      to provide cheap places for travellers and tourists alike to immerse themselves into the culture \n");
+        aboutUsField.append("      each region of New Zealand... And with Discounts, Special Features and low prices - ALL HERE AT TCM! \n");
+        aboutUsField.append("**********************************************************************************************************************************************\n\n");
+        aboutUsField.append("*************************************************************Contact Details***************************************************************\n");
+        aboutUsField.append("                                    If you have any further issues in regards to our company, feel free to contact us: \n");
+        aboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
+        aboutUsField.append("                                              Email: tdv2188@autuni.ac.nz (Faaris Khan)     - Founding Manager\n");
+        aboutUsField.append("                                                       Ph: (07) 2529423             Mob: +64 0217284610\n");
+        aboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
+        aboutUsField.append("                                              Email: xdx4418@autuni.ac.nz (Siddarath Kumar) - Founding Manager\n");
+        aboutUsField.append("                                                       Ph: (09) 3218302             Mob: +64 0275209512\n");
+        aboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
+        aboutUsField.append("                                              Email: vwv9667@autuni.ac.nz (Anuk Silva)      - Founding Manager\n");
+        aboutUsField.append("                                                       Ph: (08) 2157029             Mob: +64 0237180321\n");
+        aboutUsField.append("                                              ---------------------------------------------------------------------------------------------\n");
+        aboutUsField.append("**********************************************************************************************************************************************");
 
-        AboutUsField.setBounds(15, 15, 855, 400);
-        AboutUsField.setEditable(false);
+        aboutUsField.setBounds(15, 15, 855, 400);
+        aboutUsField.setEditable(false);
         
-        scrollPane = new JScrollPane(AboutUsField, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPane = new JScrollPane(aboutUsField, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPane.setMinimumSize(new Dimension (855, 400));
         scrollPane.setPreferredSize(new Dimension (855, 300));     
-        
-        //CREATE LABEL WHICH WHEN CLICKED TAKES U TO A LINK
         
         topPanel.add(aboutUsLabel);
         middlePanel.add(imageLabel2);
@@ -144,12 +150,25 @@ public class AboutUsGuiView extends JFrame
         middlePanel.add(scrollPane);
         bottomPanel.add(returnButton);
         
-        aboutUsFrame.add(topPanel, BorderLayout.NORTH);
-        aboutUsFrame.add(middlePanel, BorderLayout.CENTER);
-        aboutUsFrame.add(bottomPanel, BorderLayout.SOUTH);
-        aboutUsFrame.setVisible(true);
+        this.add(topPanel, BorderLayout.NORTH);
+        this.add(middlePanel, BorderLayout.CENTER);
+        this.add(bottomPanel, BorderLayout.SOUTH);
+        this.setVisible(true);
     }
     
+    public JLabel getLabel1()
+    {
+        return imageLabel1;
+    }
+    
+    public JLabel getLabel2() {
+        return imageLabel2;
+    }
+    
+    public JLabel getLabel3() {
+        return imageLabel3;
+    }
+
     public JButton getReturnButton() {
         return returnButton;
     }
@@ -165,7 +184,7 @@ public class AboutUsGuiView extends JFrame
 
     public void returnToMainMenu() 
     {
-        aboutUsFrame.setVisible(false);
-        aboutUsFrame.dispose();
+        this.setVisible(false);
+        this.dispose();
     }
 }

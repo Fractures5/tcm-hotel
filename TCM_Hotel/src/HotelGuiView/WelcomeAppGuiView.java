@@ -67,13 +67,14 @@ public class WelcomeAppGuiView extends JFrame
         int frameWidth = screenWidth/2;
         int frameHeight = screenHeight/2;
         
-        this.setSize(frameWidth, frameHeight+350);
+        this.setSize(frameWidth, frameHeight+160);
         this.setResizable(false);
         this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         
-        welcomeFrame = new JFrame("TCM Hotel Online Booking System");
-        welcomeFrame.setBounds(500, 200, 900, 700);
-        welcomeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //welcomeFrame = new JFrame("TCM Hotel Online Booking System");
+        this.setTitle("TCM Hotel Online Booking System");
+        //welcomeFrame.setBounds(500, 200, 900, 700);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         topPanel = new JPanel();
         topPanel.add(Box.createVerticalStrut(120));
@@ -87,8 +88,8 @@ public class WelcomeAppGuiView extends JFrame
         
         subWelcomeLabel = new JLabel("Please choose one of the options below to continue...");
         subWelcomeLabel.setForeground(Color.black);
-        subWelcomeLabel.setFont(new Font("Arial", Font.BOLD, 15));
-        subWelcomeLabel.setBounds(250, 25, 500, 30);
+        subWelcomeLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        subWelcomeLabel.setBounds(225, 25, 600, 30);
         
         buttonOne = new JButton("1 - Make a Booking");
         buttonOne.setPreferredSize(new Dimension(250, 70));
@@ -167,9 +168,9 @@ public class WelcomeAppGuiView extends JFrame
         middlePanel.add(prev);
         middlePanel.add(next);
         
-        welcomeFrame.add(topPanel, BorderLayout.NORTH);
-        welcomeFrame.add(middlePanel, BorderLayout.CENTER);
-        welcomeFrame.setVisible(true);
+        this.add(topPanel, BorderLayout.NORTH);
+        this.add(middlePanel, BorderLayout.CENTER);
+        this.setVisible(true);
     }
     
     public JButton getPrevButton()
@@ -266,14 +267,14 @@ public class WelcomeAppGuiView extends JFrame
     
     public void enterFAQView()
     {
-        welcomeFrame.setVisible(false);
-        welcomeFrame.dispose();
+        this.setVisible(false);
+        this.dispose();
     }
     
     public void enterAboutUsView()
     {
-        welcomeFrame.setVisible(false);
-        welcomeFrame.dispose();
+        this.setVisible(false);
+        this.dispose();
     }
     
     public void enterAdminView()

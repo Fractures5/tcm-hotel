@@ -51,14 +51,15 @@ public class FAQGuiView extends JFrame
         int frameWidth = screenWidth / 2;
         int frameHeight = screenHeight / 2;
 
-        this.setSize(frameWidth, frameHeight + 350);
+        this.setSize(frameWidth, frameHeight + 160);
         this.setResizable(false);
         this.setLocation((dim.width / 2 - this.getSize().width / 2), (dim.height / 2 - this.getSize().height / 2));
         
-        FAQFrame = new JFrame("FAQ");
-        FAQFrame.setBounds(500, 200, 900, 700);
-        FAQFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        FAQFrame.setVisible(true);
+        //FAQFrame = new JFrame("FAQ");
+        this.setTitle("FAQ");
+        //FAQFrame.setBounds(500, 200, 900, 700);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
         
         topPanel = new JPanel();
         topPanel.add(Box.createVerticalStrut(120));
@@ -98,6 +99,7 @@ public class FAQGuiView extends JFrame
         FAQField.setEditable(false);
         
         backButton = new JButton("Return to the Main Menu");
+        backButton.setPreferredSize(new Dimension(250, 70));
         backButton.setForeground(Color.black);
         backButton.setFont(new Font("Arial", Font.BOLD, 15));
         backButton.setBounds(300, 400, 855, 400);
@@ -114,10 +116,10 @@ public class FAQGuiView extends JFrame
         topPanel.add(FAQLabel);
         middlePanel.add(fieldScroller);
         bottomPanel.add(backButton);
-        FAQFrame.add(topPanel, BorderLayout.NORTH);
-        FAQFrame.add(middlePanel, BorderLayout.CENTER);
-        FAQFrame.add(bottomPanel, BorderLayout.SOUTH);
-        FAQFrame.setVisible(true);
+        this.add(topPanel, BorderLayout.NORTH);
+        this.add(middlePanel, BorderLayout.CENTER);
+        this.add(bottomPanel, BorderLayout.SOUTH);
+        this.setVisible(true);
     }
     
     public JButton getBackButton()
@@ -135,7 +137,7 @@ public class FAQGuiView extends JFrame
     
     public void returnToMain()
     {
-        FAQFrame.setVisible(false);
-        FAQFrame.dispose();
+        this.setVisible(false);
+        this.dispose();
     }
 }
