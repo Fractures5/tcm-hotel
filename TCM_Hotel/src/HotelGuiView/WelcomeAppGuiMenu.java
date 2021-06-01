@@ -239,7 +239,8 @@ public class WelcomeAppGuiMenu extends JFrame
     
     public void enterBookingView()
     {
-        //Make call to Booking view class here
+        this.setVisible(false);
+        this.dispose();
     }
     
     public void enterFAQView()
@@ -256,6 +257,7 @@ public class WelcomeAppGuiMenu extends JFrame
     
     public void enterAdminView()
     {
-        //Make call to Admin view class here
+        this.setVisible(false);
+        this.dispose();
     }
 }
