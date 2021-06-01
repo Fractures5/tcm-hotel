@@ -1,8 +1,3 @@
-    /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package HotelGuiView;
 
 import java.awt.BorderLayout;
@@ -27,8 +22,6 @@ import javax.swing.UIManager;
 
 public class FAQGuiView extends JFrame
 {
-    private JFrame FAQFrame;
-    
     private JPanel topPanel;
     private JPanel middlePanel;
     private JPanel bottomPanel;
@@ -55,9 +48,7 @@ public class FAQGuiView extends JFrame
         this.setResizable(false);
         this.setLocation((dim.width / 2 - this.getSize().width / 2), (dim.height / 2 - this.getSize().height / 2));
         
-        //FAQFrame = new JFrame("FAQ");
         this.setTitle("FAQ");
-        //FAQFrame.setBounds(500, 200, 900, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         

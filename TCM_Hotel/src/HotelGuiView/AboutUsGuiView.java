@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package HotelGuiView;
 
 import java.awt.BorderLayout;
@@ -33,8 +28,6 @@ import javax.swing.UIManager;
  */
 public class AboutUsGuiView extends JFrame
 {
-    private JFrame aboutUsFrame;
-    
     private JPanel topPanel;
     private JPanel middlePanel;
     private JPanel bottomPanel;
@@ -69,9 +62,7 @@ public class AboutUsGuiView extends JFrame
         this.setResizable(false);
         this.setLocation((dim.width / 2 - this.getSize().width / 2), (dim.height / 2 - this.getSize().height / 2));
 
-        //aboutUsFrame = new JFrame("About Us");
         this.setTitle("About Us");
-        //aboutUsFrame.setBounds(500, 200, 900, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         
@@ -98,7 +89,6 @@ public class AboutUsGuiView extends JFrame
         imageLabel1 = new JLabel(new ImageIcon(scaledImage1));
         imageLabel1.setBounds(100, 250, 200, 100);
         imageLabel1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        //THE IMAGE IS A CLICKABLE IMAGE - IT WILL OPEN A LINK AND TAKE YOU THERE
         
         pic2 = ImageIO.read(new File("test/2.png"));
         Image scaledImage2 = pic2.getScaledInstance(100, 100, 700);

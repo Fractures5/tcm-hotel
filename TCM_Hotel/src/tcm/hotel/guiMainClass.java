@@ -1,24 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tcm.hotel;
 
 import HotelGuiController.WelcomeAppGuiController;
-import HotelGuiModel.WelcomeAppGuiModel;
 import HotelGuiView.WelcomeAppGuiView;
 
 /**
- *
+ * This is the driver class from where the program is ran from, 
+ * which includes the main method
  * @author faaris
  */
 
 public class GuiMainClass
 {
+    //Main method, which includes creates an object of the main menu view and controller class
     public static void main(String[] args) 
     {
-        WelcomeAppGuiModel modelClass = new WelcomeAppGuiModel();
         WelcomeAppGuiView viewClass = new WelcomeAppGuiView();
         WelcomeAppGuiController controllerClass = new WelcomeAppGuiController(viewClass);
     }

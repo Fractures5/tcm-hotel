@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package HotelGuiView;
 
 import javax.swing.*;
@@ -26,9 +21,7 @@ import javax.swing.border.LineBorder;
  */
 
 public class WelcomeAppGuiView extends JFrame
-{
-    private JFrame welcomeFrame;
-    
+{   
     private JPanel topPanel;
     private JPanel middlePanel;
 
@@ -71,9 +64,7 @@ public class WelcomeAppGuiView extends JFrame
         this.setResizable(false);
         this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         
-        //welcomeFrame = new JFrame("TCM Hotel Online Booking System");
         this.setTitle("TCM Hotel Online Booking System");
-        //welcomeFrame.setBounds(500, 200, 900, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         topPanel = new JPanel();
@@ -84,7 +75,6 @@ public class WelcomeAppGuiView extends JFrame
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 30));
         
         middlePanel = new JPanel(null);
-        //middlePanel.add(Box.createVerticalStrut(120));
         
         subWelcomeLabel = new JLabel("Please choose one of the options below to continue...");
         subWelcomeLabel.setForeground(Color.black);
@@ -114,27 +104,7 @@ public class WelcomeAppGuiView extends JFrame
         buttonFour.setFont(new Font("Arial", Font.BOLD, 20));
         buttonFour.setBorder(new LineBorder(Color.BLACK, 5));
         buttonFour.setBounds(75, 370, 250, 70);
-        
-        /*icon1 = new ImageIcon("test/hotel1.jpg");
-        icon2 = new ImageIcon("test/icon2.png");
-        icon3 = new ImageIcon("test/icon3.png");
-        icon4 = new ImageIcon("test/icon4.png");
-        
-        icon1Label = new JLabel("", JLabel.CENTER);
-        icon2Label = new JLabel("", JLabel.CENTER);
-        icon3Label = new JLabel("", JLabel.CENTER);
-        icon4Label = new JLabel("", JLabel.CENTER);
-        
-        add(icon1Label, BorderLayout.CENTER);
-        add(icon2Label, BorderLayout.CENTER);
-        add(icon3Label, BorderLayout.CENTER);
-        add(icon4Label, BorderLayout.CENTER);
-        
-        icon1Label.setBounds(25, 85, 50, 70);
-        icon2Label.setBounds(25, 85, 50, 70);
-        icon3Label.setBounds(25, 85, 50, 70);
-        icon4Label.setBounds(25, 85, 50, 70);*/
-        
+
         prev = new JButton("<<");
         next = new JButton(">>");
         slideshow = new ImageIcon[10];
@@ -157,13 +127,11 @@ public class WelcomeAppGuiView extends JFrame
         next.setBounds(625, 450, 50, 20);
 
         topPanel.add(welcomeLabel);
-
         middlePanel.add(subWelcomeLabel);
         middlePanel.add(buttonOne);
         middlePanel.add(buttonTwo);
         middlePanel.add(buttonThree);
         middlePanel.add(buttonFour);
-        
         middlePanel.add(images);
         middlePanel.add(prev);
         middlePanel.add(next);

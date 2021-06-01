@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package HotelGuiController;
 
 import HotelGuiView.AboutUsGuiView;
@@ -17,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * 
  * @author faaris
  */
 
@@ -30,11 +25,6 @@ public class WelcomeAppGuiController
     
     AboutUsGuiView accessAboutUs;
     AboutUsGuiController aboutUsControl;
-
-    //Will have a back button on both the FAQ and 
-    //About Us page, so will need to make an object of both those
-    //View classes and do the same thing of "hovering" and "clicking" 
-    //For that back button
     
     public WelcomeAppGuiController(WelcomeAppGuiView viewClass)
     {
@@ -156,9 +146,7 @@ public class WelcomeAppGuiController
             {
                 ExitMouseHoverButtonFour();
             }
-        });
-        
-        
+        });  
     }
     
     public void EnterMouseHoverButtonOne() 
