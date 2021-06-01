@@ -168,7 +168,7 @@ public class AboutUsGuiMenu extends JFrame
 
     public void mouseEnterHoverReturnButton() 
     {
-        getReturnButton().setBackground(Color.LIGHT_GRAY);
+        getReturnButton().setBackground(Color.RED);
     }
 
     public void mouseExitHoverReturnButton() 

@@ -46,6 +46,7 @@ import HotelEnums.LocationType;
 import HotelEnums.RoomType;
 import HotelDataFiles.ViewRecords;
 import HotelDatabase.HotelProductDB;
+import javax.swing.UIManager;
 
 /**
  *
@@ -502,6 +503,16 @@ public class AdminSysMenu extends JFrame{
     public JButton getMainMenuReturnButton() 
     {
         return mainMenuReturn;
+    }
+    
+    public void mouseEnterHoverLoginButton() 
+    {
+        getMainMenuReturnButton().setBackground(Color.RED);
+    }
+
+    public void mouseExitHoverLoginButton() 
+    {
+        getMainMenuReturnButton().setBackground(UIManager.getColor("control"));
     }
     
     public void returnToMain() 

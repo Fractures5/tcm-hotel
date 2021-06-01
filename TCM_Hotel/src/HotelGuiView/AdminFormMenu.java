@@ -216,7 +216,7 @@ public class AdminFormMenu extends JFrame {
         resetAdminDetails.setPreferredSize(new Dimension(170, 70));
         resetAdminDetails.setFont(new Font("Arial", Font.BOLD, 17));
         resetAdminDetails.setBorder(new LineBorder(Color.black, 4));
-        resetAdminDetails.setForeground(Color.red);
+        resetAdminDetails.setForeground(Color.black);
         
         
         buttonPanel.add(resetAdminDetails);
@@ -303,7 +303,7 @@ public class AdminFormMenu extends JFrame {
     }
     
     public void mouseEnterProceedToLogin() {
-        getProceedToLogin().setBackground(Color.LIGHT_GRAY);
+        getProceedToLogin().setBackground(Color.GREEN);
     }
 
     public void mouseExitProceedToLogin() {
@@ -311,7 +311,7 @@ public class AdminFormMenu extends JFrame {
     }
 
     public void mouseEnterResetAdminDetails() {
-        getResetAdminDetails().setBackground(Color.LIGHT_GRAY);
+        getResetAdminDetails().setBackground(Color.RED);
     }
 
     public void mouseExitResetAdminDetails() {

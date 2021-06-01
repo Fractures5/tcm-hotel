@@ -120,7 +120,7 @@ public class FAQGuiMenu extends JFrame
     
     public void mouseEnterHoverBackButton() 
     {
-        getBackButton().setBackground(Color.LIGHT_GRAY);
+        getBackButton().setBackground(Color.RED);
     }
 
     public void mouseExitHoverBackButton() 
