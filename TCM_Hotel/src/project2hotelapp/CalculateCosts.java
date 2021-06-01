@@ -9,7 +9,7 @@ import hotelControllers.FeaturesMenuInteraction;
 import hotelControllers.GuestsTypeInteraction;
 import hotelControllers.LocationMenuInteraction;
 import hotelControllers.RoomMenuInteraction;
-import java.util.ArrayList;
+import java.util.ArrayList; 
 
 /**
  * This class is used to calculate the total costs of the guests
