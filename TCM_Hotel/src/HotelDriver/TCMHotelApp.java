@@ -13,6 +13,8 @@ public class TCMHotelApp
 {
     public static void main(String[] args) 
     {
+        System.out.println("This is the administrator log - showing when connections are made, customers have been added, etc...");
+        System.out.println("-----------------------------------------------------------------------------------------------------\n");
         HotelProductDB hotelMenuDB = new HotelProductDB();
         hotelMenuDB.createHLocationTable();
         hotelMenuDB.createHRoomsTable();
