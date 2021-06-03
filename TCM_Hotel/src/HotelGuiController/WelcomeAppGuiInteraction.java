@@ -19,10 +19,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * 
- * @author faaris
+ * This is the class with controls the button presses, button hovers, and other
+ * interactions of the about us section.
+ * @author Faaris
  */
-
 public class WelcomeAppGuiInteraction 
 {
     WelcomeAppGuiMenu viewClass;
@@ -33,6 +33,13 @@ public class WelcomeAppGuiInteraction
     AboutUsGuiMenu accessAboutUs;
     AboutUsGuiInteraction aboutUsControl;
     
+    /**
+     * This is the default constructor of the main menu controller, which
+     * initializes the model class for the main menu, and uses it in action listener
+     * and mouse listener methods to enact the clicking and hovering methods of
+     * the buttons used in the main menu view class.
+     * @param viewClass Object of the main menu view class
+     */
     public WelcomeAppGuiInteraction(WelcomeAppGuiMenu viewClass)
     {
         this.viewClass = viewClass;
@@ -166,11 +173,19 @@ public class WelcomeAppGuiInteraction
         });  
     }
     
+    /**
+     * Calls the method from the about us class which executes entermousehover
+     * method
+     */
     public void EnterMouseHoverButtonOne() 
     {
         viewClass.mouseEnterHoverButtonOne();
     }
 
+    /**
+     * Calls the method from the about us class which executes exitmousehover
+     * method
+     */
     public void ExitMouseHoverButtonOne() 
     {
         viewClass.mouseExitHoverButtonOne();
@@ -205,7 +220,7 @@ public class WelcomeAppGuiInteraction
     {
         viewClass.mouseExitHoverButtonFour();
     }
-    
+   
     public void ClickButtonOne()
     {
         BookedHotelDates datesModel = new BookedHotelDates();
@@ -214,6 +229,11 @@ public class WelcomeAppGuiInteraction
         viewClass.enterBookingView();
     }
     
+    /**
+     * Creates an object of the FAQ view and controller class, and
+     * calls the method in the about us view class to dispose of this frame and
+     * open up the FAQ frame.
+     */
     public void ClickButtonTwo()
     {
         accessFAQ = new FAQGuiMenu();
@@ -230,12 +250,6 @@ public class WelcomeAppGuiInteraction
     
     public void ClickButtonFour() throws SQLException 
     { 
-        //LoginMenu viewLogin = new LoginMenu();
-        //AdminFormDetails adminLogin = new AdminFormDetails();
-        //AdminFormMenu menuForm = new AdminFormMenu();
-        
-        //LoginInteraction controllerLogin = new LoginInteraction(viewLogin, adminLogin, menuForm);
-        
         AdminFormDetails modelAdmin = new AdminFormDetails();
         AdminFormMenu viewAdmin = new AdminFormMenu();
         AdminFormInteraction controllerAdmin = new AdminFormInteraction(modelAdmin, viewAdmin);

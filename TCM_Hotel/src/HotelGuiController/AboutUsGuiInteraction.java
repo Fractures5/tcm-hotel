@@ -14,8 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author faari
+ * This is the class with controls the button presses, button hovers, and other
+ * interactions of the about us section.
+ * @author Faaris
  */
 public class AboutUsGuiInteraction 
 {
@@ -24,6 +25,13 @@ public class AboutUsGuiInteraction
     WelcomeAppGuiMenu accessMainMenu;
     WelcomeAppGuiInteraction mainMenuControl;
     
+    /**
+     * This is the default constructor of the about us controller, which
+     * initializes the model class for the about us, and uses it in action 
+     * listener and mouse listener methods to enact the clicking and hovering 
+     * methods of the buttons used in the about us view class.
+     * @param aboutUsClass 
+     */
     public AboutUsGuiInteraction(AboutUsGuiMenu aboutUsClass)
     {
         this.aboutUsClass = aboutUsClass;
@@ -109,6 +117,11 @@ public class AboutUsGuiInteraction
         });
     }
     
+    /**
+     * Creates an object of the main menu view and controller class,
+     * and calls the method in the about us view class to dispose of this frame
+     * and open up the main menu frame.
+     */
     public void ClickReturnButton() 
     {
         accessMainMenu = new WelcomeAppGuiMenu();
@@ -116,11 +129,19 @@ public class AboutUsGuiInteraction
         aboutUsClass.returnToMainMenu();
     }
 
+    /**
+     * Calls the method from the about us class which executes entermousehover
+     * method
+     */
     public void EnterMouseHoverReturnButton() 
     {
         aboutUsClass.mouseEnterHoverReturnButton();
     }
 
+    /**
+     * Calls the method from the about us class which executes exitmousehover 
+     * method
+     */
     public void ExitMouseHoverReturnButton() 
     {
         aboutUsClass.mouseExitHoverReturnButton();

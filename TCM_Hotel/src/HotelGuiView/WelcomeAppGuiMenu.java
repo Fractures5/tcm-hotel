@@ -16,8 +16,10 @@ import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 /**
- *
- * @author faaris
+ * This is the class which outputs the frame for the Main Menu, which shows the
+ * different buttons for the different sections the user can choose to click on,
+ * in addition to a slideshow.
+ * @author Faaris
  */
 
 public class WelcomeAppGuiMenu extends JFrame
@@ -48,7 +50,10 @@ public class WelcomeAppGuiMenu extends JFrame
     private JButton prev, next;
     private int i;
     
-    
+    /**
+     * This is the default constructor of the main menu, which initializes the
+     * panels, buttons, labels, etc for the main menu frame.
+     */
     public WelcomeAppGuiMenu()
     {   
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -141,6 +146,11 @@ public class WelcomeAppGuiMenu extends JFrame
         this.setVisible(true);
     }
     
+    /**
+     * This is a getter JButton method which returns the value of the prev
+     * button, the same concept applies to the other getter methods.
+     * @return
+     */
     public JButton getPrevButton()
     {
         return prev;
@@ -151,6 +161,15 @@ public class WelcomeAppGuiMenu extends JFrame
         return next;
     }
     
+    /**
+     * This method is activated through the controller class, where if the user
+     * tries to go past the first image on the slideshow, they'll recieve a pop
+     * out message saying you've reached the start, else if the user is anywhere
+     * else, the button will set the current image on the slideshow to the 
+     * previous one in the slideshow order. This same concept is applied to the
+     * next button, where it will say you have reached the end of the slideshow, 
+     * and so on.
+     */
     public void PrevButtonAction()
     {
         if (i == 0) 
@@ -182,11 +201,19 @@ public class WelcomeAppGuiMenu extends JFrame
         return buttonOne;
     }
     
+    /**
+     * This sets the hover color of the button for when the user hovers their
+     * cursor over the button.
+     */
     public void mouseEnterHoverButtonOne()
     {
         getButtonOne().setBackground(Color.LIGHT_GRAY);
     }
     
+    /**
+     * This reverts the hover color of the bottom to the default color once the
+     * user moves their cursor away from the button.
+     */
     public void mouseExitHoverButtonOne()
     {
         getButtonOne().setBackground(UIManager.getColor("control"));
@@ -237,6 +264,10 @@ public class WelcomeAppGuiMenu extends JFrame
         getButtonFour().setBackground(UIManager.getColor("control"));
     }    
     
+    /**
+     * This sets the visibility of this frame to false so it closes and disposes
+     * of it so it can be used later.
+     */
     public void enterBookingView()
     {
         this.setVisible(false);

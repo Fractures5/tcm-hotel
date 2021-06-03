@@ -23,8 +23,11 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 
 /**
- *
- * @author faari
+ * This is the class which outputs the GUI frame for the About Us section of
+ * the program, which includes a non-editable area of text giving information,
+ * and clickable images that once click will open up their email to send to the
+ * corresponding TCM member.
+ * @author Faaris
  */
 public class AboutUsGuiMenu extends JFrame
 {
@@ -47,6 +50,12 @@ public class AboutUsGuiMenu extends JFrame
             
     private JButton returnButton;
     
+    /**
+     * This is the default constructor which initializes and sets the values
+     * for the panels, buttons, areas of text, etc, which are then added to the
+     * frame.
+     * @throws IOException 
+     */
     public AboutUsGuiMenu () throws IOException
     {
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -146,6 +155,11 @@ public class AboutUsGuiMenu extends JFrame
         this.setVisible(true);
     }
     
+    /**
+     * Getter JLabel method which returns the value of an label, this concept
+     * applies to the other getters in the class.
+     * @return 
+     */
     public JLabel getLabel1()
     {
         return imageLabel1;
@@ -166,16 +180,28 @@ public class AboutUsGuiMenu extends JFrame
         return returnButton;
     }
 
+    /**
+     * This sets the hover color of the button for when the user hovers their 
+     *  cursor over the button.
+     */
     public void mouseEnterHoverReturnButton() 
     {
         getReturnButton().setBackground(Color.RED);
     }
 
+    /**
+     * This reverts the hover color of the bottom to the default color once the
+     * user moves their cursor away from the button.
+     */
     public void mouseExitHoverReturnButton() 
     {
         getReturnButton().setBackground(UIManager.getColor("control"));
     }
 
+    /**
+     * This sets the visibility of this frame to false so it closes
+     * and disposes of it so it can be used later.
+     */
     public void returnToMainMenu() 
     {
         this.setVisible(false);

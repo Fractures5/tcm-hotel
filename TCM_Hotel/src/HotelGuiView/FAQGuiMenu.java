@@ -16,8 +16,10 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 
 /**
- *
- * @author faari
+ * This is the class which outputs the GUI frame for the FAQ section of the 
+ * program, including a non-editable text area showing questions and answers
+ * based on the hotel.
+ * @author Faaris
  */
 
 public class FAQGuiMenu extends JFrame
@@ -33,6 +35,10 @@ public class FAQGuiMenu extends JFrame
     
     private JLabel FAQLabel; 
     
+    /**
+     * This is the default constructor of the FAQ section, which initializes the
+     * panels, buttons, labels, etc for the FAQ Frame. 
+     */
     public FAQGuiMenu()
     {
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -113,21 +119,38 @@ public class FAQGuiMenu extends JFrame
         this.setVisible(true);
     }
     
+    /**
+     * This is a getter JButton method which returns the value of the back button,
+     * the same concept applies to the other getter methods.
+     * @return 
+     */
     public JButton getBackButton()
     {
         return backButton;
     }
     
+    /**
+     * This sets the hover color of the button for when the user hovers their
+     * cursor over the button.
+     */
     public void mouseEnterHoverBackButton() 
     {
         getBackButton().setBackground(Color.RED);
     }
 
+    /**
+     * This reverts the hover color of the bottom to the default color once the
+     * user moves their cursor away from the button.
+     */
     public void mouseExitHoverBackButton() 
     {
         getBackButton().setBackground(UIManager.getColor("control"));
     }
     
+    /**
+     * This sets the visibility of this frame to false so it closes and disposes
+     * of it so it can be used later.
+     */
     public void returnToMain()
     {
         this.setVisible(false);

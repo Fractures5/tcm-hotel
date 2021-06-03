@@ -9,7 +9,6 @@ import HotelDatabase.HotelProductDB;
  * which includes the main method and objects of the welcome class.
  * @author faaris
  */ 
-
 public class TCMHotelApp
 {
     public static void main(String[] args) 
