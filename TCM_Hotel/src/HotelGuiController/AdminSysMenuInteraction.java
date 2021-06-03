@@ -124,11 +124,11 @@ public class AdminSysMenuInteraction {
     
     public void EnterMouseHoverMainMenuReturnButton()
     {
-        viewAdminSystem.mouseEnterHoverLoginButton();
+        viewAdminSystem.mouseEnterHoverMainMenuButton();
     }
     
     public void ExitMouseHoverMainMenuReturnButton()
     {
-        viewAdminSystem.mouseExitHoverLoginButton();
+        viewAdminSystem.mouseExitHoverMainMenuButton();
     }
 }

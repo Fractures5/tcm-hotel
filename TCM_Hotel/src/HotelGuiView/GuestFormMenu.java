@@ -35,6 +35,11 @@ import HotelDataFiles.Guest;
 import HotelDataFiles.GuestForm;
 
 /**
+ * This is a description of the GuestFormMenu View class. This View class will
+ * contain the constructor that when invoked it will initialize and define all
+ * the necessary Java GUI components for the Guest Form frame after the
+ * necessary items which make up a hotel booking has been chosen and the user
+ * has selected to proceed to checkout.
  *
  * @author Anuk
  */
@@ -179,13 +184,27 @@ public class GuestFormMenu extends JFrame{
         return accNumField.getText();
     }
 
+    /**
+     * The getAccPinField method will get the data stored in the field and
+     * return it as a String data type.
+     *
+     * @return new String(this.accPinField.getPassword()) this is the string
+     * which will be returned that will store the data fetched from the
+     * JPasswordField object.
+     * @author Anuk
+     */
     public String getAccPinField() {
-        //String accountPin;
-        //accountPin = (new String(this.accPinField.getPassword()));
-        //return accountPin;
         return new String(this.accPinField.getPassword());
     }
 
+    /**
+     * The getConfirmDetails getter method will return the value stored in the
+     * JButton object. The concept of this getter method can be applied to all
+     * other getter methods found in this class.
+     *
+     * @return confirmDetails stores the value stored in the JButton object.
+     * @author Anuk
+     */
     public JButton getConfirmDetails() {
         return confirmDetails;
     }
@@ -194,6 +213,15 @@ public class GuestFormMenu extends JFrame{
         return resetDetails;
     }
     
+    /**
+     * This is the constructor for the GuestFormMenu View class. This
+     * constructor when invoked, will display the frame of the Guest Form where
+     * the user will be prompted to enter valid details in the fields displayed.
+     * This constructor will be invoked once the user has chosen valid options
+     * for the booking interfaces.
+     *
+     * @author Anuk
+     */
     public GuestFormMenu(){
         
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -260,7 +288,6 @@ public class GuestFormMenu extends JFrame{
         paymentLabel.setForeground(Color.white);
         paymentLabel.setFont(new Font("Arial", Font.BOLD, 30));
         paymentHeaderPanel.add(paymentLabel);
-        //paymentHeaderPanel.setBounds(0, 355, 800, 100);
         
         accountNumber = new JLabel("Bank Account Number: ");
         accountNumber.setBounds(275, 475, 200, 100);
@@ -321,7 +348,15 @@ public class GuestFormMenu extends JFrame{
         this.setVisible(true);
     }
     
-    public void DetailsConfirmation(){
+    /**
+     * The detailsConfirmation method will check for the validity of the user
+     * input and set values to the defined boolean variables in regards to
+     * whether or not the entered data in the field contains an error and
+     * whether or not an error message should show.
+     *
+     * @author Anuk
+     */
+    public void detailsConfirmation(){
         
         inputFirstName = fNameField.getText().toLowerCase();
         inputLastName = lNameField.getText();
@@ -386,28 +421,13 @@ public class GuestFormMenu extends JFrame{
                 System.out.println("successful");
                 validAccountNumber = true;
                 showAccNumberError = false;
-                //finished = true;
             }
         
         boolean finished = false;
         while(iterator.hasNext() && finished == false){
             Map.Entry<String, String> entry = iterator.next();
-            
-            /*if ((!guestRecords.containsKey(inputAccountNumber))){
-                System.out.println("LKFJDSLKFJDSLKFJDSLJFDS");
-                System.out.println("successful");
-                validAccountNumber = true;
-                showAccNumberError = false;
-                finished = true;
-            }*/
-            /*if ((!entry.getKey().contains(inputAccountNumber))&&(!entry.getValue().equals(inputFirstName))){
-                System.out.println("successful");
-                validAccountNumber = true;
-                showAccNumberError = false;
-                finished = true;
-            }*/
+
             if ((entry.getKey().equals(inputAccountNumber)) && (entry.getValue().equals(inputFirstName))){
-            //if ((inputAccountNumber.equals(entry.getKey())) && (inputFirstName.equals(entry.getValue()))){
                 System.out.println("direct identical");
                 System.out.println("this record exists - guest may continue");
                 validAccountNumber = true;
@@ -420,22 +440,7 @@ public class GuestFormMenu extends JFrame{
                 validAccountNumber = false;
                 showAccNumberError = true;
             }
-            
-            /*if ((entry.getKey().contains(inputAccountNumber)) && (!entry.getValue().contains(inputFirstName))){
-                System.out.println("You have entered an existing account number but first name is different!");
-                validAccountNumber = false;
-                showAccNumberError = true;
-            }*/
         }
-        
-        /*if (guestRecords.containsKey(inputAccountNumber)) {
-            validAccountNumber = false;
-            showAccNumberError = true;
-            accNumField.setText("");
-        } else if (!guestRecords.containsKey(inputAccountNumber)) {
-            validAccountNumber = true;
-            showAccNumberError = false;
-        }*/
 
         System.out.println(inputFirstName + " " + inputLastName + " " + inputGuestAge + " " + inputPhoneNumber + " " + inputEmail + " " + inputAccountNumber + " " + inputAccountPin + " ");
         
@@ -454,11 +459,17 @@ public class GuestFormMenu extends JFrame{
             validGuest = false;
             System.out.println("***Guest Object will NOT be created***");
         }
-        
-        
     }      
     
-    public void DetailsReset(){
+    /**
+     * The detailsReset method will check for the user's reply to the show
+     * confirm dialog JOptionPane. If the user has chosen yes, the entered
+     * details in the guest form will be reset and the fields of the guest form
+     * will be cleared.
+     *
+     * @author Anuk
+     */
+    public void detailsReset(){
         
         int resetReply = JOptionPane.showConfirmDialog(null, "Resetting will clear information you have entered!", "Reset Details!", JOptionPane.ERROR_MESSAGE);
         if (resetReply == JOptionPane.YES_OPTION) {
@@ -473,18 +484,32 @@ public class GuestFormMenu extends JFrame{
         } else if (resetReply == JOptionPane.NO_OPTION) {
             fNameField.setText(inputFirstName);
             lNameField.setText(inputLastName);
-            //ageField.setText(Integer.toString());
-            //phoneNumField.setText(inputPhoneNumber);
             emailField.setText(inputEmail);
             accNumField.setText(inputAccountNumber);
             accPinField.setText(inputAccountPin);
         }
     }
     
+    /**
+     * The mouseEnterConfirmDetails method will change the background colour of
+     * the confirm details button if the mouse has entered the button. The
+     * concept of this method can be applied to other methods that incorporate
+     * the mouse enter button procedure.
+     *
+     * @author Anuk
+     */
     public void mouseEnterConfirmDetails(){
         getConfirmDetails().setBackground(Color.GREEN);
     }
     
+    /**
+     * The mouseExitConfirmDetails method will set the background colour of the
+     * confirm details button back to the default origin colour if the mouse has
+     * exited the button. The concept of this method can be applied to other
+     * methods that incorporate the mouse exit button procedure.
+     *
+     * @author Anuk
+     */
     public void mouseExitConfirmDetails(){
         getConfirmDetails().setBackground(UIManager.getColor("control"));
     }
@@ -497,6 +522,14 @@ public class GuestFormMenu extends JFrame{
         getResetDetails().setBackground(UIManager.getColor("control"));
     }
     
+    /**
+     * The displayFNameError method will display a JOptionPane prompting the
+     * user that they have entered incorrect input for the guest first name
+     * field. The concept of this method can be applied to other methods which
+     * display a JOptionPane to the user.
+     *
+     * @author Anuk
+     */
     public void displayFNameError(){
         JOptionPane.showMessageDialog(null, "Your First Name must only contain letters of the Alphabet!", "Invalid First Name Error!", JOptionPane.ERROR_MESSAGE);
     }
@@ -521,10 +554,24 @@ public class GuestFormMenu extends JFrame{
         JOptionPane.showMessageDialog(null, "You must enter your own Bank Account Number!", "Invalid Account Number Error!", JOptionPane.ERROR_MESSAGE);
     }
     
+    /**
+     * The toggleShowAccPin method, when invoked, will reveal all entered
+     * characters in the accPinField by changing all characters from asteriks to
+     * the actual characters pressed from the keyboard.
+     *
+     * @author Anuk
+     */
     public void toggleShowAccPin(){
         accPinField.setEchoChar(showAccPin.isSelected() ? '\u0000' : (Character) UIManager.get("PasswordField.ecoChar"));
     }
     
+    /**
+     * The toggleHideAccPin method, when invoked, will hide all entered
+     * characters in the accPinField by changing all characters from the actual
+     * characters pressed from the keyboard to asteriks.
+     *
+     * @author Anuk
+     */
     public void toggleHideAccPin(){
         accPinField.setEchoChar('*');
     }

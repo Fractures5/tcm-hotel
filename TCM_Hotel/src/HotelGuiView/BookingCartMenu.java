@@ -34,6 +34,12 @@ import HotelDataFiles.CalculateCosts;
 import HotelDataFiles.GuestsBookingCart;
 
 /**
+ * The BookingCartMenu class is a view class outputs the guests booking cart GUI
+ * to the user where they can select if they want to proceed to checkout or
+ * return to home. This class contains all the GUI elements for this menu,
+ * getter methods for other classes to access variables from this class safely
+ * and methods to deal with confirming the users selection and adding data to
+ * the text area field.
  *
  * @author Siddarath
  */
@@ -57,6 +63,16 @@ public class BookingCartMenu extends JFrame
     
     Border blackline = BorderFactory.createLineBorder(Color.black, 2);
     
+    /**
+     * This default constructor initializes the panels, labels, text area,
+     * buttons and other variables, sets the name, size, colors, position of the
+     * components and then adds it to the frame (set to visible) which makes the
+     * Hotel Guest Booking Menu GUI visible to the user so they can look at what
+     * products they have booked and the total costs to pay and then decide to
+     * confirm whether to continue to pay or return back to the main menu.
+     *
+     * @author Siddarath
+     */
     public BookingCartMenu()
     {
         pageTitle = new JLabel("Booking Cart Menu\n");
@@ -74,7 +90,6 @@ public class BookingCartMenu extends JFrame
         instruction.setForeground(Color.BLACK);
 
         menuPanel = new JPanel();
-        //menuPanel.setBackground(Color.LIGHT_GRAY);
         menuPanel.setPreferredSize(new Dimension(1100, 850));
         menuPanel.add(instruction);
         
@@ -129,6 +144,14 @@ public class BookingCartMenu extends JFrame
         this.setVisible(true);
     }
     
+    /**
+     * This method adds the all dates, location, rooms, guest types and features
+     * the user has booked into the text area using data stored form the array
+     * list in each of the models and presents it in a legible way.
+     *
+     * @return bookingCartField the JTextArea object which contains the guests
+     * booking details.
+     */
     public static JTextArea addBookingDetails()
     {
         ArrayList<GuestsBookingCart> datesBooked = new ArrayList<GuestsBookingCart>();
@@ -147,31 +170,26 @@ public class BookingCartMenu extends JFrame
         featuresBooked = FeaturesMenuInteraction.guestFeaturesBooked();
         
         bookingCartField = new JTextArea();
-        //bookingCartField.setPreferredSize(new Dimension(950, 100));
         
         bookingCartField.setText("===============================================================================================================\n");
         bookingCartField.append("\n------------------------------------------------------------------------------ Booked dates ---------------------------------------------------------------------------------------------------\n\n");
         bookingCartField.append("Check in date: " +datesBooked.get(0).getCheckInDay()+ " / " +datesBooked.get(0).getCheckInMonth()+ " / " +datesBooked.get(0).getCheckInYear() +"\n");
         bookingCartField.append("Check out date: " +datesBooked.get(0).getCheckOutDay()+ " / " +datesBooked.get(0).getCheckOutMonth()+ " / " +datesBooked.get(0).getCheckOutYear() +"\n");
-        //bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         
         bookingCartField.append("\n--------------------------------------------------------------------------- Location Booked -------------------------------------------------------------------------------------------------\n\n");
         bookingCartField.append("Title: " + locationBooked.get(0).getTitle() + "Location: " +locationBooked.get(0).getLocationType()+ "             Rating: " +locationBooked.get(0).getRatingType() + "             Vacancy: " +locationBooked.get(0).getVacancyType() + "\n");
-        //bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         
         bookingCartField.append("\n----------------------------------------------------------------------------- Rooms Booked -------------------------------------------------------------------------------------------------\n\n");
         for (GuestsBookingCart bookingDetails : roomsBooked)
         {
             bookingCartField.append("Title: " + bookingDetails.getTitle() + "--------Room Type: " + bookingDetails.getRoomType() + "---------Price: $" + bookingDetails.getPrice() + "\n");
         }
-        //bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         
         bookingCartField.append("\n-------------------------------------------------------------------------- Guest types Booked ---------------------------------------------------------------------------------------------\n\n");
         for (GuestsBookingCart bookingDetails : guestsTypesBooked)
         {
             bookingCartField.append("Title: " + bookingDetails.getTitle() + "--------Guest Type: " + bookingDetails.getGuestType() + "--------Price: $" + bookingDetails.getPrice() + "\n");
         }
-       // bookingCartField.append("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         
         bookingCartField.append("\n--------------------------------------------------------------------------- Features Booked -------------------------------------------------------------------------------------------------\n\n");
         for (GuestsBookingCart bookingDetails : featuresBooked)
@@ -182,6 +200,14 @@ public class BookingCartMenu extends JFrame
         return bookingCartField;
     }
 
+    /**
+     * This method checks if the user wants to continue and if they want to
+     * continue the repeat boolean is set to false which indicates to the
+     * BookingCartInteraction (controller) that the frame for this menu is ready
+     * to be closed and so the payment GUI menu can be shown.
+     *
+     * @author Siddarath
+     */
     public void confirmSelection()
     {
         int userConfirmation = JOptionPane.showConfirmDialog(new JFrame(), "Would you like to continue?");
@@ -195,6 +221,16 @@ public class BookingCartMenu extends JFrame
             repeat = true;
         }
     }
+    
+    /**
+     * This method returns the JButton object from the variable 'homeButton'
+     * which contains the home button variable. The same concept of
+     * getting/returning the specific datatype applies to all the other get
+     * methods below.
+     *
+     * @return homeButton the JButton variable.
+     * @author Siddarath
+     */
     public JButton getHomeButton() 
     {
         return homeButton;
@@ -210,11 +246,25 @@ public class BookingCartMenu extends JFrame
         return repeat;
     }
     
+    /**
+     * This method will set the background color of the home button to red once
+     * a user hovers over it. This concept applies to the other hover methods
+     * below.
+     *
+     * @author Siddarath
+     */
     public void mouseEnterHomeHover()
     {
         getHomeButton().setBackground(Color.RED);
     }
     
+    /**
+     * This method will set the background color of the home button back to the
+     * default color once the user exits hovering over the home button. This
+     * concept applies to the other hover methods below.
+     *
+     * @author Siddarath
+     */
     public void mouseExitHomeHover()
     {
         getHomeButton().setBackground(UIManager.getColor("control"));
@@ -230,6 +280,13 @@ public class BookingCartMenu extends JFrame
         getProceedButton().setBackground(UIManager.getColor("control"));
     }
     
+    /**
+     * This method when invoked will output to the user a warning message
+     * notifying them they are returning back to the main menu, once they click
+     * the home button.
+     *
+     * @author Siddarath
+     */
     public void confirmLeaveBooking() 
     {
         JOptionPane.showMessageDialog(null, "You have clicked to return to the main menu. Now returning...", "Returning to main menu!", JOptionPane.WARNING_MESSAGE);

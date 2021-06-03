@@ -12,7 +12,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ * This is the DB manager class and it manages connecting to the database and it
+ * assists in when creating and updating tables in the database with our hotel
+ * data.
  * @author Siddarath
  */
 public class DBManager 
@@ -29,6 +31,7 @@ public class DBManager
        establishConnection();
     }
     
+    // Create a connection
     public void establishConnection()
     {
         if(this.conn == null)
@@ -45,6 +48,7 @@ public class DBManager
         }
     }
     
+    // Get connection
     public Connection getConnection()
     {
         return this.conn;
@@ -86,6 +90,7 @@ public class DBManager
         }
     }
     
+    // Close connection
     public void closeConnnections()
     {
         if(conn!= null)

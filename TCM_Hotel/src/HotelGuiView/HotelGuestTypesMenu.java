@@ -25,6 +25,12 @@ import HotelDataFiles.GuestsBookingCart;
 import HotelDataFiles.GuestsTypeMenu;
 
 /**
+ * The HotelGuestTypesMenu class is a view class outputs the hotel guest types
+ * GUI to the user where they can select using combo boxes of the number of
+ * guests they would be staying along with their guest type. This class contains
+ * all the GUI elements for this menu, getter methods for other classes to
+ * access variables from this class safely and methods to deal with error
+ * handling and confirming the users selection.
  *
  * @author Siddarath
  */
@@ -49,6 +55,14 @@ public class HotelGuestTypesMenu extends JFrame
     
     Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
     
+    /**
+     * This default constructor initializes the panels, labels, combo boxes for
+     * the number of guests, next buttons and other variables, sets the name,
+     * size, colors, position and then adds it to the frame (set to visible)
+     * which makes the Hotel Guest Types Menu GUI visible to the user so they
+     * can choose hotel guest types by selecting the desired number of guests
+     * and the type.
+     */
     public HotelGuestTypesMenu()
     {
         ArrayList<GuestsTypeMenu> guestTypeMenu = new ArrayList<GuestsTypeMenu>();
@@ -168,6 +182,15 @@ public class HotelGuestTypesMenu extends JFrame
         this.setVisible(true);
     }
     
+    /**
+     * This method returns the JButton object from the variable 'nextButton'
+     * which contains the next button variable. The same concept of
+     * getting/returning the specific datatype applies to all the other get
+     * methods below.
+     *
+     * @return nextButton the JButton variable.
+     * @author Siddarath
+     */
     public JButton getNextButton()
     {
         return nextButton;
@@ -188,6 +211,17 @@ public class HotelGuestTypesMenu extends JFrame
         return guestTypesBooked;
     }
     
+    /**
+     * This method checks if user chooses a guest type and quantity. If the user
+     * does not choose a quantity over 0 for any of the guests then it will set
+     * a boolean that will let the controller (GuestTypeInteraction) for this
+     * menu know to show a error message to the user. If the user selects a
+     * valid choice the booleans for repeat and show error message are changed
+     * to false indicating the data can be stored in the array and they can move
+     * onto the next stage.
+     *
+     * @author Siddarath
+     */
     public void confirmSelection()
     {
         if (adultTypeBox.getSelectedItem().equals(0) && childTypeBox.getSelectedItem().equals(0) && infantTypeBox.getSelectedItem().equals(0)
@@ -213,6 +247,14 @@ public class HotelGuestTypesMenu extends JFrame
         }
     }
     
+    /**
+     * If the user selects a valid selection of number of guests then this
+     * method will successfully store the selected guest types in an array list
+     * which is later stored in the BookedGuestTypes model through the
+     * GuestsTypeInteraction (controller)
+     *
+     * @author Siddarath
+     */
     public void addGuestTypesSelection()
     {
         int count  = 0;
@@ -280,17 +322,36 @@ public class HotelGuestTypesMenu extends JFrame
         }
     }
     
+    /**
+     * If a user doesn't select any number of hotel guest types this method will
+     * be invoked and it will output an error message to the user, preventing
+     * them to move on until they choose one at least.
+     *
+     * @author Siddarath
+     */
     public void displayErrorMessage()
     {
         JOptionPane.showMessageDialog(new JFrame(), "Please select the number of guests and what type of guests will be staying before moving to the next stage", "Invalid Selection",
                      JOptionPane.ERROR_MESSAGE); 
     }
     
+    /**
+     * This method will set the background color of the next button to green
+     * once a user hovers over it.
+     *
+     * @author Siddarath
+     */
     public void mouseEnterNextHover()
     {
         getNextButton().setBackground(Color.GREEN);
     }
     
+    /**
+     * This method will set the background color of the next button back to the
+     * default color once the user exits hovering over the next button.
+     *
+     * @author Siddarath
+     */
     public void mouseExitNextHover()
     {
         getNextButton().setBackground(UIManager.getColor("control"));

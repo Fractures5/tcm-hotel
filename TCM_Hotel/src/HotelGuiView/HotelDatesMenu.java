@@ -26,6 +26,11 @@ import javax.swing.border.Border;
 import HotelDataFiles.GuestsBookingCart;
 
 /**
+ * The HotelDatesMenu class is a view class which outputs the hotel dates menu
+ * GUI to the user where the user can select using combo boxes what check in and
+ * check out dates they would like. This class also contains getter methods for
+ * accessing variables from other classes methods to deal with error handling
+ * and confirm the using selection.
  *
  * @author Siddarath
  */
@@ -63,6 +68,15 @@ public class HotelDatesMenu extends JFrame
 
     Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
     
+    /**
+     * This is the HotelDatesMenu default constructor and it basically
+     * initializes the panels,labels, combo boxes, buttons variables, sets the
+     * name, size, color, position of the and then adds it to the frame (set to
+     * visible) which makes the Booking dates GUI visible to the user, ready for
+     * selecting the check in and out dates.
+     *
+     * @author Siddarath
+     */
     public HotelDatesMenu()
     {
         title = new JLabel("Hotel Date Booking Menu\n");
@@ -195,6 +209,15 @@ public class HotelDatesMenu extends JFrame
         this.setVisible(true);
     }
     
+    /**
+     * This method returns the boolean result from the variable 'repeat' which
+     * contains whether the GUI needs to be re displayed, The same concept of
+     * getting the specific datatype applies to all the other get methods below.
+     *
+     * @return repeat the boolean which contains either true or false on whether
+     * the GUI needs to be re displayed.
+     * @author Siddarath
+     */
     public Boolean getRepeat()
     {
         return repeat;
@@ -225,6 +248,16 @@ public class HotelDatesMenu extends JFrame
         return datesBooked;
     }
 
+    /**
+     * This method checks if the dates the user selects are valid by making sure
+     * the valid check in/out day, month and year are selected before proceeding
+     * to the next stage. If the user selects valid dates the booleans for
+     * checking validity are set true and the repeat boolean is set false. Once
+     * the input is valid the users selected dates are stored in an array list.
+     *
+     * @throws ParseException
+     * @author Siddarath
+     */
     public void confirmSelection() throws ParseException
     {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Uses an object of the sdf SimpleDateFormat class to create a date format.
@@ -314,23 +347,49 @@ public class HotelDatesMenu extends JFrame
         }
     }
     
+    /**
+     * This method displays a pop up error message if the user selects check
+     * in/out dates that are both the same date or if the check out happens
+     * before the check in.
+     *
+     * @author Siddarath
+     */
     public void displayDateErrorMessage()
     {
         JOptionPane.showMessageDialog(new JFrame(), "Invalid selection! Check in date must occur before check out date and both dates cannot be the same!", "Invalid Selection",
                     JOptionPane.ERROR_MESSAGE);
     }
     
+    /**
+     * This method displays a pop up error message if the user selects a day for
+     * the month that doesn't exist. Such as 'February 31" doesn't exist, so if
+     * a user selects this, an error will occur.
+     *
+     * @author Siddarath
+     */
     public void displayIncorrectDayMessage()
     {
         JOptionPane.showMessageDialog(new JFrame(), "Invalid selection! The check in/out day you selected is not valid for that month. Please try again!", "Invalid Selection",
                     JOptionPane.ERROR_MESSAGE);
     }
     
+    /**
+     * This method will set the background color of the next button to green
+     * once a user hovers over it.
+     *
+     * @author Siddarath
+     */
     public void mouseEnterNextHover()
     {
         getNextButton().setBackground(Color.GREEN);
     }
     
+    /**
+     * This method will set the background color of the next button back to the
+     * default color once the user exits hovering over the next button.
+     *
+     * @author Siddarath
+     */
     public void mouseExitNextHover()
     {
         getNextButton().setBackground(UIManager.getColor("control"));

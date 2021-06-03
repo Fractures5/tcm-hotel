@@ -23,7 +23,10 @@ import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 /**
- *
+ * This is a description of the AdminFormMenu View class.
+ * This View Class will contain the constructor that when invoked it will initialize and define all the
+ * necessary Java GUI components for the Admin Form Frame if the user has chosen to access the admin system through
+ * the main menu interface.
  * @author Anuk
  */
 public class AdminFormMenu extends JFrame {
@@ -123,6 +126,14 @@ public class AdminFormMenu extends JFrame {
         return adminEmailField.getText();
     }
     
+    /**
+     * The getProceedToLogin getter method will return the value stored in the
+     * JButton object. The concept of this getter method can be applied to all
+     * other getter methods found in this class.
+     *
+     * @return proceedToLogin stores the value stored in the JButton object.
+     * @author Anuk
+     */
     public JButton getProceedToLogin() {
         return proceedToLogin;
     }
@@ -130,7 +141,15 @@ public class AdminFormMenu extends JFrame {
     public JButton getResetAdminDetails() {
         return resetAdminDetails;
     }
-
+    
+    /**
+     * This is the constructor for the AdminFormMenu View class. This
+     * constructor when invoked, will display the frame of the Admin Form once
+     * the user has chosen to access the admin back-end system through the main
+     * menu interface.
+     *
+     * @author Anuk
+     */
     public AdminFormMenu() {
         
         
@@ -228,6 +247,14 @@ public class AdminFormMenu extends JFrame {
         this.setVisible(true);
     }
     
+    /**
+     * The adminDetailsConfirmation method will check for the validity of the
+     * user input and set values to the defined boolean variables in regards to
+     * whether or not the entered data in the field contains an error and
+     * whether or not an error message should show.
+     *
+     * @author Anuk
+     */
     public void adminDetailsConfirmation(){
         
         inputFirstName = adminFNameField.getText();
@@ -253,15 +280,6 @@ public class AdminFormMenu extends JFrame {
             adminLNameField.setText("");
         }
         
-        /*if (inputJobTitle.matches("[A-Za-z]+")) {
-            validAdminJobTitle = true;
-            showAdminJobTitleError = false;
-        } else if (!inputJobTitle.matches("[A-Za-z]+")) {
-            validAdminJobTitle = false;
-            showAdminJobTitleError = true;
-            adminJobTitleField.setText("");
-        }*/
-        
         try {
             inputPhoneNumber = getAdminPhoneNumField();
             validAdminPhoneNumber = true;
@@ -285,6 +303,13 @@ public class AdminFormMenu extends JFrame {
         }
     }
     
+    /**
+     * The adminDetailsReset method will check if the user wants to confirm the
+     * resetting of their entered values and if they agree the fields of the
+     * form will be cleared or emptied.
+     *
+     * @author Anuk
+     */
     public void adminDetailsReset(){
         
         int resetReply = JOptionPane.showConfirmDialog(null, "Resetting will clear information you have entered!", "Reset Details!", JOptionPane.ERROR_MESSAGE);
@@ -302,10 +327,26 @@ public class AdminFormMenu extends JFrame {
         
     }
     
+    /**
+     * The mouseEnterProceedToLogin method will change the background colour of
+     * the proceed to login button if the mouse has entered the button. The
+     * concept of this method can be applied to other methods that incorporate
+     * the mouse enter button procedure.
+     *
+     * @author Anuk
+     */
     public void mouseEnterProceedToLogin() {
         getProceedToLogin().setBackground(Color.GREEN);
     }
 
+    /**
+     * The mouseExitProceedToLogin method will set the background colour of the
+     * proceed to login button back to the default origin colour if the mouse
+     * has exited the button. The concept of this method can be applied to other
+     * methods that incorporate the mouse exit button procedure.
+     *
+     * @author Anuk
+     */
     public void mouseExitProceedToLogin() {
         getProceedToLogin().setBackground(UIManager.getColor("control"));
     }
@@ -318,6 +359,14 @@ public class AdminFormMenu extends JFrame {
         getResetAdminDetails().setBackground(UIManager.getColor("control"));
     }
     
+    /**
+     * The displayAdminFNameError method will display a JOptionPane prompting
+     * the user that they have entered incorrect input for the admin first name
+     * field. The concept of this method can be applied to other methods which
+     * display a JOptionPane to the user.
+     *
+     * @author Anuk
+     */
     public void displayAdminFNameError() {
         JOptionPane.showMessageDialog(null, "Your First Name must only contain letters of the Alphabet!", "Invalid First Name Error!", JOptionPane.ERROR_MESSAGE);
     }

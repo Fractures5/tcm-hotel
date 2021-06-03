@@ -87,7 +87,7 @@ public class GuestFormInteraction{
     
     public void handleConfirmDetailsClick() {
         
-        menuGuestForm.DetailsConfirmation();
+        menuGuestForm.detailsConfirmation();
         
         if (menuGuestForm.getShowFNameError() == true){
             menuGuestForm.displayFNameError();
@@ -154,7 +154,7 @@ public class GuestFormInteraction{
 
     public void handleResetDetailsClick(){
         
-        menuGuestForm.DetailsReset();
+        menuGuestForm.detailsReset();
 
     }
     

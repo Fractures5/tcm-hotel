@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import HotelDataFiles.Guest;
 
 /**
+ * This is a description of the GuestFormDetails Model Class. This class will
+ * declare 7 attributes which will be used in conjunction with getter and setter
+ * methods in order to store the data of each guest person object.
  *
  * @author Anuk
  */
@@ -32,6 +35,13 @@ public class GuestFormDetails {
         this.hotelGuest = hotelGuest;
     }
     
+    /**
+     * This is the default constructor for the GuestFormDetails Model Class.
+     * This constructor will be invoked when creating an object of the
+     * GuestFormDetails Model class.
+     *
+     * @author Anuk
+     */
     public GuestFormDetails(){
         this.guestFirstName = guestFirstName;
         this.guestLastName = guestLastName;
@@ -43,10 +53,28 @@ public class GuestFormDetails {
         this.hotelGuest = hotelGuest;
     }
 
+    /**
+     * the getGuestFirstName method returns the value of the guestFirstName
+     * variable. This idea of the get method also applies to other get methods
+     * found in this class aswell.
+     *
+     * @return guestFirstName the guestFirstName variable which stores the first
+     * name of the guest.
+     * @author Anuk
+     */
     public String getGuestFirstName() {
         return guestFirstName;
     }
-
+    
+    /**
+     * the setGuestFirstName method updates the value of the String
+     * guestFirstName of a guest object. This idea of the set method also
+     * applies to other set methods found in this class aswell.
+     *
+     * @param guestFirstName the guestFirstName variable which stores the first
+     * name of a guest.
+     * @author Anuk
+     */
     public void setGuestFirstName(String guestFirstName) {
         this.guestFirstName = guestFirstName;
     }

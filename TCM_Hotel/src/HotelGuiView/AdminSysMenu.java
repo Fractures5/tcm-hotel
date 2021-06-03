@@ -49,6 +49,10 @@ import HotelDatabase.HotelProductDB;
 import javax.swing.UIManager;
 
 /**
+ * This is a description of the AdminSysMenu View class. This View Class will
+ * contain the constructor that when invoked it will initialize and define all
+ * the necessary Java GUI components for the Admin System back-end Frame after
+ * the user has successfully logged in.
  *
  * @author Anuk
  */
@@ -89,7 +93,15 @@ public class AdminSysMenu extends JFrame{
     private JTable datesBkdTable;
     
     private static final int NUM_BTNS = 7;
-
+    
+    /**
+     * The getViewDatesBooked getter method will return the value stored in the
+     * JButton object. The concept of this getter method can be applied to all
+     * other getter methods found in this class.
+     *
+     * @return viewDatesBooked stores the value stored in the JButton object.
+     * @author Anuk
+     */
     public JButton getViewDatesBooked() {
         return viewDatesBooked;
     }
@@ -138,7 +150,15 @@ public class AdminSysMenu extends JFrame{
         return viewRoomsBooked;
     }
     
-    
+    /**
+     * This is the constructor for the AdminSysMenu View class. This constructor
+     * when invoked, will display the frame of the Admin Back-end System once
+     * the user has entered the password successfully to gain access to the
+     * system to view the corresponding JTables.
+     *
+     * @throws SQLException
+     * @author Anuk
+     */
     public AdminSysMenu() throws SQLException{
         
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -459,6 +479,18 @@ public class AdminSysMenu extends JFrame{
         this.add(bottomBtnPanel, BorderLayout.SOUTH);
         
     }
+    
+    /**
+     * The showGuestRecords method will be invoked when the view guest records
+     * button is pressed. When this method is invoked it will display the panel
+     * which contains the JTable for the guest records from the card Layout by
+     * using the name of the panel containing the JTable as a reference. The
+     * concept of this method can be applied to similar show record methods that
+     * follow the card layout procedure which reference the panel's respective
+     * name
+     *
+     * @author Anuk
+     */
     public void showGuestRecords(){
         cardLayout = (CardLayout) displayedData.getLayout();
         cardLayout.show(displayedData, "Guests Data");
@@ -505,12 +537,25 @@ public class AdminSysMenu extends JFrame{
         return mainMenuReturn;
     }
     
-    public void mouseEnterHoverLoginButton() 
+    /**
+     * The mouseEnterHoverMainMenuButton method will change the background
+     * colour of the Main Menu button if the mouse has entered the button.
+     *
+     * @author Anuk
+     */
+    public void mouseEnterHoverMainMenuButton() 
     {
         getMainMenuReturnButton().setBackground(Color.RED);
     }
 
-    public void mouseExitHoverLoginButton() 
+    /**
+     * The mouseExitHoverMainMenuButton method will change the background colour
+     * of the Main Menu button to the default origin colour if the mouse has
+     * exited the button.
+     *
+     * @author Anuk
+     */
+    public void mouseExitHoverMainMenuButton() 
     {
         getMainMenuReturnButton().setBackground(UIManager.getColor("control"));
     }

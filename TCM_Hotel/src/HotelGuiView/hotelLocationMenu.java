@@ -26,6 +26,11 @@ import HotelDataFiles.GuestsBookingCart;
 import HotelDataFiles.LocationMenu;
 
 /**
+ * The HotelLocationMenu class is a view class outputs the hotel location menu
+ * GUI to the user where they can select a radio button of what hotel they would
+ * like to book at. This class contains all the GUI elements for this menu,
+ * getter methods for other classes to access variables from this class safely
+ * and methods to deal with error handling and confirming the users selection.
  *
  * @author Siddarath
  */
@@ -51,6 +56,14 @@ public class HotelLocationMenu extends JFrame{
     
     Border blackline = BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK, 2), BorderFactory.createLineBorder(Color.WHITE, 10));
     
+    /**
+     * This default constructor initializes the panels, labels, radio buttons,
+     * buttons and other variables, sets the name, size, colors, location and
+     * then adds it to the frame (set to visible) which makes the Hotel Location
+     * Menu GUI visible to the user so they can choose a hotel location.
+     *
+     * @author Siddarath
+     */
     public HotelLocationMenu()
     {
         title = new JLabel("Hotel Locations Menu\n");
@@ -119,6 +132,16 @@ public class HotelLocationMenu extends JFrame{
         this.setVisible(true);
     }
     
+    /**
+     * This method returns the boolean result from the variable
+     * 'showErrorMessage' which contains whether the error message needs to be
+     * displayed, The same concept of getting/returning the specific datatype
+     * applies to all the other get methods below.
+     *
+     * @return showErrorMessage the boolean which contains either true or false
+     * on whether the error message needs to be displayed.
+     * @author Siddarath
+     */
     public Boolean getShowErrorMesssage()
     {
         return showErrorMessage;
@@ -139,6 +162,17 @@ public class HotelLocationMenu extends JFrame{
         return locationBooked;
     }
     
+    /**
+     * This method checks if the user has selected a valid hotel location. If
+     * the user gives a invalid response then it will set a boolean that will
+     * let the controller for this menu know to show a error message to the
+     * user. If the user successfully chooses a hotel location, the selected
+     * hotel location is stored in an array list which is later stored in the
+     * bookedHotelLocation model through using the LocationMenuInteraction
+     * (controller).
+     *
+     * @author Siddarath
+     */
     public void confirmSelection()
     {
         ArrayList<LocationMenu> locationsMenu = new ArrayList<LocationMenu>();
@@ -192,17 +226,36 @@ public class HotelLocationMenu extends JFrame{
         }     
     }
     
+    /**
+     * If a user doesn't select a hotel location this method will be invoked and
+     * it will output an error message to the user, preventing them to move on,
+     * until they choose one.
+     *
+     * @author Siddarath
+     */
     public void displayErrorMessage()
     {
         JOptionPane.showMessageDialog(new JFrame(), "Please select a hotel location before moving to the next stage", "Invalid Selection",
              JOptionPane.ERROR_MESSAGE);
     }
     
+    /**
+     * This method will set the background color of the next button to green
+     * once a user hovers over it.
+     *
+     * @author Siddarath
+     */
     public void mouseEnterNextHover()
     {
         getNextButton().setBackground(Color.GREEN);
     }
     
+    /**
+     * This method will set the background color of the next button back to the
+     * default color once the user exits hovering over the next button.
+     *
+     * @author Siddarath
+     */
     public void mouseExitNextHover()
     {
         getNextButton().setBackground(UIManager.getColor("control"));

@@ -24,6 +24,10 @@ import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
 /**
+ * This is a description of the LoginMenu View class. This View class will
+ * contain the constructor that when invoked it will initialize and define all
+ * the necessary Java GUI components for the Admin System Login frame if the
+ * user has successfully entered valid admin details via the Admin Form.
  *
  * @author Anuk
  */
@@ -45,6 +49,15 @@ public class LoginMenu extends JFrame{
     
     private JPasswordField systemPassword;
     
+    /**
+     * The getSystemPassword method will get the data stored in the field and
+     * return it as a String data type.
+     *
+     * @return new String(this.systemPassword.getPassword()) this is the string
+     * which will be returned that will store the data fetched from the
+     * JPasswordField object.
+     * @author Anuk
+     */
     public String getSystemPassword() {
         return new String(this.systemPassword.getPassword());
     }
@@ -57,6 +70,14 @@ public class LoginMenu extends JFrame{
     private JButton clearPassword;
     private JButton mainMenu;
 
+    /**
+     * The getLogin getter method will return the value stored in the JButton
+     * object. The concept of this getter method can be applied to all other
+     * getter methods found in this class.
+     *
+     * @return login stores the value stored in the JButton object.
+     * @author Anuk
+     */
     public JButton getLogin() {
         return login;
     }
@@ -84,6 +105,16 @@ public class LoginMenu extends JFrame{
         return showInvalidPasswordError;
     }
     
+    /**
+     * This is the constructor for the LoginMenu View class. This constructor
+     * when invoked, will display the frame of the System Login frame where the
+     * user will be prompted to enter the correct system password in the field
+     * displayed. This constructor will be invoked once the user has input valid
+     * admin details in the admin form The set correct password for the admin
+     * system is "tcmHotel".
+     *
+     * @author Anuk
+     */
     public LoginMenu(){
         
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -168,6 +199,15 @@ public class LoginMenu extends JFrame{
         this.add(buttonPanel, BorderLayout.SOUTH);
     }
     
+    /**
+     * The loginSystemBackend method will check if the password entered by the
+     * user is correct or not. Based on the validity of the entered password
+     * this method will set appropriate true/false values to the boolean
+     * variables in the method to determine whether or not an error should be
+     * shown. The set correct password for the admin system is "tcmHotel".
+     *
+     * @author Anuk
+     */
     public void loginSystemBackend(){
         inputSystemPassword = (new String(this.systemPassword.getPassword()));
         correctSystemPassword = "tcmHotel";
@@ -185,6 +225,13 @@ public class LoginMenu extends JFrame{
         }
     }
     
+    /**
+     * The clearInputPassword method will check for the user's reply to the show
+     * confirm dialog JOptionPane. If the user has chosen yes, the entered
+     * password in the password field will be cleared.
+     *
+     * @author Anuk
+     */
     public void clearInputPassword(){
         inputSystemPassword = (new String(this.systemPassword.getPassword()));
         clearPwReply = JOptionPane.showConfirmDialog(null, "Resetting will clear information you have entered! Are you sure?", "Reset Details!", JOptionPane.OK_CANCEL_OPTION);
@@ -201,31 +248,70 @@ public class LoginMenu extends JFrame{
         JOptionPane.showMessageDialog(null, "Entered Details will be Lost when Returning to the Main Menu before logging in", "Return to Main Menu Warning", JOptionPane.WARNING_MESSAGE);
     }
     
+    /**
+     * The toggleShowPassword method, when invoked, will reveal all entered
+     * characters in the systemPassword by changing all characters from asteriks
+     * to the actual characters pressed from the keyboard.
+     *
+     * @author Anuk
+     */
     public void toggleShowPassword(){
         systemPassword.setEchoChar(showPassword.isSelected() ? '\u0000' : (Character) UIManager.get("PasswordField.ecoChar"));
     }
     
+    /**
+     * The toggleHidePassword method, when invoked, will hide all entered
+     * characters in the systemPassword by changing all characters from the
+     * actual characters pressed from the keyboard to asteriks.
+     *
+     * @author Anuk
+     */
     public void toggleHidePassword() {
         systemPassword.setEchoChar('*');
     }
     
+    /**
+     * The displayInvalidPasswordError method will display a JOptionPane
+     * prompting the user that they have entered incorrect input for the system
+     * password field.
+     *
+     * @author Anuk
+     */
     public void displayInvalidPasswordError(){
         JOptionPane.showMessageDialog(null, "Incorrect Password has been entered! Try Again", "System Login Failure", JOptionPane.ERROR_MESSAGE);
     }
     
+    /**
+     * The displayLoginSuccessful method will display a JOptionPane prompting
+     * the user that they have entered correct input for the system password
+     * field.
+     *
+     * @author Anuk
+     */
     public void displayLoginSuccessful(){
         JOptionPane.showMessageDialog(null, "You have Successfully Logged in!", "System Login Success", JOptionPane.INFORMATION_MESSAGE);
     }
     
-    //login
-    //clearPassword
-    //mainMenu
-   
-
+    /**
+     * The mouseEnterHoverLoginButton method will change the background colour
+     * of the login button to green if the mouse has entered the button. The
+     * concept of this method can be applied to other methods that incorporate
+     * the mouse enter button procedure.
+     *
+     * @author Anuk
+     */
     public void mouseEnterHoverLoginButton() {
         getLogin().setBackground(Color.GREEN);
     }
-
+    
+    /**
+     * The mouseExitHoverLoginButton method will set the background colour of
+     * the login button back to the default origin colour if the mouse has
+     * exited the button. The concept of this method can be applied to other
+     * methods that incorporate the mouse exit button procedure.
+     *
+     * @author Anuk
+     */
     public void mouseExitHoverLoginButton() {
         getLogin().setBackground(UIManager.getColor("control"));
     } 

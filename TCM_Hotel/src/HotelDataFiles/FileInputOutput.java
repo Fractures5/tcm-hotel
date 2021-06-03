@@ -6,11 +6,11 @@
 package HotelDataFiles;
 
 /**
- * This is a description of the FileInputOutput Class.
- * This class will handle all of the functionality regarding
- * writing to, reading from and updating java ".txt" files.
- * 
- * @author Anuk/Siddarath/Faaris
+ * This is a description of the FileInputOutput Class. This class will handle
+ * all of the functionality regarding writing to, reading from and updating java
+ * ".txt" files.
+ *
+ * @author Anuk
  */
 
 import java.io.BufferedReader;
@@ -25,10 +25,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Anuk/Siddarath/Faaris
- */
 public class FileInputOutput 
 {
     /**
@@ -36,8 +32,9 @@ public class FileInputOutput
      * records which are the bank account number and guest's first name. With
      * every iteration of each pair it will write every pair of the bank account
      * number and the guest's first name to Guests.txt file.
+     *
      * @param guestRecords Holds the details of the guests in the system
-     * @throws FileNotFoundException 
+     * @throws FileNotFoundException
      */
     public static void writeGuestToGuestsFile(HashMap<String, String> guestRecords) throws FileNotFoundException 
     {

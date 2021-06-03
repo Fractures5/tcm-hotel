@@ -24,8 +24,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * This HotelProductDB class manages creating tables for the hotel product
+ * database, inserting/updating values into the tables and retrieving data from
+ * the tables.
  *
- * @author Siddarath/anuk
+ * @author Siddarath/Anuk
  */
 public class HotelProductDB 
 {
@@ -44,6 +47,14 @@ public class HotelProductDB
         this.dbManager.closeConnnections();
     }
     
+    /**
+     * This method will check if a table exists already in the specified DB and
+     * if it exists then it will drop the table.
+     *
+     * @param name the parameter is the name of the table being passed in to get
+     * checked.
+     * @author Siddarath
+     */
     public void checkTableExistence(String name)
     {
         try
@@ -66,6 +77,19 @@ public class HotelProductDB
         }
     }
     
+    /**
+     * This method will be only used for selected methods where the booked
+     * products and the guest/admin tables. If the table already exists it will
+     * return the boolean false else it will return a true. This will filter
+     * what table needs to be created and what table does not need to be
+     * created.
+     *
+     * @param name the parameter is the name of the table being passed in to get
+     * checked.
+     * @return createTable the boolean which determines whether a table needs to
+     * be created again.
+     * @author Siddarath
+     */
     public boolean checkTableStatus(String name)
     {
         boolean createTable = true;
@@ -91,6 +115,14 @@ public class HotelProductDB
         return createTable;
     }
     
+    /**
+     * This method will create the Hotel Locations Menu table and if it already
+     * exists it will drop the table and create the table again. The same
+     * concept from this method applies below to create the rooms, guest types
+     * and features menu tables.
+     *
+     * @author Siddarath
+     */
     public void createHLocationTable() 
     {
         try
@@ -182,6 +214,11 @@ public class HotelProductDB
         }
     }
     
+    /**
+     * This method will create the Hotel Guest List Table. Once the table
+     * exists, it will not be recreated or dropped.
+     * @author Anuk
+     */
     public void createGuestListTable(){
         try{
             this.statement = conn.createStatement();
@@ -189,7 +226,6 @@ public class HotelProductDB
             
             if (createTable == true)
             {
-                //this.checkTableExistence("GUEST_LIST");
                 this.statement.addBatch("CREATE TABLE GUEST_LIST (GUEST_FIRSTNAME VARCHAR(50), GUEST_LASTNAME VARCHAR(50), GUEST_AGE VARCHAR(30), GUEST_PHONENUMBER VARCHAR(50), GUEST_EMAILADDRESS VARCHAR(50), GUEST_ACCOUNTNUMBER VARCHAR(50), GUEST_TOTALPAID VARCHAR(50))");
                 this.statement.executeBatch();
                 System.out.println("Table GUEST_LIST has been created");
@@ -205,6 +241,12 @@ public class HotelProductDB
         }
     }
     
+    /**
+     * This method will create the Hotel Admin List Table. Once the table
+     * exists, it will not be recreated or dropped.
+     *
+     * @author Anuk
+     */
     public void createAdminListTable() {
         try {
             
@@ -228,7 +270,14 @@ public class HotelProductDB
         }
     }
     
-    
+    /**
+     * This method will create the Booked Hotel Locations Table. Once the table
+     * exists, it will not be recreated or dropped. This same concept will be
+     * applied to the methods shown below regarding creating the booked dates,
+     * rooms, guest types and features tables.
+     *
+     * @author Siddarath
+     */
     public void createLocationBookedTable()
     {
         try
@@ -359,6 +408,17 @@ public class HotelProductDB
         
     }
     
+    /**
+     * The registerGuest method will be invoked to add all the details of a
+     * guest into the GUEST_LIST table
+     *
+     * @param guest the guest object is an object of the model class for the
+     * Guest Form system.
+     * @param guestCosts guestCosts is an object of the CalculateCosts class
+     * that will save the total cost paid by the guest.
+     * @author Anuk
+     */
+    
     public void registerGuest(GuestFormDetails guest, CalculateCosts guestCosts){
         try{
             this.statement = conn.createStatement();
@@ -370,6 +430,14 @@ public class HotelProductDB
         }
     }
     
+    /**
+     * The registerAdmin method will be invoked to add all the details of an
+     * admin into the ADMIN_LIST table
+     *
+     * @param admin the admin object is an object of the model class for the
+     * Admin Form System.
+     * @author Anuk
+     */
     public void registerAdmin(AdminFormDetails admin) {
         try {
             this.statement = conn.createStatement();
@@ -380,6 +448,18 @@ public class HotelProductDB
         }
     }
     
+    /**
+     * This method will update the booked hotel locations table by inserting new
+     * data to the next row using data from the parameter values. This same
+     * concept will be applied to the methods shown below regarding
+     * updating/inserting new values into the booked dates, rooms, guest types
+     * and features tables.
+     *
+     * @param guest the parameter represents the GustFormDetails object.
+     * @param locationBooked the parameter represents the array list object of
+     * the GuestsBookingCart.
+     * @author Siddarath
+     */
     public void dbAddLocationsBooked(GuestFormDetails guest, ArrayList<GuestsBookingCart> locationBooked)
     {
         try
@@ -467,6 +547,17 @@ public class HotelProductDB
         }  
     }
     
+    /**
+     * The getStaffRecords method will fetch all data from the ADMIN_LIST table
+     * and save each row as an object of the ViewRecords class and add it to an
+     * ArrayList that will be returned. The concept of this method can be
+     * applied to all other getRecords methods found in the HotelProductDB
+     * class.
+     *
+     * @return saveStaffRecords the saveStaffRecords is an ArrayList that will
+     * be returned when this method is called.
+     * @author Anuk
+     */
     public ArrayList<ViewRecords> getStaffRecords(){
         
         ResultSet rs = null;

@@ -9,11 +9,12 @@ import java.util.ArrayList;
 import HotelDataFiles.GuestsBookingCart;
 
 /**
- * This is the model class for the hotel features menu and it
- * interacts with the controller which is FeaturesMenuInteraction. 
- * Here the hotel features the user selects is initialized (using setter methods)
- * and is stored in the GuessBookingCart array list object. This model class also uses 
- * getter methods to retrieve the array list data outside this class.
+ * This is the model class for the hotel features menu and it interacts with the
+ * controller which is FeaturesMenuInteraction. Here the hotel features the user
+ * selects is initialized (using setter methods) and is stored in the
+ * GuessBookingCart array list object. This model class also uses getter methods
+ * to retrieve the array list data outside this class.
+ *
  * @author Siddarath
  */
 public class BookedHotelFeatures 

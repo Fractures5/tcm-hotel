@@ -11,6 +11,10 @@ import HotelEnums.LocationType;
 import HotelEnums.RoomType;
 
 /**
+ * The is a description of the ViewRecords class. The ViewRecords class will
+ * store all the fetched data from the derby tables into String datatypes except
+ * the data which are an enumerated type where such data will be stored into a
+ * variable where the datatype will be of its respective enumerated type class.
  *
  * @author Anuk
  */
@@ -49,6 +53,25 @@ public class ViewRecords {
     private String checkOutMonth = "";
     private String checkOutYear = "";
     
+    /**
+     * This is the constructor that will be invoked when the getStaffRecords
+     * method is making objects of the fetched data from the database tables row
+     * by row. For each row of the table data, this constructor will be invoked
+     * setting the data of the ViewRecord objects being created in the
+     * getStaffRecords method.
+     *
+     * @param adminFName the adminFName variable will set the first name of the
+     * admin ViewRecords object with the data fetched from the table.
+     * @param adminLName the adminLName variable will set the last name of the
+     * admin ViewRecords object with the data fetched from the table.
+     * @param adminJobTitle the adminJobTitle variable will set the job title of
+     * the admin ViewRecords object with the data fetched from the table.
+     * @param adminPhoneNum the adminPhoneNum variable will set the phone number
+     * of the admin ViewRecords object with the data fetched from the table.
+     * @param adminEmail the adminEmail variable will set the email address of
+     * the admin ViewRecords object with the data fetched from the table.
+     * @author Anuk
+     */
     public ViewRecords(String adminFName, String adminLName, String adminJobTitle, String adminPhoneNum, String adminEmail){
         
         this.adminFName = adminFName;
@@ -59,6 +82,32 @@ public class ViewRecords {
         
     }
     
+    /**
+     * This is the constructor that will be invoked when the getGuestRecords
+     * method is making objects of the fetched data from the database tables row
+     * by row. For each row of the table data, this constructor will be invoked
+     * setting the data of the ViewRecord objects being created in the
+     * getGuestRecords method.
+     *
+     * @param guestFName the guestFName variable will set the first name of the
+     * guest ViewRecords object with the data fetched from the table.
+     * @param guestLName the guestLName variable will set the last name of the
+     * guest ViewRecords object with the data fetched from the table.
+     * @param guestAge the guestAge variable will set the age of the guest
+     * ViewRecords object with the data fetched from the table.
+     * @param guestPhoneNum the guestPhoneNum variable will set the phone number
+     * of the guest ViewRecords object with the data fetched from the table.
+     * @param guestEmailAddress the guestEmailAddress variable will set the
+     * email address of the guest ViewRecords object with the data fetched from
+     * the table.
+     * @param guestAccountNumber the guestAccountNmber variable will set the
+     * account number of the guest ViewRecords object with the data fetched from
+     * the table.
+     * @param guestTotalPaid the guestTotalPaid variable will set the total paid
+     * price of the guest ViewRecords object with the data fetched from the
+     * table.
+     * @author Anuk
+     */
     public ViewRecords(String guestFName, String guestLName, String guestAge, String guestPhoneNum, String guestEmailAddress, String guestAccountNumber, String guestTotalPaid) {
 
         this.guestFName = guestFName;
@@ -70,6 +119,25 @@ public class ViewRecords {
         this.guestTotalPaid = guestTotalPaid;
     }
     
+    /**
+     * This is the constructor that will be invoked when the getGuestRecords
+     * method is making objects of the fetched data from the database tables row
+     * by row. For each row of the table data, this constructor will be invoked
+     * setting the data of the ViewRecord objects being created in the
+     * getLocationsBookedRecords method.
+     *
+     * @param guestAccountNumber the guestAccountNmber variable will set the
+     * account number of the guest ViewRecords object with the data fetched from
+     * the table.
+     * @param guestFName the guestFName variable will set the first name of the
+     * guest ViewRecords object with the data fetched from the table.
+     * @param locationTitle the locationTitle variable will set the location
+     * title of the guest ViewRecords object with the data fetched from the
+     * table.
+     * @param location the location variable will set the location of the guest
+     * ViewRecords object with the data fetched from the table.
+     * @author Anuk
+     */
     public ViewRecords(String guestAccountNumber, String guestFName, String locationTitle, LocationType location) {
         
         this.guestAccountNumber = guestAccountNumber;
@@ -78,6 +146,24 @@ public class ViewRecords {
         this.location = location;
     }
     
+    /**
+     * This is the constructor that will be invoked when the getGuestRecords
+     * method is making objects of the fetched data from the database tables row
+     * by row. For each row of the table data, this constructor will be invoked
+     * setting the data of the ViewRecord objects being created in the
+     * getRoomsBookedRecords method.
+     *
+     * @param guestAccountNumber the guestAccountNmber variable will set the
+     * account number of the guest ViewRecords object with the data fetched from
+     * the table.
+     * @param guestFName the guestFName variable will set the first name of the
+     * guest ViewRecords object with the data fetched from the table.
+     * @param roomTitle the roomTitle variable will set the room title of the
+     * guest ViewRecords object with the data fetched from the table.
+     * @param roomType the roomType variable will set the room type of the guest
+     * ViewRecords object with the data fetched from the table.
+     * @author Anuk
+     */
     public ViewRecords(String guestAccountNumber, String guestFName, String roomTitle, RoomType roomType) {
         
         this.guestAccountNumber = guestAccountNumber;
@@ -86,6 +172,24 @@ public class ViewRecords {
         this.roomType = roomType;
     }
     
+    /**
+     * This is the constructor that will be invoked when the getGuestRecords
+     * method is making objects of the fetched data from the database tables row
+     * by row. For each row of the table data, this constructor will be invoked
+     * setting the data of the ViewRecord objects being created in the
+     * getFeaturesBookedRecords method.
+     *
+     * @param guestAccountNumber the guestAccountNmber variable will set the
+     * account number of the guest ViewRecords object with the data fetched from
+     * the table.
+     * @param guestFName the guestFName variable will set the first name of the
+     * guest ViewRecords object with the data fetched from the table.
+     * @param featureTitle the featureTitle variable will set the feature title
+     * of the guest ViewRecords object with the data fetched from the table.
+     * @param featureType the featureType variable will set the feature type of
+     * the guest ViewRecords object with the data fetched from the table.
+     * @author Anuk
+     */
     public ViewRecords(String guestAccountNumber, String guestFName, String featureTitle, ExtraFeatureTypes featureType) {
         
         this.guestAccountNumber = guestAccountNumber;
@@ -94,6 +198,23 @@ public class ViewRecords {
         this.featureType = featureType;
     }
     
+    /**
+     * This is the constructor that will be invoked when the getGuestRecords
+     * method is making objects of the fetched data from the database tables row
+     * by row. For each row of the table data, this constructor will be invoked
+     * setting the data of the ViewRecord objects being created in the
+     * getGuestTypesRecords method.
+     *
+     * @param guestAccountNumber the guestAccountNmber variable will set the
+     * account number of the guest ViewRecords object with the data fetched from
+     * the table.
+     * @param guestFName the guestFName variable will set the first name of the
+     * guest ViewRecords object with the data fetched from the table.
+     * @param guestTitle the guestTitle variable will set the guest title of the
+     * guest ViewRecords object with the data fetched from the table.
+     * @param guestType the guestType variable will set the guest type of the
+     * guest ViewRecords object with the data fetched from the table.
+     */
     public ViewRecords(String guestAccountNumber, String guestFName, String guestTitle, GuestType guestType) {
         
         this.guestAccountNumber = guestAccountNumber;
@@ -102,6 +223,34 @@ public class ViewRecords {
         this.guestType = guestType;
     }
     
+    /**
+     * This is the constructor that will be invoked when the getGuestRecords
+     * method is making objects of the fetched data from the database tables row
+     * by row. For each row of the table data, this constructor will be invoked
+     * setting the data of the ViewRecord objects being created in the
+     * getDatesBookedRecords method.
+     *
+     * @param guestAccountNumber the guestAccountNmber variable will set the
+     * account number of the guest ViewRecords object with the data fetched from
+     * the table.
+     * @param guestFName the guestFName variable will set the first name of the
+     * guest ViewRecords object with the data fetched from the table.
+     * @param location the location variable will set the location of the guest
+     * ViewRecords object with the data fetched from the table.
+     * @param checkInDay the checkInDay variable will set the check in day of
+     * the guest ViewRecords object with the data fetched from the table.
+     * @param checkInMonth the checkInMonth variable will set the check in month
+     * of the guest ViewRecords object with the data fetched from the table.
+     * @param checkInYear the checkInYear variable will set the check in year of
+     * the guest ViewRecords object with the data fetched from the table.
+     * @param checkOutDay the checkOutDay variable will set the check out day of
+     * the guest ViewRecords object with the data fetched from the table.
+     * @param checkOutMonth the checkOutMonth variable will set the check out
+     * month of the guest ViewRecords object with the data fetched from the
+     * table.
+     * @param checkOutYear the checkOutYear variable will set the check out year
+     * of the guest ViewRecords object with the data fetched from the table.
+     */
     public ViewRecords(String guestAccountNumber, String guestFName, LocationType location, String checkInDay,
             String checkInMonth, String checkInYear, String checkOutDay, String checkOutMonth, String checkOutYear) {
         
@@ -116,6 +265,16 @@ public class ViewRecords {
         this.checkOutYear = checkOutYear;
     }
 
+    /**
+     * This is the getter method for the guestTotalPaid variable. This method
+     * will return the value stored in the guestTotalPaid variable. The idea of
+     * this getter method applies to all other getter methods found in the
+     * ViewRecords class.
+     *
+     * @return guestTotalPaid the guestTotalPaid variable stores the value of
+     * how much the guest has paid for their booking
+     * @author Anuk
+     */
     public String getGuestTotalPaid() {
         return guestTotalPaid;
     }
@@ -164,7 +323,6 @@ public class ViewRecords {
         return featureType;
     }
 
-    
     public String getRoomTitle() {
         return roomTitle;
     }
@@ -185,6 +343,14 @@ public class ViewRecords {
         return adminFName;
     }
 
+    /**
+     * the setAdminFName method updates the value of the String adminFName of a
+     * ViewRecords object. This idea of the set method also applies to other set
+     * methods found in the ViewRecords class.
+     *
+     * @param adminFName the adminFName variable which stores the admin first
+     * name.
+     */
     public void setAdminFName(String adminFName) {
         this.adminFName = adminFName;
     }
@@ -268,6 +434,4 @@ public class ViewRecords {
     public void setGuestAccountNumber(String guestAccountNumber) {
         this.guestAccountNumber = guestAccountNumber;
     }
-    
-    
 }
