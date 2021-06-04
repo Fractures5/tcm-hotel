@@ -171,7 +171,7 @@ public class AdminSysMenu extends JFrame{
         int frameHeight = screenHeight / 2;
 
         this.setSize(frameWidth + 600, frameHeight + 450);
-        this.setResizable(false);
+        this.setResizable(true);
         this.setLocation((dim.width / 2 - this.getSize().width / 2), (dim.height / 2 - this.getSize().height / 2));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Administrator Backend System");

@@ -140,7 +140,7 @@ public class BookingCartMenu extends JFrame
         this.setSize(frameWidth +350, frameHeight +300);
         this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
+        this.setResizable(true);
         this.setVisible(true);
     }
     

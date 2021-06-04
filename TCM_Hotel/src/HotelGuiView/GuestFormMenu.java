@@ -345,6 +345,7 @@ public class GuestFormMenu extends JFrame{
         this.add(headerPanel, BorderLayout.NORTH);
         this.add(centrePanel, BorderLayout.CENTER);
         this.add(buttonPanel, BorderLayout.SOUTH);
+        this.setResizable(true);
         this.setVisible(true);
     }
     

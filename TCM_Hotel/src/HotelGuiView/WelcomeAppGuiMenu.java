@@ -66,7 +66,7 @@ public class WelcomeAppGuiMenu extends JFrame
         int frameHeight = screenHeight/2;
         
         this.setSize(frameWidth, frameHeight+160);
-        this.setResizable(false);
+        this.setResizable(true);
         this.setLocation((dim.width/2 - this.getSize().width/2), (dim.height/2 - this.getSize().height/2));
         
         this.setTitle("TCM Hotel Online Booking System");
