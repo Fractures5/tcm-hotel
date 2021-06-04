@@ -19,7 +19,7 @@ import java.sql.Statement;
  */
 public class DBManager 
 {
-    private static final String URL = "jdbc:derby://localhost:1527/DBTCMHotel; create=true";
+    private static final String URL = "jdbc:derby:HotelTCMDB;create=true";
     private static final String USER_NAME = "pdc";
     private static final String PASSWORD = "pdc";
     
